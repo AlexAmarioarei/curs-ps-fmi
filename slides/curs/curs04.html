@@ -1,0 +1,3078 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<link href="../../images/ps_sticker.png" rel="icon" type="image/png">
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
+
+  <meta name="author" content="Alexandru Amărioarei">
+  <title>Probabilități și Statistică 2026-2027 – Cursul 4. Variabile aleatoare continue</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-d6cc3b700020459c0307fa4336b71df1.css">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <!-- Fonturi: Fira Sans (titluri, casete), Fira Mono (cod); textul folosește Palatino / TeX Gyre Pagella -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500&amp;family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({ TeX: { Macros: {
+    PP: "\\mathbb{P}",
+    E: "\\mathbb{E}",
+    Var: "\\operatorname{Var}",
+    Cov: "\\operatorname{Cov}",
+    Corr: "\\operatorname{Corr}",
+    MSE: "\\operatorname{EPM}",
+    Bias: "\\operatorname{Dep}",
+    sgn: "\\operatorname{sgn}",
+    argmax: "\\operatorname*{arg\\,max}",
+    argmin: "\\operatorname*{arg\\,min}",
+    R: "\\mathbb{R}",
+    N: "\\mathbb{N}",
+    Z: "\\mathbb{Z}",
+    Q: "\\mathbb{Q}",
+    F: "\\mathcal{F}",
+    A: "\\mathcal{A}",
+    B: "\\mathcal{B}",
+    Ind: "\\mathbf{1}",
+    dd: "\\,\\mathrm{d}",
+    eqd: "\\overset{d}{=}",
+    iid: "\\text{i.i.d.}",
+    asto: "\\xrightarrow{\\text{a.s.}}",
+    pto: "\\xrightarrow{\\;\\PP\\;}",
+    dto: "\\xrightarrow{\\;d\\;}",
+    Lto: "\\xrightarrow{L^2}",
+    indep: "\\perp\\!\\!\\!\\perp",
+    Bern: "\\mathrm{Bernoulli}",
+    Bin: "\\mathrm{Bin}",
+    HGeom: "\\mathrm{HGeom}",
+    Geom: "\\mathrm{Geom}",
+    NBin: "\\mathrm{NBin}",
+    Pois: "\\mathrm{Pois}",
+    Unif: "\\mathcal{U}",
+    Exp: "\\mathrm{Exp}",
+    Norm: "\\mathcal{N}",
+    GammaD: "\\mathrm{Gamma}",
+    BetaD: "\\mathrm{Beta}",
+    Cauchy: "\\mathrm{Cauchy}",
+    Multin: "\\mathrm{Mult}",
+    chisq: ["\\chi^2_{#1}", 1],
+    Stud: ["t_{#1}", 1],
+    Fish: ["F_{#1,#2}", 2],
+    bx: "\\mathbf{x}",
+    bX: "\\mathbf{X}",
+    bbeta: "\\boldsymbol{\\beta}",
+    hth: "\\hat{\\theta}",
+    Xbar: "\\bar{X}_n",
+    xbar: "\\bar{x}_n"
+  } } });
+  </script>
+<meta property="og:title" content="Cursul 4. Variabile aleatoare continue – Probabilități și Statistică 2026-2027">
+<meta property="og:description" content="Probabilități și Statistică · Cursul 4">
+<meta property="og:site_name" content="Probabilități și Statistică 2026-2027">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Cursul 4. Variabile aleatoare continue</h1>
+  <p class="subtitle">Probabilități și Statistică · Cursul 4</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Alexandru Amărioarei
+</div>
+        <p class="quarto-title-affiliation">
+            Universitatea din București · Facultatea de Matematică și Informatică · 2026–2027
+          </p>
+    </div>
+</div>
+
+</section>
+<section id="planul-cursului" class="slide level2 plan">
+<h2>Planul cursului</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 89%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Partea</th>
+<th style="text-align: left;">Conținut</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">I</td>
+<td style="text-align: left;">De la discret la continuu; densitatea de repartiție</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">II</td>
+<td style="text-align: left;">Funcția de repartiție; cuantile și mediană; analogia discret–continuu</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">III</td>
+<td style="text-align: left;">Media, formula de transfer, momente, varianța</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">IV</td>
+<td style="text-align: left;">Exerciții rezolvate</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Obiective:</strong> lucrul cu densitatea <span class="math inline">\(f\)</span> și funcția de repartiție <span class="math inline">\(F\)</span> (<span class="math inline">\(F'=f\)</span>); calculul cuantilelor; calculul mediei, momentelor și varianței prin integrale.</p>
+<aside class="notes">
+<p>Regula generală a cursului: trecerea de la discret la continuu se face înlocuind funcția de masă cu densitatea și sumele cu integrale. Repartițiile continue remarcabile (uniformă, exponențială, normală) sunt în cursul următor.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="recapitulare-variabile-aleatoare-discrete" class="slide level2">
+<h2>Recapitulare: variabile aleatoare discrete</h2>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+<span class="curs-box-label">Din Cursul 3</span>
+</div>
+<div class="curs-box-body">
+<ul>
+<li>Funcția de repartiție <span class="math inline">\(F(x)=\PP(X\le x)\)</span>: crescătoare, continuă la dreapta, <span class="math inline">\(F(-\infty)=0\)</span>, <span class="math inline">\(F(+\infty)=1\)</span> (Teorema 5 din Cursul 3).</li>
+<li><span class="math inline">\(\PP(x&lt;X\le y)=F(y)-F(x)\)</span>, <span class="math inline">\(\PP(X=x)=F(x)-F(x-)\)</span> (Propoziția 6 din Cursul 3).</li>
+<li>V.a. discretă: <span class="math inline">\(\PP(X\in A)=\sum_{x\in A}p_X(x)\)</span>, <span class="math inline">\(p_X\ge0\)</span>, <span class="math inline">\(\sum_x p_X(x)=1\)</span>.</li>
+<li>Media <span class="math inline">\(\E[X]=\sum_x x\,p_X(x)\)</span> (dacă <span class="math inline">\(\sum_x|x|p_X(x)&lt;\infty\)</span>); formula de transfer <span class="math inline">\(\E[g(X)]=\sum_x g(x)p_X(x)\)</span>.</li>
+<li><span class="math inline">\(\Var(X)=\E[(X-\E X)^2]=\E[X^2]-(\E X)^2\)</span>, <span class="math inline">\(\Var(aX+b)=a^2\Var(X)\)</span>; liniaritatea mediei.</li>
+</ul>
+</div>
+</div>
+<aside class="notes">
+<p>Toate aceste noțiuni au un analog continuu; la final vom rezuma analogia într-un tabel.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section>
+<section id="partea-i-densitatea-de-repartiție" class="title-slide slide level1 center">
+<h1>Partea I — Densitatea de repartiție</h1>
+
+</section>
+<section id="motivație-mărimi-care-iau-orice-valoare" class="slide level2">
+<h2>Motivație: mărimi care iau orice valoare</h2>
+<p>Multe mărimi de interes practic pot lua, cel puțin în principiu, <strong>orice valoare dintr-un interval</strong>:</p>
+<ul>
+<li>durata unei convorbiri telefonice;</li>
+<li>timpul de funcționare al unui server până la prima defecțiune;</li>
+<li>înălțimea unei persoane alese la întâmplare;</li>
+<li>eroarea de măsurare a unui instrument;</li>
+<li>poziția unui punct ales la întâmplare pe un segment.</li>
+</ul>
+<p>Pentru astfel de variabile, probabilitatea de a lua o valoare fixată este <strong>nulă</strong>, iar descrierea prin funcția de masă nu mai are sens.</p>
+<p><strong>Ideea cursului:</strong> înlocuim funcția de masă cu <strong>densitatea de repartiție</strong>, iar sumele cu <strong>integrale</strong>.</p>
+<aside class="notes">
+<p>Întrebare pentru studenți: care este probabilitatea ca o persoană să aibă exact 1.75 m înălțime (cu o infinitate de zecimale)?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="de-la-discret-la-continuu" class="slide level2">
+<h2>De la discret la continuu</h2>
+<p>Alegem un punct „la întâmplare” în <span class="math inline">\([0,1]\)</span>; fie <span class="math inline">\(X\)</span> poziția lui. Este natural să cerem ca probabilitatea ca <span class="math inline">\(X\)</span> să cadă într-un subinterval să fie egală cu lungimea acestuia: <span class="math display">\[
+\PP(X\in[0,1/2])=1/2,\qquad \PP(X\in[0.2,0.3])=0.1 .
+\]</span> Atunci, pentru orice <span class="math inline">\(x\in[0,1]\)</span> și orice <span class="math inline">\(\varepsilon&gt;0\)</span>, <span class="math display">\[
+0\le \PP(X=x)\le \PP\big(X\in[x-\varepsilon,x+\varepsilon]\big)\le 2\varepsilon,
+\]</span> deci <span class="math inline">\(\PP(X=x)=0\)</span>: fiecare valoare individuală are probabilitate zero, deși <span class="math inline">\(X\)</span> ia cu siguranță <strong>o</strong> valoare din <span class="math inline">\([0,1]\)</span>.</p>
+<p>Nu există nicio contradicție: aditivitatea numărabilă se aplică doar reuniunilor <strong>numărabile</strong>, iar <span class="math inline">\([0,1]\)</span> nu este numărabil.</p>
+<aside class="notes">
+<p>Consecință: funcția de masă este identic nulă și nu conține nicio informație; informația se află în probabilitățile atribuite intervalelor.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="histograme-și-densitate" class="slide level2">
+<h2>Histograme și densitate</h2>
+<p>Simulăm multe valori ale lui <span class="math inline">\(X\)</span> și le grupăm în clase de lățime <span class="math inline">\(h\)</span>; înălțimea fiecărei bare (aria totală normalizată la <span class="math inline">\(1\)</span>) aproximează <span class="math inline">\(\PP(X\in[x,x+h])/h\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="curs04_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center" style="width:92.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Când numărul de observații crește și <span class="math inline">\(h\)</span> scade, histograma se stabilizează în jurul unei curbe netede — <strong>densitatea de repartiție</strong> (aici <span class="math inline">\(f(x)=\frac38(4x-2x^2)\)</span> pe <span class="math inline">\((0,2)\)</span>, curba roșie).</p>
+<aside class="notes">
+<p>20000 de valori simulate; clase din ce în ce mai înguste.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="variabilă-aleatoare-continuă.-densitate" class="slide level2">
+<h2>Variabilă aleatoare continuă. Densitate</h2>
+<div class="curs-box definitie">
+<div class="curs-box-title">
+<span class="curs-box-label">Definiția 1</span> <span class="curs-box-name">(Variabilă aleatoare continuă)</span>
+</div>
+<div class="curs-box-body">
+<p>Fie <span class="math inline">\((\Omega,\F,\PP)\)</span> un câmp de probabilitate și <span class="math inline">\(X:\Omega\to\R\)</span> o variabilă aleatoare. <span class="math inline">\(X\)</span> este o <strong>variabilă aleatoare continuă</strong> (mai precis, <strong>absolut continuă</strong>) dacă există o funcție <span class="math inline">\(f:\R\to[0,\infty)\)</span>, integrabilă, cu <span class="math display">\[
+\PP(X\in A)=\int_A f(x)\dd x
+\]</span> pentru orice <span class="math inline">\(A\subseteq\R\)</span> care este un interval sau o reuniune cel mult numărabilă de intervale. Funcția <span class="math inline">\(f\)</span> se numește <strong>densitatea de repartiție</strong> (densitatea de probabilitate) a lui <span class="math inline">\(X\)</span>; se notează <span class="math inline">\(f_X\)</span> când trebuie precizată variabila.</p>
+</div>
+</div>
+<p><strong>Interpretare geometrică:</strong> probabilitatea ca <span class="math inline">\(X\)</span> să ia valori în <span class="math inline">\(A\)</span> este <strong>aria de sub graficul densității, deasupra lui <span class="math inline">\(A\)</span></strong>. În particular, <span class="math display">\[
+\PP(a\le X\le b)=\int_a^b f(x)\dd x .
+\]</span></p>
+</section>
+<section id="probabilitatea-ca-arie" class="slide level2">
+<h2>Probabilitatea ca arie</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="curs04_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center" style="width:72.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><span class="math inline">\(\PP(a\le X\le b)\)</span> este aria de sub graficul densității între <span class="math inline">\(a\)</span> și <span class="math inline">\(b\)</span>. Aici <span class="math inline">\(f(x)=\frac{3}{8}(4x-2x^2)\)</span> pe <span class="math inline">\((0,2)\)</span>, <span class="math inline">\(a=0.5\)</span>, <span class="math inline">\(b=1.2\)</span>, iar aria hașurată este <span class="math inline">\(\approx 0.4918\)</span>.</p>
+<aside class="notes">
+<p>Valoarea exactă <span class="math inline">\(0.49175\)</span> o vom calcula cu funcția de repartiție (Exercițiul 12).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="proprietățile-densității" class="slide level2 scrollable">
+<h2>Proprietățile densității</h2>
+<p>Luând <span class="math inline">\(A=\R\)</span>: <span class="math inline">\(\PP(X\in\R)=\PP(\Omega)=1\)</span> — aria totală de sub graficul densității este <span class="math inline">\(1\)</span>.</p>
+<div class="curs-box propozitie">
+<div class="curs-box-title">
+<span class="curs-box-label">Propoziția 2</span> <span class="curs-box-name">(Proprietățile densității)</span>
+</div>
+<div class="curs-box-body">
+<p>Densitatea de repartiție <span class="math inline">\(f\)</span> a unei variabile aleatoare continue satisface:</p>
+<div class="ol-1p">
+<ol type="a">
+<li><p><span class="math inline">\(f(x)\ge 0\)</span> pentru orice <span class="math inline">\(x\in\R\)</span>;</p></li>
+<li><p><span class="math inline">\(\displaystyle\int_{-\infty}^{+\infty} f(x)\dd x=1\)</span>.</p></li>
+</ol>
+</div>
+<p>Reciproc, orice funcție integrabilă <span class="math inline">\(f:\R\to\R\)</span> care verifică a) și b) este densitatea unei variabile aleatoare continue.</p>
+</div>
+</div>
+<p>Partea reciprocă (existența unei v.a. cu densitate dată) necesită teoria măsurii și o admitem; ea ne permite să vorbim despre „variabila aleatoare cu densitatea <span class="math inline">\(f\)</span>” de îndată ce am verificat a) și b). În cursul următor vom vedea o metodă <em>constructivă</em>, pornind de la o variabilă uniformă.</p>
+</section>
+<section id="suportul-unei-densități" class="slide level2">
+<h2>Suportul unei densități</h2>
+<div class="curs-box observatie">
+<div class="curs-box-title">
+<span class="curs-box-label">Observație</span>
+</div>
+<div class="curs-box-body">
+<p>Mulțimea <span class="math inline">\(\{x\in\R : f(x)&gt;0\}\)</span> se numește <strong>suportul</strong> lui <span class="math inline">\(X\)</span> (sau al densității). În practică, densitățile se dau printr-o formulă pe suport și valoarea <span class="math inline">\(0\)</span> în rest; scriem de exemplu <span class="math display">\[
+f(x)=2x\,\Ind_{[0,1]}(x),
+\]</span> unde <span class="math inline">\(\Ind_A\)</span> este funcția indicatoare a mulțimii <span class="math inline">\(A\)</span>.</p>
+</div>
+</div>
+<p>Suportul poate fi un interval mărginit, o semidreaptă sau tot <span class="math inline">\(\R\)</span> (de exemplu, repartiția logistică, mai târziu).</p>
+</section>
+<section id="exemplu-densitatea-2x-pe-01" class="slide level2">
+<h2>Exemplu: densitatea <span class="math inline">\(2x\)</span> pe <span class="math inline">\([0,1]\)</span></h2>
+<div class="curs-box exemplu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exemplu</span> <span class="curs-box-name">(Verificarea unei densități)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="math inline">\(f(x)=2x\,\Ind_{[0,1]}(x)\)</span> este densitate: <span class="math inline">\(f\ge0\)</span> și <span class="math inline">\(\int_{\R}f=\int_0^1 2x\dd x=x^2\big|_0^1=1\)</span>. Atunci <span class="math display">\[
+\PP\Big(X\le\tfrac12\Big)=\int_0^{1/2}2x\dd x=\frac14,\qquad \PP\Big(\tfrac12&lt;X\le1\Big)=\frac34 .
+\]</span></p>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="dv">2</span> <span class="sc">*</span> x <span class="sc">*</span> (x <span class="sc">&gt;=</span> <span class="dv">0</span> <span class="sc">&amp;</span> x <span class="sc">&lt;=</span> <span class="dv">1</span>)</span>
+<span id="cb1-2"><a aria-label="2"></a><span class="fu">c</span>(<span class="at">arie =</span> <span class="fu">integrate</span>(f, <span class="dv">0</span>, <span class="dv">1</span>)<span class="sc">$</span>value, <span class="at">P =</span> <span class="fu">integrate</span>(f, <span class="dv">0</span>, <span class="fl">0.5</span>)<span class="sc">$</span>value)</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; arie    P 
+#&gt; 1.00 0.25</code></pre>
+</div>
+</div>
+<aside class="notes">
+<p>Exemplul este suplimentar; aceeași densitate apare în Exercițiul 7.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exemplu-un-punct-ales-la-întâmplare-în-01" class="slide level2">
+<h2>Exemplu: un punct ales la întâmplare în <span class="math inline">\([0,1]\)</span></h2>
+<div class="curs-box exemplu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exemplu</span> <span class="curs-box-name">(Punct ales uniform în intervalul unitate)</span>
+</div>
+<div class="curs-box-body">
+<p>Revenim la motivație: <span class="math inline">\(X\)</span> = poziția unui punct ales la întâmplare în <span class="math inline">\([0,1]\)</span>. Densitatea <span class="math inline">\(f(x)=\Ind_{[0,1]}(x)\)</span> (<span class="math inline">\(=1\)</span> pe <span class="math inline">\([0,1]\)</span>, <span class="math inline">\(0\)</span> în rest) verifică <span class="math inline">\(f\ge0\)</span>, <span class="math inline">\(\int_{\R}f=1\)</span> și, pentru <span class="math inline">\(0\le a\le b\le1\)</span>, <span class="math display">\[
+\PP(a\le X\le b)=\int_a^b 1\dd x=b-a \quad(\text{lungimea intervalului}).
+\]</span> În particular <span class="math inline">\(\PP(X\in[0.2,0.3])=0.1\)</span> și <span class="math inline">\(\PP(X=x)=0\)</span> pentru orice <span class="math inline">\(x\)</span>, exact ca în motivație.</p>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">6</span>); u <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="fl">1e5</span>)                  <span class="co"># puncte uniforme în [0, 1]</span></span>
+<span id="cb3-2"><a aria-label="2"></a><span class="fu">c</span>(<span class="at">P_02_03 =</span> <span class="fu">mean</span>(u <span class="sc">&gt;=</span> <span class="fl">0.2</span> <span class="sc">&amp;</span> u <span class="sc">&lt;=</span> <span class="fl">0.3</span>), <span class="at">P_eq_05 =</span> <span class="fu">mean</span>(u <span class="sc">==</span> <span class="fl">0.5</span>))</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; P_02_03 P_eq_05 
+#&gt;  0.1003  0.0000</code></pre>
+</div>
+</div>
+<aside class="notes">
+<p>Exemplu suplimentar: este repartiția uniformă <span class="math inline">\(\Unif(0,1)\)</span>, studiată în cursul următor.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="probabilitatea-unui-punct" class="slide level2">
+<h2>Probabilitatea unui punct</h2>
+<div class="curs-box propozitie">
+<div class="curs-box-title">
+<span class="curs-box-label">Propoziția 3</span> <span class="curs-box-name">(Punctele au probabilitate zero)</span>
+</div>
+<div class="curs-box-body">
+<p>Dacă <span class="math inline">\(X\)</span> este o variabilă aleatoare continuă cu densitatea <span class="math inline">\(f\)</span>, atunci pentru orice <span class="math inline">\(a\in\R\)</span> <span class="math display">\[
+\PP(X=a)=\int_a^a f(x)\dd x=0 .
+\]</span> În consecință, pentru orice <span class="math inline">\(a&lt;b\)</span>, <span class="math display">\[
+\PP(a\le X\le b)=\PP(a&lt;X\le b)=\PP(a\le X&lt;b)=\PP(a&lt;X&lt;b)=\int_a^b f(x)\dd x .
+\]</span></p>
+</div>
+</div>
+<aside class="notes">
+<p>Aceasta este proprietatea care deosebește fundamental variabilele continue de cele discrete.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="punctele-au-probabilitate-zero-demonstrație" class="slide level2">
+<h2>Punctele au probabilitate zero — demonstrație</h2>
+<div class="curs-proof">
+<p><em>Demonstrație.</em> Prima afirmație rezultă direct din definiție, cu <span class="math inline">\(A=\{a\}=[a,a]\)</span>. Pentru a doua, de exemplu, <span class="math inline">\(\{a\le X\le b\}=\{X=a\}\cup\{a&lt;X\le b\}\)</span>, reuniune disjunctă, deci <span class="math inline">\(\PP(a\le X\le b)=0+\PP(a&lt;X\le b)\)</span>; celelalte egalități se obțin la fel.<span class="curs-qed">■</span></p>
+</div>
+<div class="curs-box atentie">
+<div class="curs-box-title">
+<span class="curs-box-label">Atenție!</span>
+</div>
+<div class="curs-box-body">
+<p>Pentru variabile <em>discrete</em>, egalitățile de mai sus sunt în general false: dacă <span class="math inline">\(X\sim\Bin(3,1/2)\)</span>, atunci <span class="math inline">\(\PP(1\le X\le 2)=3/4\)</span>, dar <span class="math inline">\(\PP(1&lt;X&lt;2)=0\)</span>. Nu transferați automat regula „inegalitățile stricte sau nestricte nu contează” de la variabile continue la variabile discrete.</p>
+</div>
+</div>
+<p>Pentru o variabilă continuă, în schimb, putem scrie liniștiți <span class="math inline">\(\PP(X&lt;x)=\PP(X\le x)\)</span>.</p>
+<aside class="notes">
+<p>Întrebare: pentru <span class="math inline">\(X\sim\Bin(3,1/2)\)</span>, cât este <span class="math inline">\(\PP(1&lt;X\le 2)\)</span>? (<span class="math inline">\(3/8\)</span>).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="de-ce-se-numește-densitate" class="slide level2">
+<h2>De ce se numește „densitate”?</h2>
+<p>Fie <span class="math inline">\(x\in\R\)</span> și <span class="math inline">\(\dd x&gt;0\)</span> o lungime foarte mică. Dacă <span class="math inline">\(f\)</span> este continuă în <span class="math inline">\(x\)</span>, pe <span class="math inline">\([x,x+\dd x]\)</span> densitatea este aproape constantă, egală cu <span class="math inline">\(f(x)\)</span>, și <span class="math display">\[
+\PP\big(X\in[x,x+\dd x]\big)=\int_x^{x+\dd x} f(t)\dd t\approx f(x)\,\big((x+\dd x)-x\big)=f(x)\dd x .
+\]</span> Astfel <span class="math display">\[
+f(x)\approx\frac{\PP\big(X\in[x,x+\dd x]\big)}{\dd x}=\frac{\text{probabilitate}}{\text{unitate de lungime}} .
+\]</span></p>
+<ul>
+<li>Ca în fizică (densitatea de masă = masă pe unitatea de volum), densitatea de repartiție măsoară <strong>probabilitatea pe unitatea de lungime</strong> în jurul lui <span class="math inline">\(x\)</span>.</li>
+<li>Dacă <span class="math inline">\(X\)</span> se măsoară în metri, <span class="math inline">\(f\)</span> se măsoară în <span class="math inline">\(1/\text{m}\)</span>.</li>
+</ul>
+<aside class="notes">
+<p>Legătura cu histograma: înălțimea barei = probabilitatea clasei / lățimea clasei.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="densitatea-nu-este-o-probabilitate" class="slide level2">
+<h2>Densitatea nu este o probabilitate</h2>
+<div class="curs-box atentie">
+<div class="curs-box-title">
+<span class="curs-box-label">Atenție!</span>
+</div>
+<div class="curs-box-body">
+<p>Valoarea <span class="math inline">\(f(x)\)</span> a unei densități <strong>nu este o probabilitate</strong>. Singurele constrângeri sunt <span class="math inline">\(f\ge0\)</span> și aria totală egală cu <span class="math inline">\(1\)</span>; o densitate poate lua valori mai mari decât <span class="math inline">\(1\)</span> și poate fi chiar nemărginită. Probabilități sunt doar <em>ariile</em> de sub graficul lui <span class="math inline">\(f\)</span>.</p>
+</div>
+</div>
+<div class="curs-box exemplu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exemplul 1</span> <span class="curs-box-name">(O densitate nemărginită)</span>
+</div>
+<div class="curs-box-body">
+<p>Fie <span class="math inline">\(X\)</span> cu densitatea <span class="math inline">\(f(x)=\dfrac{1}{2\sqrt{x}}\)</span> pentru <span class="math inline">\(0&lt;x\le 1\)</span> și <span class="math inline">\(f(x)=0\)</span> altfel. Evident <span class="math inline">\(f(x)\ge0\)</span> și <span class="math inline">\(\int_{-\infty}^{+\infty} f(x)\dd x=\int_0^1\frac{1}{2\sqrt{x}}\dd x=\sqrt{x}\,\big|_0^1=1\)</span>. Totuși <span class="math inline">\(f(x)\to+\infty\)</span> când <span class="math inline">\(x\to0^+\)</span>. Aceasta nu contrazice nimic: de exemplu, <span class="math inline">\(\PP(X\le 0.01)=\sqrt{0.01}=0.1\)</span>, o probabilitate perfect rezonabilă.</p>
+</div>
+</div>
+<aside class="notes">
+<p>Vom vedea în cursul următor că aceasta este densitatea pătratului unei variabile uniforme pe <span class="math inline">\([0,1]\)</span>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="o-densitate-nemărginită-grafic" class="slide level2">
+<h2>O densitate nemărginită — grafic</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="curs04_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" style="width:72.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Aria hașurată este <span class="math inline">\(\PP(X\le 0.25)=\sqrt{0.25}=0.5\)</span>: jumătate din masa de probabilitate este concentrată pe intervalul <span class="math inline">\((0,0.25]\)</span>, unde densitatea depășește <span class="math inline">\(1\)</span>.</p>
+</section>
+<section id="determinarea-unei-constante-de-normare" class="slide level2">
+<h2>Determinarea unei constante de normare</h2>
+<p>Frecvent, o densitate este cunoscută „până la o constantă”: se știe forma funcției, iar constanta se determină din condiția ca aria totală să fie <span class="math inline">\(1\)</span>.</p>
+<div class="curs-box exemplu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exemplul 2</span> <span class="curs-box-name">(Determinarea constantei)</span>
+</div>
+<div class="curs-box-body">
+<p>Durata (în ore) a funcționării neîntrerupte a unui echipament este o v.a. continuă <span class="math inline">\(X\)</span> cu densitatea <span class="math display">\[
+f(x)=\begin{cases}k\,(4x-2x^2), &amp; 0&lt;x&lt;2,\\ 0, &amp; \text{altfel.}\end{cases}
+\]</span> a) Determinăm <span class="math inline">\(k\)</span>. Pe <span class="math inline">\((0,2)\)</span>, <span class="math inline">\(4x-2x^2=2x(2-x)&gt;0\)</span>, deci <span class="math inline">\(f\ge0\)</span> impune <span class="math inline">\(k\ge0\)</span>. Din normare, <span class="math display">\[
+1=\int_0^2 k(4x-2x^2)\dd x=k\Big(2x^2-\frac{2x^3}{3}\Big)\Big|_0^2=k\Big(8-\frac{16}{3}\Big)=\frac{8k}{3}
+\quad\Longrightarrow\quad k=\frac38 .
+\]</span></p>
+</div>
+</div>
+<aside class="notes">
+<p>Aceasta este densitatea din histogramele de la începutul cursului.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="determinarea-constantei-continuare" class="slide level2 scrollable">
+<h2>Determinarea constantei — continuare</h2>
+<div class="curs-box exemplu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exemplu</span> <span class="curs-box-name">(Determinarea constantei (continuare))</span>
+</div>
+<div class="curs-box-body">
+<div class="ol-1p">
+<ol start="2" type="a">
+<li>Probabilitatea ca echipamentul să funcționeze mai mult de o oră este <span class="math display">\[
+\PP(X&gt;1)=\int_1^2\frac38(4x-2x^2)\dd x=\frac38\Big(2x^2-\frac{2x^3}{3}\Big)\Big|_1^2=\frac38\Big(\frac83-\frac43\Big)=\frac12 .
+\]</span> Rezultatul era de așteptat: graficul densității este o parabolă simetrică față de <span class="math inline">\(x=1\)</span>.</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="dv">3</span><span class="sc">/</span><span class="dv">8</span> <span class="sc">*</span> (<span class="dv">4</span><span class="sc">*</span>x <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb5-2"><a aria-label="2"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb5-3"><a aria-label="3"></a><span class="fu">c</span>(<span class="at">arie =</span> <span class="fu">integrate</span>(f, <span class="dv">0</span>, <span class="dv">2</span>)<span class="sc">$</span>value, <span class="at">P_X_gt_1 =</span> <span class="fu">integrate</span>(f, <span class="dv">1</span>, <span class="dv">2</span>)<span class="sc">$</span>value,</span>
+<span id="cb5-4"><a aria-label="4"></a>  <span class="at">simulare =</span> <span class="fu">mean</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="fu">rbeta</span>(<span class="fl">1e5</span>, <span class="dv">2</span>, <span class="dv">2</span>) <span class="sc">&gt;</span> <span class="dv">1</span>))    <span class="co"># frecvența relativă</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;     arie P_X_gt_1 simulare 
+#&gt;   1.0000   0.5000   0.5001</code></pre>
+</div>
+</div>
+<aside class="notes">
+<p>Simularea folosește faptul (Exercițiul 12) că <span class="math inline">\(X\)</span> are aceeași repartiție ca <span class="math inline">\(2B\)</span>, <span class="math inline">\(B\sim\BetaD(2,2)\)</span>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exemplu-o-densitate-pe-0infty" class="slide level2 scrollable">
+<h2>Exemplu: o densitate pe <span class="math inline">\([0,\infty)\)</span></h2>
+<div class="curs-box exemplu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exemplu</span> <span class="curs-box-name">(Constanta unei densități exponențiale)</span>
+</div>
+<div class="curs-box-body">
+<p>Timpul (în ore) până la defectarea unei componente are densitatea <span class="math inline">\(f(x)=c\,e^{-2x}\)</span> pentru <span class="math inline">\(x\ge0\)</span> și <span class="math inline">\(f(x)=0\)</span> pentru <span class="math inline">\(x&lt;0\)</span>.</p>
+<div class="ol-1p">
+<ol type="a">
+<li><p>Normare: <span class="math inline">\(1=c\int_0^\infty e^{-2x}\dd x=c\Big(-\frac{e^{-2x}}{2}\Big)\Big|_0^\infty=\frac c2\)</span>, deci <span class="math inline">\(c=2\)</span>.</p></li>
+<li><p><span class="math inline">\(\PP(X&gt;1)=\int_1^\infty 2e^{-2x}\dd x=e^{-2}\approx0.1353\)</span> și <span class="math inline">\(\PP(X\le 0.5)=1-e^{-1}\approx0.6321\)</span>.</p></li>
+<li><p>Pentru <span class="math inline">\(0\le a&lt;b\)</span>: <span class="math inline">\(\PP(a&lt;X\le b)=e^{-2a}-e^{-2b}\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="dv">2</span> <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="dv">2</span> <span class="sc">*</span> x)</span>
+<span id="cb7-2"><a aria-label="2"></a><span class="fu">c</span>(<span class="at">arie =</span> <span class="fu">integrate</span>(f, <span class="dv">0</span>, <span class="cn">Inf</span>)<span class="sc">$</span>value, <span class="at">P_gt_1 =</span> <span class="fu">integrate</span>(f, <span class="dv">1</span>, <span class="cn">Inf</span>)<span class="sc">$</span>value,</span>
+<span id="cb7-3"><a aria-label="3"></a>  <span class="at">P_le_05 =</span> <span class="fu">integrate</span>(f, <span class="dv">0</span>, <span class="fl">0.5</span>)<span class="sc">$</span>value)</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;    arie  P_gt_1 P_le_05 
+#&gt;  1.0000  0.1353  0.6321</code></pre>
+</div>
+</div>
+<aside class="notes">
+<p>Exemplu suplimentar: repartiția exponențială de parametru <span class="math inline">\(\lambda=2\)</span> (Cursul 5). <code>integrate</code> acceptă și limite infinite.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="partea-ii-funcția-de-repartiție.-cuantile" class="title-slide slide level1 center">
+<h1>Partea II — Funcția de repartiție. Cuantile</h1>
+
+</section>
+<section id="funcția-de-repartiție" class="slide level2">
+<h2>Funcția de repartiție</h2>
+<p>Funcția de repartiție se definește în același mod pentru <strong>orice</strong> variabilă aleatoare — discretă, continuă sau de alt tip.</p>
+<div class="curs-box definitie">
+<div class="curs-box-title">
+<span class="curs-box-label">Definiția 4</span> <span class="curs-box-name">(Funcția de repartiție)</span>
+</div>
+<div class="curs-box-body">
+<p>Fie <span class="math inline">\(X\)</span> o variabilă aleatoare. Funcția <span class="math inline">\(F=F_X:\R\to[0,1]\)</span>, <span class="math display">\[
+F(x)=\PP(X\le x)=\PP\big(X\in(-\infty,x]\big),\qquad x\in\R,
+\]</span> se numește <strong>funcția de repartiție</strong> a lui <span class="math inline">\(X\)</span>.</p>
+</div>
+</div>
+<p>Din definiție, pentru orice <span class="math inline">\(a&lt;b\)</span>: <span class="math display">\[
+\PP(a&lt;X\le b)=F(b)-F(a),\qquad \PP(X&gt;x)=1-F(x).
+\]</span> Funcția <span class="math inline">\(x\mapsto\PP(X&gt;x)=1-F(x)\)</span> se numește <strong>funcția de supraviețuire</strong> (de fiabilitate); apare natural când <span class="math inline">\(X\)</span> este o durată de viață.</p>
+<aside class="notes">
+<p>Funcția de repartiție a fost introdusă în Cursul 3; aici o reluăm pentru variabile continue.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="proprietățile-funcției-de-repartiție" class="slide level2 scrollable">
+<h2>Proprietățile funcției de repartiție</h2>
+<div class="curs-box teorema">
+<div class="curs-box-title">
+<span class="curs-box-label">Teorema 5</span> <span class="curs-box-name">(Proprietățile funcției de repartiție)</span>
+</div>
+<div class="curs-box-body">
+<p>Funcția de repartiție <span class="math inline">\(F\)</span> a unei variabile aleatoare <span class="math inline">\(X\)</span> are proprietățile:</p>
+<div class="ol-1p">
+<ol type="a">
+<li><span class="math inline">\(F\)</span> este crescătoare: dacă <span class="math inline">\(x_1\le x_2\)</span>, atunci <span class="math inline">\(F(x_1)\le F(x_2)\)</span>;</li>
+<li><span class="math inline">\(F\)</span> este continuă la dreapta: <span class="math inline">\(\lim_{h\downarrow0}F(x+h)=F(x)\)</span> pentru orice <span class="math inline">\(x\in\R\)</span>;</li>
+<li><span class="math inline">\(\lim_{x\to-\infty}F(x)=0\)</span> și <span class="math inline">\(\lim_{x\to+\infty}F(x)=1\)</span>.</li>
+</ol>
+</div>
+<p>Reciproc, orice funcție cu proprietățile a)–c) este funcția de repartiție a unei variabile aleatoare.</p>
+</div>
+</div>
+<aside class="notes">
+<p>Rezultatul a fost demonstrat în Cursul 3 (Teorema 5 din Cursul 3); reluăm demonstrația pe scurt.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="proprietățile-funcției-de-repartiție-demonstrație" class="slide level2 scrollable">
+<h2>Proprietățile funcției de repartiție — demonstrație</h2>
+<div class="curs-proof">
+<p><em>Demonstrație.</em></p>
+<div class="ol-1p">
+<ol type="a">
+<li><p>Dacă <span class="math inline">\(x_1\le x_2\)</span>, atunci <span class="math inline">\(\{X\le x_1\}\subseteq\{X\le x_2\}\)</span> și, din monotonia probabilității, <span class="math inline">\(F(x_1)\le F(x_2)\)</span>.</p></li>
+<li><p>Fie <span class="math inline">\(h_n\downarrow0\)</span>. Evenimentele <span class="math inline">\(\{X\le x+h_n\}\)</span> formează un șir descrescător cu intersecția <span class="math inline">\(\{X\le x\}\)</span>; din continuitatea probabilității pe șiruri monotone, <span class="math inline">\(F(x+h_n)\to F(x)\)</span>. Cum <span class="math inline">\(F\)</span> este monotonă, rezultă limita la dreapta.</p></li>
+<li><p>Evenimentele <span class="math inline">\(\{X\le -n\}\)</span> descresc către <span class="math inline">\(\emptyset\)</span>, iar <span class="math inline">\(\{X\le n\}\)</span> cresc către <span class="math inline">\(\Omega\)</span>; prin continuitatea probabilității, <span class="math inline">\(F(-n)\to0\)</span> și <span class="math inline">\(F(n)\to1\)</span>, iar monotonia lui <span class="math inline">\(F\)</span> permite trecerea de la șiruri la limite. Partea reciprocă o admitem.</p></li>
+</ol>
+</div>
+<p><span class="curs-qed">■</span></p>
+</div>
+</section>
+<section id="legătura-dintre-densitate-și-funcția-de-repartiție" class="slide level2 scrollable">
+<h2>Legătura dintre densitate și funcția de repartiție</h2>
+<p>Discret: <span class="math inline">\(F(x)=\sum_{y\le x}p_X(y)\)</span>, cu salturi în valorile lui <span class="math inline">\(X\)</span>. Continuu: suma devine integrală.</p>
+<div class="curs-box teorema">
+<div class="curs-box-title">
+<span class="curs-box-label">Teorema 6</span> <span class="curs-box-name">(Relația dintre F și f)</span>
+</div>
+<div class="curs-box-body">
+<p>Fie <span class="math inline">\(X\)</span> o variabilă aleatoare continuă cu densitatea <span class="math inline">\(f\)</span> și funcția de repartiție <span class="math inline">\(F\)</span>. Atunci:</p>
+<div class="ol-1p">
+<ol type="a">
+<li><p><span class="math inline">\(\displaystyle F(x)=\int_{-\infty}^x f(t)\dd t\)</span> pentru orice <span class="math inline">\(x\in\R\)</span>;</p></li>
+<li><p><span class="math inline">\(F\)</span> este continuă pe <span class="math inline">\(\R\)</span>;</p></li>
+<li><p>dacă <span class="math inline">\(f\)</span> este continuă în <span class="math inline">\(x_0\)</span>, atunci <span class="math inline">\(F\)</span> este derivabilă în <span class="math inline">\(x_0\)</span> și <span class="math inline">\(F'(x_0)=f(x_0)\)</span>. În particular, dacă <span class="math inline">\(f\)</span> este continuă pe un interval, atunci <span class="math inline">\(F'=f\)</span> pe acel interval.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="relația-dintre-f-și-f-demonstrație" class="slide level2 scrollable">
+<h2>Relația dintre <span class="math inline">\(F\)</span> și <span class="math inline">\(f\)</span> — demonstrație</h2>
+<div class="curs-proof">
+<p><em>Demonstrație.</em></p>
+<div class="ol-1p">
+<ol type="a">
+<li>rezultă din definiția densității cu <span class="math inline">\(A=(-\infty,x]\)</span>. b) Din Propoziția 3: <span class="math inline">\(F(x)-F(x^-)=\PP(X=x)=0\)</span>, deci <span class="math inline">\(F\)</span> nu are salturi; fiind continuă la dreapta și fără salturi, <span class="math inline">\(F\)</span> este continuă. c) este teorema fundamentală a analizei pentru <span class="math inline">\(x\mapsto\int_{-\infty}^x f(t)\dd t\)</span>.</li>
+</ol>
+</div>
+<p><span class="curs-qed">■</span></p>
+</div>
+<p><strong>Ilustrare.</strong> Pentru densitatea nemărginită <span class="math inline">\(f(x)=\frac{1}{2\sqrt x}\)</span> pe <span class="math inline">\((0,1]\)</span>: <span class="math inline">\(F(x)=\int_0^x\frac{\dd t}{2\sqrt t}=\sqrt x\)</span> pentru <span class="math inline">\(x\in[0,1]\)</span>, <span class="math inline">\(F\)</span> este continuă pe <span class="math inline">\(\R\)</span>, iar <span class="math inline">\(F'(x)=\frac{1}{2\sqrt x}=f(x)\)</span> pe <span class="math inline">\((0,1)\)</span>; în <span class="math inline">\(0\)</span>, unde <span class="math inline">\(f\)</span> nu este continuă (nici măcar mărginită), <span class="math inline">\(F\)</span> nu este derivabilă.</p>
+<aside class="notes">
+<p>Ilustrarea este suplimentară.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="densitatea-și-funcția-de-repartiție-aceeași-informație" class="slide level2">
+<h2>Densitatea și funcția de repartiție: aceeași informație</h2>
+<p>Densitatea și funcția de repartiție conțin <strong>aceeași informație</strong>: <span class="math display">\[
+\boxed{\ \text{cunoaștem } f \ \Longrightarrow\ F(x)=\int_{-\infty}^x f(t)\dd t, \qquad \text{cunoaștem } F \ \Longrightarrow\ f(x)=F'(x).\ }
+\]</span></p>
+<ul>
+<li>În punctele (cel mult numărabile, în exemplele noastre) în care <span class="math inline">\(F\)</span> nu este derivabilă, valoarea lui <span class="math inline">\(f\)</span> poate fi aleasă arbitrar.</li>
+<li>Modificarea unei densități într-un număr finit de puncte nu schimbă nicio integrală, deci nu schimbă repartiția.</li>
+<li>Pentru o v.a. continuă: <span class="math inline">\(\PP(a&lt;X&lt;b)=F(b)-F(a)\)</span>, indiferent de tipul inegalităților.</li>
+</ul>
+<p><strong>Exemplu.</strong> Pentru <span class="math inline">\(f(x)=2x\,\Ind_{[0,1]}(x)\)</span>: <span class="math inline">\(F(x)=0\)</span> pentru <span class="math inline">\(x&lt;0\)</span>, <span class="math inline">\(F(x)=x^2\)</span> pentru <span class="math inline">\(0\le x\le1\)</span>, <span class="math inline">\(F(x)=1\)</span> pentru <span class="math inline">\(x&gt;1\)</span>; invers, <span class="math inline">\(F'(x)=2x\)</span> pe <span class="math inline">\((0,1)\)</span>.</p>
+<aside class="notes">
+<p>Exemplul este suplimentar (densitatea <span class="math inline">\(2x\)</span> pe <span class="math inline">\([0,1]\)</span> din Partea I).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exemplu-repartiția-logistică" class="slide level2 scrollable">
+<h2>Exemplu: repartiția logistică</h2>
+<div class="curs-box exemplu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exemplul 3</span> <span class="curs-box-name">(Repartiția logistică)</span>
+</div>
+<div class="curs-box-body">
+<p>Fie <span class="math inline">\(X\)</span> cu densitatea <span class="math inline">\(f(x)=\dfrac{e^x}{(1+e^x)^2}\)</span>, <span class="math inline">\(x\in\R\)</span>. Calculăm a) funcția de repartiție <span class="math inline">\(F\)</span> și b) <span class="math inline">\(\PP(a&lt;X&lt;b)\)</span> pentru <span class="math inline">\(a=-1\)</span>, <span class="math inline">\(b=2\)</span>.</p>
+<div class="ol-1p">
+<ol type="a">
+<li>Cu schimbarea de variabilă <span class="math inline">\(u=e^t\)</span>, <span class="math inline">\(\dd u=e^t\dd t\)</span> (când <span class="math inline">\(t\to-\infty\)</span>, <span class="math inline">\(u\to0\)</span>), <span class="math display">\[
+F(x)=\int_{-\infty}^x\frac{e^t}{(1+e^t)^2}\dd t=\int_0^{e^x}\frac{\dd u}{(1+u)^2}=\Big(-\frac{1}{1+u}\Big)\Big|_0^{e^x}=1-\frac{1}{1+e^x}=\frac{e^x}{1+e^x}.
+\]</span> <span class="math inline">\(F(x)\to0\)</span> când <span class="math inline">\(x\to-\infty\)</span> și <span class="math inline">\(F(x)\to1\)</span> când <span class="math inline">\(x\to+\infty\)</span>; în particular <span class="math inline">\(\int_{\R} f=1\)</span>, deci <span class="math inline">\(f\)</span> este într-adevăr o densitate.</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="repartiția-logistică-continuare" class="slide level2 scrollable">
+<h2>Repartiția logistică — continuare</h2>
+<div class="curs-box exemplu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exemplu</span> <span class="curs-box-name">(Repartiția logistică (continuare))</span>
+</div>
+<div class="curs-box-body">
+<div class="ol-1p">
+<ol start="2" type="a">
+<li>Folosind <span class="math inline">\(\PP(a&lt;X\le b)=F(b)-F(a)\)</span> și Propoziția 3, <span class="math display">\[
+\PP(-1&lt;X&lt;2)=F(2)-F(-1)=\frac{e^2}{1+e^2}-\frac{e^{-1}}{1+e^{-1}}\approx 0.8808-0.2689=0.6119 .
+\]</span> Același rezultat se obține integrând direct densitatea, cu <span class="math inline">\(u=1+e^x\)</span>: <span class="math inline">\(\int_{-1}^2 f(x)\dd x=\int_{1+e^{-1}}^{1+e^2}u^{-2}\dd u\)</span>.</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a><span class="fu">c</span>(<span class="at">F =</span> <span class="fu">plogis</span>(<span class="dv">2</span>) <span class="sc">-</span> <span class="fu">plogis</span>(<span class="sc">-</span><span class="dv">1</span>),                          <span class="co"># F(2) - F(-1)</span></span>
+<span id="cb9-2"><a aria-label="2"></a>  <span class="at">integrala =</span> <span class="fu">integrate</span>(dlogis, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">2</span>)<span class="sc">$</span>value)          <span class="co"># aria de sub densitate</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;         F integrala 
+#&gt;    0.6119    0.6119</code></pre>
+</div>
+</div>
+<aside class="notes">
+<p>În R, repartiția logistică are funcțiile <code>dlogis</code>, <code>plogis</code>, <code>qlogis</code>, <code>rlogis</code>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="repartiția-logistică-densitate-și-funcție-de-repartiție" class="slide level2">
+<h2>Repartiția logistică — densitate și funcție de repartiție</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="curs04_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" style="width:92.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Aceeași probabilitate <span class="math inline">\(\PP(-1&lt;X&lt;2)\)</span>: aria de sub densitate (stânga), respectiv diferența de „înălțimi” <span class="math inline">\(F(2)-F(-1)\)</span> (dreapta).</p>
+</section>
+<section id="de-la-funcția-de-repartiție-la-densitate" class="slide level2">
+<h2>De la funcția de repartiție la densitate</h2>
+<div class="curs-box exemplu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exemplul 4</span> <span class="curs-box-name">(De la funcția de repartiție la densitate)</span>
+</div>
+<div class="curs-box-body">
+<p>Fie <span class="math inline">\(X\)</span> cu funcția de repartiție <span class="math inline">\(F(x)=0\)</span> pentru <span class="math inline">\(x&lt;0\)</span>, <span class="math inline">\(F(x)=x^3\)</span> pentru <span class="math inline">\(0\le x\le 1\)</span>, <span class="math inline">\(F(x)=1\)</span> pentru <span class="math inline">\(x&gt;1\)</span>.</p>
+<p><span class="math inline">\(F\)</span> este continuă, crescătoare, cu limitele <span class="math inline">\(0\)</span> și <span class="math inline">\(1\)</span>, iar în afara punctelor <span class="math inline">\(0\)</span> și <span class="math inline">\(1\)</span> este derivabilă. Prin derivare, <span class="math display">\[
+f(x)=F'(x)=\begin{cases}3x^2, &amp; 0&lt;x&lt;1,\\ 0, &amp; x&lt;0 \text{ sau } x&gt;1,\end{cases}
+\]</span> iar în <span class="math inline">\(0\)</span> și <span class="math inline">\(1\)</span> putem pune orice valoare (de exemplu <span class="math inline">\(f(0)=0\)</span>, <span class="math inline">\(f(1)=3\)</span>). De exemplu, <span class="math inline">\(\PP(X&gt;1/2)=1-F(1/2)=7/8\)</span>.</p>
+<p><strong>Interpretare:</strong> alegem independent trei puncte la întâmplare în <span class="math inline">\([0,1]\)</span>; cel mai mare dintre ele, <span class="math inline">\(M\)</span>, verifică <span class="math display">\[
+\PP(M\le x)=\PP(\text{toate trei}\le x)=x\cdot x\cdot x=x^3,\qquad x\in[0,1].
+\]</span></p>
+</div>
+</div>
+<aside class="notes">
+<p>Simularea este pe slide-ul următor.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="maximul-a-trei-puncte-aleatoare-simulare" class="slide level2">
+<h2>Maximul a trei puncte aleatoare: simulare</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">3</span>)</span>
+<span id="cb11-2"><a aria-label="2"></a>M <span class="ot">&lt;-</span> <span class="fu">apply</span>(<span class="fu">matrix</span>(<span class="fu">runif</span>(<span class="dv">3</span> <span class="sc">*</span> <span class="fl">1e5</span>), <span class="at">ncol =</span> <span class="dv">3</span>), <span class="dv">1</span>, max)   <span class="co"># maximul a 3 puncte</span></span>
+<span id="cb11-3"><a aria-label="3"></a><span class="fu">c</span>(<span class="at">simulare =</span> <span class="fu">mean</span>(M <span class="sc">&gt;</span> <span class="fl">0.5</span>), <span class="at">exact =</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.5</span><span class="sc">^</span><span class="dv">3</span>)          <span class="co"># P(M &gt; 1/2) = 7/8</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; simulare    exact 
+#&gt;    0.874    0.875</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="curs04_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center" style="width:62.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Histograma valorilor simulate ale lui <span class="math inline">\(M\)</span> urmează densitatea <span class="math inline">\(f(x)=3x^2\)</span> (roșu).</p>
+<aside class="notes">
+<p>Slide suplimentar (nu apare în note): confirmă numeric Exemplul 4.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="variabile-nici-discrete-nici-continue" class="slide level2">
+<h2>Variabile nici discrete, nici continue</h2>
+<p>Nu orice variabilă aleatoare este discretă sau continuă; funcția de repartiție rămâne însă bine definită și permite calculul oricărei probabilități.</p>
+<div class="curs-box exemplu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exemplul 5</span> <span class="curs-box-name">(Așteptarea la semafor)</span>
+</div>
+<div class="curs-box-body">
+<p>Un pieton ajunge la un semafor la un moment aleator. Cu probabilitatea <span class="math inline">\(1/2\)</span> semaforul este verde și timpul de așteptare este <span class="math inline">\(X=0\)</span>; altfel, pietonul așteaptă un timp (în secunde) cu densitatea constantă <span class="math inline">\(1/30\)</span> pe <span class="math inline">\((0,30)\)</span>. Pentru <span class="math inline">\(0\le x&lt;30\)</span>, <span class="math display">\[
+F(x)=\PP(X\le x)=\PP(X=0)+\PP(0&lt;X\le x)=\frac12+\frac12\cdot\frac{x}{30}=\frac12+\frac{x}{60},
+\]</span> iar <span class="math inline">\(F(x)=0\)</span> pentru <span class="math inline">\(x&lt;0\)</span> și <span class="math inline">\(F(x)=1\)</span> pentru <span class="math inline">\(x\ge30\)</span>. <span class="math inline">\(F\)</span> are un salt de mărime <span class="math inline">\(1/2\)</span> în <span class="math inline">\(0\)</span> (deci <span class="math inline">\(X\)</span> nu este continuă), dar este continuă și strict crescătoare pe <span class="math inline">\([0,30]\)</span> (deci <span class="math inline">\(X\)</span> nu este nici discretă). <span class="math inline">\(\PP(X&gt;20)=1-F(20)=1/2-1/3=1/6\)</span>.</p>
+</div>
+</div>
+<aside class="notes">
+<p>Astfel de variabile se numesc uneori de tip mixt.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="așteptarea-la-semafor-funcția-de-repartiție" class="slide level2">
+<h2>Așteptarea la semafor — funcția de repartiție</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="curs04_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center" style="width:68.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Saltul de mărime <span class="math inline">\(1/2\)</span> din origine: probabilitatea de a găsi semaforul verde; pe <span class="math inline">\([0,30]\)</span>, <span class="math inline">\(F\)</span> crește liniar.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">5</span>)</span>
+<span id="cb13-2"><a aria-label="2"></a>X <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">runif</span>(<span class="fl">1e5</span>) <span class="sc">&lt;</span> <span class="fl">0.5</span>, <span class="dv">0</span>, <span class="fu">runif</span>(<span class="fl">1e5</span>, <span class="dv">0</span>, <span class="dv">30</span>))   <span class="co"># simularea timpului de așteptare</span></span>
+<span id="cb13-3"><a aria-label="3"></a><span class="fu">c</span>(<span class="at">P_X_eq_0 =</span> <span class="fu">mean</span>(X <span class="sc">==</span> <span class="dv">0</span>), <span class="at">P_X_gt_20 =</span> <span class="fu">mean</span>(X <span class="sc">&gt;</span> <span class="dv">20</span>), <span class="at">exact =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;  P_X_eq_0 P_X_gt_20     exact 
+#&gt;    0.5049    0.1652    0.1667</code></pre>
+</div>
+</div>
+<aside class="notes">
+<p>Simularea este suplimentară.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="cuantile-și-mediană" class="slide level2">
+<h2>Cuantile și mediană</h2>
+<p>Funcția de repartiție răspunde la „care este probabilitatea ca <span class="math inline">\(X\)</span> să nu depășească pragul <span class="math inline">\(x\)</span>?”. Întrebarea inversă: „care este pragul pe care <span class="math inline">\(X\)</span> nu îl depășește cu o probabilitate dată <span class="math inline">\(\alpha\)</span>?” (durata atinsă de <span class="math inline">\(90\%\)</span> dintre echipamente, valoarea „de mijloc” etc.).</p>
+<div class="curs-box definitie">
+<div class="curs-box-title">
+<span class="curs-box-label">Definiția 7</span> <span class="curs-box-name">(Cuantilă, mediană, cuartile)</span>
+</div>
+<div class="curs-box-body">
+<p>Fie <span class="math inline">\(X\)</span> o variabilă aleatoare cu funcția de repartiție <span class="math inline">\(F\)</span> și <span class="math inline">\(\alpha\in(0,1)\)</span>. Numărul <span class="math display">\[
+x_\alpha=F^{-1}(\alpha)=\inf\{x\in\R : F(x)\ge\alpha\}
+\]</span> se numește <strong>cuantila de ordin <span class="math inline">\(\alpha\)</span></strong> a lui <span class="math inline">\(X\)</span>. Funcția <span class="math inline">\(\alpha\mapsto F^{-1}(\alpha)\)</span> se numește <strong>funcția cuantilă</strong> (inversa generalizată a lui <span class="math inline">\(F\)</span>). Cuantila de ordin <span class="math inline">\(1/2\)</span> se numește <strong>mediană</strong>, iar cuantilele de ordin <span class="math inline">\(1/4\)</span> și <span class="math inline">\(3/4\)</span> se numesc <strong>prima</strong>, respectiv <strong>a treia cuartilă</strong>.</p>
+</div>
+</div>
+</section>
+<section id="cuantile-interpretare" class="slide level2">
+<h2>Cuantile: interpretare</h2>
+<p>Dacă <span class="math inline">\(F\)</span> este continuă și strict crescătoare pe suport (situația tipică pentru variabile continue), <span class="math inline">\(x_\alpha\)</span> este <strong>unica soluție</strong> a ecuației <span class="math inline">\(F(x)=\alpha\)</span>: <span class="math display">\[
+\PP(X\le x_\alpha)=\alpha,\qquad \PP(X&gt;x_\alpha)=1-\alpha .
+\]</span></p>
+<ul>
+<li>Geometric: <span class="math inline">\(x_\alpha\)</span> este abscisa în care graficul lui <span class="math inline">\(F\)</span> atinge nivelul <span class="math inline">\(\alpha\)</span>.</li>
+<li>În termeni de densitate: <span class="math inline">\(x_\alpha\)</span> împarte aria de sub grafic în două părți, de arii <span class="math inline">\(\alpha\)</span> și <span class="math inline">\(1-\alpha\)</span>.</li>
+<li>Definiția prin infimum funcționează și pentru variabile discrete, unde ecuația <span class="math inline">\(F(x)=\alpha\)</span> poate să nu aibă soluții sau să aibă o infinitate.</li>
+</ul>
+<p>În R, funcțiile cu prefixul <code>q</code> calculează cuantile: <code>qlogis</code>, <code>qbinom</code>, <code>qpois</code>, …</p>
+</section>
+<section id="exemplu-cuantilele-unei-densități-liniare" class="slide level2">
+<h2>Exemplu: cuantilele unei densități liniare</h2>
+<div class="curs-box exemplu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exemplul 6</span> <span class="curs-box-name">(Cuantilele unei densități liniare)</span>
+</div>
+<div class="curs-box-body">
+<p>Fie <span class="math inline">\(X\)</span> cu densitatea <span class="math inline">\(f(x)=x/2\)</span> pentru <span class="math inline">\(0\le x\le2\)</span> și <span class="math inline">\(0\)</span> altfel. Pentru <span class="math inline">\(x\in[0,2]\)</span>, <span class="math display">\[
+F(x)=\int_0^x \frac t2\dd t=\frac{x^2}{4}.
+\]</span> Ecuația <span class="math inline">\(x^2/4=\alpha\)</span> are pe <span class="math inline">\([0,2]\)</span> soluția <span class="math inline">\(x_\alpha=2\sqrt{\alpha}\)</span>. Prin urmare:</p>
+<ul>
+<li>mediana este <span class="math inline">\(x_{1/2}=\sqrt2\approx1.414\)</span>;</li>
+<li>cuartilele sunt <span class="math inline">\(x_{1/4}=1\)</span> și <span class="math inline">\(x_{3/4}=\sqrt3\approx1.732\)</span>.</li>
+</ul>
+<p>Mediana nu este mijlocul suportului: densitatea „împinge” masa de probabilitate spre dreapta.</p>
+<p>Pentru repartiția logistică, <span class="math inline">\(e^x/(1+e^x)=\alpha\)</span> are soluția <span class="math inline">\(x_\alpha=\ln\frac{\alpha}{1-\alpha}\)</span>; mediana este <span class="math inline">\(0\)</span>, iar cuartilele <span class="math inline">\(\pm\ln3\approx\pm1.0986\)</span>.</p>
+</div>
+</div>
+<aside class="notes">
+<p>Verificare: <code>qlogis(c(0.25, 0.5, 0.75))</code>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="cuantilele-citite-pe-graficul-lui-f" class="slide level2">
+<h2>Cuantilele citite pe graficul lui <span class="math inline">\(F\)</span></h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="curs04_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center" style="width:72.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Pentru <span class="math inline">\(f(x)=x/2\)</span> pe <span class="math inline">\([0,2]\)</span>: pornim de la nivelurile <span class="math inline">\(0.25\)</span>, <span class="math inline">\(0.5\)</span>, <span class="math inline">\(0.75\)</span> pe axa verticală și citim cuantilele <span class="math inline">\(1\)</span>, <span class="math inline">\(\sqrt2\)</span>, <span class="math inline">\(\sqrt3\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a><span class="fu">qlogis</span>(<span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>))    <span class="co"># cuartilele și mediana repartiției logistice</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] -1.099  0.000  1.099</code></pre>
+</div>
+</div>
+</section>
+<section id="cuantilele-unei-variabile-discrete" class="slide level2">
+<h2>Cuantilele unei variabile discrete</h2>
+<div class="curs-box exemplu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exemplu</span> <span class="curs-box-name">(Cuantile pentru o variabilă discretă)</span>
+</div>
+<div class="curs-box-body">
+<p>Fie <span class="math inline">\(X\sim\Bin(3,1/2)\)</span>, cu <span class="math inline">\(F(0)=\frac18\)</span>, <span class="math inline">\(F(1)=\frac12\)</span>, <span class="math inline">\(F(2)=\frac78\)</span>, <span class="math inline">\(F(3)=1\)</span> (în scară).</p>
+<ul>
+<li><span class="math inline">\(\alpha=\frac12\)</span>: <span class="math inline">\(\{x: F(x)\ge\frac12\}=[1,\infty)\)</span>, deci mediana este <span class="math inline">\(x_{1/2}=1\)</span>, deși ecuația <span class="math inline">\(F(x)=\frac12\)</span> are o infinitate de soluții (tot intervalul <span class="math inline">\([1,2)\)</span>).</li>
+<li><span class="math inline">\(\alpha=0.7\)</span>: ecuația <span class="math inline">\(F(x)=0.7\)</span> nu are soluții; <span class="math inline">\(\{x:F(x)\ge0.7\}=[2,\infty)\)</span>, deci <span class="math inline">\(x_{0.7}=2\)</span>.</li>
+</ul>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-label="1"></a><span class="fu">qbinom</span>(<span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.7</span>), <span class="at">size =</span> <span class="dv">3</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)   <span class="co"># R folosește aceeași definiție (infimum)</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 1 2</code></pre>
+</div>
+</div>
+<aside class="notes">
+<p>Exemplu suplimentar care ilustrează de ce definiția folosește infimumul.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="calculul-numeric-al-cuantilelor" class="slide level2">
+<h2>Calculul numeric al cuantilelor</h2>
+<p>Când ecuația <span class="math inline">\(F(x)=\alpha\)</span> nu se poate rezolva explicit, cuantilele se calculează numeric: <code>integrate</code> calculează integrale, iar <code>uniroot</code> caută o rădăcină a unei funcții pe un interval.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-label="1"></a><span class="co"># densitatea f(x) = 3/8 (4x - 2x^2) pe (0, 2)</span></span>
+<span id="cb19-2"><a aria-label="2"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="dv">3</span><span class="sc">/</span><span class="dv">8</span> <span class="sc">*</span> (<span class="dv">4</span><span class="sc">*</span>x <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb19-3"><a aria-label="3"></a>F <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">integrate</span>(f, <span class="dv">0</span>, x)<span class="sc">$</span>value   <span class="co"># funcția de repartiție</span></span>
+<span id="cb19-4"><a aria-label="4"></a><span class="fu">integrate</span>(f, <span class="dv">0</span>, <span class="dv">2</span>)<span class="sc">$</span>value                     <span class="co"># aria totală = 1</span></span>
+<span id="cb19-5"><a aria-label="5"></a><span class="co">#&gt; [1] 1</span></span>
+<span id="cb19-6"><a aria-label="6"></a><span class="fu">F</span>(<span class="fl">1.2</span>) <span class="sc">-</span> <span class="fu">F</span>(<span class="fl">0.5</span>)                              <span class="co"># P(0.5 &lt;= X &lt;= 1.2)</span></span>
+<span id="cb19-7"><a aria-label="7"></a><span class="co">#&gt; [1] 0.4918</span></span>
+<span id="cb19-8"><a aria-label="8"></a><span class="fu">uniroot</span>(<span class="cf">function</span>(x) <span class="fu">F</span>(x) <span class="sc">-</span> <span class="fl">0.9</span>, <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>))<span class="sc">$</span>root   <span class="co"># cuantila 0.9</span></span>
+<span id="cb19-9"><a aria-label="9"></a><span class="co">#&gt; [1] 1.608</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<aside class="notes">
+<p>Explicați: <code>uniroot</code> caută <span class="math inline">\(x\)</span> cu <span class="math inline">\(F(x)-0.9=0\)</span> în <span class="math inline">\((0,2)\)</span>; aici <span class="math inline">\(F(x)=\frac34x^2-\frac14x^3\)</span>, deci s-ar putea rezolva și algebric (ecuație de gradul trei).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="analogia-discretcontinuu" class="slide level2">
+<h2>Analogia discret–continuu</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 40%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">V.a. discretă</th>
+<th style="text-align: left;">V.a. continuă</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">valori individuale</td>
+<td style="text-align: left;"><span class="math inline">\(\PP(X=x)=p_X(x)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\PP(X=x)=0\)</span>; densitatea <span class="math inline">\(f(x)\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">condiții</td>
+<td style="text-align: left;"><span class="math inline">\(p_X\ge0\)</span>, <span class="math inline">\(\sum_x p_X(x)=1\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(f\ge0\)</span>, <span class="math inline">\(\int_{-\infty}^{\infty}f(x)\dd x=1\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(\PP(X\in A)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\sum_{x\in A}p_X(x)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\int_A f(x)\dd x\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">funcția de repartiție</td>
+<td style="text-align: left;"><span class="math inline">\(F(x)=\sum_{y\le x}p_X(y)\)</span> (în scară)</td>
+<td style="text-align: left;"><span class="math inline">\(F(x)=\int_{-\infty}^x f(t)\dd t\)</span>, <span class="math inline">\(F'=f\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">media</td>
+<td style="text-align: left;"><span class="math inline">\(\E[X]=\sum_x x\,p_X(x)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\E[X]=\int x f(x)\dd x\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">media unei funcții</td>
+<td style="text-align: left;"><span class="math inline">\(\E[g(X)]=\sum_x g(x)p_X(x)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\E[g(X)]=\int g(x)f(x)\dd x\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">momentul de ordin <span class="math inline">\(k\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\E[X^k]=\sum_x x^k p_X(x)\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\E[X^k]=\int x^k f(x)\dd x\)</span></td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>Regula de trecere: funcția de masă devine densitate, iar sumele devin integrale. Ultimele rânduri (media, momentele) anticipează Partea III.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="partea-iii-media-momente-varianța" class="title-slide slide level1 center">
+<h1>Partea III — Media, momente, varianța</h1>
+
+</section>
+<section id="media-de-la-sume-la-integrale" class="slide level2">
+<h2>Media: de la sume la integrale</h2>
+<p>Pentru o v.a. discretă, <span class="math inline">\(\E[X]=\sum_x x\,\PP(X=x)\)</span>, cu condiția <span class="math inline">\(\sum_x|x|\,\PP(X=x)&lt;\infty\)</span>.</p>
+<p>Aproximăm o variabilă continuă printr-una discretă care ia valoarea <span class="math inline">\(x_i\)</span> cu probabilitatea <span class="math display">\[
+\PP\big(X\in[x_i,x_i+\Delta x]\big)\approx f(x_i)\,\Delta x .
+\]</span> Media variabilei discrete este <span class="math inline">\(\sum_i x_i f(x_i)\Delta x\)</span> — o <strong>sumă Riemann</strong> pentru integrala <span class="math inline">\(\int x f(x)\dd x\)</span>.</p>
+<div class="curs-box definitie">
+<div class="curs-box-title">
+<span class="curs-box-label">Definiția 8</span> <span class="curs-box-name">(Media unei variabile aleatoare continue)</span>
+</div>
+<div class="curs-box-body">
+<p>Fie <span class="math inline">\(X\)</span> o variabilă aleatoare continuă cu densitatea <span class="math inline">\(f\)</span>. Dacă <span class="math inline">\(\E[|X|]=\int_{-\infty}^{+\infty}|x|f(x)\dd x&lt;\infty\)</span>, <strong>media</strong> (speranța matematică) lui <span class="math inline">\(X\)</span> este <span class="math display">\[
+\E[X]=\int_{-\infty}^{+\infty}x f(x)\dd x .
+\]</span> În caz contrar, spunem că media lui <span class="math inline">\(X\)</span> nu există.</p>
+</div>
+</div>
+</section>
+<section id="media-ca-centru-de-greutate" class="slide level2 scrollable">
+<h2>Media ca centru de greutate</h2>
+<ul>
+<li><strong>Interpretare fizică:</strong> dacă o bară subțire are densitatea de masă <span class="math inline">\(f(x)\)</span> în punctul <span class="math inline">\(x\)</span> (masa totală <span class="math inline">\(1\)</span>), punctul ei de echilibru este <span class="math inline">\(\int x f(x)\dd x\)</span>.</li>
+<li><strong>Simetrie:</strong> dacă densitatea este simetrică față de <span class="math inline">\(c\)</span>, adică <span class="math inline">\(f(c+x)=f(c-x)\)</span> pentru orice <span class="math inline">\(x\)</span>, <strong>și media există</strong>, atunci <span class="math inline">\(\E[X]=c\)</span>.</li>
+</ul>
+<div class="curs-box exemplu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exemplul 7</span> <span class="curs-box-name">(Calculul unor medii)</span>
+</div>
+<div class="curs-box-body">
+<div class="ol-1p">
+<ol type="a">
+<li>Pentru densitatea <span class="math inline">\(\frac38(4x-2x^2)\)</span> pe <span class="math inline">\((0,2)\)</span> (Exemplul 2), graficul este simetric față de <span class="math inline">\(x=1\)</span>, deci <span class="math inline">\(\E[X]=1\)</span>. Verificare directă: <span class="math display">\[
+\E[X]=\int_0^2 x\cdot\frac38(4x-2x^2)\dd x=\frac38\Big(\frac{4x^3}{3}-\frac{x^4}{2}\Big)\Big|_0^2=\frac38\cdot\frac{8}{3}=1.
+\]</span></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="calculul-unor-medii-continuare" class="slide level2 scrollable">
+<h2>Calculul unor medii (continuare)</h2>
+<div class="curs-box exemplu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exemplu</span> <span class="curs-box-name">(Calculul unor medii (continuare))</span>
+</div>
+<div class="curs-box-body">
+<div class="ol-1p">
+<ol start="2" type="a">
+<li><p>Pentru densitatea nemărginită (Exemplul 1): <span class="math inline">\(\E[X]=\int_0^1 x\cdot\frac{1}{2\sqrt x}\dd x=\frac12\int_0^1\sqrt x\dd x=\frac13\)</span>.</p></li>
+<li><p>Pentru <span class="math inline">\(F(x)=x^3\)</span> pe <span class="math inline">\([0,1]\)</span> (Exemplul 4): <span class="math inline">\(\E[X]=\int_0^1 x\cdot3x^2\dd x=\frac34\)</span> — maximul a trei puncte aleatoare din <span class="math inline">\([0,1]\)</span> se află, în medie, la <span class="math inline">\(3/4\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-label="1"></a><span class="fu">c</span>(<span class="at">b =</span> <span class="fu">integrate</span>(<span class="cf">function</span>(x) x <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fu">sqrt</span>(x)), <span class="dv">0</span>, <span class="dv">1</span>)<span class="sc">$</span>value,   <span class="co"># E[X] = 1/3</span></span>
+<span id="cb20-2"><a aria-label="2"></a>  <span class="at">c =</span> <span class="fu">integrate</span>(<span class="cf">function</span>(x) x <span class="sc">*</span> <span class="dv">3</span> <span class="sc">*</span> x<span class="sc">^</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>)<span class="sc">$</span>value)         <span class="co"># E[X] = 3/4</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;      b      c 
+#&gt; 0.3333 0.7500</code></pre>
+</div>
+</div>
+<aside class="notes">
+<p>Pentru c) comparați cu simularea de mai devreme: <code>mean(M)</code> <span class="math inline">\(\approx0.75\)</span>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="media-și-mediana" class="slide level2">
+<h2>Media și mediana</h2>
+<p>Media și mediana sunt două măsuri diferite ale „centrului” unei repartiții; ele coincid pentru densitățile simetrice (dacă media există), dar pot diferi mult în rest.</p>
+<div class="curs-box exemplu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exemplu</span> <span class="curs-box-name">(Media și mediana pentru câteva densități)</span>
+</div>
+<div class="curs-box-body">
+<ul>
+<li><span class="math inline">\(f(x)=x/2\)</span> pe <span class="math inline">\([0,2]\)</span>: <span class="math inline">\(\E[X]=\int_0^2\frac{x^2}{2}\dd x=\frac43\approx1.333\)</span>, mediana <span class="math inline">\(\sqrt2\approx1.414\)</span> (coada lungă este spre stânga: media <span class="math inline">\(&lt;\)</span> mediana).</li>
+<li><span class="math inline">\(f(x)=\frac{1}{2\sqrt x}\)</span> pe <span class="math inline">\((0,1]\)</span>: <span class="math inline">\(\E[X]=\frac13\)</span>, iar <span class="math inline">\(F(x)=\sqrt x\)</span> dă mediana <span class="math inline">\(\frac14\)</span> (coada lungă spre dreapta: media <span class="math inline">\(&gt;\)</span> mediana).</li>
+<li><span class="math inline">\(f(x)=\frac38(4x-2x^2)\)</span> pe <span class="math inline">\((0,2)\)</span> și repartiția logistică: densități simetrice, media = mediana (<span class="math inline">\(1\)</span>, respectiv <span class="math inline">\(0\)</span>).</li>
+<li>Repartiția Cauchy: mediana <span class="math inline">\(0\)</span>, media nu există.</li>
+</ul>
+</div>
+</div>
+<aside class="notes">
+<p>Slide suplimentar. Mediana este mai robustă: nu este afectată de cozile repartiției.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="o-variabilă-fără-medie-repartiția-cauchy" class="slide level2">
+<h2>O variabilă fără medie: repartiția Cauchy</h2>
+<div class="curs-box exemplu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exemplul 8</span> <span class="curs-box-name">(O variabilă fără medie: repartiția Cauchy)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="math inline">\(f(x)=\dfrac{1}{\pi(1+x^2)}\)</span>, <span class="math inline">\(x\in\R\)</span>, este o densitate: <span class="math inline">\(f&gt;0\)</span> și <span class="math display">\[
+\int_{-\infty}^{\infty}\frac{\dd x}{\pi(1+x^2)}=\frac1\pi\arctan x\,\Big|_{-\infty}^{\infty}=\frac1\pi\Big(\frac\pi2+\frac\pi2\Big)=1.
+\]</span> Variabila cu această densitate are <strong>repartiția Cauchy</strong>. Deși densitatea este simetrică față de <span class="math inline">\(0\)</span>, media nu există: <span class="math display">\[
+\int_{-\infty}^{\infty}\frac{|x|}{\pi(1+x^2)}\dd x=\frac{2}{\pi}\int_0^\infty\frac{x}{1+x^2}\dd x=\frac1\pi\ln(1+x^2)\Big|_0^\infty=+\infty .
+\]</span> Cozile densității scad ca <span class="math inline">\(1/x^2\)</span>, prea încet pentru ca integrala lui <span class="math inline">\(|x|f(x)\)</span> să fie finită.</p>
+</div>
+</div>
+</section>
+<section id="cauchy-media-empirică-nu-se-stabilizează" class="slide level2">
+<h2>Cauchy: media empirică nu se stabilizează</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="curs04_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center" style="width:75.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Media aritmetică a <span class="math inline">\(n\)</span> valori simulate: pentru repartiția logistică (medie <span class="math inline">\(0\)</span>) ea se stabilizează în jurul lui <span class="math inline">\(0\)</span>; pentru repartiția Cauchy face salturi mari, oricât de mare ar fi <span class="math inline">\(n\)</span>.</p>
+<div class="curs-box atentie">
+<div class="curs-box-title">
+<span class="curs-box-label">Atenție!</span>
+</div>
+<div class="curs-box-body">
+<p>Nu concluzionați că <span class="math inline">\(\E[X]=0\)</span> doar pentru că densitatea este simetrică față de <span class="math inline">\(0\)</span>: mai întâi trebuie verificat că <span class="math inline">\(\E[|X|]&lt;\infty\)</span>.</p>
+</div>
+</div>
+<aside class="notes">
+<p>Slide suplimentar (nu apare în note). Legătura cu legea numerelor mari (Cursul 7): aceasta cere existența mediei.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="media-prin-funcția-de-supraviețuire" class="slide level2">
+<h2>Media prin funcția de supraviețuire</h2>
+<div class="curs-box propozitie">
+<div class="curs-box-title">
+<span class="curs-box-label">Propoziția 9</span> <span class="curs-box-name">(Media prin funcția de supraviețuire)</span>
+</div>
+<div class="curs-box-body">
+<p>Dacă <span class="math inline">\(X\ge0\)</span> este o variabilă aleatoare continuă cu densitatea <span class="math inline">\(f\)</span>, atunci <span class="math display">\[
+\E[X]=\int_0^\infty \PP(X&gt;x)\dd x=\int_0^\infty\big(1-F(x)\big)\dd x ,
+\]</span> în sensul că ambii membri sunt simultan finiți sau infiniți.</p>
+</div>
+</div>
+<p>De exemplu, dacă <span class="math inline">\(\PP(X&gt;x)=e^{-x}\)</span> pentru <span class="math inline">\(x\ge0\)</span>, atunci <span class="math inline">\(\E[X]=\int_0^\infty e^{-x}\dd x=1\)</span>, fără a calcula densitatea și fără integrare prin părți.</p>
+<aside class="notes">
+<p>Desenați domeniul triunghiular <span class="math inline">\(\{0\le x&lt;t\}\)</span> pe tablă. Analogul discret: <span class="math inline">\(\E[X]=\sum_{k\ge1}\PP(X\ge k)\)</span> (exercițiu propus în Cursul 3).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="media-prin-funcția-de-supraviețuire-demonstrație" class="slide level2">
+<h2>Media prin funcția de supraviețuire — demonstrație</h2>
+<div class="curs-proof">
+<p><em>Demonstrație.</em> Scriem <span class="math inline">\(\PP(X&gt;x)=\int_x^\infty f(t)\dd t\)</span> și schimbăm ordinea de integrare (integrandul este nenegativ; teorema lui Fubini–Tonelli). Domeniul de integrare este <span class="math inline">\(\{(x,t): 0\le x&lt;t\}\)</span>, deci <span class="math display">\[
+\int_0^\infty\PP(X&gt;x)\dd x=\int_0^\infty\!\!\int_x^\infty f(t)\dd t\dd x=\int_0^\infty f(t)\Big(\int_0^t\dd x\Big)\dd t=\int_0^\infty t f(t)\dd t=\E[X].
+\]</span><span class="curs-qed">■</span></p>
+</div>
+<p><img data-src="..\..\figuri\tikz\cbd23ecdd9bd680c60ad5173c6578f0fae62b588.svg" class="curs-tikz" width="214"></p>
+<aside class="notes">
+<p>Domeniul de integrare (hașurat): pentru <span class="math inline">\(x\)</span> fixat, <span class="math inline">\(t&gt;x\)</span>; pentru <span class="math inline">\(t\)</span> fixat, <span class="math inline">\(0\le x&lt;t\)</span>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="media-unei-funcții-de-o-variabilă-aleatoare" class="slide level2">
+<h2>Media unei funcții de o variabilă aleatoare</h2>
+<p>Dacă <span class="math inline">\(X\)</span> este continuă și <span class="math inline">\(g:\R\to\R\)</span> (suficient de regulată), <span class="math inline">\(Y=g(X)\)</span> este tot o v.a. Am putea determina întâi repartiția lui <span class="math inline">\(Y\)</span> (cursul următor), dar acest ocol nu este necesar.</p>
+<div class="curs-box teorema">
+<div class="curs-box-title">
+<span class="curs-box-label">Teorema 10</span> <span class="curs-box-name">(Media unei funcții de v.a.)</span>
+</div>
+<div class="curs-box-body">
+<p>Fie <span class="math inline">\(X\)</span> o variabilă aleatoare continuă cu densitatea <span class="math inline">\(f\)</span> și <span class="math inline">\(g:\R\to\R\)</span> o funcție pentru care <span class="math inline">\(\int_{-\infty}^\infty|g(x)|f(x)\dd x&lt;\infty\)</span>. Atunci <span class="math display">\[
+\E[g(X)]=\int_{-\infty}^{+\infty}g(x)f(x)\dd x .
+\]</span></p>
+</div>
+</div>
+<p>În engleză rezultatul este cunoscut (glumeț) ca <em>Law of the Unconscious Statistician</em> (LOTUS), deoarece este folosit adesea fără a remarca faptul că e nevoie de o demonstrație.</p>
+</section>
+<section id="media-unei-funcții-de-v.a.-demonstrație" class="slide level2">
+<h2>Media unei funcții de v.a. — demonstrație</h2>
+<div class="curs-proof">
+<p><em>Demonstrație.</em> Cazul <span class="math inline">\(g\ge0\)</span>; cazul general se obține scriind <span class="math inline">\(g=g^+-g^-\)</span>, cu <span class="math inline">\(g^+=\max(g,0)\)</span>, <span class="math inline">\(g^-=\max(-g,0)\)</span>. Formula <span class="math inline">\(\E[Y]=\int_0^\infty\PP(Y&gt;t)\dd t\)</span> rămâne valabilă pentru orice variabilă nenegativă <span class="math inline">\(Y\)</span> (admitem acest fapt), deci <span class="math display">\[
+\E[g(X)]=\int_0^\infty\PP\big(g(X)&gt;t\big)\dd t=\int_0^\infty\int_{\{x:\,g(x)&gt;t\}}f(x)\dd x\dd t .
+\]</span> Schimbând ordinea de integrare, pentru <span class="math inline">\(x\)</span> fixat variabila <span class="math inline">\(t\)</span> parcurge intervalul <span class="math inline">\([0,g(x))\)</span>, deci <span class="math display">\[
+\E[g(X)]=\int_{-\infty}^{\infty}f(x)\Big(\int_0^{g(x)}\dd t\Big)\dd x=\int_{-\infty}^{\infty}g(x)f(x)\dd x .
+\]</span><span class="curs-qed">■</span></p>
+</div>
+</section>
+<section id="egx-diferă-în-general-de-gex" class="slide level2">
+<h2><span class="math inline">\(\E[g(X)]\)</span> diferă în general de <span class="math inline">\(g(\E[X])\)</span></h2>
+<div class="curs-box atentie">
+<div class="curs-box-title">
+<span class="curs-box-label">Atenție!</span>
+</div>
+<div class="curs-box-body">
+<p>În general <span class="math inline">\(\E[g(X)]\ne g(\E[X])\)</span>. Pentru densitatea nemărginită (Exemplul 1), <span class="math inline">\(\E[X]=1/3\)</span>, deci <span class="math inline">\((\E[X])^2=1/9\)</span>, dar <span class="math inline">\(\E[X^2]=\int_0^1 x^2\frac{1}{2\sqrt x}\dd x=\frac12\int_0^1x^{3/2}\dd x=\frac15\)</span>. Egalitatea are loc pentru funcții afine, <span class="math inline">\(g(x)=ax+b\)</span>.</p>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-label="1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fu">sqrt</span>(x))                 <span class="co"># densitatea nemărginită</span></span>
+<span id="cb22-2"><a aria-label="2"></a>m1 <span class="ot">&lt;-</span> <span class="fu">integrate</span>(<span class="cf">function</span>(x) x <span class="sc">*</span> <span class="fu">f</span>(x), <span class="dv">0</span>, <span class="dv">1</span>)<span class="sc">$</span>value</span>
+<span id="cb22-3"><a aria-label="3"></a>m2 <span class="ot">&lt;-</span> <span class="fu">integrate</span>(<span class="cf">function</span>(x) x<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> <span class="fu">f</span>(x), <span class="dv">0</span>, <span class="dv">1</span>)<span class="sc">$</span>value</span>
+<span id="cb22-4"><a aria-label="4"></a><span class="fu">c</span>(<span class="at">E_X2 =</span> m2, <span class="at">patrat_E_X =</span> m1<span class="sc">^</span><span class="dv">2</span>)                     <span class="co"># 1/5 față de 1/9</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;       E_X2 patrat_E_X 
+#&gt;     0.2000     0.1111</code></pre>
+</div>
+</div>
+<p>Diferența <span class="math inline">\(\E[X^2]-(\E[X])^2=\frac15-\frac19=\frac4{45}\)</span> este exact varianța (Partea III, mai jos): cele două coincid doar pentru variabile degenerate.</p>
+</section>
+<section id="momente-varianță-abatere-standard" class="slide level2 scrollable">
+<h2>Momente, varianță, abatere standard</h2>
+<p>Media descrie doar „centrul” repartiției; împrăștierea, asimetria și alte trăsături ale formei sunt descrise de momente.</p>
+<div class="curs-box definitie">
+<div class="curs-box-title">
+<span class="curs-box-label">Definiția 11</span> <span class="curs-box-name">(Momente, varianță, abatere standard)</span>
+</div>
+<div class="curs-box-body">
+<p>Fie <span class="math inline">\(X\)</span> o v.a. continuă cu densitatea <span class="math inline">\(f\)</span>, <span class="math inline">\(k\ge1\)</span> natural și <span class="math inline">\(a\in\R\)</span>. Atunci când integralele sunt absolut convergente, definim:</p>
+<div class="ol-1p">
+<ol type="a">
+<li><p><strong>momentul de ordin <span class="math inline">\(k\)</span></strong>: <span class="math inline">\(\E[X^k]=\int_{-\infty}^{+\infty}x^k f(x)\dd x\)</span>;</p></li>
+<li><p><strong>momentul centrat în <span class="math inline">\(a\)</span> de ordin <span class="math inline">\(k\)</span></strong>: <span class="math inline">\(\E[(X-a)^k]=\int_{-\infty}^{+\infty}(x-a)^k f(x)\dd x\)</span>;</p></li>
+<li><p><strong>momentul centrat de ordin <span class="math inline">\(k\)</span></strong> (<span class="math inline">\(a=\E[X]\)</span>): <span class="math inline">\(\E\big[(X-\E[X])^k\big]=\int_{-\infty}^{+\infty}(x-\E[X])^k f(x)\dd x\)</span>.</p></li>
+</ol>
+</div>
+<p>Momentul centrat de ordin <span class="math inline">\(2\)</span> este <strong>varianța</strong> lui <span class="math inline">\(X\)</span>, <span class="math inline">\(\Var(X)=\E\big[(X-\E[X])^2\big]=\int_{-\infty}^{+\infty}(x-\E[X])^2 f(x)\dd x\)</span>, iar <span class="math inline">\(\sigma_X=\sqrt{\Var(X)}\)</span> este <strong>abaterea standard</strong> a lui <span class="math inline">\(X\)</span>.</p>
+</div>
+</div>
+<aside class="notes">
+<p>Toate sunt cazuri particulare ale formulei de transfer, cu <span class="math inline">\(g(x)=x^k\)</span>, <span class="math inline">\(g(x)=(x-a)^k\)</span> etc.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="formula-de-calcul-a-varianței" class="slide level2">
+<h2>Formula de calcul a varianței</h2>
+<p>Toate mărimile de mai sus se calculează cu formula de transfer (Teorema 10). Abaterea standard se măsoară în aceeași unitate ca <span class="math inline">\(X\)</span>, deci este mai ușor de interpretat decât varianța.</p>
+<p>Dezvoltând pătratul și folosind liniaritatea integralei, cu <span class="math inline">\(\mu=\E[X]\)</span>: <span class="math display">\[
+\begin{aligned}
+\Var(X)&amp;=\int(x-\mu)^2f(x)\dd x=\int x^2f(x)\dd x-2\mu\int xf(x)\dd x+\mu^2\int f(x)\dd x\\
+&amp;=\E[X^2]-2\mu^2+\mu^2 ,
+\end{aligned}
+\]</span> adică formula de calcul <span class="math display">\[
+\boxed{\ \Var(X)=\E[X^2]-\big(\E[X]\big)^2 .\ }
+\]</span></p>
+<aside class="notes">
+<p>Detaliile calculului (dezvoltarea pătratului) nu apar explicit în note, dar sunt imediate.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="proprietățile-mediei-și-ale-varianței" class="slide level2 scrollable">
+<h2>Proprietățile mediei și ale varianței</h2>
+<div class="curs-box propozitie">
+<div class="curs-box-title">
+<span class="curs-box-label">Propoziția 12</span> <span class="curs-box-name">(Proprietățile mediei și ale varianței)</span>
+</div>
+<div class="curs-box-body">
+<p>Proprietățile stabilite pentru variabile discrete rămân valabile pentru variabile continue. Dacă <span class="math inline">\(X,Y\)</span> sunt v.a. pentru care mediile și varianțele de mai jos există și <span class="math inline">\(a,b,c\in\R\)</span>:</p>
+<ol type="i">
+<li>dacă <span class="math inline">\(X=c\)</span> (constantă), atunci <span class="math inline">\(\E[X]=c\)</span> și <span class="math inline">\(\Var(X)=0\)</span>;</li>
+<li>dacă <span class="math inline">\(X\ge0\)</span>, atunci <span class="math inline">\(\E[X]\ge0\)</span>;</li>
+<li>dacă <span class="math inline">\(X\ge Y\)</span>, atunci <span class="math inline">\(\E[X]\ge\E[Y]\)</span>;</li>
+<li><span class="math inline">\(\E[aX+bY]=a\E[X]+b\E[Y]\)</span> (liniaritate);</li>
+<li><span class="math inline">\(\Var(X)\ge0\)</span>;</li>
+<li><span class="math inline">\(\Var(aX+b)=a^2\Var(X)\)</span>;</li>
+<li>dacă <span class="math inline">\(X\)</span> și <span class="math inline">\(Y\)</span> sunt independente, atunci <span class="math inline">\(\E[XY]=\E[X]\E[Y]\)</span>;</li>
+<li>dacă <span class="math inline">\(X\)</span> și <span class="math inline">\(Y\)</span> sunt independente, atunci <span class="math inline">\(\Var(X+Y)=\Var(X)+\Var(Y)\)</span>.</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="proprietățile-mediei-și-ale-varianței-demonstrație" class="slide level2 scrollable">
+<h2>Proprietățile mediei și ale varianței — demonstrație</h2>
+<div class="curs-proof">
+<p><em>Demonstrație.</em> Demonstrăm proprietățile care implică o singură variabilă continuă <span class="math inline">\(X\)</span>, cu densitatea <span class="math inline">\(f\)</span>.</p>
+<ol start="2" type="i">
+<li>Dacă <span class="math inline">\(X\ge0\)</span>, putem lua <span class="math inline">\(f=0\)</span> pe <span class="math inline">\((-\infty,0)\)</span>, deci <span class="math inline">\(\E[X]=\int_0^\infty xf(x)\dd x\ge0\)</span>.</li>
+</ol>
+<p>Cazul particular al lui iv) cu <span class="math inline">\(Y=1\)</span> constantă se obține din formula de transfer: <span class="math display">\[
+\E[aX+b]=\int(ax+b)f(x)\dd x=a\int xf(x)\dd x+b\int f(x)\dd x=a\E[X]+b.
+\]</span> Atunci <span class="math inline">\(\Var(aX+b)=\E\big[(aX+b-a\E[X]-b)^2\big]=a^2\E\big[(X-\E[X])^2\big]=a^2\Var(X)\)</span>, adică vi), iar v) este evidentă, integrandul <span class="math inline">\((x-\E[X])^2f(x)\)</span> fiind nenegativ.</p>
+<p>Proprietățile care implică două variabile (iv în general, vii, viii) necesită repartiția comună a vectorului <span class="math inline">\((X,Y)\)</span> și vor fi demonstrate în cursul despre vectori aleatori.<span class="curs-qed">■</span></p>
+</div>
+</section>
+<section id="variabila-standardizată" class="slide level2">
+<h2>Variabila standardizată</h2>
+<p>Din vi) rezultă că, dacă <span class="math inline">\(\sigma_X&gt;0\)</span>, variabila <strong>standardizată</strong> <span class="math display">\[
+Z=\frac{X-\E[X]}{\sigma_X}
+\]</span> are media <span class="math inline">\(0\)</span> și varianța <span class="math inline">\(1\)</span>: <span class="math inline">\(\E[Z]=\frac{\E[X]-\E[X]}{\sigma_X}=0\)</span>, <span class="math inline">\(\Var(Z)=\frac{1}{\sigma_X^2}\Var(X)=1\)</span>. Standardizarea va juca un rol central în studiul repartiției normale și al teoremei limită centrală.</p>
+<p><strong>Exemplu.</strong> Pentru <span class="math inline">\(f(x)=\frac38(4x-2x^2)\)</span> pe <span class="math inline">\((0,2)\)</span>: <span class="math inline">\(\E[X]=1\)</span>, <span class="math inline">\(\Var(X)=\frac15\)</span> (Exemplul 9), deci <span class="math inline">\(Z=\sqrt5\,(X-1)\)</span> are media <span class="math inline">\(0\)</span> și varianța <span class="math inline">\(1\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">2</span>); x <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">rbeta</span>(<span class="fl">1e5</span>, <span class="dv">2</span>, <span class="dv">2</span>); z <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">5</span>) <span class="sc">*</span> (x <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb24-2"><a aria-label="2"></a><span class="fu">round</span>(<span class="fu">c</span>(<span class="at">medie =</span> <span class="fu">mean</span>(z), <span class="at">varianta =</span> <span class="fu">var</span>(z)), <span class="dv">3</span>)</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;    medie varianta 
+#&gt;    0.005    1.001</code></pre>
+</div>
+</div>
+<aside class="notes">
+<p>Exemplul numeric este suplimentar.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exemplu-densitatea-constantă-pe-ab" class="slide level2">
+<h2>Exemplu: densitatea constantă pe <span class="math inline">\([a,b]\)</span></h2>
+<div class="curs-box exemplu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exemplu</span> <span class="curs-box-name">(Densitate constantă pe un interval)</span>
+</div>
+<div class="curs-box-body">
+<p>Fie <span class="math inline">\(a&lt;b\)</span> și <span class="math inline">\(f(x)=\frac{1}{b-a}\)</span> pentru <span class="math inline">\(x\in[a,b]\)</span>, <span class="math inline">\(0\)</span> altfel. Atunci <span class="math inline">\(F(x)=\frac{x-a}{b-a}\)</span> pe <span class="math inline">\([a,b]\)</span> și <span class="math display">\[
+\E[X]=\int_a^b\frac{x}{b-a}\dd x=\frac{b^2-a^2}{2(b-a)}=\frac{a+b}{2},\qquad
+\E[X^2]=\int_a^b\frac{x^2}{b-a}\dd x=\frac{b^3-a^3}{3(b-a)}=\frac{a^2+ab+b^2}{3},
+\]</span> <span class="math display">\[
+\Var(X)=\frac{a^2+ab+b^2}{3}-\frac{(a+b)^2}{4}=\frac{(b-a)^2}{12}.
+\]</span> Media (și mediana) este mijlocul intervalului, prin simetrie.</p>
+</div>
+</div>
+<aside class="notes">
+<p>Exemplu suplimentar: repartiția uniformă <span class="math inline">\(\Unif(a,b)\)</span>, detaliată în cursul următor. Comparați cu <span class="math inline">\(\frac{n^2-1}{12}\)</span> pentru uniforma discretă. Verificare prin simulare: <code>x &lt;- runif(1e5, 2, 5); c(mean(x), var(x))</code> dă <span class="math inline">\(\approx3.5\)</span> și <span class="math inline">\(\approx0.75\)</span>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="varianța-unor-repartiții-continue" class="slide level2 scrollable">
+<h2>Varianța unor repartiții continue</h2>
+<div class="curs-box exemplu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exemplul 9</span> <span class="curs-box-name">(Varianța unor repartiții continue)</span>
+</div>
+<div class="curs-box-body">
+<div class="ol-1p">
+<ol type="a">
+<li>Densitatea nemărginită (Exemplul 1): <span class="math inline">\(\E[X]=1/3\)</span> și <span class="math inline">\(\E[X^2]=1/5\)</span>, deci <span class="math display">\[
+\Var(X)=\frac15-\frac19=\frac{4}{45}\approx0.0889,\qquad \sigma_X\approx0.2981 .
+\]</span></li>
+<li>Densitatea <span class="math inline">\(f(x)=\frac38(4x-2x^2)\)</span> pe <span class="math inline">\((0,2)\)</span>: <span class="math display">\[
+\E[X^2]=\frac38\int_0^2(4x^3-2x^4)\dd x=\frac38\Big(16-\frac{64}{5}\Big)=\frac65,\qquad \Var(X)=\frac65-1=\frac15 .
+\]</span></li>
+<li><span class="math inline">\(f(x)=3x^2\)</span> pe <span class="math inline">\([0,1]\)</span>: <span class="math inline">\(\E[X^2]=\int_0^1 3x^4\dd x=\frac35\)</span>, deci <span class="math inline">\(\Var(X)=\frac35-\frac{9}{16}=\frac{3}{80}=0.0375\)</span>.</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="verificare-numerică-cu-integrate" class="slide level2">
+<h2>Verificare numerică cu <code>integrate</code></h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-label="1"></a><span class="co"># media și varianța pentru f(x) = 1/(2 sqrt(x)) pe (0, 1]</span></span>
+<span id="cb26-2"><a aria-label="2"></a>f  <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="dv">1</span> <span class="sc">/</span> (<span class="dv">2</span> <span class="sc">*</span> <span class="fu">sqrt</span>(x))</span>
+<span id="cb26-3"><a aria-label="3"></a>m1 <span class="ot">&lt;-</span> <span class="fu">integrate</span>(<span class="cf">function</span>(x) x   <span class="sc">*</span> <span class="fu">f</span>(x), <span class="dv">0</span>, <span class="dv">1</span>)<span class="sc">$</span>value   <span class="co"># E[X]</span></span>
+<span id="cb26-4"><a aria-label="4"></a>m2 <span class="ot">&lt;-</span> <span class="fu">integrate</span>(<span class="cf">function</span>(x) x<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> <span class="fu">f</span>(x), <span class="dv">0</span>, <span class="dv">1</span>)<span class="sc">$</span>value   <span class="co"># E[X^2]</span></span>
+<span id="cb26-5"><a aria-label="5"></a><span class="fu">c</span>(<span class="at">medie =</span> m1, <span class="at">momentul2 =</span> m2, <span class="at">varianta =</span> m2 <span class="sc">-</span> m1<span class="sc">^</span><span class="dv">2</span>, <span class="at">exact =</span> <span class="dv">4</span><span class="sc">/</span><span class="dv">45</span>)</span>
+<span id="cb26-6"><a aria-label="6"></a><span class="co">#&gt;     medie momentul2  varianta     exact </span></span>
+<span id="cb26-7"><a aria-label="7"></a><span class="co">#&gt;   0.33333   0.20000   0.08889   0.08889</span></span>
+<span id="cb26-8"><a aria-label="8"></a><span class="co"># pentru repartiția Cauchy, integrala lui |x| f(x) crește nelimitat</span></span>
+<span id="cb26-9"><a aria-label="9"></a><span class="fu">sapply</span>(<span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>), <span class="cf">function</span>(M)</span>
+<span id="cb26-10"><a aria-label="10"></a>  <span class="fu">integrate</span>(<span class="cf">function</span>(x) <span class="fu">abs</span>(x) <span class="sc">*</span> <span class="fu">dcauchy</span>(x), <span class="sc">-</span>M, M)<span class="sc">$</span>value)</span>
+<span id="cb26-11"><a aria-label="11"></a><span class="co">#&gt; [1] 1.469 2.932 4.398 5.863</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Pentru Cauchy, <span class="math inline">\(\int_{-M}^{M}|x|f(x)\dd x=\frac1\pi\ln(1+M^2)\)</span> crește ca <span class="math inline">\(\frac2\pi\ln M\)</span>: media nu există.</p>
+</section>
+<section id="momente-de-ordin-superior" class="slide level2">
+<h2>Momente de ordin superior</h2>
+<div class="curs-box observatie">
+<div class="curs-box-title">
+<span class="curs-box-label">Observație</span>
+</div>
+<div class="curs-box-body">
+<p>Momentele de ordin superior descriu forma repartiției. De exemplu, <strong>coeficientul de asimetrie</strong> <span class="math display">\[
+\frac{\E\big[(X-\E[X])^3\big]}{\sigma_X^3}
+\]</span> este nul pentru densitățile simetrice, pozitiv când densitatea are o „coadă” lungă spre dreapta și negativ în caz contrar.</p>
+<p>Existența momentelor este legată de viteza de descreștere a cozilor densității: dacă <span class="math inline">\(\E[|X|^k]&lt;\infty\)</span>, atunci <span class="math inline">\(\E[|X|^j]&lt;\infty\)</span> pentru orice <span class="math inline">\(j\le k\)</span> (deoarece <span class="math inline">\(|x|^j\le 1+|x|^k\)</span>), dar reciproca este falsă (Exercițiul 6).</p>
+</div>
+</div>
+</section>
+<section id="coeficientul-de-asimetrie-exemplu" class="slide level2">
+<h2>Coeficientul de asimetrie: exemplu</h2>
+<p>Pentru <span class="math inline">\(f(x)=x/2\)</span> pe <span class="math inline">\([0,2]\)</span>: <span class="math inline">\(\E[X]=\frac43\)</span>, <span class="math inline">\(\E[X^2]=\int_0^2\frac{x^3}{2}\dd x=2\)</span>, deci <span class="math inline">\(\Var(X)=2-\frac{16}{9}=\frac29\)</span>. Masa este împinsă spre dreapta, iar coada lungă este spre stânga, deci ne așteptăm la un coeficient de asimetrie <strong>negativ</strong>:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-label="1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x <span class="sc">/</span> <span class="dv">2</span>                                   <span class="co"># densitatea x/2 pe [0, 2]</span></span>
+<span id="cb27-2"><a aria-label="2"></a>m <span class="ot">&lt;-</span> <span class="fu">integrate</span>(<span class="cf">function</span>(x) x <span class="sc">*</span> <span class="fu">f</span>(x), <span class="dv">0</span>, <span class="dv">2</span>)<span class="sc">$</span>value         <span class="co"># E[X] = 4/3</span></span>
+<span id="cb27-3"><a aria-label="3"></a>s <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">integrate</span>(<span class="cf">function</span>(x) (x <span class="sc">-</span> m)<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> <span class="fu">f</span>(x), <span class="dv">0</span>, <span class="dv">2</span>)<span class="sc">$</span>value)</span>
+<span id="cb27-4"><a aria-label="4"></a><span class="fu">integrate</span>(<span class="cf">function</span>(x) (x <span class="sc">-</span> m)<span class="sc">^</span><span class="dv">3</span> <span class="sc">*</span> <span class="fu">f</span>(x), <span class="dv">0</span>, <span class="dv">2</span>)<span class="sc">$</span>value <span class="sc">/</span> s<span class="sc">^</span><span class="dv">3</span>  <span class="co"># asimetrie negativă</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] -0.5657</code></pre>
+</div>
+</div>
+<p>Pentru densitatea simetrică <span class="math inline">\(\frac38(4x-2x^2)\)</span> coeficientul este <span class="math inline">\(0\)</span>.</p>
+<aside class="notes">
+<p>Slide suplimentar. Valoarea exactă a coeficientului de asimetrie pentru <span class="math inline">\(x/2\)</span> pe <span class="math inline">\([0,2]\)</span> este <span class="math inline">\(-\frac{2\sqrt2}{5}\approx-0.566\)</span>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="partea-iv-exerciții-rezolvate" class="title-slide slide level1 center">
+<h1>Partea IV — Exerciții rezolvate</h1>
+
+</section>
+<section id="exercițiul-1-enunț" class="slide level2 scrollable">
+<h2>Exercițiul 1 — enunț</h2>
+<div class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 1</span> <span class="curs-box-name">(Densitate polinomială)</span>
+</div>
+<div class="curs-box-body">
+<p>Fie <span class="math inline">\(X\)</span> o variabilă aleatoare cu densitatea <span class="math inline">\(f(x)=c\,x^2\)</span> pentru <span class="math inline">\(x\in[-1,2]\)</span> și <span class="math inline">\(f(x)=0\)</span> altfel.</p>
+<div class="ol-1p">
+<ol type="a">
+<li>Determinați <span class="math inline">\(c\)</span>.</li>
+<li>Calculați <span class="math inline">\(\PP(X&gt;0)\)</span>.</li>
+<li>Determinați funcția de repartiție.</li>
+<li>Calculați <span class="math inline">\(\E[X]\)</span> și <span class="math inline">\(\Var(X)\)</span>.</li>
+</ol>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Lăsați studenții să încerce singuri a) și b).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exercițiul-1-soluție-a-b" class="slide level2 scrollable">
+<h2>Exercițiul 1 — soluție (a, b)</h2>
+<div class="curs-box rezolvare">
+<div class="curs-box-title">
+<span class="curs-box-label">Soluție</span>
+</div>
+<div class="curs-box-body">
+<div class="ol-1p">
+<ol type="a">
+<li>Condiția <span class="math inline">\(f\ge0\)</span> impune <span class="math inline">\(c\ge0\)</span>, iar din normare <span class="math display">\[
+1=c\int_{-1}^2x^2\dd x=c\,\frac{x^3}{3}\Big|_{-1}^{2}=c\,\frac{8+1}{3}=3c\quad\Longrightarrow\quad c=\frac13 .
+\]</span></li>
+<li><span class="math inline">\(\PP(X&gt;0)=\int_0^2\frac{x^2}{3}\dd x=\frac{8}{9}\)</span>.</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="exercițiul-1-soluție-c" class="slide level2 scrollable">
+<h2>Exercițiul 1 — soluție (c)</h2>
+<div class="curs-box rezolvare">
+<div class="curs-box-title">
+<span class="curs-box-label">Soluție</span>
+</div>
+<div class="curs-box-body">
+<div class="ol-1p">
+<ol start="3" type="a">
+<li>Pentru <span class="math inline">\(x\in[-1,2]\)</span>, <span class="math inline">\(F(x)=\int_{-1}^x\frac{t^2}{3}\dd t=\frac{x^3+1}{9}\)</span>; deci <span class="math display">\[
+F(x)=\begin{cases}0, &amp; x&lt;-1,\\ \dfrac{x^3+1}{9}, &amp; -1\le x\le2,\\[2mm] 1, &amp; x&gt;2.\end{cases}
+\]</span> Verificare: <span class="math inline">\(\PP(X&gt;0)=1-F(0)=1-1/9=8/9\)</span>.</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="exercițiul-1-soluție-d" class="slide level2 scrollable">
+<h2>Exercițiul 1 — soluție (d)</h2>
+<div class="curs-box rezolvare">
+<div class="curs-box-title">
+<span class="curs-box-label">Soluție</span>
+</div>
+<div class="curs-box-body">
+<div class="ol-1p">
+<ol start="4" type="a">
+<li><span class="math display">\[
+\E[X]=\int_{-1}^2\frac{x^3}{3}\dd x=\frac{x^4}{12}\Big|_{-1}^2=\frac{16-1}{12}=\frac54,
+\qquad
+\E[X^2]=\int_{-1}^2\frac{x^4}{3}\dd x=\frac{x^5}{15}\Big|_{-1}^2=\frac{32+1}{15}=\frac{11}{5},
+\]</span> deci <span class="math inline">\(\Var(X)=\frac{11}{5}-\frac{25}{16}=\frac{176-125}{80}=\frac{51}{80}=0.6375\)</span>.</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-label="1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="dv">3</span></span>
+<span id="cb29-2"><a aria-label="2"></a>m1 <span class="ot">&lt;-</span> <span class="fu">integrate</span>(<span class="cf">function</span>(x) x <span class="sc">*</span> <span class="fu">f</span>(x), <span class="sc">-</span><span class="dv">1</span>, <span class="dv">2</span>)<span class="sc">$</span>value</span>
+<span id="cb29-3"><a aria-label="3"></a>m2 <span class="ot">&lt;-</span> <span class="fu">integrate</span>(<span class="cf">function</span>(x) x<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> <span class="fu">f</span>(x), <span class="sc">-</span><span class="dv">1</span>, <span class="dv">2</span>)<span class="sc">$</span>value</span>
+<span id="cb29-4"><a aria-label="4"></a><span class="fu">c</span>(<span class="at">arie =</span> <span class="fu">integrate</span>(f, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">2</span>)<span class="sc">$</span>value, <span class="at">medie =</span> m1, <span class="at">varianta =</span> m2 <span class="sc">-</span> m1<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt;     arie    medie varianta 
+#&gt;   1.0000   1.2500   0.6375</code></pre>
+</div>
+</div>
+</section>
+<section id="exercițiul-2-enunț" class="slide level2 scrollable">
+<h2>Exercițiul 2 — enunț</h2>
+<div class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 2</span> <span class="curs-box-name">(Densitatea 1/x pe un interval simetric în jurul lui 1)</span>
+</div>
+<div class="curs-box-body">
+<p>Fie <span class="math inline">\(c\in(0,1)\)</span> și <span class="math display">\[
+f(x)=\begin{cases}\dfrac1x, &amp; x\in[1-c,\,1+c],\\[2mm] 0, &amp; \text{altfel.}\end{cases}
+\]</span></p>
+<div class="ol-1p">
+<ol type="a">
+<li>Determinați <span class="math inline">\(c\)</span> astfel încât <span class="math inline">\(f\)</span> să fie o densitate de repartiție.</li>
+<li>Calculați media și varianța unei variabile <span class="math inline">\(X\)</span> cu densitatea <span class="math inline">\(f\)</span>.</li>
+<li>Determinați funcția de repartiție și mediana lui <span class="math inline">\(X\)</span>.</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="exercițiul-2-soluție-a-b" class="slide level2 scrollable">
+<h2>Exercițiul 2 — soluție (a, b)</h2>
+<div class="curs-box rezolvare">
+<div class="curs-box-title">
+<span class="curs-box-label">Soluție</span>
+</div>
+<div class="curs-box-body">
+<div class="ol-1p">
+<ol type="a">
+<li><span class="math inline">\(c\in(0,1)\Rightarrow 1-c&gt;0\)</span>, deci <span class="math inline">\(f(x)=1/x&gt;0\)</span> pe <span class="math inline">\([1-c,1+c]\)</span>. Normarea: <span class="math display">\[
+\int_{\R} f(x)\dd x=\int_{1-c}^{1+c}\frac1x\dd x=\ln\frac{1+c}{1-c}=1
+\iff \frac{1+c}{1-c}=e \iff c=\frac{e-1}{e+1}\approx0.4621 .
+\]</span></li>
+<li>Pe suport, <span class="math inline">\(x f(x)=1\)</span> și <span class="math inline">\(x^2f(x)=x\)</span>: <span class="math display">\[
+\E[X]=\int_{1-c}^{1+c}x\cdot\frac1x\dd x=2c,\qquad
+\E[X^2]=\int_{1-c}^{1+c}x\dd x=\frac{(1+c)^2-(1-c)^2}{2}=2c .
+\]</span> Prin urmare <span class="math display">\[
+\E[X]=2c=\frac{2(e-1)}{e+1}\approx0.9242,\qquad \Var(X)=2c-(2c)^2=2c(1-2c)\approx0.0700 .
+\]</span></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="exercițiul-2-soluție-c" class="slide level2 scrollable">
+<h2>Exercițiul 2 — soluție (c)</h2>
+<div class="curs-box rezolvare">
+<div class="curs-box-title">
+<span class="curs-box-label">Soluție</span>
+</div>
+<div class="curs-box-body">
+<div class="ol-1p">
+<ol start="3" type="a">
+<li><span class="math inline">\(F(x)=\int_{-\infty}^x\frac1t\Ind_{[1-c,1+c]}(t)\dd t\)</span>: <span class="math inline">\(F(x)=0\)</span> pentru <span class="math inline">\(x&lt;1-c\)</span>, <span class="math inline">\(F(x)=1\)</span> pentru <span class="math inline">\(x&gt;1+c\)</span>, iar pentru <span class="math inline">\(x\in[1-c,1+c]\)</span>, <span class="math display">\[
+F(x)=\int_{1-c}^x\frac1t\dd t=\ln\frac{x}{1-c}\qquad(\text{verificare: } F(1+c)=1).
+\]</span> Mediana rezolvă <span class="math inline">\(\ln\frac{x}{1-c}=\frac12\)</span>: <span class="math inline">\(x_{1/2}=(1-c)\sqrt e\approx0.8868\)</span> — mai mică decât media <span class="math inline">\(0.9242\)</span>: densitatea <span class="math inline">\(1/x\)</span> este descrescătoare, cu „coada” mai lungă spre dreapta.</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="exercițiul-2-verificare-în-r" class="slide level2">
+<h2>Exercițiul 2 — verificare în R</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-label="1"></a>c0 <span class="ot">&lt;-</span> (<span class="fu">exp</span>(<span class="dv">1</span>) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> (<span class="fu">exp</span>(<span class="dv">1</span>) <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb31-2"><a aria-label="2"></a>f  <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="dv">1</span> <span class="sc">/</span> x</span>
+<span id="cb31-3"><a aria-label="3"></a><span class="fu">c</span>(<span class="at">c =</span> c0, <span class="at">arie =</span> <span class="fu">integrate</span>(f, <span class="dv">1</span> <span class="sc">-</span> c0, <span class="dv">1</span> <span class="sc">+</span> c0)<span class="sc">$</span>value,</span>
+<span id="cb31-4"><a aria-label="4"></a>  <span class="at">medie =</span> <span class="fu">integrate</span>(<span class="cf">function</span>(x) x <span class="sc">*</span> <span class="fu">f</span>(x), <span class="dv">1</span> <span class="sc">-</span> c0, <span class="dv">1</span> <span class="sc">+</span> c0)<span class="sc">$</span>value,</span>
+<span id="cb31-5"><a aria-label="5"></a>  <span class="at">varianta =</span> <span class="dv">2</span> <span class="sc">*</span> c0 <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> c0), <span class="at">mediana =</span> (<span class="dv">1</span> <span class="sc">-</span> c0) <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="fu">exp</span>(<span class="dv">1</span>)))</span>
+<span id="cb31-6"><a aria-label="6"></a><span class="co">#&gt;        c     arie    medie varianta  mediana </span></span>
+<span id="cb31-7"><a aria-label="7"></a><span class="co">#&gt;  0.46212  1.00000  0.92423  0.07003  0.88682</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Integrarea numerică confirmă: aria <span class="math inline">\(=1\)</span>, media <span class="math inline">\(\approx0.9242\)</span>, varianța <span class="math inline">\(\approx0.0700\)</span>, mediana <span class="math inline">\(\approx0.8868\)</span>.</p>
+</section>
+<section id="exercițiul-3-enunț" class="slide level2 scrollable">
+<h2>Exercițiul 3 — enunț</h2>
+<div class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 3</span> <span class="curs-box-name">(Repartiția Rayleigh)</span>
+</div>
+<div class="curs-box-body">
+<p>Fie <span class="math inline">\(X\)</span> o variabilă aleatoare cu funcția de repartiție <span class="math display">\[
+F(x)=1-e^{-x^2/2}\ \text{ pentru } x\ge0,\qquad F(x)=0\ \text{ pentru } x&lt;0 .
+\]</span></p>
+<div class="ol-1p">
+<ol type="a">
+<li>Determinați densitatea lui <span class="math inline">\(X\)</span>.</li>
+<li>Calculați <span class="math inline">\(\PP(1&lt;X&lt;2)\)</span> și mediana.</li>
+<li>Calculați <span class="math inline">\(\E[X]\)</span>, știind că <span class="math inline">\(\int_0^\infty e^{-x^2/2}\dd x=\sqrt{\pi/2}\)</span> (rezultat demonstrat în cursul următor).</li>
+</ol>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Indicație pentru c): variabila este nenegativă.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exercițiul-3-soluție" class="slide level2 scrollable">
+<h2>Exercițiul 3 — soluție</h2>
+<div class="curs-box rezolvare">
+<div class="curs-box-title">
+<span class="curs-box-label">Soluție</span>
+</div>
+<div class="curs-box-body">
+<div class="ol-1p">
+<ol type="a">
+<li><p><span class="math inline">\(F\)</span> este continuă (inclusiv în <span class="math inline">\(0\)</span>, unde <span class="math inline">\(F(0)=0\)</span>) și derivabilă pentru <span class="math inline">\(x\ne0\)</span>, deci <span class="math display">\[
+f(x)=F'(x)=x\,e^{-x^2/2}\ \text{ pentru } x&gt;0,\qquad f(x)=0\ \text{ pentru } x&lt;0 .
+\]</span></p></li>
+<li><p><span class="math inline">\(\PP(1&lt;X&lt;2)=F(2)-F(1)=e^{-1/2}-e^{-2}\approx0.6065-0.1353=0.4712\)</span>. Mediana rezolvă <span class="math inline">\(1-e^{-x^2/2}=1/2\)</span>, adică <span class="math inline">\(x^2=2\ln2\)</span>: <span class="math inline">\(x_{1/2}=\sqrt{2\ln2}\approx1.1774\)</span>.</p></li>
+<li><p>Cum <span class="math inline">\(X\ge0\)</span>, din Propoziția 9: <span class="math display">\[
+\E[X]=\int_0^\infty\PP(X&gt;x)\dd x=\int_0^\infty e^{-x^2/2}\dd x=\sqrt{\frac\pi2}\approx1.2533 .
+\]</span></p></li>
+</ol>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Calculul direct, <span class="math inline">\(\int_0^\infty x^2e^{-x^2/2}\dd x\)</span>, ar fi cerut o integrare prin părți care conduce la aceeași integrală.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exercițiul-4-enunț" class="slide level2 scrollable">
+<h2>Exercițiul 4 — enunț</h2>
+<div class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 4</span> <span class="curs-box-name">(Repartiția Laplace)</span>
+</div>
+<div class="curs-box-body">
+<p>Fie <span class="math inline">\(f(x)=k\,e^{-|x|}\)</span>, <span class="math inline">\(x\in\R\)</span>.</p>
+<div class="ol-1p">
+<ol type="a">
+<li>Determinați <span class="math inline">\(k\)</span>.</li>
+<li>Determinați funcția de repartiție.</li>
+<li>Calculați <span class="math inline">\(\E[X]\)</span> și <span class="math inline">\(\Var(X)\)</span>.</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="curs04_files/figure-revealjs/unnamed-chunk-27-1.png" class="quarto-figure quarto-figure-center" style="width:55.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Graficul (suplimentar) arată simetria față de 0 și vârful ascuțit din origine.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exercițiul-4-soluție" class="slide level2 scrollable">
+<h2>Exercițiul 4 — soluție</h2>
+<div class="curs-box rezolvare">
+<div class="curs-box-title">
+<span class="curs-box-label">Soluție</span>
+</div>
+<div class="curs-box-body">
+<div class="ol-1p">
+<ol type="a">
+<li><p>Funcția este pară, deci <span class="math inline">\(\int_{\R} e^{-|x|}\dd x=2\int_0^\infty e^{-x}\dd x=2\)</span> și <span class="math inline">\(k=1/2\)</span>.</p></li>
+<li><p>Pentru <span class="math inline">\(x&lt;0\)</span>: <span class="math inline">\(F(x)=\int_{-\infty}^x\frac12e^{t}\dd t=\frac12e^{x}\)</span>. Pentru <span class="math inline">\(x\ge0\)</span>: <span class="math inline">\(F(x)=\frac12+\int_0^x\frac12e^{-t}\dd t=1-\frac12e^{-x}\)</span>.</p></li>
+<li><p><span class="math inline">\(\int_{\R}|x|\frac12e^{-|x|}\dd x=\int_0^\infty xe^{-x}\dd x=1&lt;\infty\)</span>, deci media există și, densitatea fiind pară, <span class="math inline">\(\E[X]=0\)</span>. Apoi, prin două integrări prin părți, <span class="math display">\[
+\E[X^2]=2\int_0^\infty x^2\frac12e^{-x}\dd x=\int_0^\infty x^2e^{-x}\dd x=\big[-x^2e^{-x}\big]_0^\infty+2\int_0^\infty xe^{-x}\dd x=2,
+\]</span> deci <span class="math inline">\(\Var(X)=2\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="exercițiul-5-enunț" class="slide level2">
+<h2>Exercițiul 5 — enunț</h2>
+<div class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 5</span> <span class="curs-box-name">(Densitate triunghiulară)</span>
+</div>
+<div class="curs-box-body">
+<p>Fie <span class="math inline">\(X\)</span> cu densitatea <span class="math display">\[
+f(x)=\begin{cases}x, &amp; 0\le x\le1,\\ 2-x, &amp; 1&lt;x\le2,\\ 0, &amp; \text{altfel.}\end{cases}
+\]</span> Determinați <span class="math inline">\(F\)</span>, calculați <span class="math inline">\(\PP(0.5&lt;X&lt;1.5)\)</span>, <span class="math inline">\(\E[X]\)</span> și <span class="math inline">\(\Var(X)\)</span>.</p>
+</div>
+</div>
+<aside class="notes">
+<p>Această densitate este cea a sumei a două variabile uniforme independente pe <span class="math inline">\([0,1]\)</span> (se va vedea la vectori aleatori).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exercițiul-5-soluție" class="slide level2">
+<h2>Exercițiul 5 — soluție</h2>
+<div class="curs-box rezolvare">
+<div class="curs-box-title">
+<span class="curs-box-label">Soluție</span>
+</div>
+<div class="curs-box-body">
+<p>Pentru <span class="math inline">\(0\le x\le1\)</span>, <span class="math inline">\(F(x)=\int_0^x t\dd t=x^2/2\)</span>; pentru <span class="math inline">\(1&lt;x\le2\)</span>, <span class="math display">\[
+F(x)=\frac12+\int_1^x(2-t)\dd t=\frac12+\Big(2t-\frac{t^2}{2}\Big)\Big|_1^x=1-\frac{(2-x)^2}{2};
+\]</span> <span class="math inline">\(F(x)=0\)</span> pentru <span class="math inline">\(x&lt;0\)</span> și <span class="math inline">\(F(x)=1\)</span> pentru <span class="math inline">\(x&gt;2\)</span>. <span class="math inline">\(\PP(0.5&lt;X&lt;1.5)=F(1.5)-F(0.5)=\Big(1-\frac{0.25}{2}\Big)-\frac{0.25}{2}=0.75\)</span>.</p>
+<p>Densitatea este simetrică față de <span class="math inline">\(1\)</span>, deci <span class="math inline">\(\E[X]=1\)</span>, iar <span class="math display">\[
+\E[X^2]=\int_0^1x^3\dd x+\int_1^2x^2(2-x)\dd x=\frac14+\Big(\frac{2x^3}{3}-\frac{x^4}{4}\Big)\Big|_1^2=\frac14+\frac{11}{12}=\frac76\ \Rightarrow\ \Var(X)=\frac16 .
+\]</span></p>
+</div>
+</div>
+</section>
+<section id="exercițiul-6-enunț" class="slide level2">
+<h2>Exercițiul 6 — enunț</h2>
+<div class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 6</span> <span class="curs-box-name">(Repartiția Pareto: media există, varianța nu)</span>
+</div>
+<div class="curs-box-body">
+<p>Fie <span class="math inline">\(X\)</span> cu densitatea <span class="math inline">\(f(x)=2/x^3\)</span> pentru <span class="math inline">\(x\ge1\)</span> și <span class="math inline">\(f(x)=0\)</span> pentru <span class="math inline">\(x&lt;1\)</span> (de exemplu, venitul unei persoane, în unități convenabile). Verificați că <span class="math inline">\(f\)</span> este densitate, calculați <span class="math inline">\(F\)</span>, <span class="math inline">\(\E[X]\)</span> și arătați că <span class="math inline">\(\Var(X)=\infty\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="exercițiul-6-soluție" class="slide level2">
+<h2>Exercițiul 6 — soluție</h2>
+<div class="curs-box rezolvare">
+<div class="curs-box-title">
+<span class="curs-box-label">Soluție</span>
+</div>
+<div class="curs-box-body">
+<p><span class="math inline">\(f\ge0\)</span> și <span class="math inline">\(\int_1^\infty 2x^{-3}\dd x=\big[-x^{-2}\big]_1^\infty=1\)</span>. Pentru <span class="math inline">\(x\ge1\)</span>, <span class="math inline">\(F(x)=\int_1^x2t^{-3}\dd t=1-x^{-2}\)</span>.</p>
+<p>Media este finită: <span class="math display">\[
+\E[X]=\int_1^\infty x\cdot2x^{-3}\dd x=\int_1^\infty 2x^{-2}\dd x=2 .
+\]</span> În schimb, <span class="math display">\[
+\E[X^2]=\int_1^\infty x^2\cdot2x^{-3}\dd x=2\int_1^\infty\frac{\dd x}{x}=2\ln x\,\Big|_1^\infty=+\infty,
+\]</span> deci momentul de ordin doi nu este finit și, prin convenție, <span class="math inline">\(\Var(X)=+\infty\)</span>.</p>
+<p>Coada <span class="math inline">\(\PP(X&gt;x)=x^{-2}\)</span> este suficient de „subțire” pentru existența mediei, dar nu și pentru existența varianței.</p>
+</div>
+</div>
+<aside class="notes">
+<p>Legătura cu observația despre existența momentelor: <span class="math inline">\(\E|X|&lt;\infty\)</span> nu implică <span class="math inline">\(\E[X^2]&lt;\infty\)</span>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exercițiul-7-enunț" class="slide level2">
+<h2>Exercițiul 7 — enunț</h2>
+<div class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 7</span> <span class="curs-box-name">(Media unor funcții de X)</span>
+</div>
+<div class="curs-box-body">
+<p>Fie <span class="math inline">\(X\)</span> cu densitatea <span class="math inline">\(f(x)=2x\)</span> pe <span class="math inline">\([0,1]\)</span>. Calculați <span class="math display">\[
+\E[1/X],\qquad \E[\sqrt X],\qquad \E[e^X]\qquad\text{și}\qquad \Var(X^2).
+\]</span></p>
+</div>
+</div>
+<aside class="notes">
+<p>Toate se calculează cu formula de transfer, fără a determina repartițiile lui <span class="math inline">\(1/X\)</span>, <span class="math inline">\(\sqrt X\)</span> etc.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exercițiul-7-soluție" class="slide level2">
+<h2>Exercițiul 7 — soluție</h2>
+<div class="curs-box rezolvare">
+<div class="curs-box-title">
+<span class="curs-box-label">Soluție</span>
+</div>
+<div class="curs-box-body">
+<p>Aplicăm Teorema 10: <span class="math display">\[
+\E\Big[\frac1X\Big]=\int_0^1\frac1x\,2x\dd x=2,\qquad \E[\sqrt X]=\int_0^1 2x^{3/2}\dd x=\frac45 .
+\]</span> Prin părți, <span class="math inline">\(\int xe^x\dd x=(x-1)e^x\)</span>, deci <span class="math inline">\(\E[e^X]=2\int_0^1xe^x\dd x=2\big[(x-1)e^x\big]_0^1=2\,(0-(-1))=2\)</span>.</p>
+<p>Pentru <span class="math inline">\(Y=X^2\)</span>: <span class="math inline">\(\E[Y]=\int_0^12x^3\dd x=\frac12\)</span> și <span class="math inline">\(\E[Y^2]=\E[X^4]=\int_0^12x^5\dd x=\frac13\)</span>, deci <span class="math inline">\(\Var(X^2)=\frac13-\frac14=\frac1{12}\)</span>.</p>
+<p>Observăm că <span class="math inline">\(\E[1/X]=2\ne1/\E[X]=3/2\)</span> și <span class="math inline">\(\E[e^X]=2\ne e^{\E[X]}=e^{2/3}\approx1.948\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="exercițiul-8-enunț" class="slide level2 scrollable">
+<h2>Exercițiul 8 — enunț</h2>
+<div class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 8</span> <span class="curs-box-name">(Timpul de așteptare al autobuzului)</span>
+</div>
+<div class="curs-box-body">
+<p>Timpul (în minute) până la sosirea autobuzului are densitatea <span class="math inline">\(f(x)=k(10-x)\)</span> pentru <span class="math inline">\(0\le x\le10\)</span> și <span class="math inline">\(0\)</span> altfel.</p>
+<div class="ol-1p">
+<ol type="a">
+<li>Determinați <span class="math inline">\(k\)</span>.</li>
+<li>Calculați probabilitatea de a aștepta mai mult de <span class="math inline">\(5\)</span> minute.</li>
+<li>Știind că am așteptat deja <span class="math inline">\(5\)</span> minute, care este probabilitatea să mai așteptăm cel puțin încă <span class="math inline">\(2\)</span> minute?</li>
+<li>Calculați timpul mediu de așteptare.</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="exercițiul-8-soluție" class="slide level2 scrollable">
+<h2>Exercițiul 8 — soluție</h2>
+<div class="curs-box rezolvare">
+<div class="curs-box-title">
+<span class="curs-box-label">Soluție</span>
+</div>
+<div class="curs-box-body">
+<div class="ol-1p">
+<ol type="a">
+<li><p><span class="math inline">\(1=k\int_0^{10}(10-x)\dd x=k\cdot50\)</span>, deci <span class="math inline">\(k=1/50\)</span>.</p></li>
+<li><p>Pentru <span class="math inline">\(0\le x\le10\)</span>, <span class="math inline">\(\PP(X&gt;x)=\int_x^{10}\frac{10-t}{50}\dd t=\frac{(10-x)^2}{100}\)</span>; deci <span class="math inline">\(\PP(X&gt;5)=\frac{25}{100}=\frac14\)</span>.</p></li>
+<li><p>Din definiția probabilității condiționate și din <span class="math inline">\(\{X&gt;7\}\subseteq\{X&gt;5\}\)</span>, <span class="math display">\[
+\PP(X&gt;7\mid X&gt;5)=\frac{\PP(X&gt;7)}{\PP(X&gt;5)}=\frac{9/100}{25/100}=\frac{9}{25}=0.36 .
+\]</span> Probabilitatea este mai mică decât <span class="math inline">\(\PP(X&gt;2)=64/100\)</span>: faptul că am așteptat deja face sosirea iminentă mai probabilă (spre deosebire de repartiția exponențială, din cursul următor).</p></li>
+<li><p><span class="math inline">\(\E[X]=\int_0^{10}\PP(X&gt;x)\dd x=\int_0^{10}\frac{(10-x)^2}{100}\dd x=\frac{1000}{300}=\frac{10}{3}\approx3.33\)</span> minute.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Comparați cu lipsa de memorie a repartiției geometrice (Cursul 3).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exercițiul-9-enunț" class="slide level2">
+<h2>Exercițiul 9 — enunț</h2>
+<div class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 9</span> <span class="curs-box-name">(Despăgubirea plafonată)</span>
+</div>
+<div class="curs-box-body">
+<p>Valoarea unei daune (în mii de lei) are densitatea <span class="math inline">\(f(x)=e^{-x}\)</span>, <span class="math inline">\(x\ge0\)</span>. Asigurătorul plătește daunele, dar cel mult <span class="math inline">\(2\)</span> mii de lei, deci suma plătită este <span class="math inline">\(Y=\min(X,2)\)</span>. Calculați <span class="math inline">\(\E[Y]\)</span> și <span class="math inline">\(\PP(Y=2)\)</span>. Este <span class="math inline">\(Y\)</span> o variabilă continuă?</p>
+</div>
+</div>
+</section>
+<section id="exercițiul-9-soluție" class="slide level2">
+<h2>Exercițiul 9 — soluție</h2>
+<div class="curs-box rezolvare">
+<div class="curs-box-title">
+<span class="curs-box-label">Soluție</span>
+</div>
+<div class="curs-box-body">
+<p>Cu <span class="math inline">\(g(x)=\min(x,2)\)</span> și Teorema 10, <span class="math display">\[
+\begin{aligned}
+\E[Y]&amp;=\int_0^2xe^{-x}\dd x+\int_2^\infty2e^{-x}\dd x=\big[-(x+1)e^{-x}\big]_0^2+2e^{-2}\\
+&amp;=1-3e^{-2}+2e^{-2}=1-e^{-2}\approx0.8647 .
+\end{aligned}
+\]</span> Pe de altă parte, <span class="math inline">\(\PP(Y=2)=\PP(X\ge2)=e^{-2}\approx0.1353&gt;0\)</span>, deci <span class="math inline">\(Y\)</span> <strong>nu</strong> este continuă (are un atom în <span class="math inline">\(2\)</span>); nu este nici discretă, deoarece pe <span class="math inline">\([0,2)\)</span> repartiția ei are densitatea <span class="math inline">\(e^{-y}\)</span>.</p>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-label="1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>); x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">log</span>(<span class="fu">runif</span>(<span class="fl">1e5</span>))     <span class="co"># daune simulate cu densitatea e^{-x}</span></span>
+<span id="cb32-2"><a aria-label="2"></a><span class="fu">c</span>(<span class="at">simulare =</span> <span class="fu">mean</span>(<span class="fu">pmin</span>(x, <span class="dv">2</span>)), <span class="at">exact =</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="dv">2</span>))</span>
+<span id="cb32-3"><a aria-label="3"></a><span class="co">#&gt; simulare    exact </span></span>
+<span id="cb32-4"><a aria-label="4"></a><span class="co">#&gt;   0.8663   0.8647</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<aside class="notes">
+<p>Formula de transfer s-a aplicat variabilei continue <span class="math inline">\(X\)</span>, nu lui <span class="math inline">\(Y\)</span>, deci calculul este corect. Legătura cu Exemplul 5: o variabilă de tip mixt.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exercițiul-10-enunț" class="slide level2">
+<h2>Exercițiul 10 — enunț</h2>
+<div class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 10</span> <span class="curs-box-name">(Varianța ca eroare pătratică minimă)</span>
+</div>
+<div class="curs-box-body">
+<p>Fie <span class="math inline">\(X\)</span> o variabilă aleatoare cu <span class="math inline">\(\E[X^2]&lt;\infty\)</span> și <span class="math inline">\(\mu=\E[X]\)</span>. Arătați că, pentru orice <span class="math inline">\(a\in\R\)</span>, <span class="math display">\[
+\E[(X-a)^2]=\Var(X)+(\mu-a)^2 .
+\]</span> Deduceți că <span class="math inline">\(a\mapsto\E[(X-a)^2]\)</span> este minimă pentru <span class="math inline">\(a=\mu\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="exercițiul-10-soluție" class="slide level2">
+<h2>Exercițiul 10 — soluție</h2>
+<div class="curs-box rezolvare">
+<div class="curs-box-title">
+<span class="curs-box-label">Soluție</span>
+</div>
+<div class="curs-box-body">
+<p>Scriem <span class="math inline">\(X-a=(X-\mu)+(\mu-a)\)</span> și dezvoltăm pătratul: <span class="math display">\[
+\E[(X-a)^2]=\E[(X-\mu)^2]+2(\mu-a)\E[X-\mu]+(\mu-a)^2=\Var(X)+(\mu-a)^2,
+\]</span> deoarece <span class="math inline">\(\E[X-\mu]=\E[X]-\mu=0\)</span>. Al doilea termen este nenegativ și se anulează doar pentru <span class="math inline">\(a=\mu\)</span>.</p>
+<p><strong>Interpretare:</strong> dacă trebuie să „ghicim” valoarea lui <span class="math inline">\(X\)</span> printr-o constantă <span class="math inline">\(a\)</span> și penalizăm eroarea prin pătratul ei, cea mai bună alegere este media, iar eroarea minimă este varianța. (Analog, <span class="math inline">\(\E|X-a|\)</span> este minimă când <span class="math inline">\(a\)</span> este o mediană.)</p>
+</div>
+</div>
+<aside class="notes">
+<p>Exemplu: pentru densitatea <span class="math inline">\(\frac38(4x-2x^2)\)</span>, <span class="math inline">\(\E[(X-a)^2]=\frac15+(1-a)^2\)</span>, cu minimul <span class="math inline">\(\frac15\)</span> în <span class="math inline">\(a=1\)</span>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exercițiul-11-enunț" class="slide level2 scrollable">
+<h2>Exercițiul 11 — enunț</h2>
+<div class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 11</span> <span class="curs-box-name">(Momentele unei densități de tip putere)</span>
+</div>
+<div class="curs-box-body">
+<p>Fie <span class="math inline">\(\theta&gt;0\)</span> și <span class="math inline">\(X\)</span> cu densitatea <span class="math inline">\(f(x)=\theta x^{\theta-1}\)</span> pe <span class="math inline">\((0,1)\)</span>.</p>
+<div class="ol-1p">
+<ol type="a">
+<li>Verificați că <span class="math inline">\(f\)</span> este densitate și determinați <span class="math inline">\(F\)</span>.</li>
+<li>Calculați <span class="math inline">\(\E[X^k]\)</span> pentru <span class="math inline">\(k\ge1\)</span>, apoi <span class="math inline">\(\E[X]\)</span> și <span class="math inline">\(\Var(X)\)</span>.</li>
+<li>Pentru ce valori ale lui <span class="math inline">\(\theta\)</span> este densitatea nemărginită?</li>
+</ol>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>Familia include mai multe exemple din curs.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exercițiul-11-soluție" class="slide level2 scrollable">
+<h2>Exercițiul 11 — soluție</h2>
+<div class="curs-box rezolvare">
+<div class="curs-box-title">
+<span class="curs-box-label">Soluție</span>
+</div>
+<div class="curs-box-body">
+<div class="ol-1p">
+<ol type="a">
+<li><p><span class="math inline">\(f&gt;0\)</span> pe <span class="math inline">\((0,1)\)</span> și <span class="math inline">\(\int_0^1\theta x^{\theta-1}\dd x=x^\theta\big|_0^1=1\)</span>. Pentru <span class="math inline">\(x\in[0,1]\)</span>, <span class="math inline">\(F(x)=x^\theta\)</span>.</p></li>
+<li><p><span class="math inline">\(\E[X^k]=\int_0^1\theta x^{k+\theta-1}\dd x=\dfrac{\theta}{k+\theta}\)</span>. Deci <span class="math inline">\(\E[X]=\dfrac{\theta}{\theta+1}\)</span> și <span class="math display">\[
+\Var(X)=\frac{\theta}{\theta+2}-\frac{\theta^2}{(\theta+1)^2}=\frac{\theta}{(\theta+1)^2(\theta+2)} .
+\]</span></p></li>
+<li><p>Densitatea este nemărginită în vecinătatea lui <span class="math inline">\(0\)</span> exact când <span class="math inline">\(\theta&lt;1\)</span>.</p></li>
+</ol>
+</div>
+<p>Pentru <span class="math inline">\(\theta=1/2\)</span> regăsim densitatea din Exemplul 1: <span class="math inline">\(\E[X]=1/3\)</span> și <span class="math inline">\(\Var(X)=\frac{1/2}{(9/4)(5/2)}=\frac{4}{45}\)</span>, ca în Exemplul 9; pentru <span class="math inline">\(\theta=3\)</span> regăsim <span class="math inline">\(F(x)=x^3\)</span> din Exemplul 4.</p>
+</div>
+</div>
+<aside class="notes">
+<p>Verificați și <span class="math inline">\(\theta=3\)</span>: <span class="math inline">\(\E[X]=3/4\)</span>, <span class="math inline">\(\Var(X)=3/(16\cdot5)=3/80\)</span> (Exemplul 9 c).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exercițiul-12-enunț" class="slide level2">
+<h2>Exercițiul 12 — enunț</h2>
+<div class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 12</span> <span class="curs-box-name">(Verificare numerică și simulare)</span>
+</div>
+<div class="curs-box-body">
+<p>Pentru densitatea <span class="math inline">\(f(x)=\frac38(4x-2x^2)\)</span> pe <span class="math inline">\((0,2)\)</span>, verificați în R valorile <span class="math inline">\(\E[X]=1\)</span>, <span class="math inline">\(\Var(X)=1/5\)</span> și <span class="math inline">\(\PP(0.5\le X\le1.2)\approx0.4918\)</span>, atât prin integrare numerică, cât și prin simulare (știind că <span class="math inline">\(X\)</span> are aceeași repartiție ca <span class="math inline">\(2B\)</span>, unde <span class="math inline">\(B\)</span> se generează cu <code>rbeta(n, 2, 2)</code>).</p>
+</div>
+</div>
+</section>
+<section id="exercițiul-12-soluție" class="slide level2">
+<h2>Exercițiul 12 — soluție</h2>
+<div class="curs-box rezolvare">
+<div class="curs-box-title">
+<span class="curs-box-label">Soluție</span>
+</div>
+<div class="curs-box-body">
+<p>Funcția de repartiție este <span class="math inline">\(F(x)=\frac34x^2-\frac14x^3\)</span> pe <span class="math inline">\([0,2]\)</span>, deci <span class="math display">\[
+\PP(0.5\le X\le1.2)=F(1.2)-F(0.5)=0.648-0.15625=0.49175 .
+\]</span> Media <span class="math inline">\(\E[X]=1\)</span> și <span class="math inline">\(\E[X^2]=\frac65\)</span>, deci <span class="math inline">\(\Var(X)=\frac15\)</span> (Exemplele 7 și 9). Pe slide-ul următor comparăm valorile exacte cu cele numerice și cu frecvențele relative dintr-o simulare de volum <span class="math inline">\(10^5\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="exercițiul-12-verificare-în-r" class="slide level2">
+<h2>Exercițiul 12 — verificare în R</h2>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-label="1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="dv">3</span><span class="sc">/</span><span class="dv">8</span> <span class="sc">*</span> (<span class="dv">4</span><span class="sc">*</span>x <span class="sc">-</span> <span class="dv">2</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb33-2"><a aria-label="2"></a>m1 <span class="ot">&lt;-</span> <span class="fu">integrate</span>(<span class="cf">function</span>(x) x <span class="sc">*</span> <span class="fu">f</span>(x), <span class="dv">0</span>, <span class="dv">2</span>)<span class="sc">$</span>value</span>
+<span id="cb33-3"><a aria-label="3"></a>m2 <span class="ot">&lt;-</span> <span class="fu">integrate</span>(<span class="cf">function</span>(x) x<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> <span class="fu">f</span>(x), <span class="dv">0</span>, <span class="dv">2</span>)<span class="sc">$</span>value</span>
+<span id="cb33-4"><a aria-label="4"></a><span class="fu">set.seed</span>(<span class="dv">2026</span>); x <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">rbeta</span>(<span class="fl">1e5</span>, <span class="dv">2</span>, <span class="dv">2</span>)          <span class="co"># valori simulate din f</span></span>
+<span id="cb33-5"><a aria-label="5"></a><span class="fu">rbind</span>(<span class="at">numeric  =</span> <span class="fu">c</span>(m1, m2 <span class="sc">-</span> m1<span class="sc">^</span><span class="dv">2</span>, <span class="fu">integrate</span>(f, <span class="fl">0.5</span>, <span class="fl">1.2</span>)<span class="sc">$</span>value),</span>
+<span id="cb33-6"><a aria-label="6"></a>      <span class="at">simulare =</span> <span class="fu">c</span>(<span class="fu">mean</span>(x), <span class="fu">var</span>(x), <span class="fu">mean</span>(x <span class="sc">&gt;=</span> <span class="fl">0.5</span> <span class="sc">&amp;</span> x <span class="sc">&lt;=</span> <span class="fl">1.2</span>)))</span>
+<span id="cb33-7"><a aria-label="7"></a><span class="co">#&gt;           [,1]   [,2]   [,3]</span></span>
+<span id="cb33-8"><a aria-label="8"></a><span class="co">#&gt; numeric  1.000 0.2000 0.4917</span></span>
+<span id="cb33-9"><a aria-label="9"></a><span class="co">#&gt; simulare 1.001 0.2005 0.4904</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Concordanța este de ordinul a două–trei zecimale, cum este de așteptat pentru o simulare de această dimensiune.</p>
+</section>
+<section id="de-reținut" class="slide level2">
+<h2>De reținut</h2>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+<span class="curs-box-label">De reținut</span>
+</div>
+<div class="curs-box-body">
+<ul>
+<li><span class="math inline">\(X\)</span> este continuă cu densitatea <span class="math inline">\(f\)</span> dacă <span class="math inline">\(\PP(X\in A)=\int_A f(x)\dd x\)</span>; condiții: <span class="math inline">\(f\ge0\)</span>, <span class="math inline">\(\int_{\R} f=1\)</span>.</li>
+<li><span class="math inline">\(\PP(X=a)=0\)</span> și <span class="math inline">\(\PP(a\le X\le b)=\PP(a&lt;X&lt;b)=\int_a^b f(x)\dd x=F(b)-F(a)\)</span>.</li>
+<li><span class="math inline">\(f(x)\dd x\approx\PP(X\in[x,x+\dd x])\)</span>; densitatea <strong>nu</strong> este o probabilitate și poate depăși <span class="math inline">\(1\)</span>.</li>
+<li><span class="math inline">\(F(x)=\PP(X\le x)=\int_{-\infty}^x f(t)\dd t\)</span>; <span class="math inline">\(F\)</span> crescătoare, continuă, <span class="math inline">\(F(-\infty)=0\)</span>, <span class="math inline">\(F(+\infty)=1\)</span>; <span class="math inline">\(F'=f\)</span> în punctele de continuitate ale lui <span class="math inline">\(f\)</span>.</li>
+<li>Cuantila de ordin <span class="math inline">\(\alpha\)</span>: <span class="math inline">\(x_\alpha=\inf\{x: F(x)\ge\alpha\}\)</span> (soluția lui <span class="math inline">\(F(x)=\alpha\)</span>); mediana <span class="math inline">\(x_{1/2}\)</span>.</li>
+<li>Media: <span class="math inline">\(\E[X]=\int x f(x)\dd x\)</span> (dacă <span class="math inline">\(\int|x|f&lt;\infty\)</span>); pentru <span class="math inline">\(X\ge0\)</span>, <span class="math inline">\(\E[X]=\int_0^\infty\PP(X&gt;x)\dd x\)</span>.</li>
+<li><span class="math inline">\(\E[g(X)]=\int g(x)f(x)\dd x\)</span>; momente <span class="math inline">\(\E[X^k]=\int x^kf(x)\dd x\)</span>.</li>
+<li><span class="math inline">\(\Var(X)=\E[(X-\E X)^2]=\E[X^2]-(\E X)^2\)</span>; <span class="math inline">\(\E[aX+b]=a\E[X]+b\)</span>; <span class="math inline">\(\Var(aX+b)=a^2\Var(X)\)</span>.</li>
+</ul>
+</div>
+</div>
+<aside class="notes">
+<p>Anunțați cursul următor: repartiții continue remarcabile (uniformă, exponențială, normală) și transformări de variabile aleatoare.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exerciții-propuse-1" class="slide level2 scrollable">
+<h2>Exerciții propuse (1)</h2>
+<ol type="1">
+<li>Fie <span class="math inline">\(f(x)=k\,x(1-x)^2\)</span> pentru <span class="math inline">\(x\in[0,1]\)</span> și <span class="math inline">\(0\)</span> altfel. Determinați <span class="math inline">\(k\)</span>, funcția de repartiție, <span class="math inline">\(\E[X]\)</span> și <span class="math inline">\(\Var(X)\)</span>. <em>(Răspuns: <span class="math inline">\(k=12\)</span>, <span class="math inline">\(\E[X]=2/5\)</span>, <span class="math inline">\(\Var(X)=1/25\)</span>.)</em></li>
+<li>Arătați că <span class="math inline">\(F(x)=\dfrac{1}{1+e^{-x}}\)</span> este o funcție de repartiție și că variabila corespunzătoare are aceeași repartiție ca în Exemplul 3. Calculați <span class="math inline">\(\PP(|X|\le1)\)</span>. <em>(Răspuns: <span class="math inline">\(\approx0.4621\)</span>.)</em></li>
+<li>Fie <span class="math inline">\(X\)</span> cu densitatea <span class="math inline">\(f(x)=\frac{3}{4}(1-x^2)\)</span> pe <span class="math inline">\([-1,1]\)</span>. Calculați <span class="math inline">\(\PP(X&gt;1/2)\)</span>, <span class="math inline">\(\E[X]\)</span>, <span class="math inline">\(\Var(X)\)</span> și <span class="math inline">\(\E[|X|]\)</span>. <em>(Răspuns: <span class="math inline">\(5/32\)</span>; <span class="math inline">\(0\)</span>; <span class="math inline">\(1/5\)</span>; <span class="math inline">\(3/8\)</span>.)</em></li>
+<li>Durata de viață (în ani) a unui aparat are funcția de supraviețuire <span class="math inline">\(\PP(X&gt;x)=(1+x)^{-3}\)</span>, <span class="math inline">\(x\ge0\)</span>. Determinați densitatea, mediana și, cu Propoziția 9, media lui <span class="math inline">\(X\)</span>. <em>(Răspuns: mediana <span class="math inline">\(2^{1/3}-1\approx0.26\)</span>; <span class="math inline">\(\E[X]=1/2\)</span>.)</em></li>
+</ol>
+</section>
+<section id="exerciții-propuse-2" class="slide level2 scrollable">
+<h2>Exerciții propuse (2)</h2>
+<ol start="5" type="1">
+<li>Arătați că dacă <span class="math inline">\(X\ge0\)</span> este continuă și <span class="math inline">\(\E[X^2]&lt;\infty\)</span>, atunci <span class="math inline">\(\E[X^2]=\int_0^\infty2x\,\PP(X&gt;x)\dd x\)</span>. Verificați formula pentru <span class="math inline">\(\PP(X&gt;x)=e^{-x}\)</span>.</li>
+<li>Fie <span class="math inline">\(X\)</span> o variabilă aleatoare continuă cu mediana <span class="math inline">\(m\)</span>. Arătați că <span class="math inline">\(\E|X-a|\ge\E|X-m|\)</span> pentru orice <span class="math inline">\(a\in\R\)</span> (presupunând <span class="math inline">\(\E|X|&lt;\infty\)</span>).</li>
+<li>Pentru densitatea <span class="math inline">\(f(x)=\frac{1}{2}\sin x\)</span> pe <span class="math inline">\([0,\pi]\)</span>, determinați <span class="math inline">\(F\)</span>, mediana, cuartilele și <span class="math inline">\(\E[X]\)</span>. Verificați rezultatele numeric în R cu <code>integrate</code> și <code>uniroot</code>. <em>(Răspuns: mediana <span class="math inline">\(\pi/2\)</span>, cuartilele <span class="math inline">\(\pi/3\)</span> și <span class="math inline">\(2\pi/3\)</span>, <span class="math inline">\(\E[X]=\pi/2\)</span>.)</em></li>
+</ol>
+</section>
+<section id="bibliografie" class="slide level2 smaller scrollable">
+<h2>Bibliografie</h2>
+<p>Lecturi recomandate: <span class="citation" data-cites="blitzstein2019">Blitzstein and Hwang (<a href="#/bibliografie" role="doc-biblioref" onclick="">2019</a>, cap. 5)</span>, <span class="citation" data-cites="ross2014">Ross (<a href="#/bibliografie" role="doc-biblioref" onclick="">2014</a>, cap. 4–5)</span>, <span class="citation" data-cites="bertsekas2008">Bertsekas and Tsitsiklis (<a href="#/bibliografie" role="doc-biblioref" onclick="">2008</a>, cap. 3)</span>, <span class="citation" data-cites="dobrow2021">Wagaman and Dobrow (<a href="#/bibliografie" role="doc-biblioref" onclick="">2021</a>, cap. 6)</span> și notele de curs <span class="citation" data-cites="olariu2025">Olariu (<a href="#/bibliografie" role="doc-biblioref" onclick="">2025</a>)</span>.</p>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-bertsekas2008" class="csl-entry" role="listitem">
+Bertsekas, Dimitri P., and John N. Tsitsiklis. 2008. <em>Introduction to Probability</em>. 2nd ed. Athena Scientific.
+</div>
+<div id="ref-blitzstein2019" class="csl-entry" role="listitem">
+Blitzstein, Joseph K., and Jessica Hwang. 2019. <em>Introduction to Probability</em>. 2nd ed. CRC Press.
+</div>
+<div id="ref-olariu2025" class="csl-entry" role="listitem">
+Olariu, Emanuel F. 2025. <em>Probabilități Și Statistică – Note de Curs Și Laborator</em>. Facultatea de Informatică, Universitatea „Alexandru Ioan Cuza" din Iași.
+</div>
+<div id="ref-ross2014" class="csl-entry" role="listitem">
+Ross, Sheldon M. 2014. <em>Introduction to Probability and Statistics for Engineers and Scientists</em>. 5th ed. Elsevier Academic Press.
+</div>
+<div id="ref-dobrow2021" class="csl-entry" role="listitem">
+Wagaman, Amy S., and Robert P. Dobrow. 2021. <em>Probability with Applications and <span>R</span></em>. 2nd ed. Wiley.
+</div>
+</div>
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>Probabilități și Statistică · Cursul 4 — Variabile aleatoare continue</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true,"numbers":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'fast',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1280,
+
+        height: 760,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 5.0e-2,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copiat!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copiat!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
