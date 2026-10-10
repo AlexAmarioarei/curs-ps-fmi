@@ -1,1 +1,1 @@
-Sitemap: https://alexamarioarei.quarto.pub/curs-ps-fmi/sitemap.xml
+Sitemap: https://AlexAmarioarei.github.io/curs-ps-fmi/sitemap.xml

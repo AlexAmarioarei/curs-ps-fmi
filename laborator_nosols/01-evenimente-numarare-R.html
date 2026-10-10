@@ -1,0 +1,1990 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Seminarul 1. Evenimente, probabilități și numărare. Primii pași în R – Probabilități și Statistică 2026-2027</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/ps_sticker.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-a48f3a5c7f410fc94a8fd1d60fc997bd.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-6a2deaacd7d2f20a9b75dfb62d024a56.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Niciun rezultat",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Trimite",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<!-- Fonturi: Fira Sans (titluri, casete), Fira Mono (cod); textul folosește Palatino / TeX Gyre Pagella -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500&amp;family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+
+<script>
+window.MathJax = { tex: { macros: {
+  PP: "\\mathbb{P}",
+  E: "\\mathbb{E}",
+  Var: "\\operatorname{Var}",
+  Cov: "\\operatorname{Cov}",
+  Corr: "\\operatorname{Corr}",
+  MSE: "\\operatorname{EPM}",
+  Bias: "\\operatorname{Dep}",
+  sgn: "\\operatorname{sgn}",
+  argmax: "\\operatorname*{arg\\,max}",
+  argmin: "\\operatorname*{arg\\,min}",
+  R: "\\mathbb{R}",
+  N: "\\mathbb{N}",
+  Z: "\\mathbb{Z}",
+  Q: "\\mathbb{Q}",
+  F: "\\mathcal{F}",
+  A: "\\mathcal{A}",
+  B: "\\mathcal{B}",
+  Ind: "\\mathbf{1}",
+  dd: "\\,\\mathrm{d}",
+  eqd: "\\overset{d}{=}",
+  iid: "\\text{i.i.d.}",
+  asto: "\\xrightarrow{\\text{a.s.}}",
+  pto: "\\xrightarrow{\\;\\PP\\;}",
+  dto: "\\xrightarrow{\\;d\\;}",
+  Lto: "\\xrightarrow{L^2}",
+  indep: "\\perp\\!\\!\\!\\perp",
+  Bern: "\\mathrm{Bernoulli}",
+  Bin: "\\mathrm{Bin}",
+  HGeom: "\\mathrm{HGeom}",
+  Geom: "\\mathrm{Geom}",
+  NBin: "\\mathrm{NBin}",
+  Pois: "\\mathrm{Pois}",
+  Unif: "\\mathcal{U}",
+  Exp: "\\mathrm{Exp}",
+  Norm: "\\mathcal{N}",
+  GammaD: "\\mathrm{Gamma}",
+  BetaD: "\\mathrm{Beta}",
+  Cauchy: "\\mathrm{Cauchy}",
+  Multin: "\\mathrm{Mult}",
+  chisq: ["\\chi^2_{#1}", 1],
+  Stud: ["t_{#1}", 1],
+  Fish: ["F_{#1,#2}", 2],
+  bx: "\\mathbf{x}",
+  bX: "\\mathbf{X}",
+  bbeta: "\\boldsymbol{\\beta}",
+  hth: "\\hat{\\theta}",
+  Xbar: "\\bar{X}_n",
+  xbar: "\\bar{x}_n"
+},
+  inlineMath: [['$', '$'], ['\\(', '\\)']], processEscapes: true, tags: 'none' },
+  chtml: { scale: 1.0 } };
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../css/site_style.css">
+<meta property="og:title" content="Seminarul 1. Evenimente, probabilități și numărare. Primii pași în R – Probabilități și Statistică 2026-2027">
+<meta property="og:description" content="Fișă de lucru (fără rezolvări)">
+<meta property="og:image" content="https://AlexAmarioarei.github.io/curs-ps-fmi/laborator_nosols/01-evenimente-numarare-R_files/figure-html/unnamed-chunk-17-1.png">
+<meta property="og:site_name" content="Probabilități și Statistică 2026-2027">
+<meta property="og:image:height" content="331">
+<meta property="og:image:width" content="864">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/ps_sticker.png" alt="" class="navbar-logo light-content">
+    <img src="../images/ps_sticker.png" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Probabilități și Statistică 2026-2027</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> <i class="bi bi-info-circle" role="img">
+</i> 
+<span class="menu-text">Informații generale</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-note-de-curs" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-journal-text" role="img">
+</i> 
+ <span class="menu-text">Note de curs</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-note-de-curs">    
+        <li>
+    <a class="dropdown-item" href="../curs/index.html"><i class="bi bi-grid-3x3-gap" role="img">
+</i> 
+ <span class="dropdown-text">Toate cursurile (note și slide-uri)</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../curs/01-camp-probabilitate.html">
+ <span class="dropdown-text">Cursul 1 — Câmp de probabilitate</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-note-de-laborator" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-laptop" role="img">
+</i> 
+ <span class="menu-text">Note de laborator</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-note-de-laborator">    
+        <li>
+    <a class="dropdown-item" href="../laborator/index.html"><i class="bi bi-grid-3x3-gap" role="img">
+</i> 
+ <span class="dropdown-text">Toate seminarele și laboratoarele (fișe de lucru, rezolvări, slide-uri)</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../laborator_nosols/01-evenimente-numarare-R.html">
+ <span class="dropdown-text">Seminarul 1 — Evenimente, probabilități și numărare. Primii pași în R (fișă de lucru)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../proiect/proiect.html"> <i class="bi bi-gear" role="img">
+</i> 
+<span class="menu-text">Proiect de laborator</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../Introducere_R/index.html"> <i class="bi bi-book" role="img">
+</i> 
+<span class="menu-text">Introducere în R</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Introducere_Tidyverse/index.html"> <i class="bi bi-book" role="img">
+</i> 
+<span class="menu-text">Introducere în Tidyverse</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../contact/contact.html"> <i class="bi bi-pin-map" role="img">
+</i> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../laborator_nosols/01-evenimente-numarare-R.html">Fișe de lucru</a></li><li class="breadcrumb-item"><a href="../laborator_nosols/01-evenimente-numarare-R.html">1. Evenimente, probabilități și numărare. Primii pași în R</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../laborator/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Note de seminar și laborator</strong></span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Fișe de lucru</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../laborator_nosols/01-evenimente-numarare-R.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">1. Evenimente, probabilități și numărare. Primii pași în R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Pe această pagină</h2>
+   
+  <ul>
+  <li><a href="#sec-s01-breviar" id="toc-sec-s01-breviar" class="nav-link active" data-scroll-target="#sec-s01-breviar"><span class="header-section-number">1</span> Breviar</a></li>
+  <li><a href="#sec-s01-r" id="toc-sec-s01-r" class="nav-link" data-scroll-target="#sec-s01-r"><span class="header-section-number">2</span> Primii pași în R</a>
+  <ul class="collapse">
+  <li><a href="#sec-s01-r-consola" id="toc-sec-s01-r-consola" class="nav-link" data-scroll-target="#sec-s01-r-consola"><span class="header-section-number">2.1</span> Consola și scriptul</a></li>
+  <li><a href="#sec-s01-r-obiecte" id="toc-sec-s01-r-obiecte" class="nav-link" data-scroll-target="#sec-s01-r-obiecte"><span class="header-section-number">2.2</span> R ca un calculator. Obiecte</a></li>
+  <li><a href="#sec-s01-r-vectori" id="toc-sec-s01-r-vectori" class="nav-link" data-scroll-target="#sec-s01-r-vectori"><span class="header-section-number">2.3</span> Vectori</a></li>
+  <li><a href="#sec-s01-r-logic" id="toc-sec-s01-r-logic" class="nav-link" data-scroll-target="#sec-s01-r-logic"><span class="header-section-number">2.4</span> Vectori logici: numărare și proporții</a></li>
+  <li><a href="#sec-s01-r-functii" id="toc-sec-s01-r-functii" class="nav-link" data-scroll-target="#sec-s01-r-functii"><span class="header-section-number">2.5</span> Funcții utile pentru numărare</a></li>
+  <li><a href="#sec-s01-r-multimi" id="toc-sec-s01-r-multimi" class="nav-link" data-scroll-target="#sec-s01-r-multimi"><span class="header-section-number">2.6</span> Mulțimi și enumerarea spațiului stărilor</a></li>
+  <li><a href="#sec-s01-r-sample" id="toc-sec-s01-r-sample" class="nav-link" data-scroll-target="#sec-s01-r-sample"><span class="header-section-number">2.7</span> Experimente aleatoare: <code>sample</code> și <code>set.seed</code></a></li>
+  <li><a href="#sec-s01-r-repetare" id="toc-sec-s01-r-repetare" class="nav-link" data-scroll-target="#sec-s01-r-repetare"><span class="header-section-number">2.8</span> Repetarea unui experiment și funcții proprii</a></li>
+  <li><a href="#sec-s01-r-grafice" id="toc-sec-s01-r-grafice" class="nav-link" data-scroll-target="#sec-s01-r-grafice"><span class="header-section-number">2.9</span> Grafice simple</a></li>
+  </ul></li>
+  <li><a href="#sec-s01-evenimente" id="toc-sec-s01-evenimente" class="nav-link" data-scroll-target="#sec-s01-evenimente"><span class="header-section-number">3</span> Evenimente și operații cu evenimente</a></li>
+  <li><a href="#sec-s01-reguli" id="toc-sec-s01-reguli" class="nav-link" data-scroll-target="#sec-s01-reguli"><span class="header-section-number">4</span> Reguli de calcul și formula lui Poincaré</a></li>
+  <li><a href="#sec-s01-numarare" id="toc-sec-s01-numarare" class="nav-link" data-scroll-target="#sec-s01-numarare"><span class="header-section-number">5</span> Modelul clasic și numărare</a></li>
+  <li><a href="#sec-s01-potriviri" id="toc-sec-s01-potriviri" class="nav-link" data-scroll-target="#sec-s01-potriviri"><span class="header-section-number">6</span> Problema potrivirilor prin simulare</a></li>
+  <li><a href="#sec-s01-suplimentare" id="toc-sec-s01-suplimentare" class="nav-link" data-scroll-target="#sec-s01-suplimentare"><span class="header-section-number">7</span> Exerciții suplimentare</a></li>
+  <li><a href="#sec-s01-tema" id="toc-sec-s01-tema" class="nav-link" data-scroll-target="#sec-s01-tema"><span class="header-section-number">8</span> Temă</a></li>
+  <li><a href="#bibliografie" id="toc-bibliografie" class="nav-link" data-scroll-target="#bibliografie">Bibliografie</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../laborator_nosols/01-evenimente-numarare-R.html">Fișe de lucru</a></li><li class="breadcrumb-item"><a href="../laborator_nosols/01-evenimente-numarare-R.html">1. Evenimente, probabilități și numărare. Primii pași în R</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Seminarul 1. Evenimente, probabilități și numărare. Primii pași în R</h1>
+<p class="subtitle lead">Fișă de lucru (fără rezolvări)</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<details class="slides-embed" open="">
+<summary><i class="bi bi-easel2"></i> Slide-urile seminarului și laboratorului 1</summary>
+<div class="slides-embed-bar">
+  <a class="btn btn-sm btn-primary" href="../slides/laborator_nosols/seminar01.html" target="_blank" rel="noopener"><i class="bi bi-arrows-fullscreen"></i> Deschide slide-urile pe tot ecranul</a>
+  <span class="slides-embed-hint">În prezentare: <kbd>←</kbd> <kbd>→</kbd> navigare, <kbd>F</kbd> ecran complet, <kbd>M</kbd> meniu, <kbd>O</kbd> privire de ansamblu.</span>
+</div>
+<div class="slides-embed-frame">
+  <iframe src="../slides/laborator_nosols/seminar01.html" loading="lazy" allowfullscreen="" title="Slide-urile seminarului și laboratorului 1"></iframe>
+</div>
+</details>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Aceasta este <strong>fișa de lucru</strong>: enunțurile, scheletele de cod R și răspunsurile finale pentru exercițiile marcate „Dacă timpul permite” și „Pentru acasă”. Rezolvările complete vor fi publicate ulterior.</p>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Planul seminarului și laboratorului
+</div>
+<div class="curs-box-body">
+<p>Prima ședință are două scopuri. Pe de o parte, exersăm limbajul din <a href="..\curs\01-camp-probabilitate.html" class="curs-ref">Cursul 1</a>: descriem un experiment prin spațiul stărilor, scriem evenimentele cu ajutorul operațiilor cu mulțimi și calculăm probabilități cu regulile de calcul, iar în modelul clasic prin numărare. Pe de altă parte, facem cunoștință cu limbajul R, care ne va însoți tot semestrul: fiecare problemă este rezolvată întâi „cu creionul” și apoi pe calculator, prin enumerarea spațiului stărilor sau prin simulare. Nu presupunem cunoștințe anterioare de R: secțiunea „Primii pași în R” pornește de la zero și introduce exact instrumentele folosite apoi în exerciții. Codul din note poate fi copiat și rulat ca atare; vă recomandăm totuși să îl tastați și să schimbați valorile, pentru a vedea cum se modifică rezultatele.</p>
+<p><strong>Obiective.</strong> La sfârșitul ședinței studentul trebuie să poată:</p>
+<ol type="1">
+<li>exprima evenimente compuse („exact unul”, „cel puțin două”, „niciunul”) prin reuniuni, intersecții și complementare și aplica relațiile lui De Morgan;</li>
+<li>folosi regulile de calcul: evenimentul contrar, reuniunea a două evenimente, formula lui Poincaré pentru trei evenimente, marginile date de inegalitățile lui Boole și Bonferroni;</li>
+<li>calcula probabilități în modelul clasic prin numărare (regula produsului, extrageri cu și fără revenire, combinări, anagrame);</li>
+<li>lucra în R cu vectori, vectori logici și funcții, enumera un spațiu al stărilor cu <code>expand.grid</code> și calcula probabilități cu <code>mean(conditie)</code>;</li>
+<li>simula un experiment aleator cu <code>sample</code> și <code>replicate</code> și compara frecvența relativă obținută cu probabilitatea teoretică;</li>
+<li>rezolva, exact și prin simulare, problema zilelor de naștere și problema potrivirilor.</li>
+</ol>
+<p><strong>Structura.</strong> Breviar; primii pași în R; evenimente și operații cu evenimente; reguli de calcul și formula lui Poincaré; modelul clasic și numărare; problema potrivirilor prin simulare; exerciții suplimentare; temă. Fiecare exercițiu are o rezolvare matematică (eticheta „Seminar”) și o rezolvare în R (eticheta „Laborator”), publicate ulterior, iar exercițiile sunt legate între ele: modelele și funcțiile R scrise la un exercițiu sunt refolosite la următoarele. Lecturi recomandate: <span class="citation" data-cites="blitzstein2019">(<a href="#ref-blitzstein2019" role="doc-biblioref">Blitzstein and Hwang 2019</a>, cap. 1)</span>, <span class="citation" data-cites="bertsekas2008">(<a href="#ref-bertsekas2008" role="doc-biblioref">Bertsekas and Tsitsiklis 2008</a>, cap. 1)</span>, iar pentru simulări în R <span class="citation" data-cites="dobrow2021">(<a href="#ref-dobrow2021" role="doc-biblioref">Wagaman and Dobrow 2021</a>, cap. 1)</span>.</p>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Planul ședinței
+</div>
+<div class="curs-box-body">
+<p><strong>De rezolvat la seminar</strong> (în această ordine):</p>
+<ul>
+<li>Secțiunea <a href="#sec-s01-r" class="curs-ref">2</a> — primii pași în R: vectori, vectori logici, <code>expand.grid</code>, <code>sample</code>, <code>replicate</code>, funcții proprii (exemplele rezolvate se parcurg la calculator);</li>
+<li>Exercițiul <a href="#box-exr-s01-servere" class="curs-ref">1</a> — evenimente compuse și relațiile lui De Morgan; spațiul stărilor cu <code>expand.grid</code>;</li>
+<li>Exercițiul <a href="#box-exr-s01-divizibilitate" class="curs-ref">4</a> (a)–(c), (e) — formula lui Poincaré; evenimentele ca vectori logici cu <code>%%</code>;</li>
+<li>Exercițiul <a href="#box-exr-s01-extrageri" class="curs-ref">6</a> (a)–(c), (e) — extrageri cu și fără revenire; funcțiile <code>p_cu</code> și <code>p_fara</code>;</li>
+<li>Exercițiul <a href="#box-exr-s01-zile" class="curs-ref">9</a> (a)–(c) — problema zilelor de naștere, exact (<code>p_zile</code>) și prin simulare;</li>
+<li>Exercițiul <a href="#box-exr-s01-potriviri" class="curs-ref">10</a> (a), (b), (d) — problema potrivirilor prin simulare; funcțiile <code>potriviri</code> și <code>exact_k</code>.</li>
+</ul>
+<p><strong>Dacă timpul permite:</strong></p>
+<ul>
+<li>Exercițiul <a href="#box-exr-s01-limbaje" class="curs-ref">3</a> — reuniunea a două evenimente și marginile probabilității intersecției;</li>
+<li>Exercițiul <a href="#box-exr-s01-teste" class="curs-ref">5</a> — inegalitățile lui Boole și Bonferroni;</li>
+<li>Exercițiul <a href="#box-exr-s01-parole" class="curs-ref">7</a> — parole, coduri PIN și anagrame.</li>
+</ul>
+<p><strong>Pentru acasă:</strong></p>
+<ul>
+<li>Exercițiile <a href="#box-exr-s01-doua-zaruri" class="curs-ref">2</a> (două zaruri pe un spațiu enumerat) și <a href="#box-exr-s01-carti" class="curs-ref">8</a> (o mână de cinci cărți);</li>
+<li>exercițiile suplimentare <a href="#box-exr-s01-biti" class="curs-ref">11</a>, <a href="#box-exr-s01-joc" class="curs-ref">12</a>, <a href="#box-exr-s01-vagoane" class="curs-ref">13</a> și <a href="#box-exr-s01-puncte-fixe" class="curs-ref">14</a> (Secțiunea <a href="#sec-s01-suplimentare" class="curs-ref">7</a>);</li>
+<li>enunțurile din Secțiunea <a href="#sec-s01-tema" class="curs-ref">8</a>.</li>
+</ul>
+<p>Rezolvările complete vor fi publicate ulterior; scheletele de cod R se completează în locurile marcate cu <code>___</code>. Exercițiile marcate „Dacă timpul permite” și „Pentru acasă” au, după enunț, răspunsurile finale, pentru verificare.</p>
+</div>
+</div>
+<section id="sec-s01-breviar" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Breviar</h1>
+<p>Toate noțiunile și rezultatele de care avem nevoie au fost introduse în <a href="..\curs\01-camp-probabilitate.html" class="curs-ref">Cursul 1</a>; le reamintim pe scurt, cu trimitere la locul în care se găsesc enunțurile complete și demonstrațiile.</p>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Rezultate din Cursul 1 folosite azi
+</div>
+<div class="curs-box-body">
+<p><strong>Evenimente.</strong> Un eveniment este o submulțime <span class="math inline">\(A\subseteq\Omega\)</span> a spațiului stărilor (Definiția <a href="..\curs\01-camp-probabilitate.html#box-def-k01-eveniment" class="curs-ref">3 din Cursul 1</a>). Dicționarul operațiilor: <span class="math inline">\(A^c\)</span> = „nu se realizează <span class="math inline">\(A\)</span>”; <span class="math inline">\(A\cup B\)</span> = „<span class="math inline">\(A\)</span> sau <span class="math inline">\(B\)</span>” (cel puțin unul); <span class="math inline">\(A\cap B\)</span> = „<span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span>”; <span class="math inline">\(A\setminus B=A\cap B^c\)</span> = „<span class="math inline">\(A\)</span>, dar nu <span class="math inline">\(B\)</span>”; <span class="math inline">\(A\,\triangle\,B\)</span> = „exact unul dintre <span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span>”. <span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span> sunt incompatibile dacă <span class="math inline">\(A\cap B=\emptyset\)</span> (Definiția <a href="..\curs\01-camp-probabilitate.html#box-def-k01-incompatibile" class="curs-ref">5 din Cursul 1</a>).</p>
+<p><strong>Relațiile lui De Morgan</strong> (Propoziția <a href="..\curs\01-camp-probabilitate.html#box-prop-k01-demorgan" class="curs-ref">4 din Cursul 1</a>): <span class="math inline">\((A\cup B)^c=A^c\cap B^c\)</span> și <span class="math inline">\((A\cap B)^c=A^c\cup B^c\)</span>; la fel pentru oricâte evenimente.</p>
+<p><strong>Reguli de calcul</strong> (Propoziția <a href="..\curs\01-camp-probabilitate.html#box-prop-k01-proprietati" class="curs-ref">14 din Cursul 1</a>): <span class="math inline">\(\PP(A^c)=1-\PP(A)\)</span>; dacă <span class="math inline">\(A\cap B=\emptyset\)</span>, atunci <span class="math inline">\(\PP(A\cup B)=\PP(A)+\PP(B)\)</span>; dacă <span class="math inline">\(A\subseteq B\)</span>, atunci <span class="math inline">\(\PP(A)\le\PP(B)\)</span>; <span class="math inline">\(\PP(A\setminus B)=\PP(A)-\PP(A\cap B)\)</span>; <span class="math inline">\(\PP(A\cup B)=\PP(A)+\PP(B)-\PP(A\cap B)\)</span>.</p>
+<p><strong>Formula lui Poincaré</strong> (Teorema <a href="..\curs\01-camp-probabilitate.html#box-thm-k01-poincare" class="curs-ref">15 din Cursul 1</a>), pentru trei evenimente: <span class="math display">\[
+\PP(A\cup B\cup C)=\PP(A)+\PP(B)+\PP(C)-\PP(A\cap B)-\PP(A\cap C)-\PP(B\cap C)+\PP(A\cap B\cap C).
+\]</span></p>
+<p><strong>Margini</strong> (Propozițiile <a href="..\curs\01-camp-probabilitate.html#box-prop-k01-bonferroni" class="curs-ref">16 din Cursul 1</a> și <a href="..\curs\01-camp-probabilitate.html#box-prop-k01-boole" class="curs-ref">17 din Cursul 1</a>): <span class="math inline">\(\PP\big(\bigcup_{i=1}^nA_i\big)\le\sum_{i=1}^n\PP(A_i)\)</span> și <span class="math inline">\(\PP\big(\bigcap_{i=1}^nA_i\big)\ge\sum_{i=1}^n\PP(A_i)-(n-1)\)</span>.</p>
+<p><strong>Modelul clasic</strong> (Definiția <a href="..\curs\01-camp-probabilitate.html#box-def-k01-laplace" class="curs-ref">19 din Cursul 1</a>): dacă <span class="math inline">\(\Omega\)</span> este finit și rezultatele sunt egal probabile, atunci <span class="math inline">\(\PP(A)=|A|/|\Omega|\)</span> (cazuri favorabile supra cazuri posibile).</p>
+<p><strong>Numărare.</strong> Regula produsului (Propoziția <a href="..\curs\01-camp-probabilitate.html#box-prop-k01-regula-produsului" class="curs-ref">21 din Cursul 1</a>); extrageri de <span class="math inline">\(k\)</span> elemente din <span class="math inline">\(n\)</span>: cu revenire și cu ordine <span class="math inline">\(n^k\)</span> (Propoziția <a href="..\curs\01-camp-probabilitate.html#box-prop-k01-cu-revenire" class="curs-ref">22 din Cursul 1</a>); fără revenire și cu ordine <span class="math inline">\(A_n^k=n(n-1)\cdots(n-k+1)\)</span>, în particular <span class="math inline">\(n!\)</span> permutări (Propoziția <a href="..\curs\01-camp-probabilitate.html#box-prop-k01-fara-revenire" class="curs-ref">23 din Cursul 1</a>); fără revenire și fără ordine <span class="math inline">\(\binom nk=\frac{n!}{k!\,(n-k)!}\)</span> (Propoziția <a href="..\curs\01-camp-probabilitate.html#box-prop-k01-combinari" class="curs-ref">24 din Cursul 1</a>); șiruri cu <span class="math inline">\(n_1,\dots,n_k\)</span> elemente identice: <span class="math inline">\(\frac{n!}{n_1!\cdots n_k!}\)</span> (Propoziția <a href="..\curs\01-camp-probabilitate.html#box-prop-k01-multinomial" class="curs-ref">25 din Cursul 1</a>).</p>
+<p><strong>Două probleme clasice.</strong> Zile de naștere (Exemplul <a href="..\curs\01-camp-probabilitate.html#box-ex-k01-zile-nastere" class="curs-ref">16 din Cursul 1</a>): <span class="math inline">\(\PP(\text{cel puțin o coincidență})=1-\frac{365\cdot364\cdots(365-n+1)}{365^n}\)</span>. Potriviri (Exemplul <a href="..\curs\01-camp-probabilitate.html#box-ex-k01-potriviri" class="curs-ref">22 din Cursul 1</a>): <span class="math inline">\(p_n=\sum_{k=1}^n\frac{(-1)^{k+1}}{k!}\to1-\frac1e\approx0.632\)</span>.</p>
+<p><strong>Interpretarea frecvenționistă</strong> (Secțiunea <a href="..\curs\01-camp-probabilitate.html#sec-k01-probabilitate" class="curs-ref">4 din Cursul 1</a>): dacă repetăm experimentul de <span class="math inline">\(N\)</span> ori, iar <span class="math inline">\(A\)</span> se realizează de <span class="math inline">\(N(A)\)</span> ori, atunci frecvența relativă <span class="math inline">\(N(A)/N\)</span> se apropie de <span class="math inline">\(\PP(A)\)</span> când <span class="math inline">\(N\)</span> este mare. Pe această idee se bazează orice simulare.</p>
+</div>
+</div>
+</section>
+<section id="sec-s01-r" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Primii pași în R</h1>
+<p>R este un limbaj de programare și un mediu de lucru gratuit, dedicat calculului statistic și reprezentărilor grafice. Îl vom folosi în fiecare săptămână pentru două lucruri: să <em>calculăm exact</em> (formule, enumerarea tuturor rezultatelor unui experiment) și să <em>simulăm</em> (repetăm experimentul pe calculator de multe ori și numărăm de câte ori s-a realizat evenimentul care ne interesează). Secțiunea aceasta prezintă pe scurt tot ce ne trebuie astăzi; tastați comenzile pe măsură ce le citiți și comparați rezultatele. Mai multe detalii se găsesc în materialul „Introducere în R” de pe pagina cursului, iar pentru o prezentare pe îndelete recomandăm <span class="citation" data-cites="davies2016">(<a href="#ref-davies2016" role="doc-biblioref">Davies 2016</a>)</span> și <span class="citation" data-cites="verzani2014">(<a href="#ref-verzani2014" role="doc-biblioref">Verzani 2014</a>)</span>.</p>
+<section id="sec-s01-r-consola" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="sec-s01-r-consola"><span class="header-section-number">2.1</span> Consola și scriptul</h2>
+<p>Vom lucra în RStudio, un mediu de dezvoltare pentru R. Fereastra RStudio are patru panouri: editorul de scripturi (stânga sus), consola (stânga jos), lista obiectelor create (<em>Environment</em>, dreapta sus) și panoul cu fișiere, grafice și pagini de ajutor (dreapta jos).</p>
+<ul>
+<li>În <strong>consolă</strong> scriem o comandă după simbolul <code>&gt;</code> și apăsăm <code>Enter</code>; R o execută și afișează rezultatul. Consola este potrivită pentru încercări rapide.</li>
+<li>Într-un <strong>script</strong> (un fișier text cu extensia <code>.R</code>, creat din meniul <em>File → New File → R Script</em>) păstrăm comenzile pe care vrem să le refolosim. Linia pe care se află cursorul, sau liniile selectate, se trimit în consolă cu <code>Ctrl + Enter</code> (<code>Cmd + Enter</code> pe macOS). Lucrați întotdeauna într-un script: la sfârșitul ședinței aveți rezolvările salvate.</li>
+<li>Tot ce urmează pe o linie după simbolul <code>#</code> este un <strong>comentariu</strong>, ignorat de R.</li>
+<li>Pagina de ajutor a unei funcții se deschide cu <code>?nume</code>, de exemplu <code>?sample</code>.</li>
+</ul>
+<p>În aceste note codul apare în casete „Cod R”, iar rezultatele afișate de R sunt precedate de <code>#&gt;</code>.</p>
+</section>
+<section id="sec-s01-r-obiecte" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="sec-s01-r-obiecte"><span class="header-section-number">2.2</span> R ca un calculator. Obiecte</h2>
+<p>Cel mai simplu mod de a folosi R este ca un calculator de buzunar.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">4</span>            <span class="co"># operațiile au prioritatea obișnuită</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">^</span><span class="dv">10</span>                 <span class="co"># ridicare la putere</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dv">17</span> <span class="sc">%/%</span> <span class="dv">5</span>             <span class="co"># câtul împărțirii întregi</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dv">17</span> <span class="sc">%%</span> <span class="dv">5</span>              <span class="co"># restul împărțirii întregi</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">2</span>) <span class="sc">*</span> <span class="fu">exp</span>(<span class="dv">1</span>)     <span class="co"># funcții matematice: sqrt, exp, log, abs, ...</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">23</span>              <span class="co"># atribuire: obiectul n primește valoarea 23</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>zile <span class="ot">&lt;-</span> <span class="dv">365</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>n <span class="sc">/</span> zile             <span class="co"># obiectele se folosesc în calcule</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>nume <span class="ot">&lt;-</span> <span class="st">"Ana"</span>        <span class="co"># un șir de caractere</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>adevarat <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="sc">&gt;</span> <span class="dv">3</span>    <span class="co"># o valoare logică: TRUE sau FALSE</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>adevarat</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 14
+#&gt; [1] 1024
+#&gt; [1] 3
+#&gt; [1] 2
+#&gt; [1] 3.844
+#&gt; [1] 0.06301
+#&gt; [1] TRUE</code></pre>
+</div>
+</div>
+<p>Numărul <code>[1]</code> din fața fiecărui rezultat arată poziția primei valori afișate pe linia respectivă (aici fiecare rezultat este un vector cu un singur element). Un rezultat se păstrează într-un <strong>obiect</strong> cu operatorul de atribuire <code>&lt;-</code> (în RStudio: <code>Alt + -</code>). Numele obiectelor pot conține litere, cifre, punct și <code>_</code>, nu încep cu o cifră și fac diferența între literele mari și cele mici (<code>n</code> și <code>N</code> sunt obiecte diferite). O atribuire nu afișează nimic; pentru a vedea valoarea unui obiect îi scriem numele.</p>
+</section>
+<section id="sec-s01-r-vectori" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="sec-s01-r-vectori"><span class="header-section-number">2.3</span> Vectori</h2>
+<p>Obiectul de bază din R este <strong>vectorul</strong>: un șir de valori de același tip (numere, șiruri de caractere sau valori logice). Chiar și un număr este un vector de lungime <span class="math inline">\(1\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">23</span>, <span class="dv">42</span>)       <span class="co"># c() combină valorile într-un vector</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>                                <span class="co"># numerele întregi de la 1 la 6</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.25</span>)               <span class="co"># de la 0 la 1, cu pasul 0.25</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"H"</span>, <span class="st">"T"</span>), <span class="at">times =</span> <span class="dv">3</span>)        <span class="co"># repetă vectorul de 3 ori</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"R"</span>, <span class="st">"A"</span>), <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>))  <span class="co"># de 2 ori "R", apoi de 3 ori "A"</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 1 2 3 4 5 6
+#&gt; [1] 0.00 0.25 0.50 0.75 1.00
+#&gt; [1] "H" "T" "H" "T" "H" "T"
+#&gt; [1] "R" "R" "A" "A" "A"</code></pre>
+</div>
+</div>
+<p>Operațiile aritmetice și funcțiile matematice se aplică <strong>element cu element</strong> (spunem că sunt <em>vectorizate</em>), deci de cele mai multe ori nu avem nevoie de bucle. Elementele unui vector se extrag cu paranteze drepte; <strong>indicii încep de la 1</strong>, nu de la 0 ca în C sau Python.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> <span class="dv">1</span>              <span class="co"># se adună 1 la fiecare element</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">/</span> <span class="fu">sum</span>(x)         <span class="co"># fiecare element împărțit la suma tuturor</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">6</span> <span class="sc">+</span> <span class="dv">6</span><span class="sc">:</span><span class="dv">1</span>          <span class="co"># adunare element cu element</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>]               <span class="co"># al doilea element</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>x[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>)]         <span class="co"># primul și al treilea</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>x[<span class="sc">-</span><span class="dv">1</span>]              <span class="co"># toate elementele, fără primul</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>x[x <span class="sc">&gt;</span> <span class="dv">15</span>]          <span class="co"># elementele mai mari decât 15</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)          <span class="co"># numărul de elemente</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1]  5  9 16 17 24 43
+#&gt; [1] 0.03704 0.07407 0.13889 0.14815 0.21296 0.38889
+#&gt; [1] 7 7 7 7 7 7
+#&gt; [1] 8
+#&gt; [1]  4 15
+#&gt; [1]  8 15 16 23 42
+#&gt; [1] 16 23 42
+#&gt; [1] 6</code></pre>
+</div>
+</div>
+</section>
+<section id="sec-s01-r-logic" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="sec-s01-r-logic"><span class="header-section-number">2.4</span> Vectori logici: numărare și proporții</h2>
+<p>O comparație (<code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>) aplicată unui vector produce un vector de valori logice <code>TRUE</code>/<code>FALSE</code>, câte una pentru fiecare element. Atenție: testul de egalitate se scrie <code>==</code>; un singur <code>=</code> înseamnă atribuire. În calcule, <code>TRUE</code> valorează <span class="math inline">\(1\)</span> și <code>FALSE</code> valorează <span class="math inline">\(0\)</span>, deci suma unui vector logic <em>numără</em> valorile <code>TRUE</code>, iar media lui este <em>proporția</em> lor.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>zar <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">4</span>)   <span class="co"># rezultatele a opt aruncări ale unui zar</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>zar <span class="sc">==</span> <span class="dv">6</span>           <span class="co"># pentru fiecare aruncare: a ieșit 6?</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(zar <span class="sc">==</span> <span class="dv">6</span>)      <span class="co"># de câte ori a ieșit 6</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(zar <span class="sc">==</span> <span class="dv">6</span>)     <span class="co"># proporția aruncărilor cu 6, adică 3/8</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] FALSE  TRUE FALSE  TRUE FALSE FALSE  TRUE FALSE
+#&gt; [1] 3
+#&gt; [1] 0.375</code></pre>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Idiomul de bază al laboratorului
+</div>
+<div class="curs-box-body">
+<p>Dacă <code>ev</code> este un vector logic care arată, pentru fiecare rezultat (enumerat sau simulat), dacă evenimentul s-a realizat, atunci <code>sum(ev)</code> este <strong>numărul cazurilor favorabile</strong>, iar <code>mean(ev)</code> este <strong>proporția</strong> lor, adică</p>
+<ul>
+<li>probabilitatea evenimentului, atunci când componentele lui <code>ev</code> corespund tuturor rezultatelor egal probabile ale experimentului (modelul clasic);</li>
+<li>frecvența relativă a evenimentului, atunci când componentele lui <code>ev</code> corespund unor repetări simulate ale experimentului.</li>
+</ul>
+</div>
+</div>
+<p>Vectorii logici se combină cu operatorii <code>&amp;</code> (și), <code>|</code> (sau) și <code>!</code> (negație), care corespund exact operațiilor cu evenimente (<a href="#tbl-s01-operatori" class="quarto-xref">Tabelul&nbsp;1</a>).</p>
+<div id="tbl-s01-operatori" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-s01-operatori-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabelul&nbsp;1: Operațiile cu evenimente și operatorii logici din R (<code>A</code> și <code>B</code> sunt vectori logici de aceeași lungime).
+</figcaption>
+<div aria-describedby="tbl-s01-operatori-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 11%">
+<col style="width: 16%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Eveniment</th>
+<th style="text-align: center;"><span class="math inline">\(A\cap B\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(A\cup B\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(A^c\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(A\setminus B\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(A\,\triangle\,B\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">În cuvinte</td>
+<td style="text-align: center;"><span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(A\)</span> sau <span class="math inline">\(B\)</span></td>
+<td style="text-align: center;">nu <span class="math inline">\(A\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(A\)</span>, dar nu <span class="math inline">\(B\)</span></td>
+<td style="text-align: center;">exact unul</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">În R</td>
+<td style="text-align: center;"><code>A &amp; B</code></td>
+<td style="text-align: center;"><code>A | B</code></td>
+<td style="text-align: center;"><code>!A</code></td>
+<td style="text-align: center;"><code>A &amp; !B</code></td>
+<td style="text-align: center;"><code>xor(A, B)</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pare <span class="ot">&lt;-</span> zar <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>      <span class="co"># „număr par”</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>mari <span class="ot">&lt;-</span> zar <span class="sc">&gt;=</span> <span class="dv">5</span>           <span class="co"># „cel puțin 5”</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(pare <span class="sc">&amp;</span> mari)           <span class="co"># câte aruncări sunt pare ȘI cel puțin 5</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(pare <span class="sc">|</span> mari)          <span class="co"># proporția celor pare SAU cel puțin 5</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="sc">!</span>pare)                <span class="co"># proporția celor impare</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(zar <span class="sc">==</span> <span class="dv">6</span>)            <span class="co"># pozițiile pe care apare 6</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">any</span>(zar <span class="sc">==</span> <span class="dv">1</span>), <span class="fu">all</span>(zar <span class="sc">&lt;=</span> <span class="dv">5</span>))   <span class="co"># există un 1? sunt toate cel mult 5?</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 3
+#&gt; [1] 0.75
+#&gt; [1] 0.375
+#&gt; [1] 2 4 7
+#&gt; [1]  TRUE FALSE</code></pre>
+</div>
+</div>
+</section>
+<section id="sec-s01-r-functii" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="sec-s01-r-functii"><span class="header-section-number">2.5</span> Funcții utile pentru numărare</h2>
+<p>Pentru formulele de numărare din <a href="..\curs\01-camp-probabilitate.html" class="curs-ref">Cursul 1</a> avem la dispoziție funcțiile următoare.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>)             <span class="co"># suma 1 + 2 + ... + 100</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prod</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)              <span class="co"># produsul 1 * 2 * 3 * 4 * 5</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">factorial</span>(<span class="dv">5</span>)           <span class="co"># 5!, același rezultat</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">choose</span>(<span class="dv">5</span>, <span class="dv">2</span>)           <span class="co"># combinări de 5 luate câte 2</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cumsum</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)            <span class="co"># sume parțiale: 1, 1+2, 1+2+3, ...</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">prod</span>(<span class="dv">10</span><span class="sc">:</span><span class="dv">8</span>) <span class="sc">/</span> <span class="dv">10</span><span class="sc">^</span><span class="dv">3</span>      <span class="co"># (10 * 9 * 8) / 10^3</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 5050
+#&gt; [1] 120
+#&gt; [1] 120
+#&gt; [1] 10
+#&gt; [1]  1  3  6 10 15 21
+#&gt; [1] 0.72</code></pre>
+</div>
+</div>
+<p>Pentru vectori de observații (de exemplu rezultatele unei simulări) sunt utile <code>sort</code>, <code>unique</code> și mai ales <code>table</code>, care numără de câte ori apare fiecare valoare.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>litere <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"b"</span>, <span class="st">"a"</span>, <span class="st">"c"</span>, <span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"a"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(litere)                       <span class="co"># ordonare</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(litere)                     <span class="co"># valorile distincte</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(litere)                      <span class="co"># de câte ori apare fiecare valoare</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] "a" "a" "a" "b" "b" "c"
+#&gt; [1] "b" "a" "c"
+#&gt; litere
+#&gt; a b c 
+#&gt; 3 2 1</code></pre>
+</div>
+</div>
+</section>
+<section id="sec-s01-r-multimi" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="sec-s01-r-multimi"><span class="header-section-number">2.6</span> Mulțimi și enumerarea spațiului stărilor</h2>
+<p>Un eveniment poate fi reprezentat și ca mulțimea rezultatelor favorabile; R are funcții pentru operațiile cu mulțimi.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>Omega <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>             <span class="co"># aruncarea unui zar</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>)          <span class="co"># „număr par”</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)          <span class="co"># „cel puțin 4”</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">union</span>(A, B)              <span class="co"># reuniunea</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">intersect</span>(A, B)          <span class="co"># intersecția</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(A, B)            <span class="co"># diferența A \ B</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(Omega, A)        <span class="co"># complementara lui A</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>) <span class="sc">%in%</span> A           <span class="co"># aparține 3 lui A? dar 4?</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 2 4 6 5
+#&gt; [1] 4 6
+#&gt; [1] 2
+#&gt; [1] 1 3 5
+#&gt; [1] FALSE  TRUE</code></pre>
+</div>
+</div>
+<p>Pentru experimente cu mai multe etape (două zaruri, trei monede) avem nevoie de toate combinațiile de rezultate. Funcția <code>expand.grid</code> construiește un tabel (<em>data frame</em>) în care fiecare linie este un rezultat posibil al experimentului; o coloană a tabelului se extrage cu <code>$</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>zaruri <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">z1 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">z2 =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)   <span class="co"># toate perechile (z1, z2)</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(zaruri)                     <span class="co"># numărul de linii: 36 de rezultate</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(zaruri, <span class="dv">3</span>)                  <span class="co"># primele 3 linii</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>suma <span class="ot">&lt;-</span> zaruri<span class="sc">$</span>z1 <span class="sc">+</span> zaruri<span class="sc">$</span>z2    <span class="co"># suma, pentru fiecare linie</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(suma <span class="sc">==</span> <span class="dv">7</span>)                  <span class="co"># P(suma este 7) = 6/36</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 36
+#&gt;   z1 z2
+#&gt; 1  1  1
+#&gt; 2  2  1
+#&gt; 3  3  1
+#&gt; [1] 0.1667</code></pre>
+</div>
+</div>
+<div id="box-ex-s01-maxim" class="curs-box exemplu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exemplul 1</span> <span class="curs-box-name">(Cel mai mare dintre două zaruri)</span>
+</div>
+<div class="curs-box-body">
+<p>Aruncăm două zaruri echilibrate și notăm cu <span class="math inline">\(M\)</span> cel mai mare dintre cele două numere. Evenimentul <span class="math inline">\(\{M\le4\}\)</span> înseamnă că ambele zaruri arată cel mult <span class="math inline">\(4\)</span>, deci are <span class="math inline">\(4\cdot4=16\)</span> cazuri favorabile și <span class="math inline">\(\PP(M\le4)=16/36\approx0.4444\)</span>. Apoi <span class="math inline">\(\{M=4\}=\{M\le4\}\setminus\{M\le3\}\)</span>, deci <span class="math inline">\(\PP(M=4)=\frac{16}{36}-\frac{9}{36}=\frac7{36}\approx0.1944\)</span>. În R numărăm direct pe tabelul celor <span class="math inline">\(36\)</span> de rezultate:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">pmax</span>(zaruri<span class="sc">$</span>z1, zaruri<span class="sc">$</span>z2)     <span class="co"># maximul de pe fiecare linie</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">cel_mult_4 =</span> <span class="fu">mean</span>(M <span class="sc">&lt;=</span> <span class="dv">4</span>), <span class="at">egal_cu_4 =</span> <span class="fu">mean</span>(M <span class="sc">==</span> <span class="dv">4</span>))</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(M)                            <span class="co"># câte rezultate dau fiecare maxim</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; cel_mult_4  egal_cu_4 
+#&gt;     0.4444     0.1944 
+#&gt; M
+#&gt;  1  2  3  4  5  6 
+#&gt;  1  3  5  7  9 11</code></pre>
+</div>
+</div>
+<p>Valorile coincid cu cele calculate de mână, iar <code>table(M)</code> arată că <span class="math inline">\(M=m\)</span> are <span class="math inline">\(m^2-(m-1)^2=2m-1\)</span> cazuri favorabile: <span class="math inline">\(1,3,5,7,9,11\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="sec-s01-r-sample" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="sec-s01-r-sample"><span class="header-section-number">2.7</span> Experimente aleatoare: <code>sample</code> și <code>set.seed</code></h2>
+<p>Funcția <code>sample</code> extrage la întâmplare elemente dintr-un vector: este „urna” noastră.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2026</span>)                     <span class="co"># fixează „sămânța” generatorului</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1</span>)                     <span class="co"># o aruncare a unui zar</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)    <span class="co"># 10 aruncări (extrageri cu revenire)</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">3</span>)                    <span class="co"># 3 bile din 10, fără revenire</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">5</span>)                          <span class="co"># o permutare aleatoare a lui 1, ..., 5</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"H"</span>, <span class="st">"T"</span>), <span class="dv">8</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.8</span>, <span class="fl">0.2</span>))</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 5
+#&gt;  [1] 1 1 6 5 3 4 4 5 4 2
+#&gt; [1] 2 8 3
+#&gt; [1] 5 2 1 4 3
+#&gt; [1] "H" "H" "H" "H" "H" "H" "H" "T"</code></pre>
+</div>
+</div>
+<ul>
+<li><code>sample(x, size)</code> extrage <code>size</code> elemente din vectorul <code>x</code>, toate având aceeași șansă. Implicit extragerea este <strong>fără revenire</strong> (<code>replace = FALSE</code>); cu <code>replace = TRUE</code> este <strong>cu revenire</strong>.</li>
+<li><code>sample(n)</code>, cu un singur număr <code>n</code>, întoarce o permutare aleatoare a lui <code>1:n</code>, iar <code>sample(n, k)</code> este o prescurtare pentru <code>sample(1:n, k)</code>.</li>
+<li>Argumentul <code>prob</code> dă probabilitățile elementelor lui <code>x</code> atunci când ele nu sunt egal probabile (în ultimul exemplu, o monedă care arată <code>"H"</code> cu probabilitatea <span class="math inline">\(0.8\)</span>).</li>
+<li>Numerele produse de calculator sunt <em>pseudo-aleatoare</em>: <code>set.seed(numar)</code> fixează punctul de plecare al generatorului, astfel încât aceeași secvență de comenzi produce aceleași rezultate la fiecare rulare. Vom scrie <code>set.seed(...)</code> înaintea fiecărei simulări, pentru ca rezultatele să poată fi reproduse.</li>
+</ul>
+<div id="box-ex-s01-zar-frecvente" class="curs-box exemplu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exemplul 2</span> <span class="curs-box-name">(Un zar aruncat de zece mii de ori)</span>
+</div>
+<div class="curs-box-body">
+<p>Simulăm <span class="math inline">\(10^4\)</span> aruncări ale unui zar echilibrat și calculăm frecvențele relative ale celor șase fețe și a evenimentului „număr par”.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">6</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>aruncari <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="fl">1e4</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)   <span class="co"># 1e4 înseamnă 10^4</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>frecv <span class="ot">&lt;-</span> <span class="fu">table</span>(aruncari) <span class="sc">/</span> <span class="fu">length</span>(aruncari)    <span class="co"># frecvențe relative</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(frecv, <span class="dv">3</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(aruncari <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>)                       <span class="co"># frecvența lui „număr par”</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; aruncari
+#&gt;     1     2     3     4     5     6 
+#&gt; 0.161 0.174 0.159 0.170 0.170 0.166 
+#&gt; [1] 0.5108</code></pre>
+</div>
+</div>
+<p>Toate frecvențele relative sunt apropiate de <span class="math inline">\(1/6\approx0.167\)</span>, iar frecvența evenimentului „număr par” este apropiată de <span class="math inline">\(1/2\)</span>: este interpretarea frecvenționistă a probabilității din Secțiunea <a href="..\curs\01-camp-probabilitate.html#sec-k01-probabilitate" class="curs-ref">4 din Cursul 1</a>.</p>
+</div>
+</div>
+</section>
+<section id="sec-s01-r-repetare" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="sec-s01-r-repetare"><span class="header-section-number">2.8</span> Repetarea unui experiment și funcții proprii</h2>
+<p>În exemplul precedent am generat toate aruncările dintr-o singură comandă. Când experimentul este mai complicat, îl repetăm cu o buclă <code>for</code> sau, mai scurt, cu <code>replicate</code>. Estimăm astfel probabilitatea ca suma a două zaruri să fie <span class="math inline">\(7\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2026</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fl">1e4</span>                             <span class="co"># numărul de repetări</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>sume <span class="ot">&lt;-</span> <span class="fu">numeric</span>(B)                   <span class="co"># un vector cu B zerouri</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>B) {                     <span class="co"># varianta cu bucla for</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  sume[i] <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">2</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(sume <span class="sc">==</span> <span class="dv">7</span>)</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>sume <span class="ot">&lt;-</span> <span class="fu">replicate</span>(B, <span class="fu">sum</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">2</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)))  <span class="co"># cu replicate</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(sume <span class="sc">==</span> <span class="dv">7</span>)</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 0.1654
+#&gt; [1] 0.1656</code></pre>
+</div>
+</div>
+<p>Ambele estimări sunt apropiate de valoarea exactă <span class="math inline">\(6/36\approx0.1667\)</span>. Comanda <code>replicate(B, expresie)</code> evaluează expresia de <code>B</code> ori și adună rezultatele într-un vector. Când un experiment este folosit de mai multe ori, îl împachetăm într-o <strong>funcție</strong>.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>suma_zaruri <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">k =</span> <span class="dv">2</span>) {     <span class="co"># k = numărul de zaruri (implicit 2)</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  z <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, k, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(z)                             <span class="co"># ultima expresie este valoarea întoarsă</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">suma_zaruri</span>()                        <span class="co"># suma a două zaruri</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">suma_zaruri</span>(<span class="dv">5</span>)                       <span class="co"># suma a cinci zaruri</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">replicate</span>(B, <span class="fu">suma_zaruri</span>(<span class="dv">3</span>)) <span class="sc">&gt;=</span> <span class="dv">12</span>)</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="cf">function</span>(k) <span class="fu">mean</span>(<span class="fu">replicate</span>(B, <span class="fu">suma_zaruri</span>(k)) <span class="sc">&gt;=</span> <span class="dv">4</span> <span class="sc">*</span> k))</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 8
+#&gt; [1] 22
+#&gt; [1] 0.3797
+#&gt; [1] 0.4976 0.4230 0.3777</code></pre>
+</div>
+</div>
+<p>A treia linie de rezultate estimează probabilitatea ca suma a trei zaruri să fie cel puțin <span class="math inline">\(12\)</span>; valoarea exactă este <span class="math inline">\(81/216=0.375\)</span>. Funcția <code>sapply(valori, f)</code> aplică funcția <code>f</code> fiecărui element al unui vector și adună rezultatele: ultima linie estimează probabilitatea ca suma a <span class="math inline">\(k\)</span> zaruri să fie cel puțin <span class="math inline">\(4k\)</span>, pentru <span class="math inline">\(k=1,2,3\)</span>. Valorile exacte sunt <span class="math inline">\(0.5\)</span>, <span class="math inline">\(15/36\approx0.4167\)</span> și <span class="math inline">\(0.375\)</span>, iar estimările diferă de ele cu mai puțin de <span class="math inline">\(0.01\)</span>.</p>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Schema unei simulări
+</div>
+<div class="curs-box-body">
+<ol type="1">
+<li>Scriem o funcție (sau o expresie) care efectuează <strong>o dată</strong> experimentul și întoarce mărimea care ne interesează (un număr sau <code>TRUE</code>/<code>FALSE</code>).</li>
+<li>Repetăm experimentul de <code>B</code> ori: <code>rezultate &lt;- replicate(B, experiment())</code>.</li>
+<li>Estimăm probabilitatea prin frecvența relativă: <code>mean(conditie)</code>.</li>
+</ol>
+<p>Estimarea nu este exactă: pentru <code>B = 1e4</code> eroarea este, de regulă, mai mică decât <span class="math inline">\(0.01\)</span>, iar pentru <code>B = 1e5</code> mai mică decât <span class="math inline">\(0.003\)</span> (vom vedea de ce în Cursul 7). De aceea comparăm doar primele două zecimale ale unei simulări cu valoarea teoretică.</p>
+</div>
+</div>
+</section>
+<section id="sec-s01-r-grafice" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="sec-s01-r-grafice"><span class="header-section-number">2.9</span> Grafice simple</h2>
+<p>Funcția <code>plot(x, y)</code> reprezintă punctele de coordonate <code>(x[i], y[i])</code>; <code>barplot(inaltimi)</code> desenează o diagramă cu bare. Peste un grafic existent adăugăm elemente cu <code>lines</code> (o linie frântă), <code>points</code> (puncte) și <code>abline</code> (o dreaptă: <code>h =</code> orizontală, <code>v =</code> verticală). Culorile se dau prin nume (<code>"red"</code>) sau prin coduri; în aceste note folosim mereu aceleași culori, păstrate într-un vector cu nume. Pentru a rula codul notelor pe calculatorul propriu, copiați definiția lui la începutul scriptului.</p>
+<p>Ca exemplu, reprezentăm frecvențele relative din Exemplul <a href="#box-ex-s01-zar-frecvente" class="curs-ref">2</a> și le comparăm cu valoarea teoretică <span class="math inline">\(1/6\)</span>; un element al vectorului <code>culori</code> se extrage după nume, cu <code>[[ ]]</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>culori <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">albastru =</span> <span class="st">"#2B6CB0"</span>, <span class="at">rosu =</span> <span class="st">"#9B2335"</span>, <span class="at">verde =</span> <span class="st">"#2F7D4A"</span>,</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">portocaliu =</span> <span class="st">"#C0661A"</span>, <span class="at">mov =</span> <span class="st">"#7A3E8E"</span>, <span class="at">teal =</span> <span class="st">"#1F7A7A"</span>,</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">gri =</span> <span class="st">"#6B7785"</span>, <span class="at">bleumarin =</span> <span class="st">"#1B3A5C"</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(frecv, <span class="at">col =</span> culori[[<span class="st">"albastru"</span>]],</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"fața zarului"</span>, <span class="at">ylab =</span> <span class="st">"frecvența relativă"</span>)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> culori[[<span class="st">"rosu"</span>]])   <span class="co"># dreapta y = 1/6</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="01-evenimente-numarare-R_files/figure-html/unnamed-chunk-17-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="01-evenimente-numarare-R_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:62.0%"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Cele mai folosite argumente ale funcției <code>plot</code> sunt: <code>type</code> (<code>"p"</code> puncte, <code>"l"</code> linie, <code>"b"</code> ambele, <code>"h"</code> bare verticale), <code>col</code> (culoarea), <code>pch</code> (forma punctelor; <code>19</code> = disc plin), <code>lty</code> și <code>lwd</code> (tipul și grosimea liniei), <code>xlab</code>, <code>ylab</code>, <code>main</code> (etichetele axelor și titlul), <code>xlim</code>, <code>ylim</code> (limitele axelor).</p>
+<div id="box-ex-s01-stabilizare" class="curs-box exemplu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exemplul 3</span> <span class="curs-box-name">(Stabilizarea frecvenței relative)</span>
+</div>
+<div class="curs-box-body">
+<p>Aruncăm o monedă echilibrată de <span class="math inline">\(N=5000\)</span> de ori și urmărim frecvența relativă a capului după primele <span class="math inline">\(1,2,\dots,N\)</span> aruncări. Dacă <code>moneda</code> este vectorul rezultatelor (<span class="math inline">\(1\)</span> = cap, <span class="math inline">\(0\)</span> = pajură), atunci <code>cumsum(moneda)</code> este numărul de capete obținute până la fiecare aruncare, iar împărțirea la <code>1:N</code> dă frecvențele relative.</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1654</span>)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>moneda <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>), N, <span class="at">replace =</span> <span class="cn">TRUE</span>)    <span class="co"># 1 = cap, 0 = pajură</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(moneda) <span class="sc">/</span> (<span class="dv">1</span><span class="sc">:</span>N)                     <span class="co"># frecvențele relative</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(f[<span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">5000</span>)], <span class="dv">3</span>)             <span class="co"># după 10, 100, ... aruncări</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [1] 0.700 0.510 0.494 0.504</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>N, f, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">log =</span> <span class="st">"x"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> culori[[<span class="st">"albastru"</span>]],</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"numărul de aruncări (scară logaritmică)"</span>,</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"frecvența relativă a capului"</span>)</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>moneda2 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>), N, <span class="at">replace =</span> <span class="cn">TRUE</span>)   <span class="co"># o a doua serie</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="dv">1</span><span class="sc">:</span>N, <span class="fu">cumsum</span>(moneda2) <span class="sc">/</span> (<span class="dv">1</span><span class="sc">:</span>N), <span class="at">col =</span> culori[[<span class="st">"verde"</span>]])</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fl">0.5</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> culori[[<span class="st">"rosu"</span>]])</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="01-evenimente-numarare-R_files/figure-html/unnamed-chunk-18-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="01-evenimente-numarare-R_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:66.0%"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La început frecvența relativă oscilează mult, apoi ambele serii se stabilizează în jurul valorii <span class="math inline">\(0.5\)</span>, ca în figura corespunzătoare din Secțiunea <a href="..\curs\01-camp-probabilitate.html#sec-k01-probabilitate" class="curs-ref">4 din Cursul 1</a>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-s01-evenimente" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Evenimente și operații cu evenimente</h1>
+<p>Începem cu „traducerea” afirmațiilor despre un experiment în operații cu mulțimi. În R, spațiul stărilor va fi un tabel construit cu <code>expand.grid</code>, evenimentele vor fi vectori logici, iar probabilitățile se vor calcula cu <code>mean</code> (<a href="#sec-s01-r-logic" class="quarto-xref">Secțiunea&nbsp;2.4</a>).</p>
+<div id="box-exr-s01-servere" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 1</span> <span class="curs-box-name">(Trei servere)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-nivs">La seminar</span> Un serviciu web rulează pe trei servere. La un moment dat, fiecare server fie funcționează, fie este căzut. Notăm cu <span class="math inline">\(A_i\)</span> evenimentul „serverul <span class="math inline">\(i\)</span> funcționează”, <span class="math inline">\(i=1,2,3\)</span>. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Exprimați, cu ajutorul evenimentelor <span class="math inline">\(A_1,A_2,A_3\)</span> și al operațiilor cu evenimente: <span class="math inline">\(E_1\)</span> = „toate cele trei servere funcționează”; <span class="math inline">\(E_2\)</span> = „cel puțin un server funcționează”; <span class="math inline">\(E_3\)</span> = „niciun server nu funcționează”; <span class="math inline">\(E_4\)</span> = „funcționează exact un server”; <span class="math inline">\(E_5\)</span> = „funcționează cel puțin două servere”; <span class="math inline">\(E_6\)</span> = „funcționează cel mult un server”.</p></li>
+<li><p>Care dintre evenimentele de la punctul (a) sunt contrare unul altuia? Justificați cu relațiile lui De Morgan.</p></li>
+<li><p>Serviciul este <em>disponibil</em> dacă funcționează serverul <span class="math inline">\(1\)</span> (serverul de aplicație) și cel puțin unul dintre serverele <span class="math inline">\(2\)</span> și <span class="math inline">\(3\)</span> (serverele de date). Scrieți evenimentul <span class="math inline">\(S\)</span> = „serviciul este disponibil” și evenimentul contrar <span class="math inline">\(S^c\)</span>.</p></li>
+<li><p>Descriem starea sistemului prin tripletul <span class="math inline">\((x_1,x_2,x_3)\)</span>, unde <span class="math inline">\(x_i=1\)</span> dacă serverul <span class="math inline">\(i\)</span> funcționează și <span class="math inline">\(x_i=0\)</span> dacă este căzut. Presupunând că toate stările sunt egal probabile, calculați probabilitățile evenimentelor <span class="math inline">\(E_1,\dots,E_6\)</span> și <span class="math inline">\(S\)</span>.</p></li>
+<li><p>Construiți în R spațiul stărilor și evenimentele de mai sus; verificați răspunsurile de la (b), (c) și (d).</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (e) — completați locurile marcate cu <code>___</code> (fiecare eveniment este un vector logic cu <span class="math inline">\(8\)</span> componente, câte una pentru fiecare stare):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>stari <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">x1 =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="at">x2 =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>, <span class="at">x3 =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>)   <span class="co"># cele 8 stări</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>A1 <span class="ot">&lt;-</span> stari<span class="sc">$</span>x1 <span class="sc">==</span> <span class="dv">1</span>          <span class="co"># stările în care funcționează serverul 1</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>A2 <span class="ot">&lt;-</span> stari<span class="sc">$</span>x2 <span class="sc">==</span> <span class="dv">1</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>A3 <span class="ot">&lt;-</span> stari<span class="sc">$</span>x3 <span class="sc">==</span> <span class="dv">1</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>E1 <span class="ot">&lt;-</span> A1 <span class="sc">&amp;</span> A2 <span class="sc">&amp;</span> A3</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>E2 <span class="ot">&lt;-</span> ___</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>E3 <span class="ot">&lt;-</span> ___</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>E4 <span class="ot">&lt;-</span> ___                    <span class="co"># exact un server</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>E5 <span class="ot">&lt;-</span> ___                    <span class="co"># cel puțin două servere</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>E6 <span class="ot">&lt;-</span> ___                    <span class="co"># cel mult un server</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>S  <span class="ot">&lt;-</span> ___                    <span class="co"># serviciul este disponibil</span></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(stari, E4, E5, E6, S)  <span class="co"># stările și câteva dintre evenimente</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">E1 =</span> <span class="fu">mean</span>(E1), <span class="at">E2 =</span> <span class="fu">mean</span>(E2), <span class="at">E3 =</span> <span class="fu">mean</span>(E3), <span class="at">E4 =</span> <span class="fu">mean</span>(E4),</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">E5 =</span> <span class="fu">mean</span>(E5), <span class="at">E6 =</span> <span class="fu">mean</span>(E6), <span class="at">S =</span> <span class="fu">mean</span>(S))</span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">all</span>(___ <span class="sc">==</span> <span class="sc">!</span>E2), <span class="fu">all</span>(___ <span class="sc">==</span> <span class="sc">!</span>E5),        <span class="co"># perechile de evenimente contrare, (b)</span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">all</span>(<span class="sc">!</span>S <span class="sc">==</span> ___))                          <span class="co"># formula pentru contrarul lui S, (c)</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p>Al doilea exercițiu folosește același tipar pentru aruncarea a două zaruri: enumerăm cele <span class="math inline">\(36\)</span> de rezultate, numărăm cazurile favorabile și verificăm numeric relațiile lui De Morgan și formula reuniunii, pe care o vom folosi sistematic în secțiunea următoare.</p>
+<div id="box-exr-s01-doua-zaruri" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 2</span> <span class="curs-box-name">(Două zaruri pe un spațiu enumerat)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-niva">Pentru acasă</span> Aruncăm două zaruri echilibrate, unul roșu și unul albastru. Considerăm evenimentele <span class="math inline">\(A\)</span> = „suma celor două numere este pară” și <span class="math inline">\(B\)</span> = „cel puțin un zar arată <span class="math inline">\(6\)</span>”. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Descrieți spațiul stărilor și determinați numărul de elemente ale evenimentelor <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span> și <span class="math inline">\(A\cap B\)</span>.</p></li>
+<li><p>Calculați <span class="math inline">\(\PP(A)\)</span>, <span class="math inline">\(\PP(B)\)</span>, <span class="math inline">\(\PP(A\cap B)\)</span> și <span class="math inline">\(\PP(A\cup B)\)</span>.</p></li>
+<li><p>Descrieți în cuvinte evenimentele <span class="math inline">\(A^c\cap B^c\)</span>, <span class="math inline">\(A\setminus B\)</span> și <span class="math inline">\(A\,\triangle\,B\)</span> și calculați-le probabilitățile.</p></li>
+<li><p>Sunt <span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span> incompatibile? Arătați că evenimentul <span class="math inline">\(C\)</span> = „suma este cel mult <span class="math inline">\(6\)</span>” este incompatibil cu <span class="math inline">\(B\)</span> și calculați <span class="math inline">\(\PP(B\cup C)\)</span>.</p></li>
+<li><p>Verificați rezultatele în R, prin enumerare și printr-o simulare cu <span class="math inline">\(10^5\)</span> aruncări.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(\Omega=\{1,\dots,6\}^2\)</span>, <span class="math inline">\(|\Omega|=36\)</span> (rezultate egal probabile); <span class="math inline">\(|A|=18\)</span>, <span class="math inline">\(|B|=11\)</span>, <span class="math inline">\(|A\cap B|=5\)</span>.</p></li>
+<li><p><span class="math inline">\(\PP(A)=\frac12\)</span>, <span class="math inline">\(\PP(B)=\frac{11}{36}\approx0.3056\)</span>, <span class="math inline">\(\PP(A\cap B)=\frac5{36}\approx0.1389\)</span>, <span class="math inline">\(\PP(A\cup B)=\frac{24}{36}=\frac23\approx0.6667\)</span>.</p></li>
+<li><p><span class="math inline">\(A^c\cap B^c\)</span> = „suma este impară și niciun zar nu arată <span class="math inline">\(6\)</span>”, <span class="math inline">\(\PP=\frac13\)</span>; <span class="math inline">\(A\setminus B\)</span> = „suma este pară și niciun zar nu arată <span class="math inline">\(6\)</span>”, <span class="math inline">\(\PP=\frac{13}{36}\approx0.3611\)</span>; <span class="math inline">\(A\,\triangle\,B\)</span> = „se realizează exact unul dintre <span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span>”, <span class="math inline">\(\PP=\frac{19}{36}\approx0.5278\)</span>.</p></li>
+<li><p><span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span> nu sunt incompatibile (de exemplu, <span class="math inline">\((6,6)\in A\cap B\)</span>); <span class="math inline">\(B\cap C=\emptyset\)</span>, <span class="math inline">\(|C|=15\)</span> și <span class="math inline">\(\PP(B\cup C)=\frac{26}{36}\approx0.7222\)</span>.</p></li>
+<li><p>Enumerarea dă exact valorile de mai sus; frecvențele simulate ale evenimentelor <span class="math inline">\(A\cup B\)</span> și <span class="math inline">\(A\,\triangle\,B\)</span> sunt apropiate de <span class="math inline">\(0.6667\)</span> și <span class="math inline">\(0.5278\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-s01-reguli" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Reguli de calcul și formula lui Poincaré</h1>
+<p>În exercițiile precedente am putut enumera spațiul stărilor. De multe ori însă cunoaștem doar probabilitățile câtorva evenimente și trebuie să le deducem pe ale altora cu regulile de calcul din Propoziția <a href="..\curs\01-camp-probabilitate.html#box-prop-k01-proprietati" class="curs-ref">14 din Cursul 1</a>. Următoarele trei exerciții parcurg, în ordine, reuniunea a două evenimente, formula lui Poincaré pentru trei evenimente și marginile care se pot da atunci când nu cunoaștem probabilitățile intersecțiilor.</p>
+<div id="box-exr-s01-limbaje" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 3</span> <span class="curs-box-name">(Python și Java)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-nivo">Dacă timpul permite</span> Alegem la întâmplare un student al unei facultăți. Probabilitatea ca studentul să știe Python este <span class="math inline">\(0.70\)</span>, probabilitatea să știe Java este <span class="math inline">\(0.45\)</span>, iar probabilitatea să știe ambele limbaje este <span class="math inline">\(0.30\)</span>. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Care este probabilitatea ca studentul să știe cel puțin unul dintre cele două limbaje?</p></li>
+<li><p>Care este probabilitatea să nu știe niciunul?</p></li>
+<li><p>Care este probabilitatea să știe Python, dar nu și Java?</p></li>
+<li><p>Care este probabilitatea să știe exact unul dintre cele două limbaje?</p></li>
+<li><p>Să presupunem că nu am cunoaște probabilitatea de a ști ambele limbaje. Între ce valori s-ar putea afla ea, dacă știm doar că <span class="math inline">\(70\%\)</span> dintre studenți știu Python și <span class="math inline">\(45\%\)</span> știu Java?</p></li>
+<li><p>În R: construiți o facultate cu <span class="math inline">\(200\)</span> de studenți care respectă datele din enunț și verificați, prin numărare și prin simulare, răspunsurile de la (a)–(d).</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (f) — completați locurile marcate cu <code>___</code> (studenții sunt împărțiți în patru grupe: știu ambele limbaje, doar Python, doar Java, niciunul; fiecărui student îi corespunde o poziție în vectorii logici <code>python</code> și <code>java</code>):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>grupe  <span class="ot">&lt;-</span> ___                  <span class="co"># ambele, doar Python, doar Java, niciunul</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>python <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>), <span class="at">times =</span> grupe)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>java   <span class="ot">&lt;-</span> ___</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">P_A =</span> <span class="fu">mean</span>(python), <span class="at">P_B =</span> <span class="fu">mean</span>(java), <span class="at">P_A_si_B =</span> <span class="fu">mean</span>(python <span class="sc">&amp;</span> java))</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">cel_putin_unul =</span> <span class="fu">mean</span>(___), <span class="at">niciunul =</span> <span class="fu">mean</span>(___),</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">doar_python =</span> <span class="fu">mean</span>(___), <span class="at">exact_unul =</span> <span class="fu">mean</span>(<span class="fu">xor</span>(python, java)))</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(python, java)            <span class="co"># cele patru regiuni, ca numere de studenți</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">200</span>)</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>ales <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">200</span>, <span class="fl">1e5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)   <span class="co"># indicii studenților aleși</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">cel_putin_unul =</span> <span class="fu">mean</span>(___),</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">exact_unul =</span> <span class="fu">mean</span>(<span class="fu">xor</span>(python[ales], java[ales])))</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(\PP(A\cup B)=0.85\)</span>, unde <span class="math inline">\(A\)</span> = „știe Python” și <span class="math inline">\(B\)</span> = „știe Java”.</p></li>
+<li><p><span class="math inline">\(0.15\)</span>.</p></li>
+<li><p><span class="math inline">\(0.40\)</span>.</p></li>
+<li><p><span class="math inline">\(0.55\)</span>.</p></li>
+<li><p><span class="math inline">\(0.15\le\PP(A\cap B)\le0.45\)</span>.</p></li>
+<li><p>Populația are <span class="math inline">\(60\)</span> de studenți care știu ambele limbaje, <span class="math inline">\(80\)</span> doar Python, <span class="math inline">\(30\)</span> doar Java și <span class="math inline">\(30\)</span> niciunul; numărarea dă exact <span class="math inline">\(0.85\)</span>, <span class="math inline">\(0.15\)</span>, <span class="math inline">\(0.40\)</span> și <span class="math inline">\(0.55\)</span>, iar frecvențele simulate sunt apropiate de <span class="math inline">\(0.85\)</span> și <span class="math inline">\(0.55\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<p>Pentru trei evenimente, corecția „scădem ce am numărat de două ori” trebuie continuată: adunăm înapoi ce am scăzut de prea multe ori. Exercițiul următor aplică formula lui Poincaré într-o situație în care toate probabilitățile se obțin prin numărare, iar verificarea în R este imediată.</p>
+<div id="box-exr-s01-divizibilitate" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 4</span> <span class="curs-box-name">(Numere divizibile cu 2, 3 sau 5)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-nivs">La seminar</span> Alegem la întâmplare un număr din mulțimea <span class="math inline">\(\{1,2,\dots,1000\}\)</span>, toate numerele fiind egal probabile. Notăm cu <span class="math inline">\(D_k\)</span> evenimentul „numărul ales este divizibil cu <span class="math inline">\(k\)</span>”. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Calculați <span class="math inline">\(\PP(D_2)\)</span>, <span class="math inline">\(\PP(D_3)\)</span>, <span class="math inline">\(\PP(D_5)\)</span> și probabilitățile intersecțiilor <span class="math inline">\(D_2\cap D_3\)</span>, <span class="math inline">\(D_2\cap D_5\)</span>, <span class="math inline">\(D_3\cap D_5\)</span> și <span class="math inline">\(D_2\cap D_3\cap D_5\)</span>.</p></li>
+<li><p>Care este probabilitatea ca numărul ales să fie divizibil cu cel puțin unul dintre numerele <span class="math inline">\(2\)</span>, <span class="math inline">\(3\)</span> și <span class="math inline">\(5\)</span>?</p></li>
+<li><p>Care este probabilitatea ca numărul să nu fie divizibil cu niciunul dintre ele?</p></li>
+<li><p>Care este probabilitatea ca numărul să fie divizibil cu exact unul dintre numerele <span class="math inline">\(2\)</span>, <span class="math inline">\(3\)</span> și <span class="math inline">\(5\)</span>?</p></li>
+<li><p>Verificați în R, folosind operatorul <code>%%</code> pe vectorul <code>1:1000</code>. Cum se schimbă răspunsul de la (b) dacă alegem numărul din <span class="math inline">\(\{1,\dots,N\}\)</span>, pentru <span class="math inline">\(N=10\)</span>, <span class="math inline">\(100\)</span>, <span class="math inline">\(1000\)</span> și <span class="math inline">\(10^6\)</span>?</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (e) — completați locurile marcate cu <code>___</code> (vectorul <code>1:1000</code> este spațiul stărilor, iar <code>x %% k == 0</code> este vectorul logic al evenimentului <span class="math inline">\(D_k\)</span>):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>D2 <span class="ot">&lt;-</span> x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>D3 <span class="ot">&lt;-</span> ___</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>D5 <span class="ot">&lt;-</span> ___</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">D2 =</span> <span class="fu">sum</span>(D2), <span class="at">D3 =</span> <span class="fu">sum</span>(D3), <span class="at">D5 =</span> <span class="fu">sum</span>(D5), <span class="at">D6 =</span> <span class="fu">sum</span>(___),</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">D10 =</span> <span class="fu">sum</span>(D2 <span class="sc">&amp;</span> D5), <span class="at">D15 =</span> <span class="fu">sum</span>(D3 <span class="sc">&amp;</span> D5), <span class="at">D30 =</span> <span class="fu">sum</span>(___))</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">numarare =</span> <span class="fu">mean</span>(___),                       <span class="co"># punctul (b), direct</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">poincare =</span> ___)                             <span class="co"># punctul (b), formula lui Poincaré</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(D2 <span class="sc">+</span> D3 <span class="sc">+</span> D5)     <span class="co"># cu câte dintre numerele 2, 3, 5 este divizibil x</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>p_div <span class="ot">&lt;-</span> <span class="cf">function</span>(N) {  <span class="co"># P(divizibil cu 2, 3 sau 5) pe 1, ..., N</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>N</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>  ___</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="fl">1e6</span>), p_div)</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p>În Exercițiul <a href="#box-exr-s01-limbaje" class="curs-ref">3</a> (e) am văzut că, fără a cunoaște probabilitatea intersecției, putem da doar <em>margini</em> pentru probabilitatea reuniunii. Aceeași idee, pentru mai multe evenimente, este conținutul inegalităților lui Boole și Bonferroni.</p>
+<div id="box-exr-s01-teste" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 5</span> <span class="curs-box-name">(Teste automate: margini pentru probabilități)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-nivo">Dacă timpul permite</span> O aplicație este livrată numai dacă trece toate cele <span class="math inline">\(n=5\)</span> teste automate. Din istoricul proiectului se știe că fiecare test, luat separat, este trecut cu probabilitatea <span class="math inline">\(0.98\)</span>; nu se știe însă nimic despre legătura dintre teste. Fie <span class="math inline">\(T_i\)</span> evenimentul „testul <span class="math inline">\(i\)</span> este trecut”, <span class="math inline">\(i=1,\dots,5\)</span>. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Scrieți evenimentul <span class="math inline">\(L\)</span> = „aplicația este livrată” și contrarul său cu ajutorul evenimentelor <span class="math inline">\(T_i\)</span>.</p></li>
+<li><p>Arătați că <span class="math inline">\(0.90\le\PP(L)\le0.98\)</span>.</p></li>
+<li><p>Cel mult câte teste de acest fel poate avea aplicația, astfel încât să putem garanta că este livrată cu probabilitate cel puțin <span class="math inline">\(1/2\)</span>?</p></li>
+<li><p>Construiți în R, pe spațiul <span class="math inline">\(\Omega=\{1,2,\dots,100\}\)</span> cu rezultate egal probabile, două situații în care marginile de la (b) sunt atinse. Estimați apoi <span class="math inline">\(\PP(L)\)</span> prin simulare în cazul în care testele „nu se influențează” unul pe altul.</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (d) — completați locurile marcate cu <code>___</code> (fiecare scenariu este un tabel logic cu <span class="math inline">\(100\)</span> de linii, rezultatele din <span class="math inline">\(\Omega\)</span>, și <span class="math inline">\(5\)</span> coloane, testele; <code>TRUE</code> înseamnă „testul pică”; <code>colMeans</code> calculează media fiecărei coloane, iar <code>rowSums</code> suma fiecărei linii):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>omega <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>                     <span class="co"># 100 de rezultate egal probabile</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># scenariul 1: testul i pică pentru două rezultate, altele pentru fiecare test</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>pica1 <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="cf">function</span>(i) omega <span class="sc">%in%</span> ___)</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># scenariul 2: toate testele pică pentru aceleași două rezultate</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>pica2 <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="cf">function</span>(i) omega <span class="sc">%in%</span> ___)</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(<span class="at">scenariul_1 =</span> <span class="fu">colMeans</span>(pica1), <span class="at">scenariul_2 =</span> <span class="fu">colMeans</span>(pica2))</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>livrat1 <span class="ot">&lt;-</span> ___                     <span class="co"># livrare = niciun test nu pică</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>livrat2 <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(pica2) <span class="sc">==</span> <span class="dv">0</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">scenariul_1 =</span> <span class="fu">mean</span>(livrat1), <span class="at">scenariul_2 =</span> <span class="fu">mean</span>(livrat2))</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">98</span>)</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>teste <span class="ot">&lt;-</span> <span class="cf">function</span>() <span class="fu">sample</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>), <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>                           <span class="at">prob =</span> ___)    <span class="co"># TRUE = test trecut</span></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>livrat3 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="fl">1e5</span>, ___)            <span class="co"># trec toate cele 5 teste?</span></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(livrat3)</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(L=T_1\cap T_2\cap\dots\cap T_5\)</span>, <span class="math inline">\(L^c=T_1^c\cup T_2^c\cup\dots\cup T_5^c\)</span>.</p></li>
+<li><p>(demonstrație) <span class="math inline">\(0.90\le\PP(L)\le0.98\)</span>.</p></li>
+<li><p><span class="math inline">\(n\le25\)</span> teste.</p></li>
+<li><p>Marginea inferioară, <span class="math inline">\(0.90\)</span>, este atinsă pentru <span class="math inline">\(T_i^c=\{2i-1,\,2i\}\)</span> (evenimentele <span class="math inline">\(T_i^c\)</span> sunt incompatibile două câte două); marginea superioară, <span class="math inline">\(0.98\)</span>, pentru <span class="math inline">\(T_i^c=\{1,2\}\)</span>, oricare ar fi <span class="math inline">\(i\)</span>. Frecvența simulată în cazul testelor care nu se influențează este <span class="math inline">\(\approx0.905\)</span>, apropiată de <span class="math inline">\(0.98^5\approx0.9039\)</span> (valoare justificată în Cursul 2).</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-s01-numarare" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Modelul clasic și numărare</h1>
+<p>Când rezultatele sunt egal probabile, dar prea multe pentru a fi enumerate de mână, le numărăm cu regulile de combinatorică din Secțiunea <a href="..\curs\01-camp-probabilitate.html#sec-k01-combinatorica" class="curs-ref">7 din Cursul 1</a>. În R avem două căi de verificare: enumerarea completă (când <span class="math inline">\(|\Omega|\)</span> este de ordinul miilor) și simularea. Exercițiile acestei secțiuni sunt legate între ele: schemele de extragere din primul exercițiu reapar la parole, la cărțile de joc și, în final, în problema zilelor de naștere.</p>
+<div id="box-exr-s01-extrageri" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 6</span> <span class="curs-box-name">(Extrageri cu și fără revenire)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-nivs">La seminar</span> O urnă conține <span class="math inline">\(10\)</span> bile: <span class="math inline">\(6\)</span> roșii și <span class="math inline">\(4\)</span> albastre. Extragem la întâmplare <span class="math inline">\(3\)</span> bile. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Extragerea se face <em>cu revenire</em>. Calculați probabilitatea de a obține exact două bile roșii și probabilitatea de a obține cel puțin o bilă albastră.</p></li>
+<li><p>Aceleași întrebări dacă extragerea se face <em>fără revenire</em>. Numărați în două moduri: ținând cont de ordinea extragerii și fără a ține cont de ea.</p></li>
+<li><p>În care dintre cele două scheme este mai probabil ca toate cele trei bile să aibă aceeași culoare?</p></li>
+<li><p>Dintr-un grup de <span class="math inline">\(6\)</span> fete și <span class="math inline">\(4\)</span> băieți se alege la întâmplare o comisie de <span class="math inline">\(3\)</span> persoane. Care este probabilitatea ca din comisie să facă parte exact două fete?</p></li>
+<li><p>Verificați rezultatele în R prin simulare și prin enumerare completă.</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (e) — completați locurile marcate cu <code>___</code> (urna este un vector cu <span class="math inline">\(10\)</span> elemente; repetăm fiecare experiment de <span class="math inline">\(10^5\)</span> ori și reținem numărul de bile roșii; funcțiile <code>p_cu</code> și <code>p_fara</code> generalizează calculele de la (a) și (b) la o urnă cu <span class="math inline">\(r\)</span> bile roșii și <span class="math inline">\(a\)</span> albastre din care extragem <span class="math inline">\(n\)</span> bile, iar <code>p_fara</code> va fi folosită și în Exercițiul <a href="#box-exr-s01-carti" class="curs-ref">8</a>; <code>combn(10, 3)</code> produce cele <span class="math inline">\(\binom{10}3\)</span> submulțimi, câte una pe fiecare coloană):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>urna <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"R"</span>, <span class="st">"A"</span>), <span class="at">times =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">4</span>))     <span class="co"># R = roșie, A = albastră</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">64</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fl">1e5</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>rosii_cu   <span class="ot">&lt;-</span> <span class="fu">replicate</span>(B, <span class="fu">sum</span>(___ <span class="sc">==</span> <span class="st">"R"</span>))   <span class="co"># 3 bile, cu revenire</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>rosii_fara <span class="ot">&lt;-</span> <span class="fu">replicate</span>(B, <span class="fu">sum</span>(___ <span class="sc">==</span> <span class="st">"R"</span>))   <span class="co"># 3 bile, fără revenire</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(<span class="at">cu_revenire   =</span> <span class="fu">table</span>(rosii_cu) <span class="sc">/</span> B,</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">fara_revenire =</span> <span class="fu">table</span>(rosii_fara) <span class="sc">/</span> B)</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>p_cu   <span class="ot">&lt;-</span> <span class="cf">function</span>(k, n, r, a) ___            <span class="co"># P(exact k roșii), cu revenire</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>p_fara <span class="ot">&lt;-</span> <span class="cf">function</span>(k, n, r, a) ___            <span class="co"># P(exact k roșii), fără revenire</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(<span class="at">cu_revenire =</span> <span class="fu">p_cu</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">4</span>), <span class="at">fara_revenire =</span> <span class="fu">p_fara</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">4</span>))</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>cu <span class="ot">&lt;-</span> ___                                <span class="co"># cele 10^3 șiruri, cu expand.grid</span></span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">rowSums</span>(cu <span class="sc">&lt;=</span> <span class="dv">6</span>)) <span class="sc">/</span> <span class="fu">nrow</span>(cu)       <span class="co"># bilele 1, ..., 6 sunt roșii</span></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>fara <span class="ot">&lt;-</span> <span class="fu">combn</span>(<span class="dv">10</span>, <span class="dv">3</span>)                     <span class="co"># submulțimile, pe coloane</span></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">colSums</span>(fara <span class="sc">&lt;=</span> <span class="dv">6</span>)) <span class="sc">/</span> <span class="fu">ncol</span>(fara)</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p>Aceleași două scheme, cu și fără revenire, apar ori de câte ori formăm șiruri de simboluri: parole, coduri PIN, cuvinte. Când unele simboluri se repetă, intervine și coeficientul multinomial.</p>
+<div id="box-exr-s01-parole" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 7</span> <span class="curs-box-name">(Parole, coduri PIN și anagrame)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-nivo">Dacă timpul permite</span> (a) O parolă este formată din <span class="math inline">\(4\)</span> litere mici ale alfabetului englez (<span class="math inline">\(26\)</span> de litere). Câte parole există? Câte dintre ele au toate literele diferite? </p>
+<div class="ol-2p">
+<ol start="2" type="a">
+<li><p>Un cod PIN este format din <span class="math inline">\(4\)</span> cifre alese la întâmplare (toate codurile de la <span class="math inline">\(0000\)</span> la <span class="math inline">\(9999\)</span> sunt egal probabile). Care este probabilitatea ca cifrele codului să fie toate diferite? Dar ca măcar o cifră să se repete?</p></li>
+<li><p>Câte anagrame (cuvinte diferite, nu neapărat cu sens) are cuvântul ANANAS?</p></li>
+<li><p>Cele șase litere ale cuvântului ANANAS sunt scrise pe șase cartonașe, care se amestecă și se așază în linie la întâmplare. Care este probabilitatea ca cele trei litere A să fie alăturate? Dar ca șirul obținut să înceapă cu A și să se termine cu S?</p></li>
+<li><p>Verificați în R punctul (b) prin enumerare și punctele (c) și (d) prin simulare.</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (e) — completați locurile marcate cu <code>___</code> (<code>apply(tabel, 1, f)</code> aplică funcția <code>f</code> fiecărei linii a tabelului; <code>paste(..., collapse = "")</code> lipește literele într-un singur cuvânt; <code>grepl(sablon, text)</code> verifică dacă un text conține un șablon, iar <code>substr(text, i, j)</code> extrage caracterele de la poziția <code>i</code> la poziția <code>j</code>):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>pin <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">c1 =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">c2 =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">c3 =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">c4 =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">9</span>)  <span class="co"># 10^4 coduri</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>distincte <span class="ot">&lt;-</span> <span class="fu">apply</span>(pin, <span class="dv">1</span>, <span class="cf">function</span>(r) ___)  <span class="co"># 4 cifre distincte?</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">coduri =</span> <span class="fu">nrow</span>(pin), <span class="at">cu_cifre_distincte =</span> <span class="fu">sum</span>(distincte))</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(distincte)                              <span class="co"># probabilitatea de la (b)</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>litere <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"N"</span>, <span class="st">"A"</span>, <span class="st">"N"</span>, <span class="st">"A"</span>, <span class="st">"S"</span>)</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>amesteca <span class="ot">&lt;-</span> <span class="cf">function</span>() <span class="fu">paste</span>(___, <span class="at">collapse =</span> <span class="st">""</span>)   <span class="co"># o așezare la întâmplare</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">60</span>)</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="fu">amesteca</span>()                                   <span class="co"># o așezare la întâmplare</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>cuvinte <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="fl">1e5</span>, <span class="fu">amesteca</span>())</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(cuvinte))                      <span class="co"># câte cuvinte diferite apar</span></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">AAA =</span> <span class="fu">mean</span>(<span class="fu">grepl</span>(<span class="st">"AAA"</span>, cuvinte)),         <span class="co"># conține șirul "AAA"?</span></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">A_S =</span> <span class="fu">mean</span>(___))                           <span class="co"># începe cu A, se termină cu S</span></span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(<span class="fu">table</span>(cuvinte) <span class="sc">/</span> <span class="fl">1e5</span>)                  <span class="co"># frecvențele cuvintelor apărute</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(26^4=456\,976\)</span> de parole, dintre care <span class="math inline">\(26\cdot25\cdot24\cdot23=358\,800\)</span> cu toate literele diferite.</p></li>
+<li><p><span class="math inline">\(\PP(\text{cifre distincte})=0.504\)</span>; <span class="math inline">\(\PP(\text{o cifră repetată})=0.496\)</span>.</p></li>
+<li><p><span class="math inline">\(\frac{6!}{3!\,2!\,1!}=60\)</span> de anagrame.</p></li>
+<li><p><span class="math inline">\(\PP(\text{AAA alăturate})=0.2\)</span>; <span class="math inline">\(\PP(\text{începe cu A, se termină cu S})=0.1\)</span>.</p></li>
+<li><p>Enumerarea găsește <span class="math inline">\(5040\)</span> de coduri cu cifre distincte (probabilitatea <span class="math inline">\(0.504\)</span>); în <span class="math inline">\(10^5\)</span> amestecări apar exact <span class="math inline">\(60\)</span> de cuvinte diferite, frecvențele celor două evenimente sunt apropiate de <span class="math inline">\(0.2\)</span> și <span class="math inline">\(0.1\)</span>, iar frecvențele anagramelor sunt toate apropiate de <span class="math inline">\(1/60\approx0.0167\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<p>Trecem la cărțile de joc. Modelul este cel din Exemplul <a href="..\curs\01-camp-probabilitate.html#box-ex-k01-poker" class="curs-ref">17 din Cursul 1</a>: o mână este o submulțime de <span class="math inline">\(5\)</span> cărți, deci o extragere fără revenire în care ordinea nu contează, exact ca în Exercițiul <a href="#box-exr-s01-extrageri" class="curs-ref">6</a> (b).</p>
+<div id="box-exr-s01-carti" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 8</span> <span class="curs-box-name">(O mână de cinci cărți)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-niva">Pentru acasă</span> Dintr-un pachet bine amestecat de <span class="math inline">\(52\)</span> de cărți (<span class="math inline">\(13\)</span> figuri, fiecare în <span class="math inline">\(4\)</span> culori) se extrag <span class="math inline">\(5\)</span> cărți. Calculați probabilitatea ca mâna obținută: </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>să conțină exact doi ași;</p></li>
+<li><p>să conțină cel puțin un as;</p></li>
+<li><p>să conțină cinci cărți de figuri diferite (nicio figură nu se repetă).</p></li>
+<li><p>Construiți pachetul în R cu <code>expand.grid</code> și verificați rezultatele prin simulare.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(\binom42\binom{48}3\big/\binom{52}5=\frac{103\,776}{2\,598\,960}\approx0.0399\)</span>.</p></li>
+<li><p><span class="math inline">\(1-\binom{48}5\big/\binom{52}5\approx1-0.6588=0.3412\)</span>.</p></li>
+<li><p><span class="math inline">\(\binom{13}5\cdot4^5\big/\binom{52}5=\frac{1\,317\,888}{2\,598\,960}\approx0.5071\)</span>.</p></li>
+<li><p>Frecvențele simulate sunt apropiate de <span class="math inline">\(0.0399\)</span>, <span class="math inline">\(0.3412\)</span> și <span class="math inline">\(0.5071\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<p>Punctul (b) al Exercițiului <a href="#box-exr-s01-parole" class="curs-ref">7</a> și punctul (c) al Exercițiului <a href="#box-exr-s01-carti" class="curs-ref">8</a> au aceeași structură: alegem mai multe obiecte și ne întrebăm dacă apare vreo repetare. Cea mai cunoscută problemă de acest tip este problema zilelor de naștere.</p>
+<div id="box-exr-s01-zile" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 9</span> <span class="curs-box-name">(Zile de naștere)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-nivs">La seminar</span> Într-o grupă de laborator sunt <span class="math inline">\(n\)</span> studenți. Ca în Exemplul <a href="..\curs\01-camp-probabilitate.html#box-ex-k01-zile-nastere" class="curs-ref">16 din Cursul 1</a>, presupunem că anul are <span class="math inline">\(365\)</span> de zile, la fel de probabile ca zi de naștere, și notăm cu <span class="math inline">\(q_n\)</span> probabilitatea ca cel puțin doi studenți să aibă aceeași zi de naștere. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Scrieți formula lui <span class="math inline">\(q_n\)</span> ca produs și calculați de mână <span class="math inline">\(q_4\)</span>.</p></li>
+<li><p>Scrieți în R o funcție <code>p_zile(n, zile = 365)</code> care calculează <span class="math inline">\(q_n\)</span> cu ajutorul lui <code>prod</code>. Calculați <span class="math inline">\(q_{25}\)</span> și determinați cel mai mic <span class="math inline">\(n\)</span> pentru care <span class="math inline">\(q_n\ge1/2\)</span>, respectiv <span class="math inline">\(q_n\ge0.99\)</span>.</p></li>
+<li><p>Estimați prin simulare <span class="math inline">\(q_{10}\)</span>, <span class="math inline">\(q_{25}\)</span> și <span class="math inline">\(q_{40}\)</span> și reprezentați grafic <span class="math inline">\(q_n\)</span> pentru <span class="math inline">\(n=1,\dots,60\)</span>, împreună cu valorile simulate.</p></li>
+<li><p><em>Variante cu alt număr de „zile”.</em> Care este probabilitatea ca, dintre <span class="math inline">\(5\)</span> studenți, cel puțin doi să fie născuți în aceeași lună (presupunem cele <span class="math inline">\(12\)</span> luni egal probabile)? Ce legătură are problema cu codul PIN din Exercițiul <a href="#box-exr-s01-parole" class="curs-ref">7</a>?</p></li>
+<li><p><em>Trei studenți cu aceeași zi de naștere.</em> Estimați prin simulare probabilitatea ca cel puțin <strong>trei</strong> studenți să aibă aceeași zi de naștere, pentru <span class="math inline">\(n\in\{25,50,88,120\}\)</span>.</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (b), (c) — completați locurile marcate cu <code>___</code> (<code>duplicated(z)</code> marchează elementele lui <code>z</code> care au mai apărut, iar <code>any</code> întreabă dacă există măcar unul; vectorul <code>culori</code> este cel din Secțiunea <a href="#sec-s01-r-grafice" class="curs-ref">2.9</a>):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>p_zile <span class="ot">&lt;-</span> <span class="cf">function</span>(n, <span class="at">zile =</span> <span class="dv">365</span>) {</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (n <span class="sc">&gt;</span> zile) <span class="fu">return</span>(<span class="dv">1</span>)               <span class="co"># mai multe persoane decât zile</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  ___                                   <span class="co"># 1 - produsul rapoartelor, cu prod</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">q_4 =</span> <span class="fu">p_zile</span>(<span class="dv">4</span>), <span class="at">q_25 =</span> <span class="fu">p_zile</span>(<span class="dv">25</span>))</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>q <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">60</span>, p_zile)               <span class="co"># q_1, ..., q_60</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">prag_0.5 =</span> ___, <span class="at">prag_0.99 =</span> ___)      <span class="co"># cel mai mic n cu q_n &gt;= 0.5, &gt;= 0.99</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>sim_zile <span class="ot">&lt;-</span> <span class="cf">function</span>(n, <span class="at">zile =</span> <span class="dv">365</span>) {</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>  z <span class="ot">&lt;-</span> ___                              <span class="co"># zilele de naștere ale celor n</span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">any</span>(<span class="fu">duplicated</span>(z))                    <span class="co"># există o zi repetată?</span></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">23</span>)</span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>n_sim <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">25</span>, <span class="dv">40</span>)</span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>q_sim <span class="ot">&lt;-</span> <span class="fu">sapply</span>(n_sim, <span class="cf">function</span>(n) <span class="fu">mean</span>(<span class="fu">replicate</span>(<span class="fl">2e4</span>, <span class="fu">sim_zile</span>(n))))</span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">n =</span> n_sim, <span class="at">simulare =</span> q_sim, <span class="at">exact =</span> q[n_sim])</span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">60</span>, q, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> culori[[<span class="st">"albastru"</span>]],</span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"numărul de studenți n"</span>, <span class="at">ylab =</span> <span class="st">"probabilitatea"</span>)</span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(___, ___, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> culori[[<span class="st">"portocaliu"</span>]])   <span class="co"># valorile simulate</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-s01-potriviri" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Problema potrivirilor prin simulare</h1>
+<p>Încheiem partea principală a ședinței cu problema potrivirilor, rezolvată la curs cu formula lui Poincaré (Exemplul <a href="..\curs\01-camp-probabilitate.html#box-ex-k01-potriviri" class="curs-ref">22 din Cursul 1</a>). Calculul teoretic cere o idee; simularea, în schimb, este o singură linie de cod, iar aceeași simulare răspunde și la întrebări mai fine, cum ar fi repartiția <em>numărului</em> de potriviri.</p>
+<div id="box-exr-s01-potriviri" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 10</span> <span class="curs-box-name">(Problema potrivirilor prin simulare)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-nivs">La seminar</span> La intrarea într-un examen, cei <span class="math inline">\(n\)</span> studenți își lasă telefoanele într-o cutie. La ieșire, telefoanele sunt împărțite la întâmplare, câte unul fiecărui student (toate cele <span class="math inline">\(n!\)</span> împărțiri sunt egal probabile). Spunem că avem o <em>potrivire</em> atunci când un student își primește propriul telefon și notăm cu <span class="math inline">\(N\)</span> numărul de potriviri. Conform Exemplului <a href="..\curs\01-camp-probabilitate.html#box-ex-k01-potriviri" class="curs-ref">22 din Cursul 1</a>, probabilitatea de a avea cel puțin o potrivire este <span class="math inline">\(p_n=\sum_{k=1}^n\frac{(-1)^{k+1}}{k!}\)</span>. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Pentru <span class="math inline">\(n=3\)</span>, enumerați toate împărțirile posibile și numărul de potriviri al fiecăreia. Deduceți <span class="math inline">\(\PP(N\ge1)\)</span> și probabilitățile <span class="math inline">\(\PP(N=k)\)</span>, <span class="math inline">\(k=0,1,2,3\)</span>, și comparați cu formula lui <span class="math inline">\(p_3\)</span>.</p></li>
+<li><p>Scrieți în R o funcție <code>potriviri(n)</code> care simulează o împărțire și întoarce numărul de potriviri. Estimați <span class="math inline">\(\PP(N\ge1)\)</span> pentru <span class="math inline">\(n=10\)</span> și comparați cu <span class="math inline">\(p_{10}\)</span> și cu limita <span class="math inline">\(1-1/e\)</span>.</p></li>
+<li><p>Reprezentați grafic, pentru <span class="math inline">\(n=1,\dots,12\)</span>, valoarea exactă <span class="math inline">\(p_n\)</span> și estimarea ei prin simulare.</p></li>
+<li><p>Pentru <span class="math inline">\(n=10\)</span>, determinați prin simulare frecvențele relative ale evenimentelor „exact <span class="math inline">\(k\)</span> potriviri”, <span class="math inline">\(k=0,1,\dots,6\)</span>, și comparați-le cu formula din Exercițiul <a href="..\curs\01-camp-probabilitate.html#box-exr-k01-exact-k" class="curs-ref">8 din Cursul 1</a> și cu valorile limită <span class="math inline">\(e^{-1}/k!\)</span>.</p></li>
+<li><p>Estimați numărul mediu de potriviri pentru <span class="math inline">\(n=5\)</span>, <span class="math inline">\(n=10\)</span> și <span class="math inline">\(n=100\)</span>. Ce observați? Explicați.</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (b), (d) — completați locurile marcate cu <code>___</code> (o împărțire la întâmplare este <code>sample(n)</code>; funcțiile <code>potriviri</code> și <code>exact_k</code> vor fi folosite și în Exercițiul <a href="#box-exr-s01-puncte-fixe" class="curs-ref">14</a> și în temă):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>potriviri <span class="ot">&lt;-</span> <span class="cf">function</span>(n) ___            <span class="co"># numărul de potriviri</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>p_potriviri <span class="ot">&lt;-</span> <span class="cf">function</span>(n) ___          <span class="co"># p_n, formula din Exemplul potrivirilor</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1708</span>)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="dv">5</span>) <span class="sc">==</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>                        <span class="co"># un exemplu: potrivirile pentru n = 5</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="fl">1e5</span>, <span class="fu">potriviri</span>(<span class="dv">10</span>))      <span class="co"># numărul de potriviri în 10^5 împărțiri</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">simulare =</span> <span class="fu">mean</span>(___), <span class="at">exact =</span> <span class="fu">p_potriviri</span>(<span class="dv">10</span>), <span class="at">limita =</span> ___)</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>exact_k <span class="ot">&lt;-</span> <span class="cf">function</span>(n, k) {             <span class="co"># P(exact k potriviri), formula exactă</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  j <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>(n <span class="sc">-</span> k)</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>  ___</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>rep_N <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="at">simulare =</span> <span class="fu">sapply</span>(k, <span class="cf">function</span>(i) <span class="fu">mean</span>(N <span class="sc">==</span> i)),</span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>               <span class="at">exact    =</span> <span class="fu">sapply</span>(k, <span class="cf">function</span>(i) <span class="fu">exact_k</span>(<span class="dv">10</span>, i)),</span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>               <span class="at">limita   =</span> ___)          <span class="co"># valorile limită e^(-1) / k!</span></span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(rep_N) <span class="ot">&lt;-</span> k</span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(rep_N, <span class="dv">4</span>)</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-s01-suplimentare" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Exerciții suplimentare</h1>
+<p>Exercițiile de mai jos, cu răspunsuri finale, sunt destinate studiului individual și reiau, în ordine, temele ședinței.</p>
+<div id="box-exr-s01-biti" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 11</span> <span class="curs-box-name">(Șiruri de biți)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-niva">Pentru acasă</span> Un generator produce un șir de <span class="math inline">\(n\)</span> biți, toate cele <span class="math inline">\(2^n\)</span> șiruri fiind egal probabile (echivalent: aruncăm de <span class="math inline">\(n\)</span> ori o monedă echilibrată, ca în Exemplul <a href="..\curs\01-camp-probabilitate.html#box-ex-k01-zece-aruncari" class="curs-ref">6 din Cursul 1</a>, și scriem <span class="math inline">\(1\)</span> pentru cap și <span class="math inline">\(0\)</span> pentru pajură). Fie <span class="math inline">\(A_j\)</span> evenimentul „bitul de pe poziția <span class="math inline">\(j\)</span> este <span class="math inline">\(1\)</span>”. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Pentru <span class="math inline">\(n=4\)</span>, scrieți cu ajutorul evenimentelor <span class="math inline">\(A_j\)</span>: <span class="math inline">\(U\)</span> = „cel puțin un bit este <span class="math inline">\(1\)</span>” și <span class="math inline">\(V\)</span> = „există doi biți consecutivi egali cu <span class="math inline">\(1\)</span>”. Calculați <span class="math inline">\(\PP(U)\)</span> și <span class="math inline">\(\PP(V)\)</span>.</p></li>
+<li><p>Pentru <span class="math inline">\(n\)</span> oarecare, calculați probabilitatea ca exact <span class="math inline">\(k\)</span> biți să fie egali cu <span class="math inline">\(1\)</span>.</p></li>
+<li><p>În R, pentru <span class="math inline">\(n=10\)</span>: enumerați toate șirurile, verificați formula de la (b) și calculați <span class="math inline">\(\PP(V)\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(U=A_1\cup A_2\cup A_3\cup A_4\)</span>, <span class="math inline">\(\PP(U)=\frac{15}{16}=0.9375\)</span>; <span class="math inline">\(V=(A_1\cap A_2)\cup(A_2\cap A_3)\cup(A_3\cap A_4)\)</span>, <span class="math inline">\(\PP(V)=\frac12\)</span>.</p></li>
+<li><p><span class="math inline">\(\binom nk\big/2^n\)</span>.</p></li>
+<li><p>Numărul șirurilor cu exact <span class="math inline">\(k\)</span> biți egali cu <span class="math inline">\(1\)</span> este <span class="math inline">\(\binom{10}k\)</span>; <span class="math inline">\(\PP(V)=1-\frac{144}{1024}\approx0.8594\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="box-exr-s01-joc" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 12</span> <span class="curs-box-name">(Două zaruri contra unui zar cu 12 fețe)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-niva">Pentru acasă</span> Ana aruncă două zaruri obișnuite și adună punctele; Barbu aruncă un zar cu <span class="math inline">\(12\)</span> fețe, numerotate de la <span class="math inline">\(1\)</span> la <span class="math inline">\(12\)</span>. Câștigă cel cu punctajul mai mare; la egalitate este remiză. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Calculați probabilitatea ca Ana să câștige, probabilitatea unei remize și probabilitatea ca Barbu să câștige. Este jocul echitabil?</p></li>
+<li><p>Verificați în R prin enumerare. Ce se întâmplă dacă Ana aruncă trei zaruri, iar Barbu un zar cu <span class="math inline">\(20\)</span> de fețe?</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(\PP(\text{Ana})=\frac{216}{432}=\frac12\)</span>, <span class="math inline">\(\PP(\text{remiză})=\frac{36}{432}=\frac1{12}\)</span>, <span class="math inline">\(\PP(\text{Barbu})=\frac{180}{432}=\frac5{12}\)</span>; jocul nu este echitabil.</p></li>
+<li><p>Enumerarea confirmă valorile de la (a); cu trei zaruri contra unui zar cu <span class="math inline">\(20\)</span> de fețe, Ana și Barbu câștigă fiecare cu probabilitatea <span class="math inline">\(0.475\)</span>, iar remiza are probabilitatea <span class="math inline">\(0.05\)</span>: jocul devine echitabil.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="box-exr-s01-vagoane" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 13</span> <span class="curs-box-name">(Pasageri și vagoane)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-niva">Pentru acasă</span> Nouă pasageri urcă într-un tren cu trei vagoane; fiecare alege la întâmplare unul dintre vagoane (toate cele <span class="math inline">\(3^9\)</span> moduri de alegere sunt egal probabile). Calculați probabilitatea ca: </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>în primul vagon să urce exact trei pasageri;</p></li>
+<li><p>în fiecare vagon să urce câte trei pasageri;</p></li>
+<li><p>într-un vagon să urce doi pasageri, în altul trei și în cel rămas patru;</p></li>
+<li><p>niciun vagon să nu rămână gol.</p></li>
+<li><p>Verificați în R prin enumerarea tuturor celor <span class="math inline">\(3^9\)</span> rezultate.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(\binom93\cdot2^6\big/3^9=\frac{5376}{19\,683}\approx0.2731\)</span>.</p></li>
+<li><p><span class="math inline">\(\frac{9!}{3!\,3!\,3!}\big/3^9=\frac{1680}{19\,683}\approx0.0854\)</span>.</p></li>
+<li><p><span class="math inline">\(3!\cdot\frac{9!}{2!\,3!\,4!}\big/3^9=\frac{7560}{19\,683}\approx0.3841\)</span>.</p></li>
+<li><p><span class="math inline">\(1-\frac{3\cdot2^9-3}{3^9}=1-\frac{1533}{19\,683}\approx0.9221\)</span>.</p></li>
+<li><p>Enumerarea dă aceleași valori: <span class="math inline">\(0.2731\)</span>, <span class="math inline">\(0.0854\)</span>, <span class="math inline">\(0.3841\)</span> și <span class="math inline">\(0.9221\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="box-exr-s01-puncte-fixe" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 14</span> <span class="curs-box-name">(Punctele fixe ale permutărilor prin enumerare)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-niva">Pentru acasă</span> În problema potrivirilor (Exercițiul <a href="#box-exr-s01-potriviri" class="curs-ref">10</a>) numărul de potriviri este numărul de <em>puncte fixe</em> ale unei permutări alese la întâmplare. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Pentru <span class="math inline">\(n=4\)</span>, determinați prin numărare câte dintre cele <span class="math inline">\(24\)</span> de permutări au exact <span class="math inline">\(0\)</span>, <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(3\)</span> și <span class="math inline">\(4\)</span> puncte fixe.</p></li>
+<li><p>Scrieți în R o funcție <code>permutari(n)</code> care întoarce toate permutările lui <span class="math inline">\(\{1,\dots,n\}\)</span> (pentru <span class="math inline">\(n\le6\)</span>) și verificați punctul (a).</p></li>
+<li><p>Pentru <span class="math inline">\(n=6\)</span>, comparați probabilitățile exacte obținute prin enumerare cu formula <code>exact_k</code> și calculați numărul mediu de puncte fixe.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(9\)</span>, <span class="math inline">\(8\)</span>, <span class="math inline">\(6\)</span>, <span class="math inline">\(0\)</span> și <span class="math inline">\(1\)</span> permutări cu <span class="math inline">\(0\)</span>, <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, <span class="math inline">\(3\)</span>, respectiv <span class="math inline">\(4\)</span> puncte fixe (probabilitățile <span class="math inline">\(0.375\)</span>, <span class="math inline">\(0.3333\)</span>, <span class="math inline">\(0.25\)</span>, <span class="math inline">\(0\)</span> și <span class="math inline">\(0.0417\)</span>); în particular, <span class="math inline">\(\PP(\text{cel puțin un punct fix})=\frac{15}{24}=0.625=p_4\)</span>.</p></li>
+<li><p>Funcția întoarce o matrice cu <span class="math inline">\(24\)</span> de linii; numărătorile coincid cu cele de la (a).</p></li>
+<li><p>Enumerarea celor <span class="math inline">\(720\)</span> de permutări coincide cu formula: <span class="math inline">\(0.3681\)</span>, <span class="math inline">\(0.3667\)</span>, <span class="math inline">\(0.1875\)</span>, <span class="math inline">\(0.0556\)</span>, <span class="math inline">\(0.0208\)</span>, <span class="math inline">\(0\)</span> și <span class="math inline">\(0.0014\)</span> pentru <span class="math inline">\(k=0,1,\dots,6\)</span>; numărul mediu de puncte fixe este exact <span class="math inline">\(1\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-s01-tema" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Temă</h1>
+<ol type="1">
+<li><p>Fie <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span> trei evenimente. Exprimați cu ajutorul operațiilor cu evenimente: „se realizează exact două dintre ele”, „se realizează cel mult două dintre ele” și „se realizează <span class="math inline">\(A\)</span> sau <span class="math inline">\(B\)</span>, dar nu <span class="math inline">\(C\)</span>”. <em>Răspuns:</em> <span class="math inline">\((A\cap B\cap C^c)\cup(A\cap B^c\cap C)\cup(A^c\cap B\cap C)\)</span>; <span class="math inline">\((A\cap B\cap C)^c=A^c\cup B^c\cup C^c\)</span>; <span class="math inline">\((A\cup B)\cap C^c\)</span>.</p></li>
+<li><p>Fie <span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span> două evenimente cu <span class="math inline">\(\PP(A)=0.6\)</span> și <span class="math inline">\(\PP(B)=0.7\)</span>. Arătați că <span class="math inline">\(0.3\le\PP(A\cap B)\le0.6\)</span>. Dacă <span class="math inline">\(\PP(A\cap B)=0.4\)</span>, calculați probabilitatea să se realizeze cel puțin unul, exact unul, respectiv niciunul dintre cele două evenimente. <em>Răspuns:</em> <span class="math inline">\(0.9\)</span>; <span class="math inline">\(0.5\)</span>; <span class="math inline">\(0.1\)</span>.</p></li>
+<li><p>Câte numere din mulțimea <span class="math inline">\(\{1,\dots,500\}\)</span> sunt divizibile cu <span class="math inline">\(3\)</span> sau cu <span class="math inline">\(7\)</span>? Care este probabilitatea ca un număr ales la întâmplare din această mulțime să nu fie divizibil nici cu <span class="math inline">\(3\)</span>, nici cu <span class="math inline">\(7\)</span>? Verificați în R cu operatorul <code>%%</code>. <em>Răspuns:</em> <span class="math inline">\(166+71-23=214\)</span>; <span class="math inline">\(286/500=0.572\)</span>.</p></li>
+<li><p>Dintr-un grup format din <span class="math inline">\(8\)</span> programatori și <span class="math inline">\(5\)</span> testeri se alege la întâmplare o echipă de <span class="math inline">\(4\)</span> persoane. Care este probabilitatea ca echipa să conțină exact <span class="math inline">\(2\)</span> testeri? Dar cel puțin un tester? <em>Răspuns:</em> <span class="math inline">\(\binom52\binom82/\binom{13}4=280/715\approx0.3916\)</span>; <span class="math inline">\(1-\binom84/\binom{13}4=1-70/715\approx0.9021\)</span>.</p></li>
+<li><p>Câte anagrame are cuvântul PROBABILITATE? Dacă literele lui sunt amestecate la întâmplare, care este probabilitatea ca șirul obținut să înceapă cu o vocală? <em>Răspuns:</em> <span class="math inline">\(13!/(2!\,2!\,2!\,2!)=389\,188\,800\)</span>; <span class="math inline">\(6/13\approx0.4615\)</span> (șase dintre cele <span class="math inline">\(13\)</span> litere sunt vocale).</p></li>
+<li><p>Aruncăm trei zaruri echilibrate. Calculați probabilitatea ca suma lor să fie cel puțin <span class="math inline">\(15\)</span>, enumerând în R cele <span class="math inline">\(216\)</span> rezultate cu <code>expand.grid</code>, apoi estimați aceeași probabilitate printr-o simulare cu <span class="math inline">\(10^5\)</span> repetări. <em>Răspuns:</em> <span class="math inline">\(20/216\approx0.0926\)</span>.</p></li>
+<li><p>Pe câte persoane trebuie să întrebați pentru ca, cu probabilitate cel puțin <span class="math inline">\(1/2\)</span>, măcar una dintre ele să fie născută în aceeași zi cu dumneavoastră? Comparați cu pragul <span class="math inline">\(n=23\)</span> din problema zilelor de naștere și explicați diferența. <em>Indicație:</em> probabilitatea este <span class="math inline">\(1-(364/365)^n\)</span>; în R, <code>min(which(1 - (364/365)^(1:400) &gt;= 0.5))</code>. <em>Răspuns:</em> <span class="math inline">\(n=253\)</span>.</p></li>
+<li><p>Doisprezece colegi organizează un schimb de cadouri: fiecare extrage la întâmplare un bilet cu numele unui coleg (toate împărțirile biletelor sunt egal probabile). Estimați prin simulare, cu funcția <code>potriviri</code> din Exercițiul <a href="#box-exr-s01-potriviri" class="curs-ref">10</a>, probabilitatea ca nimeni să nu își extragă propriul nume și probabilitatea ca exact două persoane să își extragă propriul nume; comparați cu valorile date de <code>exact_k</code>. <em>Răspuns:</em> <span class="math inline">\(\approx0.3679\)</span> și <span class="math inline">\(\approx0.1839\)</span>.</p></li>
+</ol>
+</section>
+<section id="bibliografie" class="level1 unnumbered">
+<h1 class="unnumbered">Bibliografie</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-bertsekas2008" class="csl-entry" role="listitem">
+Bertsekas, Dimitri P., and John N. Tsitsiklis. 2008. <em>Introduction to Probability</em>. 2nd ed. Athena Scientific.
+</div>
+<div id="ref-blitzstein2019" class="csl-entry" role="listitem">
+Blitzstein, Joseph K., and Jessica Hwang. 2019. <em>Introduction to Probability</em>. 2nd ed. CRC Press.
+</div>
+<div id="ref-davies2016" class="csl-entry" role="listitem">
+Davies, Tilman M. 2016. <em>The Book of <span>R</span>: A First Course in Programming and Statistics</em>. No Starch Press.
+</div>
+<div id="ref-verzani2014" class="csl-entry" role="listitem">
+Verzani, John. 2014. <em>Using <span>R</span> for Introductory Statistics</em>. 2nd ed. CRC Press.
+</div>
+<div id="ref-dobrow2021" class="csl-entry" role="listitem">
+Wagaman, Amy S., and Robert P. Dobrow. 2021. <em>Probability with Applications and <span>R</span></em>. 2nd ed. Wiley.
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<!-- Buton „Înapoi sus”: apare după ce pagina a fost derulată -->
+
+<button id="curs-to-top" type="button" aria-label="Înapoi la începutul paginii" title="Înapoi sus">
+
+  <i class="bi bi-arrow-up"></i>
+
+</button>
+
+<script>
+
+(function () {
+
+  var btn = document.getElementById('curs-to-top');
+
+  if (!btn) return;
+
+  var toggle = function () {
+
+    btn.classList.toggle('visible', window.scrollY > 400);
+
+  };
+
+  window.addEventListener('scroll', toggle, { passive: true });
+
+  toggle();
+
+  btn.addEventListener('click', function () {
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    btn.blur();
+
+  });
+
+})();
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiat!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiat!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/AlexAmarioarei\.github\.io\/curs-ps-fmi\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2026, <a href="https://alexamarioarei.github.io/">Alexandru Amărioarei</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Această pagină a fost creată în <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

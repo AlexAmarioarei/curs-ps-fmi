@@ -162,3 +162,31 @@ img.sticker-index {
   margin: 0 0 0.8rem 1.6rem;
 }
 .sticker-clear { clear: both; }
+
+/* ---------------- Publicare săptămânală: materiale „în curând” ---------------- */
+/* (tabelele din curs/index.qmd și laborator/index.qmd, generate de tools/build_notes.R) */
+table.saptamani tr.in-curand td { color: var(--curs-gray); }
+table.saptamani tr.in-curand td:first-child { font-weight: 400; }
+.eticheta-in-curand {
+  display: inline-block;
+  padding: .2rem .6rem;
+  border: 1px dashed var(--curs-gray);
+  border-radius: .25rem;
+  font-size: .85em;
+  color: var(--curs-gray);
+  background: #F7F8FA;
+  white-space: nowrap;
+}
+.eticheta-in-curand > i { margin-right: .2rem; }
+
+/* butonul „Rezolvări” (laborator/index.qmd): rezolvările complete ale unui seminar */
+.btn.btn-rezolvari {
+  color: var(--curs-thmframe, #1B3A5C);
+  border-color: var(--curs-thmframe, #1B3A5C);
+  background: transparent;
+}
+.btn.btn-rezolvari:hover, .btn.btn-rezolvari:focus {
+  color: #fff;
+  background: var(--curs-thmframe, #1B3A5C);
+  border-color: var(--curs-thmframe, #1B3A5C);
+}

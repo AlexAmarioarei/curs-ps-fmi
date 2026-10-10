@@ -99,7 +99,7 @@ div.csl-indent {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-a48f3a5c7f410fc94a8fd1d60fc997bd.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-a23b0fa4028af50514c3a9f381a83bdc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-6a2deaacd7d2f20a9b75dfb62d024a56.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -227,7 +227,7 @@ window.Quarto = {
 <link rel="stylesheet" href="../css/site_style.css">
 <meta property="og:title" content="Cursul 1. Câmp de probabilitate – Probabilități și Statistică 2026-2027">
 <meta property="og:description" content="">
-<meta property="og:image" content="..\figuri\tikz\17d12669ba0dc22c7027b467c492c89ea8a50087.svg">
+<meta property="og:image" content="https://AlexAmarioarei.github.io/curs-ps-fmi/figuri/tikz/17d12669ba0dc22c7027b467c492c89ea8a50087.svg">
 <meta property="og:site_name" content="Probabilități și Statistică 2026-2027">
 </head>
 
@@ -286,12 +286,12 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../laborator/index.html"><i class="bi bi-grid-3x3-gap" role="img">
 </i> 
- <span class="dropdown-text">Toate seminarele și laboratoarele (note și slide-uri)</span></a>
+ <span class="dropdown-text">Toate seminarele și laboratoarele (fișe de lucru, rezolvări, slide-uri)</span></a>
   </li>  
         <li><hr class="dropdown-divider"></li>
         <li>
-    <a class="dropdown-item" href="../laborator/01-evenimente-numarare-R.html">
- <span class="dropdown-text">Seminarul 1 — Evenimente, probabilități și numărare. Primii pași în R</span></a>
+    <a class="dropdown-item" href="../laborator_nosols/01-evenimente-numarare-R.html">
+ <span class="dropdown-text">Seminarul 1 — Evenimente, probabilități și numărare. Primii pași în R (fișă de lucru)</span></a>
   </li>  
     </ul>
   </li>
@@ -485,7 +485,7 @@ Notă istorică
 \]</span> unde <span class="math inline">\(\binom{20}{5}\)</span> numără pozițiile (dintre cele <span class="math inline">\(20\)</span>) pe care apar bilele roșii, <span class="math inline">\((0.23)^5\)</span> este probabilitatea ca acele <span class="math inline">\(5\)</span> extrageri să dea bile roșii, iar <span class="math inline">\((0.77)^{15}\)</span> probabilitatea ca celelalte <span class="math inline">\(15\)</span> să dea bile verzi.</p>
 <p><strong>Problemă de statistică.</strong> Nu cunoaștem <span class="math inline">\(p\)</span>. Am efectuat <span class="math inline">\(20\)</span> de extrageri cu revenire și am observat <span class="math inline">\(5\)</span> bile roșii. Ce putem spune despre <span class="math inline">\(p\)</span>? Un răspuns natural este să <em>estimăm</em> proporția necunoscută prin proporția observată, <span class="math display">\[
 \hat p=\frac{5}{20}=0.25 .
-\]</span> Întrebările firești care urmează (cât de precisă este această estimare? putem afirma, pe baza datelor, că <span class="math inline">\(p&lt;0.3\)</span>?) își vor primi răspunsul în partea a doua a semestrului, dedicată statisticii (începând cu <a href="08-esantionare.html" class="curs-ref">Cursul 8</a>).</p>
+\]</span> Întrebările firești care urmează (cât de precisă este această estimare? putem afirma, pe baza datelor, că <span class="math inline">\(p&lt;0.3\)</span>?) își vor primi răspunsul în partea a doua a semestrului, dedicată statisticii (începând cu Cursul 8).</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2026</span>)                 <span class="co"># un eșantion simulat de 20 de extrageri</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"roșie"</span>, <span class="st">"verde"</span>), <span class="dv">20</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.23</span>, <span class="fl">0.77</span>))</span>
@@ -599,7 +599,7 @@ Observație
 <li><em>Durata de viață a unui calculator</em>: <span class="math inline">\(\Omega=[0,T]\)</span>, cu <span class="math inline">\(T&gt;0\)</span> o durată maximă (sau, mai simplu, <span class="math inline">\(\Omega=\R_+\)</span>).</li>
 <li><em>Tragerea la țintă</em>: dacă ținta este un disc de rază <span class="math inline">\(R\)</span>, rezultatul este punctul de impact, <span class="math inline">\(\Omega=\{(x,y)\mid x^2+y^2\le R^2\}\)</span>; pentru o țintă pătrată, <span class="math inline">\(\Omega=\{(x,y)\mid 0\le x,y\le R\}\)</span>.</li>
 </ol>
-<p>În ultimele două cazuri <span class="math inline">\(\Omega\)</span> este nenumărabil; astfel de spații vor fi tratate în cursurile despre variabile aleatoare continue (<a href="04-va-continue.html" class="curs-ref">Cursul 4</a> și <a href="05-repartitii-continue.html" class="curs-ref">Cursul 5</a>).</p>
+<p>În ultimele două cazuri <span class="math inline">\(\Omega\)</span> este nenumărabil; astfel de spații vor fi tratate în cursurile despre variabile aleatoare continue (Cursul 4 și Cursul 5).</p>
 </div>
 </div>
 </section>
@@ -786,7 +786,7 @@ A\cap(B\cup C)=(A\cap B)\cup(A\cap C),\qquad A\cup(B\cap C)=(A\cup B)\cap(A\cup 
 <p>Două evenimente <span class="math inline">\(A,B\)</span> se numesc <strong>incompatibile</strong> (sau <em>disjuncte</em>, <em>mutual exclusive</em>) dacă <span class="math inline">\(A\cap B=\emptyset\)</span>, adică nu se pot realiza simultan. Evenimentele <span class="math inline">\((A_i)_{i\in I}\)</span> se numesc <em>incompatibile două câte două</em> dacă <span class="math inline">\(A_i\cap A_j=\emptyset\)</span> pentru orice <span class="math inline">\(i\neq j\)</span>. O familie de evenimente incompatibile două câte două a căror reuniune este <span class="math inline">\(\Omega\)</span> se numește <strong>sistem complet de evenimente</strong> (sau <strong>partiție</strong> a lui <span class="math inline">\(\Omega\)</span>).</p>
 </div>
 </div>
-<p>De exemplu, <span class="math inline">\(A\)</span> și <span class="math inline">\(A^c\)</span> formează întotdeauna un sistem complet de evenimente, iar evenimentele elementare <span class="math inline">\(\{\omega\}\)</span>, <span class="math inline">\(\omega\in\Omega\)</span>, formează (pentru <span class="math inline">\(\Omega\)</span> discret) un sistem complet de evenimente. Sistemele complete de evenimente vor juca un rol central în formula probabilității totale (<a href="02-conditionare-independenta.html" class="curs-ref">Cursul 2</a>).</p>
+<p>De exemplu, <span class="math inline">\(A\)</span> și <span class="math inline">\(A^c\)</span> formează întotdeauna un sistem complet de evenimente, iar evenimentele elementare <span class="math inline">\(\{\omega\}\)</span>, <span class="math inline">\(\omega\in\Omega\)</span>, formează (pentru <span class="math inline">\(\Omega\)</span> discret) un sistem complet de evenimente. Sistemele complete de evenimente vor juca un rol central în formula probabilității totale (Cursul 2).</p>
 <div id="box-ex-k01-zece-aruncari" class="curs-box exemplu">
 <div class="curs-box-title">
 <span class="curs-box-label">Exemplul 6</span> <span class="curs-box-name">(Aruncarea de 10 ori a unei monede)</span>
@@ -955,7 +955,7 @@ Figura&nbsp;3: Frecvența relativă <span class="math inline">\(N(A)/N\)</span> 
 </div>
 </div>
 </div>
-<p>Relația (<a href="#eq-k01-frecventa" class="quarto-xref">1</a>) nu poate servi drept definiție matematică (limita nu are un sens precis pentru un șir de rezultate „aleatoare”; vom reveni asupra acestui aspect în <a href="07-teoreme-limita.html" class="curs-ref">Cursul 7</a>, la Legea Numerelor Mari). Ea ne sugerează însă proprietățile pe care trebuie să le aibă probabilitatea:</p>
+<p>Relația (<a href="#eq-k01-frecventa" class="quarto-xref">1</a>) nu poate servi drept definiție matematică (limita nu are un sens precis pentru un șir de rezultate „aleatoare”; vom reveni asupra acestui aspect în Cursul 7, la Legea Numerelor Mari). Ea ne sugerează însă proprietățile pe care trebuie să le aibă probabilitatea:</p>
 <ol type="1">
 <li><span class="math inline">\(0\le N(A)\le N\)</span>, deci <span class="math inline">\(\PP(A)\in[0,1]\)</span>;</li>
 <li><span class="math inline">\(N(\emptyset)=0\)</span> și <span class="math inline">\(N(\Omega)=N\)</span>, deci <span class="math inline">\(\PP(\emptyset)=0\)</span> și <span class="math inline">\(\PP(\Omega)=1\)</span>;</li>
@@ -1164,7 +1164,7 @@ p_1+p_2+\dots+p_6=\sum_{i=1}^6\PP(\{i\})=\PP(\Omega)=1 .
 A&amp;=\{\text{capul apare mai devreme sau mai târziu}\},\\
 A_n&amp;=\{(\omega_k)_k\in\Omega\mid\exists\,i\in\{1,\dots,n\}\text{ cu }\omega_i=H\},
 \end{aligned}
-\]</span> adică <span class="math inline">\(A_n\)</span> = „am obținut cap în primele <span class="math inline">\(n\)</span> aruncări”. Avem <span class="math inline">\(A_1\subseteq A_2\subseteq\dots\)</span> și <span class="math inline">\(A=\bigcup_nA_n\)</span>. Evenimentul contrar lui <span class="math inline">\(A_n\)</span> este „primele <span class="math inline">\(n\)</span> aruncări au dat pajură”; vom vedea în <a href="02-conditionare-independenta.html" class="curs-ref">Cursul 2</a> (independența aruncărilor) că <span class="math inline">\(\PP(A_n^c)=(1-p)^n\)</span> (pentru <span class="math inline">\(p=1/2\)</span> acest lucru rezultă și din modelul clasic al secțiunii următoare: un singur rezultat favorabil din <span class="math inline">\(2^n\)</span>). Din Teorema <a href="#box-thm-k01-continuitate" class="curs-ref">18</a>, <span class="math display">\[
+\]</span> adică <span class="math inline">\(A_n\)</span> = „am obținut cap în primele <span class="math inline">\(n\)</span> aruncări”. Avem <span class="math inline">\(A_1\subseteq A_2\subseteq\dots\)</span> și <span class="math inline">\(A=\bigcup_nA_n\)</span>. Evenimentul contrar lui <span class="math inline">\(A_n\)</span> este „primele <span class="math inline">\(n\)</span> aruncări au dat pajură”; vom vedea în Cursul 2 (independența aruncărilor) că <span class="math inline">\(\PP(A_n^c)=(1-p)^n\)</span> (pentru <span class="math inline">\(p=1/2\)</span> acest lucru rezultă și din modelul clasic al secțiunii următoare: un singur rezultat favorabil din <span class="math inline">\(2^n\)</span>). Din Teorema <a href="#box-thm-k01-continuitate" class="curs-ref">18</a>, <span class="math display">\[
 \PP(A)=\lim_{n\to\infty}\PP(A_n)=\lim_{n\to\infty}\big(1-(1-p)^n\big)=1 .
 \]</span> Deci, oricât de mică ar fi <span class="math inline">\(p&gt;0\)</span>, capul apare aproape sigur. Observăm că <span class="math inline">\(A\neq\Omega\)</span> (șirul <span class="math inline">\(TTT\dots\)</span> nu aparține lui <span class="math inline">\(A\)</span>), dar <span class="math inline">\(\PP(A)=1\)</span>: un eveniment de probabilitate <span class="math inline">\(1\)</span> nu este neapărat evenimentul sigur.</p>
 </div>
@@ -1740,7 +1740,7 @@ De reținut
 <p><strong>Rezultate clasice.</strong> Zile de naștere: <span class="math inline">\(1-A_{365}^n/365^n\)</span> (<span class="math inline">\(&gt;1/2\)</span> pentru <span class="math inline">\(n\ge23\)</span>). Potriviri: <span class="math inline">\(p_n=\sum_{k=1}^n\frac{(-1)^{k+1}}{k!}\to1-\frac1e\approx0.632\)</span>.</p>
 </div>
 </div>
-<p><strong>Legătura cu cursurile următoare.</strong> În <a href="02-conditionare-independenta.html" class="curs-ref">Cursul 2</a> vom vedea cum se modifică probabilitatea unui eveniment atunci când primim o informație suplimentară (probabilitatea condiționată) și vom da un sens precis ideii că două evenimente „nu se influențează” (independența). Regulile de numărare și formula lui Poincaré vor reapărea în <a href="03-va-discrete.html" class="curs-ref">Cursul 3</a>, la repartițiile binomială și hipergeometrică și la numărul mediu de potriviri.</p>
+<p><strong>Legătura cu cursurile următoare.</strong> În Cursul 2 vom vedea cum se modifică probabilitatea unui eveniment atunci când primim o informație suplimentară (probabilitatea condiționată) și vom da un sens precis ideii că două evenimente „nu se influențează” (independența). Regulile de numărare și formula lui Poincaré vor reapărea în Cursul 3, la repartițiile binomială și hipergeometrică și la numărul mediu de potriviri.</p>
 </section>
 <section id="sec-k01-exercitii" class="level1" data-number="9">
 <h1 data-number="9"><span class="header-section-number">9</span> Exerciții rezolvate</h1>
@@ -1831,7 +1831,7 @@ De reținut
 <div class="curs-solutie-body">
 <p>Ordinea extragerii nu contează, deci <span class="math inline">\(\Omega\)</span> este mulțimea submulțimilor cu <span class="math inline">\(6\)</span> elemente ale lui <span class="math inline">\(\{1,\dots,49\}\)</span>, <span class="math inline">\(|\Omega|=\binom{49}6=13\,983\,816\)</span>, cu echirepartiția. Pentru a avea exact <span class="math inline">\(k\)</span> numere câștigătoare, extragerea trebuie să conțină <span class="math inline">\(k\)</span> dintre cele <span class="math inline">\(6\)</span> numere ale jucătorului (<span class="math inline">\(\binom6k\)</span> moduri) și <span class="math inline">\(6-k\)</span> dintre cele <span class="math inline">\(43\)</span> de numere necompletate (<span class="math inline">\(\binom{43}{6-k}\)</span> moduri). Deci <span class="math display">\[
 \PP(\text{exact }k\text{ numere})=\frac{\binom6k\binom{43}{6-k}}{\binom{49}6}.
-\]</span> De exemplu, <span class="math inline">\(\PP(\text{exact }3)=\frac{20\cdot12\,341}{13\,983\,816}\approx0.01765\)</span>, iar <span class="math inline">\(\PP(\text{exact }6)=1/13\,983\,816\approx7.15\cdot10^{-8}\)</span>. (Vom regăsi această formulă în <a href="03-va-discrete.html" class="curs-ref">Cursul 3</a>, la repartiția hipergeometrică.)</p>
+\]</span> De exemplu, <span class="math inline">\(\PP(\text{exact }3)=\frac{20\cdot12\,341}{13\,983\,816}\approx0.01765\)</span>, iar <span class="math inline">\(\PP(\text{exact }6)=1/13\,983\,816\approx7.15\cdot10^{-8}\)</span>. (Vom regăsi această formulă în Cursul 3, la repartiția hipergeometrică.)</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">6</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">choose</span>(<span class="dv">6</span>, k) <span class="sc">*</span> <span class="fu">choose</span>(<span class="dv">43</span>, <span class="dv">6</span> <span class="sc">-</span> k) <span class="sc">/</span> <span class="fu">choose</span>(<span class="dv">49</span>, <span class="dv">6</span>), <span class="dv">6</span>)</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1946,7 +1946,7 @@ n(\sqrt2+1)&lt;r&lt;n(\sqrt2+1)+1,\qquad\text{adică } r=\big\lceil n(\sqrt2+1)\
 \end{aligned}
 \]</span> Observăm că <span class="math inline">\(\PP(4)=0\)</span>: dacă patru scrisori sunt în plicurile corecte, și a cincea este. Suma probabilităților este <span class="math inline">\(1\)</span>, cum era de așteptat. Când <span class="math inline">\(n\to\infty\)</span>, suma tinde la <span class="math inline">\(e^{-1}\)</span>, deci <span class="math display">\[
 \PP(\text{exact }k\text{ potriviri})\xrightarrow[n\to\infty]{}\frac{e^{-1}}{k!},
-\]</span> adică repartiția Poisson de parametru <span class="math inline">\(1\)</span> (<a href="03-va-discrete.html" class="curs-ref">Cursul 3</a>); vezi panoul din dreapta al <a href="#fig-k01-potriviri" class="quarto-xref">Figura&nbsp;5</a>.</p>
+\]</span> adică repartiția Poisson de parametru <span class="math inline">\(1\)</span> (Cursul 3); vezi panoul din dreapta al <a href="#fig-k01-potriviri" class="quarto-xref">Figura&nbsp;5</a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>exact_k <span class="ot">&lt;-</span> <span class="cf">function</span>(n, k) {</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  j <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>(n <span class="sc">-</span> k)</span>
@@ -2163,7 +2163,7 @@ Blitzstein, Joseph K., and Jessica Hwang. 2019. <em>Introduction to Probability<
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/AlexAmarioarei\.github\.io\/curs-ps-fmi\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
