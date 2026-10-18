@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Seminarul 2. Probabilități condiționate, formula lui Bayes și independență – Probabilități și Statistică 2026-2027</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../laborator_nosols/01-evenimente-numarare-R.html" rel="prev">
+<link href="../images/ps_sticker.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-a48f3a5c7f410fc94a8fd1d60fc997bd.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-6a2deaacd7d2f20a9b75dfb62d024a56.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Niciun rezultat",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Trimite",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<!-- Fonturi: Fira Sans (titluri, casete), Fira Mono (cod); textul folosește Palatino / TeX Gyre Pagella -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500&amp;family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+
+<script>
+window.MathJax = { tex: { macros: {
+  PP: "\\mathbb{P}",
+  E: "\\mathbb{E}",
+  Var: "\\operatorname{Var}",
+  Cov: "\\operatorname{Cov}",
+  Corr: "\\operatorname{Corr}",
+  MSE: "\\operatorname{EPM}",
+  Bias: "\\operatorname{Dep}",
+  sgn: "\\operatorname{sgn}",
+  argmax: "\\operatorname*{arg\\,max}",
+  argmin: "\\operatorname*{arg\\,min}",
+  R: "\\mathbb{R}",
+  N: "\\mathbb{N}",
+  Z: "\\mathbb{Z}",
+  Q: "\\mathbb{Q}",
+  F: "\\mathcal{F}",
+  A: "\\mathcal{A}",
+  B: "\\mathcal{B}",
+  Ind: "\\mathbf{1}",
+  dd: "\\,\\mathrm{d}",
+  eqd: "\\overset{d}{=}",
+  iid: "\\text{i.i.d.}",
+  asto: "\\xrightarrow{\\text{a.s.}}",
+  pto: "\\xrightarrow{\\;\\PP\\;}",
+  dto: "\\xrightarrow{\\;d\\;}",
+  Lto: "\\xrightarrow{L^2}",
+  indep: "\\perp\\!\\!\\!\\perp",
+  Bern: "\\mathrm{Bernoulli}",
+  Bin: "\\mathrm{Bin}",
+  HGeom: "\\mathrm{HGeom}",
+  Geom: "\\mathrm{Geom}",
+  NBin: "\\mathrm{NBin}",
+  Pois: "\\mathrm{Pois}",
+  Unif: "\\mathcal{U}",
+  Exp: "\\mathrm{Exp}",
+  Norm: "\\mathcal{N}",
+  GammaD: "\\mathrm{Gamma}",
+  BetaD: "\\mathrm{Beta}",
+  Cauchy: "\\mathrm{Cauchy}",
+  Multin: "\\mathrm{Mult}",
+  chisq: ["\\chi^2_{#1}", 1],
+  Stud: ["t_{#1}", 1],
+  Fish: ["F_{#1,#2}", 2],
+  bx: "\\mathbf{x}",
+  bX: "\\mathbf{X}",
+  bbeta: "\\boldsymbol{\\beta}",
+  hth: "\\hat{\\theta}",
+  Xbar: "\\bar{X}_n",
+  xbar: "\\bar{x}_n"
+},
+  inlineMath: [['$', '$'], ['\\(', '\\)']], processEscapes: true, tags: 'none' },
+  chtml: { scale: 1.0 } };
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../css/site_style.css">
+<meta property="og:title" content="Seminarul 2. Probabilități condiționate, formula lui Bayes și independență – Probabilități și Statistică 2026-2027">
+<meta property="og:description" content="Fișă de lucru (fără rezolvări)">
+<meta property="og:image" content="https://AlexAmarioarei.github.io/curs-ps-fmi/figuri/tikz/455c8856d5206706cc0380c990f1b9a30746cd7e.svg">
+<meta property="og:site_name" content="Probabilități și Statistică 2026-2027">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/ps_sticker.png" alt="" class="navbar-logo light-content">
+    <img src="../images/ps_sticker.png" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Probabilități și Statistică 2026-2027</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> <i class="bi bi-info-circle" role="img">
+</i> 
+<span class="menu-text">Informații generale</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-note-de-curs" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-journal-text" role="img">
+</i> 
+ <span class="menu-text">Note de curs</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-note-de-curs">    
+        <li>
+    <a class="dropdown-item" href="../curs/index.html"><i class="bi bi-grid-3x3-gap" role="img">
+</i> 
+ <span class="dropdown-text">Toate cursurile (note și slide-uri)</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../curs/01-camp-probabilitate.html">
+ <span class="dropdown-text">Cursul 1 — Câmp de probabilitate</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../curs/02-conditionare-independenta.html">
+ <span class="dropdown-text">Cursul 2 — Probabilitate condiționată și independență</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-note-de-laborator" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-laptop" role="img">
+</i> 
+ <span class="menu-text">Note de laborator</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-note-de-laborator">    
+        <li>
+    <a class="dropdown-item" href="../laborator/index.html"><i class="bi bi-grid-3x3-gap" role="img">
+</i> 
+ <span class="dropdown-text">Toate seminarele și laboratoarele (fișe de lucru, rezolvări, slide-uri)</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../laborator_nosols/01-evenimente-numarare-R.html">
+ <span class="dropdown-text">Seminarul 1 — Evenimente, probabilități și numărare. Primii pași în R (fișă de lucru)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../laborator_nosols/02-conditionare-independenta.html">
+ <span class="dropdown-text">Seminarul 2 — Probabilități condiționate, formula lui Bayes și independență (fișă de lucru)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../proiect/proiect.html"> <i class="bi bi-gear" role="img">
+</i> 
+<span class="menu-text">Proiect de laborator</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../Introducere_R/index.html"> <i class="bi bi-book" role="img">
+</i> 
+<span class="menu-text">Introducere în R</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Introducere_Tidyverse/index.html"> <i class="bi bi-book" role="img">
+</i> 
+<span class="menu-text">Introducere în Tidyverse</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../contact/contact.html"> <i class="bi bi-pin-map" role="img">
+</i> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../laborator_nosols/01-evenimente-numarare-R.html">Fișe de lucru</a></li><li class="breadcrumb-item"><a href="../laborator_nosols/02-conditionare-independenta.html">2. Probabilități condiționate, formula lui Bayes și independență</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../laborator/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Note de seminar și laborator</strong></span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Fișe de lucru</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../laborator_nosols/01-evenimente-numarare-R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Evenimente, probabilități și numărare. Primii pași în R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../laborator_nosols/02-conditionare-independenta.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">2. Probabilități condiționate, formula lui Bayes și independență</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Pe această pagină</h2>
+   
+  <ul>
+  <li><a href="#sec-s02-breviar" id="toc-sec-s02-breviar" class="nav-link active" data-scroll-target="#sec-s02-breviar"><span class="header-section-number">1</span> Breviar</a></li>
+  <li><a href="#sec-s02-conditionata" id="toc-sec-s02-conditionata" class="nav-link" data-scroll-target="#sec-s02-conditionata"><span class="header-section-number">2</span> Probabilitate condiționată și regula înmulțirii</a></li>
+  <li><a href="#sec-s02-bayes" id="toc-sec-s02-bayes" class="nav-link" data-scroll-target="#sec-s02-bayes"><span class="header-section-number">3</span> Formula probabilității totale și formula lui Bayes</a></li>
+  <li><a href="#sec-s02-independenta" id="toc-sec-s02-independenta" class="nav-link" data-scroll-target="#sec-s02-independenta"><span class="header-section-number">4</span> Independență</a></li>
+  <li><a href="#sec-s02-clasice" id="toc-sec-s02-clasice" class="nav-link" data-scroll-target="#sec-s02-clasice"><span class="header-section-number">5</span> Probleme clasice prin simulare</a></li>
+  <li><a href="#sec-s02-suplimentare" id="toc-sec-s02-suplimentare" class="nav-link" data-scroll-target="#sec-s02-suplimentare"><span class="header-section-number">6</span> Exerciții suplimentare</a></li>
+  <li><a href="#sec-s02-tema" id="toc-sec-s02-tema" class="nav-link" data-scroll-target="#sec-s02-tema"><span class="header-section-number">7</span> Temă</a></li>
+  <li><a href="#bibliografie" id="toc-bibliografie" class="nav-link" data-scroll-target="#bibliografie">Bibliografie</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../laborator_nosols/01-evenimente-numarare-R.html">Fișe de lucru</a></li><li class="breadcrumb-item"><a href="../laborator_nosols/02-conditionare-independenta.html">2. Probabilități condiționate, formula lui Bayes și independență</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Seminarul 2. Probabilități condiționate, formula lui Bayes și independență</h1>
+<p class="subtitle lead">Fișă de lucru (fără rezolvări)</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<details class="slides-embed" open="">
+<summary><i class="bi bi-easel2"></i> Slide-urile seminarului și laboratorului 2</summary>
+<div class="slides-embed-bar">
+  <a class="btn btn-sm btn-primary" href="../slides/laborator_nosols/seminar02.html" target="_blank" rel="noopener"><i class="bi bi-arrows-fullscreen"></i> Deschide slide-urile pe tot ecranul</a>
+  <span class="slides-embed-hint">În prezentare: <kbd>←</kbd> <kbd>→</kbd> navigare, <kbd>F</kbd> ecran complet, <kbd>M</kbd> meniu, <kbd>O</kbd> privire de ansamblu.</span>
+</div>
+<div class="slides-embed-frame">
+  <iframe src="../slides/laborator_nosols/seminar02.html" loading="lazy" allowfullscreen="" title="Slide-urile seminarului și laboratorului 2"></iframe>
+</div>
+</details>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Aceasta este <strong>fișa de lucru</strong>: enunțurile, scheletele de cod R și răspunsurile finale pentru exercițiile marcate „Dacă timpul permite” și „Pentru acasă”. Rezolvările complete vor fi publicate ulterior.</p>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Planul seminarului și laboratorului
+</div>
+<div class="curs-box-body">
+<p>O informație nouă — un test medical pozitiv, un cuvânt apărut într-un mesaj, o ușă deschisă de prezentatorul unui concurs — schimbă probabilitățile evenimentelor care ne interesează. În <a href="..\curs\02-conditionare-independenta.html" class="curs-ref">Cursul 2</a> am construit instrumentele cu care ținem cont de o astfel de informație; astăzi le exersăm pe probleme concrete. Fiecare problemă este rezolvată întâi matematic, apoi verificată, ilustrată sau extinsă în R, iar problemele se sprijină una pe alta: funcțiile R scrise la un exercițiu sunt refolosite la următoarele.</p>
+<p><strong>Obiective.</strong> La sfârșitul ședinței studentul trebuie să poată:</p>
+<ol type="1">
+<li>calcula o probabilitate condiționată prin restrângerea spațiului stărilor și folosi regula înmulțirii și arborii de probabilitate pentru experimente desfășurate în etape;</li>
+<li>aplica formula probabilității totale și formula lui Bayes, inclusiv pentru mai multe observații succesive, și explica de ce un test pozitiv pentru o boală rară nu înseamnă, de regulă, boală;</li>
+<li>verifica independența a două sau a mai multor evenimente și calcula fiabilitatea unui sistem cu componente independente;</li>
+<li>analiza un algoritm randomizat simplu — verificarea egalității a două polinoame — cu ajutorul independenței și al regulii înmulțirii;</li>
+<li>estima în R o probabilitate condiționată prin simulare, ca frecvență relativă printre repetările în care s-a realizat evenimentul la care condiționăm (<code>mean(A[B])</code>);</li>
+<li>scrie funcții R care simulează experimente în etape (cu <code>for</code> și <code>while</code>): urna lui Pólya, jocul lui Monty Hall, ruina jucătorului.</li>
+</ol>
+<p><strong>Structura.</strong> Breviar; probabilitate condiționată și regula înmulțirii (Exercițiile <a href="#box-exr-s02-zaruri" class="curs-ref">1</a>–<a href="#box-exr-s02-polya" class="curs-ref">3</a>); formula probabilității totale și formula lui Bayes (Exercițiile <a href="#box-exr-s02-masini" class="curs-ref">4</a>–<a href="#box-exr-s02-diagnostic" class="curs-ref">6</a>); independență (Exercițiile <a href="#box-exr-s02-indep-zaruri" class="curs-ref">7</a>–<a href="#box-exr-s02-polinoame" class="curs-ref">9</a>); probleme clasice prin simulare (Exercițiile <a href="#box-exr-s02-monty" class="curs-ref">10</a> și <a href="#box-exr-s02-ruina" class="curs-ref">11</a>); exerciții suplimentare; temă. Pentru aprofundare: <span class="citation" data-cites="blitzstein2019">(<a href="#ref-blitzstein2019" role="doc-biblioref">Blitzstein and Hwang 2019</a>, cap. 2)</span>, <span class="citation" data-cites="bertsekas2008">(<a href="#ref-bertsekas2008" role="doc-biblioref">Bertsekas and Tsitsiklis 2008</a>, cap. 1)</span>, <span class="citation" data-cites="dobrow2021">(<a href="#ref-dobrow2021" role="doc-biblioref">Wagaman and Dobrow 2021</a>, cap. 2)</span>; pentru algoritmii probabiliști (verificarea egalității a două polinoame): <span class="citation" data-cites="mitzenmacher2017">(<a href="#ref-mitzenmacher2017" role="doc-biblioref">Mitzenmacher and Upfal 2017</a>, cap. 1)</span>.</p>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Planul ședinței
+</div>
+<div class="curs-box-body">
+<p><strong>De rezolvat la seminar</strong> (în această ordine):</p>
+<ul>
+<li>Exercițiul <a href="#box-exr-s02-zaruri" class="curs-ref">1</a> — probabilitate condiționată prin restrângerea spațiului stărilor; funcția <code>p_cond</code> și estimarea prin simulare cu <code>mean(A[B])</code>;</li>
+<li>Exercițiul <a href="#box-exr-s02-chei" class="curs-ref">2</a> — regula înmulțirii și arborele de probabilitate, fără și cu revenire; simularea cu <code>while</code>;</li>
+<li>Exercițiul <a href="#box-exr-s02-masini" class="curs-ref">4</a> — formula probabilității totale, formula lui Bayes și actualizarea succesivă; funcția <code>bayes</code>;</li>
+<li>Exercițiul <a href="#box-exr-s02-diagnostic" class="curs-ref">6</a> — un test de diagnostic și eroarea ratei de bază; funcția <code>posterior</code>;</li>
+<li>Exercițiul <a href="#box-exr-s02-indep-zaruri" class="curs-ref">7</a> — independență două câte două și independență mutuală, verificate prin enumerare.</li>
+</ul>
+<p><strong>Dacă timpul permite:</strong></p>
+<ul>
+<li>Exercițiul <a href="#box-exr-s02-fiabilitate" class="curs-ref">8</a> — fiabilitatea unui sistem cu componente independente;</li>
+<li>Exercițiul <a href="#box-exr-s02-polinoame" class="curs-ref">9</a> — un algoritm randomizat: verificarea egalității a două polinoame;</li>
+<li>Exercițiul <a href="#box-exr-s02-monty" class="curs-ref">10</a> — jocul lui Monty Hall cu <span class="math inline">\(n\)</span> uși, prin simulare.</li>
+</ul>
+<p><strong>Pentru acasă:</strong></p>
+<ul>
+<li>Exercițiile <a href="#box-exr-s02-polya" class="curs-ref">3</a> (urna lui Pólya), <a href="#box-exr-s02-spam" class="curs-ref">5</a> (filtrul anti-spam) și <a href="#box-exr-s02-ruina" class="curs-ref">11</a> (ruina jucătorului);</li>
+<li>exercițiile suplimentare <a href="#box-exr-s02-paznic" class="curs-ref">12</a>, <a href="#box-exr-s02-zar-moneda" class="curs-ref">13</a>, <a href="#box-exr-s02-monty-gazda" class="curs-ref">14</a> și <a href="#box-exr-s02-relee" class="curs-ref">15</a> (Secțiunea <a href="#sec-s02-suplimentare" class="curs-ref">6</a>);</li>
+<li>enunțurile din Secțiunea <a href="#sec-s02-tema" class="curs-ref">7</a>.</li>
+</ul>
+<p>Rezolvările complete vor fi publicate ulterior; scheletele de cod R se completează în locurile marcate cu <code>___</code>. Exercițiile marcate „Dacă timpul permite” și „Pentru acasă” au, după enunț, răspunsurile finale, pentru verificare.</p>
+</div>
+</div>
+<section id="sec-s02-breviar" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Breviar</h1>
+<p>Toate rezultatele de mai jos au fost enunțate și demonstrate în <a href="..\curs\02-conditionare-independenta.html" class="curs-ref">Cursul 2</a>; le reamintim, cu trimiteri precise, în forma în care le folosim astăzi. În rezolvări (publicate ulterior) indicăm de fiecare dată rezultatul aplicat.</p>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Rezultate din Cursul 2 folosite azi
+</div>
+<div class="curs-box-body">
+<ul>
+<li><strong>Probabilitate condiționată</strong> (Definiția <a href="..\curs\02-conditionare-independenta.html#box-def-k02-condit" class="curs-ref">1 din Cursul 2</a>): <span class="math inline">\(\PP(A\mid B)=\dfrac{\PP(A\cap B)}{\PP(B)}\)</span>, pentru <span class="math inline">\(\PP(B)&gt;0\)</span>. În modelul clasic (Definiția <a href="..\curs\01-camp-probabilitate.html#box-def-k01-laplace" class="curs-ref">19 din Cursul 1</a>), <span class="math inline">\(\PP(A\mid B)=|A\cap B|/|B|\)</span>: informația <span class="math inline">\(B\)</span> <em>restrânge spațiul stărilor</em> la <span class="math inline">\(B\)</span>. Pentru <span class="math inline">\(B\)</span> fixat, <span class="math inline">\(\PP(\cdot\mid B)\)</span> este o probabilitate (Propoziția <a href="..\curs\02-conditionare-independenta.html#box-prop-k02-masura" class="curs-ref">2 din Cursul 2</a>); în particular <span class="math inline">\(\PP(A^c\mid B)=1-\PP(A\mid B)\)</span>.</li>
+<li><strong>Regula înmulțirii</strong> (Teorema <a href="..\curs\02-conditionare-independenta.html#box-thm-k02-lant" class="curs-ref">3 din Cursul 2</a>): <span class="math inline">\(\PP(A_1\cap\dots\cap A_n)=\PP(A_1)\,\PP(A_2\mid A_1)\cdots\PP(A_n\mid A_1\cap\dots\cap A_{n-1})\)</span>. Într-un arbore de probabilitate, probabilitatea unei frunze este produsul probabilităților de pe drumul care duce la ea.</li>
+<li><strong>Formula probabilității totale</strong> (Teorema <a href="..\curs\02-conditionare-independenta.html#box-thm-k02-fpt" class="curs-ref">5 din Cursul 2</a>): dacă <span class="math inline">\(B_1,\dots,B_n\)</span> formează o partiție a lui <span class="math inline">\(\Omega\)</span> (Definiția <a href="..\curs\02-conditionare-independenta.html#box-def-k02-partitie" class="curs-ref">4 din Cursul 2</a>), atunci <span class="math inline">\(\PP(A)=\sum_{i=1}^n\PP(A\mid B_i)\,\PP(B_i)\)</span>.</li>
+<li><strong>Formula lui Bayes</strong> (Teorema <a href="..\curs\02-conditionare-independenta.html#box-thm-k02-bayes" class="curs-ref">7 din Cursul 2</a>): <span class="math inline">\(\PP(B_i\mid A)=\dfrac{\PP(A\mid B_i)\,\PP(B_i)}{\sum_{j}\PP(A\mid B_j)\,\PP(B_j)}\)</span> — de la probabilitatea <em>a priori</em> <span class="math inline">\(\PP(B_i)\)</span> la probabilitatea <em>a posteriori</em> <span class="math inline">\(\PP(B_i\mid A)\)</span>.</li>
+<li><strong>Independență</strong> (Definiția <a href="..\curs\02-conditionare-independenta.html#box-def-k02-indep" class="curs-ref">8 din Cursul 2</a>): <span class="math inline">\(A\indep B\)</span> dacă <span class="math inline">\(\PP(A\cap B)=\PP(A)\,\PP(B)\)</span>; independența se păstrează la trecerea la complementare (Propoziția <a href="..\curs\02-conditionare-independenta.html#box-prop-k02-complementare" class="curs-ref">9 din Cursul 2</a>). Evenimentele <span class="math inline">\(A_1,\dots,A_n\)</span> sunt <strong>(mutual) independente</strong> (Definiția <a href="..\curs\02-conditionare-independenta.html#box-def-k02-indep-mutuala" class="curs-ref">10 din Cursul 2</a>) dacă relația de produs are loc pentru <em>orice</em> subfamilie; atunci <span class="math inline">\(\PP(\text{cel puțin unul se realizează})=1-\prod_{i}\big(1-\PP(A_i)\big)\)</span>.</li>
+<li><strong>Independență condiționată</strong> (Definiția <a href="..\curs\02-conditionare-independenta.html#box-def-k02-indep-cond" class="curs-ref">11 din Cursul 2</a>): <span class="math inline">\(\PP(A\cap B\mid C)=\PP(A\mid C)\,\PP(B\mid C)\)</span>.</li>
+<li><strong>Fiabilitate</strong> (Secțiunea <a href="..\curs\02-conditionare-independenta.html#sec-k02-independenta" class="curs-ref">6 din Cursul 2</a>): pentru componente independente, un sistem serie funcționează cu probabilitatea <span class="math inline">\(p_1p_2\cdots p_m\)</span>, iar un sistem paralel cu probabilitatea <span class="math inline">\(1-(1-p_1)\cdots(1-p_m)\)</span>.</li>
+<li><strong>Probleme clasice</strong> (Secțiunea <a href="..\curs\02-conditionare-independenta.html#sec-k02-clasice" class="curs-ref">8 din Cursul 2</a>): Monty Hall (Exemplul <a href="..\curs\02-conditionare-independenta.html#box-ex-k02-monty" class="curs-ref">18 din Cursul 2</a>), urna lui Pólya (Propoziția <a href="..\curs\02-conditionare-independenta.html#box-prop-k02-polya" class="curs-ref">12 din Cursul 2</a>), ruina jucătorului (Propoziția <a href="..\curs\02-conditionare-independenta.html#box-prop-k02-ruina" class="curs-ref">13 din Cursul 2</a>).</li>
+<li><strong>Interpretarea frecvenționistă</strong> (Secțiunea <a href="..\curs\02-conditionare-independenta.html#sec-k02-conditionata" class="curs-ref">2 din Cursul 2</a>): în <span class="math inline">\(N\)</span> repetări ale experimentului, <span class="math inline">\(\PP(A\mid B)\approx N(A\cap B)/N(B)\)</span> — frecvența lui <span class="math inline">\(A\)</span> <em>printre repetările în care <span class="math inline">\(B\)</span> s-a realizat</em>.</li>
+</ul>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Instrumente R folosite azi
+</div>
+<div class="curs-box-body">
+<p>Pe lângă instrumentele din <a href="01-evenimente-numarare-R.html" class="curs-ref">Seminarul 1</a> (vectori, <code>sample</code>, <code>replicate</code>, <code>mean(conditie)</code>, <code>expand.grid</code>, funcții), folosim:</p>
+<ul>
+<li><strong>vectori logici</strong>: <code>A &amp; B</code> („și”), <code>A | B</code> („sau”), <code>!A</code> („non”); <code>sum(A)</code> numără valorile <code>TRUE</code>, iar <code>mean(A)</code> este frecvența lor relativă;</li>
+<li><strong>selecție logică</strong>: <code>x[B]</code> păstrează doar componentele lui <code>x</code> pentru care <code>B</code> este <code>TRUE</code>. De aici <strong>ideea centrală a laboratorului</strong>: dacă <code>A</code> și <code>B</code> sunt vectorii logici care arată, pentru fiecare repetare a experimentului, dacă evenimentele <span class="math inline">\(A\)</span> și <span class="math inline">\(B\)</span> s-au realizat, atunci <span class="math inline">\(\PP(A\mid B)\)</span> se estimează prin <code>mean(A[B])</code>, adică <code>sum(A &amp; B) / sum(B)</code>;</li>
+<li><code>runif(n) &lt; p</code> — <code>n</code> încercări independente, fiecare reușită (<code>TRUE</code>) cu probabilitatea <code>p</code> (<code>runif(n)</code> generează <code>n</code> numere la întâmplare în intervalul <span class="math inline">\([0,1]\)</span>); <code>sample(x, size, replace = TRUE, prob = p)</code> — extrageri cu probabilități inegale;</li>
+<li><code>ifelse(cond, a, b)</code> — alege, componentă cu componentă, între <code>a</code> și <code>b</code>; <code>which(cond)</code> — pozițiile pe care condiția este adevărată; <code>setdiff(x, y)</code> — elementele lui <code>x</code> care nu sunt în <code>y</code>; <code>x %% 2</code> — restul împărțirii la <span class="math inline">\(2\)</span>; <code>x %in% y</code> — apartenența;</li>
+<li><code>for (k in 1:m) {...}</code> și <code>while (cond) {...}</code> — repetarea unor instrucțiuni; <code>prod</code>, <code>cumsum</code>, <code>cumprod</code> — produs, sume și produse cumulate;</li>
+<li><code>sapply(v, f)</code> — aplică funcția <code>f</code> fiecărui element al lui <code>v</code>; <code>apply(M, 1, f)</code> — fiecărei linii a matricei <code>M</code>; când <code>f()</code> întoarce un vector, <code>replicate(nsim, f())</code> este o matrice cu <code>nsim</code> coloane, pe care o rezumăm cu <code>rowMeans</code> (sau, după transpunerea cu <code>t()</code>, cu <code>colMeans</code> și <code>rowSums</code>);</li>
+<li><code>table(x)</code> — tabelul de frecvențe; <code>all.equal(a, b)</code> — egalitatea a două numere reale, cu toleranță la erorile de rotunjire;</li>
+<li><strong>o capcană</strong>: dacă <code>x</code> are un singur element, de exemplu <code>x = 5</code>, atunci <code>sample(x, 1)</code> alege din <code>1:5</code>, nu îl întoarce pe <code>5</code>. Pentru a alege la întâmplare dintr-o mulțime care poate avea un singur element scriem <code>x[sample(length(x), 1)]</code> (Exercițiul <a href="#box-exr-s02-monty" class="curs-ref">10</a>).</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="sec-s02-conditionata" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Probabilitate condiționată și regula înmulțirii</h1>
+<p>Începem cu cele două moduri de a calcula o probabilitate condiționată: <em>direct</em>, prin restrângerea spațiului stărilor (când rezultatele sunt egal probabile, totul se reduce la o numărare), și <em>în etape</em>, cu regula înmulțirii, atunci când experimentul se desfășoară pas cu pas. În paralel construim primul instrument de laborator: estimarea unei probabilități condiționate prin simulare.</p>
+<div id="box-exr-s02-zaruri" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 1</span> <span class="curs-box-name">(Două zaruri: ce schimbă o informație)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-nivs">La seminar</span> Aruncăm două zaruri echilibrate, unul roșu și unul albastru, și considerăm evenimentele: <span class="math display">\[
+\begin{aligned}
+A&amp;=\text{„suma punctelor este cel puțin 9”},\qquad B=\text{„zarul roșu arată 5”},\\
+C&amp;=\text{„cel puțin unul dintre zaruri arată 5”}.
+\end{aligned}
+\]</span></p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Calculați <span class="math inline">\(\PP(A)\)</span>, <span class="math inline">\(\PP(A\mid B)\)</span> și <span class="math inline">\(\PP(A\mid C)\)</span>. Care dintre informațiile <span class="math inline">\(B\)</span> și <span class="math inline">\(C\)</span> îl face pe <span class="math inline">\(A\)</span> mai probabil?</p></li>
+<li><p>Calculați <span class="math inline">\(\PP(B\mid A)\)</span> și comparați cu <span class="math inline">\(\PP(A\mid B)\)</span>.</p></li>
+<li><p>Enumerați în R cele <span class="math inline">\(36\)</span> de rezultate, scrieți o funcție <code>p_cond(A, B)</code> care calculează <span class="math inline">\(\PP(A\mid B)\)</span> prin numărare și verificați rezultatele de la (a) și (b).</p></li>
+<li><p>Estimați <span class="math inline">\(\PP(A\mid C)\)</span> prin simulare, folosind <span class="math inline">\(10^5\)</span> aruncări ale celor două zaruri.</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (c), (d) — completați locurile marcate cu <code>___</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>omega <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)       <span class="co"># cele 36 de rezultate</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> ___                                     <span class="co"># suma cel puțin 9</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> omega<span class="sc">$</span>x <span class="sc">==</span> <span class="dv">5</span>                            <span class="co"># zarul roșu arată 5</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> ___                                     <span class="co"># cel puțin un 5</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>p_cond <span class="ot">&lt;-</span> <span class="cf">function</span>(A, B) ___                 <span class="co"># P(A | B) = |A și B| / |B|</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">P_A =</span> <span class="fu">mean</span>(A), <span class="at">A_dat_B =</span> <span class="fu">p_cond</span>(A, B),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">A_dat_C =</span> <span class="fu">p_cond</span>(A, C), <span class="at">B_dat_A =</span> <span class="fu">p_cond</span>(B, A))</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">202</span>)                                <span class="co"># (d): 10^5 aruncări</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>nsim <span class="ot">&lt;-</span> <span class="fl">1e5</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, nsim, <span class="at">replace =</span> <span class="cn">TRUE</span>)       <span class="co"># zarul roșu</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> ___                                     <span class="co"># zarul albastru</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> x <span class="sc">+</span> y <span class="sc">&gt;=</span> <span class="dv">9</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> x <span class="sc">==</span> <span class="dv">5</span> <span class="sc">|</span> y <span class="sc">==</span> <span class="dv">5</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">N_C =</span> <span class="fu">sum</span>(C), <span class="at">N_A_si_C =</span> <span class="fu">sum</span>(A <span class="sc">&amp;</span> C))       <span class="co"># numărăm repetările</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">estimare =</span> ___, <span class="at">exact =</span> ___)               <span class="co"># N(A și C) / N(C); valoarea de la (a)</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p>În exercițiul precedent am calculat probabilități condiționate plecând de la probabilitățile intersecțiilor. De cele mai multe ori drumul este invers: experimentul se desfășoară în etape, probabilitățile condiționate sunt <em>date</em> de descrierea experimentului, iar probabilitățile intersecțiilor se obțin din regula înmulțirii.</p>
+<div id="box-exr-s02-chei" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 2</span> <span class="curs-box-name">(Chei încercate pe rând)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-nivs">La seminar</span> Pe un inel sunt <span class="math inline">\(8\)</span> chei, dintre care exact una deschide ușa. Încercăm cheile una câte una, alese la întâmplare, până când ușa se deschide. Fie <span class="math inline">\(D_k\)</span> evenimentul „ușa se deschide la încercarea <span class="math inline">\(k\)</span>”. Comparăm două metode: </p>
+<ul>
+<li><strong>metoda A</strong> (fără revenire): o cheie încercată este pusă deoparte;</li>
+<li><strong>metoda B</strong> (cu revenire): după fiecare încercare nereușită cheile se amestecă din nou, astfel că aceeași cheie poate fi încercată de mai multe ori.</li>
+</ul>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Pentru metoda A, desenați arborele de probabilitate al primelor trei încercări și calculați <span class="math inline">\(\PP(D_k)\)</span> pentru <span class="math inline">\(k=1,\dots,8\)</span>.</p></li>
+<li><p>Pentru metoda B, calculați <span class="math inline">\(\PP(D_k)\)</span> pentru <span class="math inline">\(k\ge1\)</span>.</p></li>
+<li><p>Pentru fiecare metodă, care este probabilitatea să fie necesare mai mult de <span class="math inline">\(5\)</span> încercări?</p></li>
+<li><p>Simulați în R cele două metode și comparați frecvențele obținute cu rezultatele de la (a)–(c).</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (d) — completați locurile marcate cu <code>___</code> (cheia <span class="math inline">\(1\)</span> este cea bună; funcțiile <code>incearca_A</code> și <code>incearca_B</code> vor fi folosite și în Exercițiul <a href="#box-exr-s02-paznic" class="curs-ref">12</a>):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>incearca_A <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">8</span>) ___       <span class="co"># poziția cheii 1 într-o permutare aleatoare</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>incearca_B <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">8</span>) {</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  k <span class="ot">&lt;-</span> <span class="dv">1</span>                                <span class="co"># numărul încercării curente</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> (___) k <span class="ot">&lt;-</span> k <span class="sc">+</span> <span class="dv">1</span>                <span class="co"># cât timp cheia extrasă nu este cheia 1</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  k</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">8</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>nsim <span class="ot">&lt;-</span> <span class="fl">1e4</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>nA <span class="ot">&lt;-</span> <span class="fu">replicate</span>(nsim, <span class="fu">incearca_A</span>())     <span class="co"># numărul de încercări, metoda A</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>nB <span class="ot">&lt;-</span> <span class="fu">replicate</span>(nsim, <span class="fu">incearca_B</span>())     <span class="co"># numărul de încercări, metoda B</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">table</span>(nA) <span class="sc">/</span> nsim, <span class="dv">3</span>)              <span class="co"># comparați cu (a)</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(<span class="at">B_simulat =</span> <span class="fu">round</span>(<span class="fu">table</span>(nB)[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>] <span class="sc">/</span> nsim, <span class="dv">3</span>),</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">B_exact   =</span> <span class="fu">round</span>(___, <span class="dv">3</span>))        <span class="co"># P(D_1), ..., P(D_6), de la (b)</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(<span class="at">simulat =</span> <span class="fu">c</span>(<span class="at">A =</span> <span class="fu">mean</span>(___), <span class="at">B =</span> <span class="fu">mean</span>(___)),   <span class="co"># mai mult de 5 încercări</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">exact   =</span> <span class="fu">c</span>(<span class="at">A =</span> ___, <span class="at">B =</span> ___))               <span class="co"># valorile de la (c)</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p>Al treilea exercițiu combină cele două situații de mai sus: după fiecare extragere compoziția urnei se schimbă, dar nu prin <em>scoaterea</em> unei bile, ci prin <em>adăugarea</em> uneia. Regula înmulțirii funcționează la fel.</p>
+<div id="box-exr-s02-polya" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 3</span> <span class="curs-box-name">(Urna lui Pólya în trei pași)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-niva">Pentru acasă</span> O urnă conține <span class="math inline">\(2\)</span> bile albe și o bilă neagră. Extragem o bilă la întâmplare, îi notăm culoarea și o punem înapoi în urnă împreună cu încă o bilă de aceeași culoare; repetăm procedeul (urna lui Pólya din Propoziția <a href="..\curs\02-conditionare-independenta.html#box-prop-k02-polya" class="curs-ref">12 din Cursul 2</a>, cu <span class="math inline">\(a=2\)</span>, <span class="math inline">\(n=1\)</span>, <span class="math inline">\(d=1\)</span>). Fie <span class="math inline">\(A_k\)</span> evenimentul „a <span class="math inline">\(k\)</span>-a bilă extrasă este albă”. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Desenați arborele de probabilitate al primelor două extrageri și calculați <span class="math inline">\(\PP(A_2)\)</span>.</p></li>
+<li><p>Calculați probabilitățile succesiunilor (albă, albă, neagră), (albă, neagră, albă) și (neagră, albă, albă). Ce observați?</p></li>
+<li><p>Determinați probabilitatea ca, în primele trei extrageri, să apară exact <span class="math inline">\(j\)</span> bile albe, pentru <span class="math inline">\(j=0,1,2,3\)</span>.</p></li>
+<li><p>Știind că în primele trei extrageri au apărut exact două bile albe, care este probabilitatea ca prima bilă extrasă să fi fost albă?</p></li>
+<li><p>Scrieți o funcție R care simulează <span class="math inline">\(m\)</span> extrageri din urna lui Pólya și verificați prin simulare rezultatele de la (a)–(d).</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (e) — completați locurile marcate cu <code>___</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>urna_polya <span class="ot">&lt;-</span> <span class="cf">function</span>(a, n, d, m) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  alba <span class="ot">&lt;-</span> <span class="fu">logical</span>(m)               <span class="co"># alba[k] = TRUE: extragerea k este albă</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>m) {</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    alba[k] <span class="ot">&lt;-</span> ___                 <span class="co"># albă cu probabilitatea a / (a + n)</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (alba[k]) ___ <span class="cf">else</span> ___      <span class="co"># adăugăm d bile de culoarea extrasă</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  alba</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">303</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>nsim <span class="ot">&lt;-</span> <span class="fl">2e4</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">replicate</span>(nsim, <span class="fu">urna_polya</span>(<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>)))  <span class="co"># nsim linii, 3 coloane</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">colMeans</span>(X)                        <span class="co"># estimări pentru P(A_1), P(A_2), P(A_3)</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>nr_albe <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(X)              <span class="co"># numărul de bile albe din fiecare linie</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">AAN =</span> <span class="fu">mean</span>(X[, <span class="dv">1</span>] <span class="sc">&amp;</span> X[, <span class="dv">2</span>] <span class="sc">&amp;</span> <span class="sc">!</span>X[, <span class="dv">3</span>]),</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">ANA =</span> ___, <span class="at">NAA =</span> ___)            <span class="co"># celelalte două succesiuni de la (b)</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(nr_albe) <span class="sc">/</span> nsim              <span class="co"># comparați cu (c)</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(___)                          <span class="co"># P(A_1 | exact două albe), ca la (d)</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(\PP(A_2)=\frac12+\frac16=\frac23=\PP(A_1)\)</span>.</p></li>
+<li><p>Toate trei sunt egale cu <span class="math inline">\(\frac{1}{10}\)</span>: probabilitatea unei succesiuni depinde doar de numărul bilelor de fiecare culoare, nu și de ordinea lor (Propoziția <a href="..\curs\02-conditionare-independenta.html#box-prop-k02-polya" class="curs-ref">12 din Cursul 2</a>).</p></li>
+<li><p><span class="math inline">\(\frac1{10}\)</span>, <span class="math inline">\(\frac15\)</span>, <span class="math inline">\(\frac3{10}\)</span> și <span class="math inline">\(\frac25\)</span> pentru <span class="math inline">\(j=0,1,2,3\)</span>.</p></li>
+<li><p><span class="math inline">\(\PP(A_1\mid G)=\frac{2/10}{3/10}=\frac23\)</span>, unde <span class="math inline">\(G\)</span> = „exact două bile albe în primele trei extrageri”.</p></li>
+<li><p>Frecvențele simulate sunt apropiate de valorile exacte: <span class="math inline">\(\approx0.66\)</span> pentru fiecare dintre <span class="math inline">\(\PP(A_1)\)</span>, <span class="math inline">\(\PP(A_2)\)</span>, <span class="math inline">\(\PP(A_3)\)</span>; <span class="math inline">\(\approx0.1\)</span> pentru fiecare succesiune de la (b); <span class="math inline">\(\approx(0.10,\,0.20,\,0.30,\,0.40)\)</span> pentru repartiția numărului de bile albe; <span class="math inline">\(\approx0.663\)</span> pentru <span class="math inline">\(\PP(A_1\mid G)\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-s02-bayes" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Formula probabilității totale și formula lui Bayes</h1>
+<p>Trecem la situațiile în care evenimentul de interes poate apărea în mai multe „scenarii”: probabilitatea lui se calculează adunând contribuțiile scenariilor (formula probabilității totale), iar după ce l-am observat ne întrebăm din ce scenariu provine (formula lui Bayes). Cele trei exerciții au aceeași structură — o cauză ascunsă, un efect observat — și folosesc aceeași funcție R, scrisă la primul dintre ele. În toate trei apare și ideea de <strong>actualizare succesivă</strong>: fiecare observație nouă modifică probabilitățile obținute după observațiile precedente.</p>
+<div id="box-exr-s02-masini" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 4</span> <span class="curs-box-name">(Trei mașini și o cutie suspectă)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-nivs">La seminar</span> Reluăm modelul din Exercițiul <a href="..\curs\02-conditionare-independenta.html#box-exr-k02-fabrica" class="curs-ref">4 din Cursul 2</a>, cu alte date și cu o întrebare nouă. Trei mașini <span class="math inline">\(M_1\)</span>, <span class="math inline">\(M_2\)</span>, <span class="math inline">\(M_3\)</span> produc <span class="math inline">\(45\%\)</span>, <span class="math inline">\(35\%\)</span>, respectiv <span class="math inline">\(20\%\)</span> din piesele unei fabrici, iar proporțiile de piese defecte sunt <span class="math inline">\(1\%\)</span>, <span class="math inline">\(2\%\)</span>, respectiv <span class="math inline">\(4\%\)</span>. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Care este probabilitatea ca o piesă aleasă la întâmplare să fie defectă?</p></li>
+<li><p>O piesă aleasă la întâmplare este defectă. Care este probabilitatea să provină de la fiecare mașină?</p></li>
+<li><p>Piesele sunt ambalate în cutii, toate piesele dintr-o cutie provenind de la aceeași mașină; o cutie aleasă la întâmplare provine de la <span class="math inline">\(M_1\)</span>, <span class="math inline">\(M_2\)</span>, <span class="math inline">\(M_3\)</span> cu probabilitățile <span class="math inline">\(0.45\)</span>, <span class="math inline">\(0.35\)</span>, <span class="math inline">\(0.20\)</span>. Odată cunoscută mașina, piesele din cutie sunt defecte independent una de alta. Dintr-o cutie verificăm două piese și <strong>ambele</strong> sunt defecte. Care este acum probabilitatea ca ea să provină de la fiecare mașină? Care este probabilitatea ca a doua piesă să fie defectă, știind că prima este defectă?</p></li>
+<li><p>Scrieți o funcție R <code>bayes(prior, veros)</code> care primește probabilitățile a priori și verosimilitățile și întoarce probabilitățile a posteriori. Verificați cu ea punctele (b) și (c), apoi estimați aceleași probabilități simulând <span class="math inline">\(10^6\)</span> cutii.</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (d) — completați locurile marcate cu <code>___</code> (funcția <code>bayes</code> va fi folosită și în exercițiile următoare):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>bayes <span class="ot">&lt;-</span> <span class="cf">function</span>(prior, veros) {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  produs <span class="ot">&lt;-</span> ___                    <span class="co"># P(B_i) * P(observație | B_i)</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  ___                              <span class="co"># împărțim la P(observație)</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>prior <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">M1 =</span> <span class="fl">0.45</span>, <span class="at">M2 =</span> <span class="fl">0.35</span>, <span class="at">M3 =</span> <span class="fl">0.20</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>p_def <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="fl">0.02</span>, <span class="fl">0.04</span>)       <span class="co"># P(defect | mașină)</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>___                                <span class="co"># (a) probabilitatea totală</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(<span class="at">o_piesa    =</span> <span class="fu">bayes</span>(prior, p_def),</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">doua_piese =</span> <span class="fu">bayes</span>(prior, ___),          <span class="co"># două piese defecte</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">succesiv   =</span> <span class="fu">bayes</span>(___, p_def))          <span class="co"># a priori = a posteriori după prima piesă</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">404</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>nsim <span class="ot">&lt;-</span> <span class="fl">1e6</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>masina <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, nsim, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> ___)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>def1 <span class="ot">&lt;-</span> <span class="fu">runif</span>(nsim) <span class="sc">&lt;</span> p_def[masina]      <span class="co"># prima piesă este defectă?</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>def2 <span class="ot">&lt;-</span> ___                              <span class="co"># dar a doua?</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">rbind</span>(<span class="at">o_piesa    =</span> <span class="fu">table</span>(___) <span class="sc">/</span> <span class="fu">sum</span>(def1),   <span class="co"># mașinile cutiilor cu def1</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>            <span class="at">doua_piese =</span> <span class="fu">table</span>(masina[def1 <span class="sc">&amp;</span> def2]) <span class="sc">/</span> <span class="fu">sum</span>(def1 <span class="sc">&amp;</span> def2)), <span class="dv">3</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">P_E2_dat_E1 =</span> ___, <span class="at">P_E2 =</span> <span class="fu">mean</span>(def2))</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p>Aceeași schemă — probabilități a priori, verosimilități, actualizare — stă la baza filtrelor anti-spam. Noutatea față de exercițiul precedent: folosim mai multe observații de naturi diferite, iar <em>absența</em> unui cuvânt este și ea o observație.</p>
+<div id="box-exr-s02-spam" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 5</span> <span class="curs-box-name">(Un filtru anti-spam cu trei cuvinte)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-niva">Pentru acasă</span> Extindem filtrul din Exercițiul <a href="..\curs\02-conditionare-independenta.html#box-exr-k02-spam" class="curs-ref">5 din Cursul 2</a>. Dintre mesajele primite de un server, <span class="math inline">\(30\%\)</span> sunt spam. Cuvântul „ofertă” apare în <span class="math inline">\(40\%\)</span> dintre mesajele spam și în <span class="math inline">\(5\%\)</span> dintre cele legitime; cuvântul „urgent” apare în <span class="math inline">\(30\%\)</span>, respectiv <span class="math inline">\(10\%\)</span>; cuvântul „ședință” apare în <span class="math inline">\(2\%\)</span>, respectiv <span class="math inline">\(25\%\)</span>. Presupunem că aparițiile celor trei cuvinte sunt independente condiționat de tipul mesajului. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Un mesaj conține cuvântul „ofertă” (despre celelalte cuvinte nu știm nimic). Care este probabilitatea să fie spam?</p></li>
+<li><p>Un mesaj conține „ofertă” și „urgent”, dar nu conține „ședință”. Aceeași întrebare.</p></li>
+<li><p>Un mesaj conține „ofertă” și „ședință”, dar nu conține „urgent”. Aceeași întrebare. Comentați.</p></li>
+<li><p>Scrieți o funcție R care calculează probabilitatea de spam pentru orice combinație de cuvinte prezente și absente, și construiți tabelul celor <span class="math inline">\(8\)</span> tipuri de mesaje. Filtrul marchează drept spam mesajele cu probabilitatea de spam mai mare decât <span class="math inline">\(1/2\)</span>: ce proporție din mesaje sunt clasificate greșit? Verificați prin simulare.</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (d) — completați locurile marcate cu <code>___</code> (un mesaj este descris de un vector logic <code>x</code> cu trei componente; funcția <code>bayes</code> este cea din Exercițiul <a href="#box-exr-s02-masini" class="curs-ref">4</a>):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>p_S <span class="ot">&lt;-</span> <span class="fl">0.3</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>w_spam  <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">oferta =</span> <span class="fl">0.40</span>, <span class="at">urgent =</span> <span class="fl">0.30</span>, <span class="at">sedinta =</span> <span class="fl">0.02</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>w_legit <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">oferta =</span> <span class="fl">0.05</span>, <span class="at">urgent =</span> <span class="fl">0.10</span>, <span class="at">sedinta =</span> <span class="fl">0.25</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>veros  <span class="ot">&lt;-</span> <span class="cf">function</span>(x, w) ___          <span class="co"># P(tipul x | clasă): w sau 1 - w, apoi produsul</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>p_spam <span class="ot">&lt;-</span> <span class="cf">function</span>(x)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bayes</span>(<span class="fu">c</span>(p_S, <span class="dv">1</span> <span class="sc">-</span> p_S), ___)[<span class="dv">1</span>]      <span class="co"># verosimilitățile tipului x</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">b =</span> <span class="fu">p_spam</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)), <span class="at">c =</span> <span class="fu">p_spam</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)))</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>tip <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">oferta =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>), <span class="at">urgent =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>),</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                   <span class="at">sedinta =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>v_spam  <span class="ot">&lt;-</span> <span class="fu">apply</span>(tip, <span class="dv">1</span>, veros, <span class="at">w =</span> w_spam)    <span class="co"># P(tip | spam)</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>v_legit <span class="ot">&lt;-</span> <span class="fu">apply</span>(tip, <span class="dv">1</span>, veros, <span class="at">w =</span> w_legit)   <span class="co"># P(tip | legitim)</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>post    <span class="ot">&lt;-</span> <span class="fu">apply</span>(tip, <span class="dv">1</span>, p_spam)               <span class="co"># P(spam | tip)</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(tip, v_spam, v_legit, <span class="at">P_spam =</span> <span class="fu">round</span>(post, <span class="dv">3</span>))</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>marcat <span class="ot">&lt;-</span> post <span class="sc">&gt;</span> <span class="fl">0.5</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">eroare =</span> ___)                       <span class="co"># formula probabilității totale</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(\PP(S\mid O)\approx0.774\)</span>.</p></li>
+<li><p><span class="math inline">\(\PP(S\mid O\cap U\cap Z^c)\approx0.931\)</span>.</p></li>
+<li><p><span class="math inline">\(\PP(S\mid O\cap U^c\cap Z)\approx0.176\)</span>, mai mică decât probabilitatea a priori <span class="math inline">\(0.3\)</span>: mesajul este cel mai probabil legitim, deși conține „ofertă”.</p></li>
+<li><p>Sunt marcate drept spam mesajele care nu conțin „ședință” și conțin cel puțin unul dintre cuvintele „ofertă” și „urgent”; proporția mesajelor clasificate greșit este <span class="math inline">\(\approx0.206\)</span> (sunt marcate <span class="math inline">\(10.9\%\)</span> dintre mesajele legitime și trec nemarcate <span class="math inline">\(43.2\%\)</span> dintre mesajele spam). Simularea dă frecvențe apropiate de <span class="math inline">\(0.931\)</span>, <span class="math inline">\(0.176\)</span> și <span class="math inline">\(0.206\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<p>Ultimul exercițiu al secțiunii este cel mai important pentru practică: interpretarea unui test de diagnostic. Calculul este același ca la filtrul anti-spam (două ipoteze, o observație), dar una dintre ipoteze este foarte rară, iar acest fapt schimbă complet concluzia.</p>
+<div id="box-exr-s02-diagnostic" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 6</span> <span class="curs-box-name">(Un test de diagnostic)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-nivs">La seminar</span> Un test de depistare pentru o afecțiune cu prevalența de <span class="math inline">\(0.8\%\)</span> are senzitivitatea <span class="math inline">\(0.92\)</span> și specificitatea <span class="math inline">\(0.96\)</span> (noțiunile sunt cele din Exemplul <a href="..\curs\02-conditionare-independenta.html#box-ex-k02-test" class="curs-ref">7 din Cursul 2</a>). O persoană aleasă la întâmplare din populație efectuează testul. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Testul este pozitiv. Care este probabilitatea ca persoana să aibă afecțiunea? Dar probabilitatea ca persoana să fie sănătoasă, dacă testul este negativ?</p></li>
+<li><p>Scrieți o funcție R <code>posterior(prev, sens, spec)</code> care calculează probabilitatea bolii după un test pozitiv și reprezentați grafic această probabilitate în funcție de prevalență. De la ce prevalență un test pozitiv înseamnă boală cu probabilitate cel puțin <span class="math inline">\(1/2\)</span>?</p></li>
+<li><p>Persoana repetă testul, iar al doilea rezultat este tot pozitiv. Presupunând că cele două teste sunt independente condiționat de starea persoanei, care este acum probabilitatea bolii?</p></li>
+<li><p>Simulați o populație de <span class="math inline">\(10^5\)</span> persoane, fiecare testată de două ori, și estimați probabilitățile de la (a) și (c) ca frecvențe relative condiționate. Sunt rezultatele celor două teste independente?</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (b)–(d) — completați locurile marcate cu <code>___</code> (funcția <code>posterior</code> va fi folosită și în temă):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>posterior <span class="ot">&lt;-</span> <span class="cf">function</span>(prev, sens, spec) {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  ___                              <span class="co"># P(D | T), formula lui Bayes (și pentru un vector prev)</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">posterior</span>(<span class="fu">c</span>(<span class="fl">0.001</span>, <span class="fl">0.008</span>, <span class="fl">0.05</span>, <span class="fl">0.20</span>), <span class="fl">0.92</span>, <span class="fl">0.96</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>prev <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.001</span>, <span class="fl">0.30</span>, <span class="at">by =</span> <span class="fl">0.001</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(prev, <span class="fu">posterior</span>(prev, <span class="fl">0.92</span>, <span class="fl">0.96</span>), <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"prevalența P(D)"</span>, <span class="at">ylab =</span> <span class="st">"P(D | test pozitiv)"</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fl">0.5</span>, <span class="at">lty =</span> <span class="dv">3</span>)                         <span class="co"># pragul 1/2</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">posterior</span>(<span class="fl">0.008</span>, <span class="fl">0.92</span>, <span class="fl">0.96</span>)               <span class="co"># după un test pozitiv</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">un_test =</span> p1, <span class="at">doua_teste =</span> ___)                <span class="co"># (c): actualizare succesivă</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">606</span>)                                    <span class="co"># (d)</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fl">1e5</span>; prev <span class="ot">&lt;-</span> <span class="fl">0.008</span>; sens <span class="ot">&lt;-</span> <span class="fl">0.92</span>; spec <span class="ot">&lt;-</span> <span class="fl">0.96</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>bolnav <span class="ot">&lt;-</span> <span class="fu">runif</span>(n) <span class="sc">&lt;</span> prev</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>test1  <span class="ot">&lt;-</span> <span class="fu">runif</span>(n) <span class="sc">&lt;</span> ___                         <span class="co"># pozitiv: sens sau 1 - spec</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>test2  <span class="ot">&lt;-</span> <span class="fu">runif</span>(n) <span class="sc">&lt;</span> <span class="fu">ifelse</span>(bolnav, sens, <span class="dv">1</span> <span class="sc">-</span> spec)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">dupa_un_test =</span> <span class="fu">mean</span>(___), <span class="at">dupa_doua_teste =</span> ___,</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">sanatos_dat_negativ =</span> <span class="fu">mean</span>(<span class="sc">!</span>bolnav[<span class="sc">!</span>test1]))</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">P_T2 =</span> <span class="fu">mean</span>(test2), <span class="at">P_T2_dat_T1 =</span> ___)         <span class="co"># sunt testele independente?</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-s02-independenta" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Independență</h1>
+<p>În exercițiile de până acum independența a apărut ca <em>ipoteză</em> (încercări cu revenire, cuvinte sau teste independente condiționat). În această secțiune o privim din trei unghiuri: o <em>verificăm</em> pe un spațiu al stărilor enumerat complet, o folosim pentru a calcula fiabilitatea unui sistem și, în final, pentru a analiza un algoritm randomizat — un algoritm care aruncă zaruri și care poate greși, dar cu o probabilitate pe care o controlăm.</p>
+<div id="box-exr-s02-indep-zaruri" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 7</span> <span class="curs-box-name">(Independență pe două zaruri)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-nivs">La seminar</span> Aruncăm două zaruri echilibrate. Ca în Exercițiul <a href="#box-exr-s02-zaruri" class="curs-ref">1</a>, notăm cu <span class="math inline">\(x\)</span> și <span class="math inline">\(y\)</span> rezultatele celor două zaruri. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Fie <span class="math inline">\(S_7\)</span> = „suma este <span class="math inline">\(7\)</span>” și <span class="math inline">\(U_i\)</span> = „primul zar arată <span class="math inline">\(i\)</span>”. Arătați că <span class="math inline">\(S_7\)</span> și <span class="math inline">\(U_i\)</span> sunt independente pentru orice <span class="math inline">\(i\in\{1,\dots,6\}\)</span>. Rămâne afirmația adevărată pentru <span class="math inline">\(S_6\)</span> = „suma este <span class="math inline">\(6\)</span>”?</p></li>
+<li><p>Fie <span class="math inline">\(I_1\)</span> = „primul zar arată un număr impar”, <span class="math inline">\(I_2\)</span> = „al doilea zar arată un număr impar” și <span class="math inline">\(I_3\)</span> = „suma este impară”. Arătați că <span class="math inline">\(I_1,I_2,I_3\)</span> sunt independente două câte două, dar nu sunt (mutual) independente.</p></li>
+<li><p>Fie <span class="math inline">\(A\)</span> = „primul zar arată <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span> sau <span class="math inline">\(3\)</span>”, <span class="math inline">\(B\)</span> = „primul zar arată <span class="math inline">\(3\)</span>, <span class="math inline">\(4\)</span> sau <span class="math inline">\(5\)</span>” și <span class="math inline">\(C\)</span> = „suma este <span class="math inline">\(9\)</span>”. Arătați că <span class="math inline">\(\PP(A\cap B\cap C)=\PP(A)\,\PP(B)\,\PP(C)\)</span>, deși nicio pereche dintre cele trei evenimente nu este independentă.</p></li>
+<li><p>Scrieți o funcție R <code>indep(A, B)</code> care verifică, pe spațiul stărilor enumerat, dacă două evenimente sunt independente, și verificați cu ea punctele (a)–(c).</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (d) — completați locurile marcate cu <code>___</code>:</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>omega <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">y =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> omega<span class="sc">$</span>x; y <span class="ot">&lt;-</span> omega<span class="sc">$</span>y; s <span class="ot">&lt;-</span> x <span class="sc">+</span> y           <span class="co"># s = suma</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>indep <span class="ot">&lt;-</span> <span class="cf">function</span>(A, B)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">isTRUE</span>(<span class="fu">all.equal</span>(___, ___))                    <span class="co"># P(A și B) față de P(A) P(B)</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(<span class="at">suma_7 =</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="cf">function</span>(i) <span class="fu">indep</span>(s <span class="sc">==</span> <span class="dv">7</span>, x <span class="sc">==</span> i)),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">suma_6 =</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="cf">function</span>(i) <span class="fu">indep</span>(___, x <span class="sc">==</span> i)))</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>I1 <span class="ot">&lt;-</span> x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">1</span>; I2 <span class="ot">&lt;-</span> ___; I3 <span class="ot">&lt;-</span> ___          <span class="co"># evenimentele de la (b)</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">I1_I2 =</span> <span class="fu">indep</span>(I1, I2), <span class="at">I1_I3 =</span> <span class="fu">indep</span>(I1, I3), <span class="at">I2_I3 =</span> <span class="fu">indep</span>(I2, I3))</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">P_intersectie =</span> <span class="fu">mean</span>(I1 <span class="sc">&amp;</span> I2 <span class="sc">&amp;</span> I3), <span class="at">produs =</span> ___)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> ___; B <span class="ot">&lt;-</span> x <span class="sc">%in%</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>; C <span class="ot">&lt;-</span> s <span class="sc">==</span> <span class="dv">9</span>           <span class="co"># evenimentele de la (c)</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">A_B =</span> <span class="fu">indep</span>(A, B), <span class="at">A_C =</span> <span class="fu">indep</span>(A, C), <span class="at">B_C =</span> <span class="fu">indep</span>(B, C))</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">P_intersectie =</span> <span class="fu">mean</span>(A <span class="sc">&amp;</span> B <span class="sc">&amp;</span> C), <span class="at">produs =</span> <span class="fu">mean</span>(A) <span class="sc">*</span> <span class="fu">mean</span>(B) <span class="sc">*</span> <span class="fu">mean</span>(C))</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p>Independența este ipoteza de lucru în studiul fiabilității: componentele unui sistem se defectează, de regulă, din cauze fără legătură între ele. Exercițiul următor arată și o tehnică de laborator nouă — enumerarea unui spațiu al stărilor în care rezultatele <strong>nu</strong> sunt egal probabile.</p>
+<div id="box-exr-s02-fiabilitate" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 8</span> <span class="curs-box-name">(Fiabilitatea unui sistem)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-nivo">Dacă timpul permite</span> Componentele sistemelor de mai jos funcționează independent una de alta. Un sistem funcționează dacă există un drum de la <span class="math inline">\(S\)</span> la <span class="math inline">\(T\)</span> format numai din componente funcționale. </p>
+<p><a href="..\figuri\tikz\455c8856d5206706cc0380c990f1b9a30746cd7e.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="..\figuri\tikz\455c8856d5206706cc0380c990f1b9a30746cd7e.svg" class="curs-tikz img-fluid" width="603"></a></p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>În sistemul I, componenta <span class="math inline">\(1\)</span> (un distribuitor de sarcină) funcționează cu probabilitatea <span class="math inline">\(0.95\)</span>, iar componentele <span class="math inline">\(2\)</span> și <span class="math inline">\(3\)</span> (două servere) cu probabilitatea <span class="math inline">\(0.9\)</span> fiecare. Calculați probabilitatea ca sistemul să funcționeze.</p></li>
+<li><p>Știind că sistemul I <strong>nu</strong> funcționează, care este probabilitatea ca distribuitorul să fie defect?</p></li>
+<li><p>Un sistem cu redundanță triplă este format din trei module identice și funcționează dacă <strong>cel puțin două</strong> dintre ele funcționează. Dacă fiecare modul funcționează cu probabilitatea <span class="math inline">\(p\)</span>, calculați probabilitatea de funcționare a sistemului. Pentru ce valori ale lui <span class="math inline">\(p\)</span> este el mai fiabil decât un singur modul?</p></li>
+<li><p>În sistemul II (puntea din Exercițiul <a href="..\curs\02-conditionare-independenta.html#box-exr-k02-punte" class="curs-ref">8 din Cursul 2</a>), componentele funcționează cu probabilitățile <span class="math inline">\(p_1=p_4=0.9\)</span>, <span class="math inline">\(p_2=p_3=0.8\)</span>, <span class="math inline">\(p_5=0.7\)</span>. Calculați probabilitatea de funcționare.</p></li>
+<li><p>Scrieți o funcție R care calculează exact fiabilitatea unui sistem cu <span class="math inline">\(m\)</span> componente, enumerând cele <span class="math inline">\(2^m\)</span> stări posibile, și verificați (a), (c) și (d). Estimați prin simulare probabilitatea de la (b).</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (e) — completați locurile marcate cu <code>___</code> (o stare este un vector logic cu <span class="math inline">\(m\)</span> componente; <code>phi</code> primește matricea stărilor, câte una pe linie, și spune pentru fiecare dacă sistemul funcționează):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fiabilitate <span class="ot">&lt;-</span> <span class="cf">function</span>(phi, p) {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">length</span>(p)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  stari <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(<span class="fu">expand.grid</span>(<span class="fu">rep</span>(<span class="fu">list</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>)), m)))</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  pr <span class="ot">&lt;-</span> <span class="fu">apply</span>(stari, <span class="dv">1</span>, <span class="cf">function</span>(s) ___)        <span class="co"># probabilitatea stării s</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(pr[<span class="fu">phi</span>(stari)])              <span class="co"># adunăm stările „bune”</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>phi_I   <span class="ot">&lt;-</span> <span class="cf">function</span>(s) s[, <span class="dv">1</span>] <span class="sc">&amp;</span> ___</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>phi_2_3 <span class="ot">&lt;-</span> <span class="cf">function</span>(s) ___                      <span class="co"># cel puțin 2 din 3</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>phi_II  <span class="ot">&lt;-</span> <span class="cf">function</span>(s) (s[, <span class="dv">1</span>] <span class="sc">&amp;</span> s[, <span class="dv">2</span>]) <span class="sc">|</span> (s[, <span class="dv">3</span>] <span class="sc">&amp;</span> s[, <span class="dv">4</span>]) <span class="sc">|</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  ___                                           <span class="co"># drumurile prin puntea 5</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">I =</span> <span class="fu">fiabilitate</span>(phi_I, <span class="fu">c</span>(<span class="fl">0.95</span>, <span class="fl">0.9</span>, <span class="fl">0.9</span>)),</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">doi_din_trei =</span> <span class="fu">fiabilitate</span>(phi_2_3, <span class="fu">rep</span>(<span class="fl">0.9</span>, <span class="dv">3</span>)),</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">II =</span> <span class="fu">fiabilitate</span>(phi_II, <span class="fu">c</span>(<span class="fl">0.9</span>, <span class="fl">0.8</span>, <span class="fl">0.8</span>, <span class="fl">0.9</span>, <span class="fl">0.7</span>)),</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">II_egal =</span> <span class="fu">fiabilitate</span>(phi_II, <span class="fu">rep</span>(<span class="fl">0.9</span>, <span class="dv">5</span>)))</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">808</span>)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>nsim <span class="ot">&lt;-</span> <span class="fl">1e5</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="fu">runif</span>(nsim) <span class="sc">&lt;</span> <span class="fl">0.95</span>; f2 <span class="ot">&lt;-</span> <span class="fu">runif</span>(nsim) <span class="sc">&lt;</span> <span class="fl">0.9</span>; f3 <span class="ot">&lt;-</span> <span class="fu">runif</span>(nsim) <span class="sc">&lt;</span> <span class="fl">0.9</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>merge <span class="ot">&lt;-</span> ___                                    <span class="co"># sistemul I funcționează</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">P_F =</span> <span class="fu">mean</span>(merge), <span class="at">P_F1c_dat_Fc =</span> ___)</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(\PP(F)=0.9405\)</span>.</p></li>
+<li><p><span class="math inline">\(\PP(F_1^c\mid F^c)=\frac{0.05}{0.0595}\approx0.840\)</span>.</p></li>
+<li><p><span class="math inline">\(\PP(F)=3p^2-2p^3\)</span> (de exemplu, <span class="math inline">\(0.972\)</span> pentru <span class="math inline">\(p=0.9\)</span>); sistemul este mai fiabil decât un singur modul dacă și numai dacă <span class="math inline">\(p&gt;\frac12\)</span>.</p></li>
+<li><p><span class="math inline">\(\PP(F)\approx0.9488\)</span> (condiționând după starea punții: <span class="math inline">\(\PP(F\mid F_5)=0.9604\)</span>, <span class="math inline">\(\PP(F\mid F_5^c)=0.9216\)</span>).</p></li>
+<li><p>Enumerarea dă exact <span class="math inline">\(0.9405\)</span>, <span class="math inline">\(0.972\)</span> și <span class="math inline">\(0.9488\)</span> (iar pentru cinci componente cu <span class="math inline">\(p=0.9\)</span>, <span class="math inline">\(0.9785\)</span>, valoarea din Exercițiul <a href="..\curs\02-conditionare-independenta.html#box-exr-k02-punte" class="curs-ref">8 din Cursul 2</a>); prin simulare, frecvența funcționării este <span class="math inline">\(\approx0.940\)</span>, iar printre repetările în care sistemul cade distribuitorul este defect în <span class="math inline">\(\approx84\%\)</span> din cazuri.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<p>Ultimul exercițiu al secțiunii aplică aceleași două instrumente — independența și regula înmulțirii — într-un context tipic informaticii: un algoritm care folosește numere aleatoare pentru a răspunde <em>repede</em> la o întrebare, cu prețul unei probabilități mici de a greși.</p>
+<div id="box-exr-s02-polinoame" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 9</span> <span class="curs-box-name">(Verificarea egalității a două polinoame)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-nivo">Dacă timpul permite</span> Un program primește două polinoame de grad cel mult <span class="math inline">\(d\)</span>: <span class="math inline">\(F\)</span>, scris ca produs de factori, și <span class="math inline">\(G\)</span>, scris în formă dezvoltată, <span class="math display">\[
+F(x)=(x-a_1)(x-a_2)\cdots(x-a_d),\qquad G(x)=c_dx^d+c_{d-1}x^{d-1}+\dots+c_1x+c_0,
+\]</span> și trebuie să decidă dacă <span class="math inline">\(F\)</span> și <span class="math inline">\(G\)</span> sunt același polinom. Dezvoltarea produsului cere un număr de înmulțiri de ordinul <span class="math inline">\(d^2\)</span>. Următorul <strong>algoritm randomizat</strong> cere doar un număr de operații de ordinul <span class="math inline">\(d\)</span>: alegem la întâmplare, uniform, un număr <span class="math inline">\(r\in\{1,2,\dots,100d\}\)</span> și calculăm <span class="math inline">\(F(r)\)</span> și <span class="math inline">\(G(r)\)</span>; dacă <span class="math inline">\(F(r)\ne G(r)\)</span> răspundem „diferite”, altfel răspundem „egale”.</p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Arătați că răspunsul „diferite” este întotdeauna corect și că, dacă <span class="math inline">\(F\ne G\)</span>, algoritmul greșește (răspunde „egale”) cu probabilitate cel mult <span class="math inline">\(1/100\)</span>.</p></li>
+<li><p>Repetăm testul de <span class="math inline">\(k\)</span> ori, cu numere <span class="math inline">\(r_1,\dots,r_k\)</span> alese independent (cu revenire), și răspundem „egale” doar dacă <span class="math inline">\(F(r_j)=G(r_j)\)</span> pentru toți <span class="math inline">\(j\)</span>. Arătați că, dacă <span class="math inline">\(F\ne G\)</span>, probabilitatea de eroare este cel mult <span class="math inline">\(100^{-k}\)</span>. Câte repetări garantează o probabilitate de eroare sub <span class="math inline">\(10^{-9}\)</span>?</p></li>
+<li><p>Ce margine obținem dacă numerele <span class="math inline">\(r_1,\dots,r_k\)</span> sunt alese <strong>fără revenire</strong>? Comparați cele două margini pentru <span class="math inline">\(d=5\)</span> și <span class="math inline">\(k=2\)</span>. Ce se întâmplă pentru <span class="math inline">\(k=d+1\)</span>?</p></li>
+<li><p>Implementați algoritmul în R și aplicați-l polinomului <span class="math inline">\(F(x)=(x-1)(x+2)(x-3)(x+4)(x-5)\)</span> și polinoamelor: <span class="math inline">\(G_0\)</span>, dezvoltarea corectă a lui <span class="math inline">\(F\)</span>; <span class="math inline">\(G_1\)</span>, obținut din <span class="math inline">\(G_0\)</span> prin înlocuirea coeficientului <span class="math inline">\(51\)</span> al lui <span class="math inline">\(x^2\)</span> cu <span class="math inline">\(15\)</span>; <span class="math inline">\(G_2=F+D\)</span>, unde <span class="math inline">\(D(x)=(x-10)(x-20)(x-30)(x-40)(x-50)\)</span>. Estimați prin simulare probabilitatea de eroare și comparați-o cu marginile de la (a)–(c).</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (d) — completați locurile marcate cu <code>___</code> (<span class="math inline">\(F\)</span> este dat prin vectorul rădăcinilor, <span class="math inline">\(G\)</span> prin vectorul coeficienților, de la <span class="math inline">\(c_d\)</span> la <span class="math inline">\(c_0\)</span>; funcția <code>dezvolta</code>, dată, calculează coeficienții unui produs de factori <span class="math inline">\((x-a)\)</span>; <code>test_egalitate</code> va fi folosită și în temă):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>evalueaza_produs <span class="ot">&lt;-</span> <span class="cf">function</span>(rad, r) {   <span class="co"># F(r), F dat prin rădăcini</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  v <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">0</span> <span class="sc">*</span> r</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (a <span class="cf">in</span> rad) v <span class="ot">&lt;-</span> ___</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  v</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>evalueaza <span class="ot">&lt;-</span> <span class="cf">function</span>(coef, r) {         <span class="co"># G(r), schema lui Horner</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  v <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="sc">*</span> r</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (cj <span class="cf">in</span> coef) v <span class="ot">&lt;-</span> ___</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  v</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>dezvolta <span class="ot">&lt;-</span> <span class="cf">function</span>(rad) {              <span class="co"># coeficienții produsului</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  coef <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (a <span class="cf">in</span> rad) coef <span class="ot">&lt;-</span> <span class="fu">c</span>(coef, <span class="dv">0</span>) <span class="sc">-</span> a <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">0</span>, coef)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  coef</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>rad <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">4</span>, <span class="dv">5</span>)                <span class="co"># rădăcinile lui F</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>G0 <span class="ot">&lt;-</span> <span class="fu">dezvolta</span>(rad); G0</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>G1 <span class="ot">&lt;-</span> G0; G1[<span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="dv">15</span>                    <span class="co"># coeficientul lui x^2: 51 -&gt; 15</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>G2 <span class="ot">&lt;-</span> G0 <span class="sc">+</span> ___                           <span class="co"># G2 = F + D</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>test_egalitate <span class="ot">&lt;-</span> <span class="cf">function</span>(rad, coef, <span class="at">k =</span> <span class="dv">1</span>, <span class="at">N =</span> <span class="dv">100</span> <span class="sc">*</span> <span class="fu">length</span>(rad),</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>                           <span class="at">revenire =</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>  r <span class="ot">&lt;-</span> ___                               <span class="co"># k numere alese din 1:N</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">all</span>(___)                               <span class="co"># TRUE = „egale”</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">909</span>)</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>nsim <span class="ot">&lt;-</span> <span class="fl">2e4</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">G0 =</span> <span class="fu">mean</span>(<span class="fu">replicate</span>(nsim, <span class="fu">test_egalitate</span>(rad, G0))),</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">G1 =</span> <span class="fu">mean</span>(<span class="fu">replicate</span>(nsim, <span class="fu">test_egalitate</span>(rad, G1))),</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">G2 =</span> <span class="fu">mean</span>(<span class="fu">replicate</span>(nsim, <span class="fu">test_egalitate</span>(rad, G2))))</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p>(demonstrație) Dacă <span class="math inline">\(F\ne G\)</span>, <span class="math inline">\(\PP(\text{eroare})\le\frac{d}{100d}=\frac1{100}\)</span>.</p></li>
+<li><p><span class="math inline">\(\PP(\text{eroare})\le100^{-k}\)</span>; <span class="math inline">\(k=5\)</span> repetări sunt suficiente (marginea este <span class="math inline">\(10^{-10}\)</span>), oricât de mare ar fi <span class="math inline">\(d\)</span>.</p></li>
+<li><p><span class="math inline">\(\PP(\text{eroare})\le\prod_{j=1}^{k}\frac{d-j+1}{100d-j+1}\le100^{-k}\)</span>; pentru <span class="math inline">\(d=5\)</span>, <span class="math inline">\(k=2\)</span>: <span class="math inline">\(\frac{5}{500}\cdot\frac{4}{499}\approx8.02\cdot10^{-5}&lt;10^{-4}\)</span>; pentru <span class="math inline">\(k=d+1\)</span> marginea este <span class="math inline">\(0\)</span>: eroarea devine imposibilă.</p></li>
+<li><p><span class="math inline">\(F(x)=x^5-3x^4-23x^3+51x^2+94x-120\)</span>. Frecvența răspunsului „egale” (o repetare, <span class="math inline">\(N=500\)</span>) este <span class="math inline">\(1\)</span> pentru <span class="math inline">\(G_0\)</span> (corect), <span class="math inline">\(0\)</span> pentru <span class="math inline">\(G_1\)</span> (<span class="math inline">\(F-G_1=36x^2\)</span> nu are rădăcini în <span class="math inline">\(\{1,\dots,500\}\)</span>) și <span class="math inline">\(\approx0.01\)</span> pentru <span class="math inline">\(G_2\)</span> (exact <span class="math inline">\(5/500=0.01\)</span>: marginea de la (a) este atinsă).</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-s02-clasice" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Probleme clasice prin simulare</h1>
+<p>Încheiem partea principală cu două probleme clasice din <a href="..\curs\02-conditionare-independenta.html" class="curs-ref">Cursul 2</a>, privite acum ca <em>programe</em>: scriem câte o funcție care simulează o singură desfășurare a experimentului, o repetăm de multe ori cu <code>replicate</code> și comparăm frecvențele cu rezultatele teoretice. Odată scrisă simularea, o variantă nouă a problemei cere doar schimbarea câtorva linii de cod — iar calculul teoretic al variantei devine un bun exercițiu de formula probabilității totale.</p>
+<div id="box-exr-s02-monty" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 10</span> <span class="curs-box-name">(Monty Hall prin simulare)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-nivo">Dacă timpul permite</span> Reluăm jocul din Exemplul <a href="..\curs\02-conditionare-independenta.html#box-ex-k02-monty" class="curs-ref">18 din Cursul 2</a>: în spatele uneia dintre uși se află o mașină, în spatele celorlalte câte o capră; concurentul alege o ușă, iar gazda, care știe unde este mașina, deschide uși cu capre dintre celelalte. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Scrieți o funcție R care simulează un joc cu trei uși și estimați probabilitatea de câștig pentru strategiile „păstrez ușa” și „schimb ușa”. Comparați cu valorile din Exemplul <a href="..\curs\02-conditionare-independenta.html#box-ex-k02-monty" class="curs-ref">18 din Cursul 2</a>.</p></li>
+<li><p>Generalizare: sunt <span class="math inline">\(n\ge3\)</span> uși, iar gazda deschide <span class="math inline">\(m\)</span> uși cu capre (<span class="math inline">\(1\le m\le n-2\)</span>) dintre cele <span class="math inline">\(n-1\)</span> nealese. Concurentul poate păstra ușa aleasă sau poate alege, la întâmplare, una dintre celelalte <span class="math inline">\(n-m-1\)</span> uși rămase închise. Calculați probabilitatea de câștig pentru fiecare strategie. Merită întotdeauna să schimbe?</p></li>
+<li><p>Verificați formula de la (b) prin simulare, pentru câteva perechi <span class="math inline">\((n,m)\)</span>.</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (a), (c) — completați locurile marcate cu <code>___</code> (funcția <code>monty</code> tratează direct cazul general, cu <span class="math inline">\(n\)</span> uși și <span class="math inline">\(m\)</span> uși deschise; <code>alege</code> evită capcana lui <code>sample</code> semnalată în breviar):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>alege <span class="ot">&lt;-</span> <span class="cf">function</span>(x, <span class="at">k =</span> <span class="dv">1</span>) x[<span class="fu">sample</span>(<span class="fu">length</span>(x), k)]  <span class="co"># k elemente din x</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>monty <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">3</span>, <span class="at">m =</span> <span class="dv">1</span>) {</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  masina  <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>n, <span class="dv">1</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  alegere <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>n, <span class="dv">1</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  capre <span class="ot">&lt;-</span> ___                                 <span class="co"># uși pe care gazda le</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  deschise <span class="ot">&lt;-</span> <span class="fu">alege</span>(capre, m)                  <span class="co"># poate deschide</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  ramase <span class="ot">&lt;-</span> ___                                <span class="co"># uși închise, nealese</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  noua <span class="ot">&lt;-</span> <span class="fu">alege</span>(ramase)                        <span class="co"># ușa după schimbare</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">pastrez =</span> alegere <span class="sc">==</span> masina, <span class="at">schimb =</span> ___)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1010</span>)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>nsim <span class="ot">&lt;-</span> <span class="fl">2e4</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="fu">rowMeans</span>(<span class="fu">replicate</span>(nsim, <span class="fu">monty</span>()))             <span class="co"># (a): frecvențele de câștig</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>cazuri <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">1</span>), <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(<span class="fu">apply</span>(cazuri, <span class="dv">1</span>, <span class="cf">function</span>(v) {</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> v[<span class="dv">1</span>]; m <span class="ot">&lt;-</span> v[<span class="dv">2</span>]</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">n =</span> n, <span class="at">m =</span> m, <span class="fu">rowMeans</span>(<span class="fu">replicate</span>(nsim, <span class="fu">monty</span>(n, m))),</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">teoretic =</span> ___)                            <span class="co"># formula de la (b)</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>}))</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p>Frecvențele de câștig sunt apropiate de <span class="math inline">\(\frac13\)</span> („păstrez”) și <span class="math inline">\(\frac23\)</span> („schimb”).</p></li>
+<li><p>„Păstrez” câștigă cu probabilitatea <span class="math inline">\(\frac1n\)</span>, „schimb” cu probabilitatea <span class="math inline">\(\frac{n-1}{n\,(n-m-1)}\)</span>; schimbarea este întotdeauna avantajoasă (inegalitatea revine la <span class="math inline">\(m&gt;0\)</span>).</p></li>
+<li><p>Frecvențele simulate ale strategiei „schimb” sunt apropiate de valorile teoretice: <span class="math inline">\(0.667\)</span>, <span class="math inline">\(0.375\)</span>, <span class="math inline">\(0.75\)</span>, <span class="math inline">\(0.1125\)</span> și <span class="math inline">\(0.9\)</span> pentru <span class="math inline">\((n,m)=(3,1),(4,1),(4,2),(10,1),(10,8)\)</span>; cele ale strategiei „păstrez”, de <span class="math inline">\(\frac1n\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<p>A doua problemă clasică este un experiment fără un număr fixat de pași: jocul continuă <em>până când</em> se întâmplă ceva. În R, aceasta înseamnă o buclă <code>while</code>, ca la metoda B din Exercițiul <a href="#box-exr-s02-chei" class="curs-ref">2</a>.</p>
+<div id="box-exr-s02-ruina" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 11</span> <span class="curs-box-name">(Ruina jucătorului prin simulare)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-niva">Pentru acasă</span> Un jucător pornește cu capitalul <span class="math inline">\(k\)</span> și joacă runde independente: la fiecare rundă câștigă o unitate cu probabilitatea <span class="math inline">\(p\)</span> sau pierde o unitate cu probabilitatea <span class="math inline">\(q=1-p\)</span>. Jocul se oprește când capitalul ajunge la <span class="math inline">\(0\)</span> (ruină) sau la ținta <span class="math inline">\(N\)</span>. Notăm cu <span class="math inline">\(p_k\)</span> probabilitatea de ruină, dată de Propoziția <a href="..\curs\02-conditionare-independenta.html#box-prop-k02-ruina" class="curs-ref">13 din Cursul 2</a>. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Pentru <span class="math inline">\(N=3\)</span> și <span class="math inline">\(k=1\)</span>, determinați direct <span class="math inline">\(p_1\)</span>, scriind formula probabilității totale după rezultatul primei runde. Verificați cu formula din Propoziția <a href="..\curs\02-conditionare-independenta.html#box-prop-k02-ruina" class="curs-ref">13 din Cursul 2</a>.</p></li>
+<li><p>Calculați probabilitatea de ruină pentru <span class="math inline">\(k=3\)</span> și <span class="math inline">\(N=10\)</span>, în jocul echitabil (<span class="math inline">\(p=1/2\)</span>) și în jocul ușor defavorabil cu <span class="math inline">\(p=0.45\)</span>.</p></li>
+<li><p>Scrieți o funcție R care simulează un joc și întoarce evoluția capitalului. Reprezentați grafic două jocuri simulate.</p></li>
+<li><p>Estimați prin simulare, în cele două situații de la (b), probabilitatea de ruină și numărul mediu de runde ale unui joc. Comparați probabilitățile cu valorile teoretice, pentru <span class="math inline">\(k=3\)</span> și apoi pentru toate valorile <span class="math inline">\(k=1,\dots,9\)</span>.</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (c), (d) — completați locurile marcate cu <code>___</code> (funcțiile vor fi folosite și în temă):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>joc_ruina <span class="ot">&lt;-</span> <span class="cf">function</span>(k, N, p) {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  capital <span class="ot">&lt;-</span> k                     <span class="co"># capitalul după fiecare rundă</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span> (___) {                    <span class="co"># până la ruină sau până la țintă</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    k <span class="ot">&lt;-</span> k <span class="sc">+</span> ___                   <span class="co"># +1 cu probabilitatea p, altfel -1</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    capital <span class="ot">&lt;-</span> <span class="fu">c</span>(capital, k)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  capital</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>p_ruina <span class="ot">&lt;-</span> <span class="cf">function</span>(k, N, p) {     <span class="co"># formula din Propoziția despre ruină</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (p <span class="sc">==</span> <span class="fl">0.5</span>) <span class="fu">return</span>(___)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  r <span class="ot">&lt;-</span> (<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> p</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  ___</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>rezumat <span class="ot">&lt;-</span> <span class="cf">function</span>(k, N, p) {     <span class="co"># ruina? câte runde?</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  capital <span class="ot">&lt;-</span> <span class="fu">joc_ruina</span>(k, N, p)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">ruina =</span> ___, <span class="at">runde =</span> <span class="fu">length</span>(capital) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1112</span>)</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>nsim <span class="ot">&lt;-</span> <span class="fl">1e4</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>echitabil    <span class="ot">&lt;-</span> <span class="fu">rowMeans</span>(<span class="fu">replicate</span>(nsim, <span class="fu">rezumat</span>(<span class="dv">3</span>, <span class="dv">10</span>, <span class="fl">0.5</span>)))</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>defavorabil  <span class="ot">&lt;-</span> <span class="fu">rowMeans</span>(<span class="fu">replicate</span>(nsim, <span class="fu">rezumat</span>(<span class="dv">3</span>, <span class="dv">10</span>, <span class="fl">0.45</span>)))</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(echitabil, defavorabil)</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(p_1=\dfrac{q}{1-pq}\)</span>: <span class="math inline">\(\frac23\)</span> pentru <span class="math inline">\(p=\frac12\)</span> și <span class="math inline">\(\approx0.731\)</span> pentru <span class="math inline">\(p=0.45\)</span>, ca în Propoziția <a href="..\curs\02-conditionare-independenta.html#box-prop-k02-ruina" class="curs-ref">13 din Cursul 2</a>.</p></li>
+<li><p><span class="math inline">\(p_3=0.7\)</span> în jocul echitabil și <span class="math inline">\(p_3\approx0.872\)</span> pentru <span class="math inline">\(p=0.45\)</span>.</p></li>
+<li><p>Fiecare joc este un drum în trepte care pornește din <span class="math inline">\(k\)</span> și se oprește la <span class="math inline">\(0\)</span> sau la <span class="math inline">\(N\)</span>; durata lui variază mult de la un joc la altul.</p></li>
+<li><p>Frecvențele ruinei sunt apropiate de <span class="math inline">\(0.7\)</span>, respectiv <span class="math inline">\(0.872\)</span>; un joc durează în medie aproximativ <span class="math inline">\(21\)</span> de runde (echitabil), respectiv <span class="math inline">\(17\)</span> (defavorabil). Pentru <span class="math inline">\(k=1,\dots,9\)</span> frecvențele simulate se așază pe curbele teoretice: dreapta <span class="math inline">\(p_k=1-k/N\)</span> pentru <span class="math inline">\(p=\frac12\)</span> și o curbă situată deasupra ei pentru <span class="math inline">\(p=0.45\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-s02-suplimentare" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Exerciții suplimentare</h1>
+<p>Exercițiile de mai jos, pentru studiul individual (cu răspunsuri finale), reiau modelele și funcțiile R din ședință: cheile din Exercițiul <a href="#box-exr-s02-chei" class="curs-ref">2</a>, funcția <code>bayes</code> din Exercițiul <a href="#box-exr-s02-masini" class="curs-ref">4</a> și jocul lui Monty Hall din Exercițiul <a href="#box-exr-s02-monty" class="curs-ref">10</a>.</p>
+<div id="box-exr-s02-paznic" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 12</span> <span class="curs-box-name">(Paznicul obosit)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-niva">Pentru acasă</span> Un paznic are pe inel cele <span class="math inline">\(8\)</span> chei din Exercițiul <a href="#box-exr-s02-chei" class="curs-ref">2</a>. Când este odihnit, încearcă cheile cu metoda A (fără revenire); când este obosit, cu metoda B (cu revenire). Paznicul este obosit într-o noapte din trei. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Într-o noapte, primele <span class="math inline">\(5\)</span> încercări ale paznicului eșuează. Care este probabilitatea ca el să fie obosit?</p></li>
+<li><p>Calculați aceeași probabilitate după <span class="math inline">\(j\)</span> încercări eșuate, pentru <span class="math inline">\(j=0,1,\dots,8\)</span>, și comentați.</p></li>
+<li><p>Verificați rezultatul de la (a) prin simulare.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(\PP(O\mid R_5)\approx0.406\)</span>, unde <span class="math inline">\(O\)</span> = „paznicul este obosit” și <span class="math inline">\(R_5\)</span> = „primele <span class="math inline">\(5\)</span> încercări eșuează”.</p></li>
+<li><p><span class="math inline">\(\PP(O\mid R_j)=\dfrac{\frac13\,(7/8)^j}{\frac13\,(7/8)^j+\frac23\cdot\frac{8-j}{8}}\)</span>: <span class="math inline">\(0.333\)</span> pentru <span class="math inline">\(j=0\)</span> și <span class="math inline">\(j=1\)</span> (un singur eșec nu aduce nicio informație), apoi <span class="math inline">\(0.338\)</span>, <span class="math inline">\(0.349\)</span>, <span class="math inline">\(0.370\)</span>, <span class="math inline">\(0.406\)</span>, <span class="math inline">\(0.473\)</span>, <span class="math inline">\(0.611\)</span> și <span class="math inline">\(1\)</span> pentru <span class="math inline">\(j=8\)</span> (un paznic odihnit nu poate eșua de <span class="math inline">\(8\)</span> ori).</p></li>
+<li><p>Frecvența simulată este apropiată de <span class="math inline">\(0.406\)</span> (și, după <span class="math inline">\(7\)</span> eșecuri, de <span class="math inline">\(0.611\)</span>).</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="box-exr-s02-zar-moneda" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 13</span> <span class="curs-box-name">(Un zar, apoi monede)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-niva">Pentru acasă</span> Aruncăm un zar echilibrat și apoi aruncăm o monedă echilibrată de atâtea ori câte puncte a arătat zarul. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Care este probabilitatea să nu obținem niciun cap?</p></li>
+<li><p>Știind că nu am obținut niciun cap, care este probabilitatea ca zarul să fi arătat <span class="math inline">\(i\)</span>, pentru <span class="math inline">\(i=1,\dots,6\)</span>?</p></li>
+<li><p>Care este probabilitatea să obținem exact <span class="math inline">\(4\)</span> capete?</p></li>
+<li><p>Verificați (a)–(c) prin simulare.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(\frac{21}{128}\approx0.164\)</span>.</p></li>
+<li><p><span class="math inline">\(\frac{2^{6-i}}{63}\)</span>, adică <span class="math inline">\(\frac{32}{63},\frac{16}{63},\frac{8}{63},\frac{4}{63},\frac{2}{63},\frac{1}{63}\)</span> pentru <span class="math inline">\(i=1,\dots,6\)</span>.</p></li>
+<li><p><span class="math inline">\(\frac{29}{384}\approx0.0755\)</span>.</p></li>
+<li><p>Frecvențele simulate sunt apropiate de <span class="math inline">\(0.164\)</span> și <span class="math inline">\(0.0755\)</span>, iar repartiția zarului printre repetările fără niciun cap este apropiată de <span class="math inline">\((0.508,\,0.254,\,0.127,\,0.063,\,0.032,\,0.016)\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="box-exr-s02-monty-gazda" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 14</span> <span class="curs-box-name">(Monty Hall cu o gazdă cu preferințe)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-niva">Pentru acasă</span> În jocul cu trei uși din Exercițiul <a href="#box-exr-s02-monty" class="curs-ref">10</a>, concurentul alege ușa <span class="math inline">\(1\)</span>. Când gazda are de ales între ușile <span class="math inline">\(2\)</span> și <span class="math inline">\(3\)</span> (adică atunci când mașina este în spatele ușii <span class="math inline">\(1\)</span>), ea deschide ușa <span class="math inline">\(2\)</span> cu probabilitatea <span class="math inline">\(\theta\)</span> și ușa <span class="math inline">\(3\)</span> cu probabilitatea <span class="math inline">\(1-\theta\)</span>, unde <span class="math inline">\(\theta\in[0,1]\)</span> este cunoscut concurentului. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Gazda deschide ușa <span class="math inline">\(2\)</span>. Care este probabilitatea ca schimbarea ușii să aducă mașina? Dar dacă gazda deschide ușa <span class="math inline">\(3\)</span>?</p></li>
+<li><p>Arătați că strategia „schimb” câștigă, în total, tot cu probabilitatea <span class="math inline">\(2/3\)</span>, oricare ar fi <span class="math inline">\(\theta\)</span>.</p></li>
+<li><p>Verificați prin simulare pentru <span class="math inline">\(\theta=1\)</span> (gazda deschide ușa <span class="math inline">\(2\)</span> ori de câte ori poate) și <span class="math inline">\(\theta=0.8\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(\frac{1}{1+\theta}\)</span> dacă gazda deschide ușa <span class="math inline">\(2\)</span> și <span class="math inline">\(\frac{1}{2-\theta}\)</span> dacă deschide ușa <span class="math inline">\(3\)</span>; ambele sunt cel puțin <span class="math inline">\(\frac12\)</span>.</p></li>
+<li><p><span class="math inline">\(\PP(\text{câștig prin schimbare})=\frac23\)</span> pentru orice <span class="math inline">\(\theta\)</span>.</p></li>
+<li><p>Pentru <span class="math inline">\(\theta=1\)</span>: frecvențe apropiate de <span class="math inline">\(\frac12\)</span>, <span class="math inline">\(1\)</span> și <span class="math inline">\(\frac23\)</span>; pentru <span class="math inline">\(\theta=0.8\)</span>: de <span class="math inline">\(\frac1{1.8}\approx0.556\)</span>, <span class="math inline">\(\frac1{1.2}\approx0.833\)</span> și <span class="math inline">\(\frac23\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="box-exr-s02-relee" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 15</span> <span class="curs-box-name">(Un bit transmis prin relee)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-niva">Pentru acasă</span> Un bit este transmis printr-un lanț de <span class="math inline">\(n\)</span> relee. Fiecare releu, independent de celelalte, inversează bitul primit cu probabilitatea <span class="math inline">\(\varepsilon=0.1\)</span> și îl transmite neschimbat cu probabilitatea <span class="math inline">\(0.9\)</span>. Fie <span class="math inline">\(a_n\)</span> probabilitatea ca bitul primit după <span class="math inline">\(n\)</span> relee să coincidă cu cel trimis. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Arătați că <span class="math inline">\(a_{n+1}=0.9\,a_n+0.1\,(1-a_n)\)</span>, cu <span class="math inline">\(a_0=1\)</span>, și calculați <span class="math inline">\(a_1,\dots,a_4\)</span>.</p></li>
+<li><p>Verificați că <span class="math inline">\(a_n=\frac12\big(1+0.8^n\big)\)</span>. Ce se întâmplă când <span class="math inline">\(n\)</span> este mare?</p></li>
+<li><p>Pentru <span class="math inline">\(n=4\)</span>: știind că bitul a ajuns corect, care este probabilitatea ca primul releu să nu-l fi inversat?</p></li>
+<li><p>Calculați <span class="math inline">\(a_n\)</span> în R cu o buclă <code>for</code> și verificați (a) și (c) prin simulare.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(a_1=0.9\)</span>, <span class="math inline">\(a_2=0.82\)</span>, <span class="math inline">\(a_3=0.756\)</span>, <span class="math inline">\(a_4=0.7048\)</span>.</p></li>
+<li><p>(demonstrație, prin inducție) <span class="math inline">\(a_n\to\frac12\)</span>: după multe relee, bitul primit nu mai poartă nicio informație despre bitul trimis.</p></li>
+<li><p><span class="math inline">\(\PP(V_1^c\mid K_4)=\frac{0.9\,a_3}{a_4}\approx0.965\)</span>, unde <span class="math inline">\(V_1\)</span> = „primul releu inversează bitul” și <span class="math inline">\(K_4\)</span> = „bitul ajunge corect după <span class="math inline">\(4\)</span> relee”.</p></li>
+<li><p><span class="math inline">\(a_{10}\approx0.554\)</span>, <span class="math inline">\(a_{20}\approx0.506\)</span>; frecvențele simulate sunt apropiate de <span class="math inline">\(0.7048\)</span> și <span class="math inline">\(0.965\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-s02-tema" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Temă</h1>
+<ol type="1">
+<li><p>Aruncăm două zaruri echilibrate. Calculați probabilitatea ca cel puțin unul dintre zaruri să arate <span class="math inline">\(6\)</span>, știind că: (i) zarurile arată numere diferite; (ii) suma este cel puțin <span class="math inline">\(10\)</span>. Verificați în R, prin enumerare, cu funcția <code>p_cond</code> din Exercițiul <a href="#box-exr-s02-zaruri" class="curs-ref">1</a>. <em>Răspuns:</em> (i) <span class="math inline">\(10/30=1/3\)</span>; (ii) <span class="math inline">\(5/6\)</span>.</p></li>
+<li><p>Un lot de <span class="math inline">\(12\)</span> plăci video conține <span class="math inline">\(3\)</span> plăci defecte. Testăm pe rând, fără revenire, <span class="math inline">\(3\)</span> plăci alese la întâmplare. Calculați probabilitatea ca: (i) niciuna să nu fie defectă; (ii) prima placă defectă găsită să fie a treia testată. <em>Răspuns:</em> (i) <span class="math inline">\(\frac{9}{12}\cdot\frac{8}{11}\cdot\frac{7}{10}=\frac{21}{55}\approx0.382\)</span>; (ii) <span class="math inline">\(\frac{9}{12}\cdot\frac{8}{11}\cdot\frac{3}{10}=\frac{9}{55}\approx0.164\)</span>.</p></li>
+<li><p>Un student trebuie să repartizeze <span class="math inline">\(2\)</span> bile albe și <span class="math inline">\(2\)</span> bile negre în două urne, astfel încât nicio urnă să nu rămână goală. Profesorul alege apoi o urnă la întâmplare și extrage din ea o bilă; studentul promovează dacă bila este neagră. (i) Cum trebuie repartizate bilele pentru ca probabilitatea de promovare să fie maximă? (ii) Scrieți o funcție R care calculează probabilitatea de promovare pentru o repartizare dată și găsiți repartizarea optimă pentru <span class="math inline">\(10\)</span> bile albe și <span class="math inline">\(10\)</span> negre. <em>Răspuns:</em> (i) o bilă neagră singură într-o urnă, celelalte trei în a doua: <span class="math inline">\(\frac12\big(1+\frac13\big)=\frac23\)</span>; (ii) aceeași idee: <span class="math inline">\(\frac12\big(1+\frac{9}{19}\big)=\frac{14}{19}\approx0.737\)</span>. </p></li>
+<li><p>O companie asigură două categorii de șoferi, la fel de numeroase: cei din prima categorie au un accident într-un an cu probabilitatea <span class="math inline">\(0.2\)</span>, cei din a doua cu probabilitatea <span class="math inline">\(0.05\)</span>, independent de la un an la altul. Pentru un asigurat ales la întâmplare, fie <span class="math inline">\(A_1\)</span>, <span class="math inline">\(A_2\)</span> evenimentele „are un accident în primul”, respectiv „în al doilea an”. Calculați <span class="math inline">\(\PP(A_1)\)</span>, <span class="math inline">\(\PP(A_2\mid A_1)\)</span> și probabilitatea ca asiguratul să fie din prima categorie, știind că a avut un accident în primul an. Sunt <span class="math inline">\(A_1\)</span> și <span class="math inline">\(A_2\)</span> independente? <em>Răspuns:</em> <span class="math inline">\(0.125\)</span>; <span class="math inline">\(0.02125/0.125=0.17\)</span>; <span class="math inline">\(0.8\)</span>; nu sunt independente (<span class="math inline">\(0.17&gt;0.125\)</span>), ci doar independente condiționat de categorie. </p></li>
+<li><p>Un test de alcoolemie este pozitiv cu probabilitatea <span class="math inline">\(0.99\)</span> pentru un șofer care a depășit limita legală și negativ cu probabilitatea <span class="math inline">\(0.99\)</span> pentru unul care nu a depășit-o; <span class="math inline">\(0.5\%\)</span> dintre șoferi depășesc limita. (i) Care este probabilitatea ca un șofer testat pozitiv să fi depășit limita? (ii) Dar într-o seară în care <span class="math inline">\(30\%\)</span> dintre șoferi depășesc limita? (iii) Folosind funcția <code>posterior</code> din Exercițiul <a href="#box-exr-s02-diagnostic" class="curs-ref">6</a>, găsiți în R cea mai mică valoare <span class="math inline">\(p\)</span> a senzitivității și specificității (presupuse egale) pentru care probabilitatea de la (i) este cel puțin <span class="math inline">\(0.95\)</span>. <em>Răspuns:</em> (i) <span class="math inline">\(\approx0.332\)</span>; (ii) <span class="math inline">\(\approx0.977\)</span>; (iii) <span class="math inline">\(p\approx0.9997\)</span>. <em>Indicație pentru (iii):</em> evaluați <code>posterior(0.005, p, p)</code> pentru <code>p &lt;- seq(0.99, 1, by = 0.00001)</code>. </p></li>
+<li><p>Printr-un canal de comunicație se transmit biți: <span class="math inline">\(0\)</span> cu probabilitatea <span class="math inline">\(0.6\)</span> și <span class="math inline">\(1\)</span> cu probabilitatea <span class="math inline">\(0.4\)</span>. Un <span class="math inline">\(0\)</span> transmis este recepționat greșit (ca <span class="math inline">\(1\)</span>) cu probabilitatea <span class="math inline">\(0.05\)</span>, iar un <span class="math inline">\(1\)</span> transmis este recepționat greșit cu probabilitatea <span class="math inline">\(0.10\)</span>. (i) Care este probabilitatea să recepționăm <span class="math inline">\(1\)</span>? (ii) Dacă am recepționat <span class="math inline">\(1\)</span>, care este probabilitatea să fi fost transmis <span class="math inline">\(1\)</span>? (iii) Pe un alt canal, care inversează fiecare bit cu probabilitatea <span class="math inline">\(0.1\)</span>, independent, fiecare bit se transmite de trei ori și se decodifică prin vot majoritar. Care este probabilitatea unei decodificări greșite? <em>Răspuns:</em> (i) <span class="math inline">\(0.4\cdot0.9+0.6\cdot0.05=0.39\)</span>; (ii) <span class="math inline">\(0.36/0.39\approx0.923\)</span>; (iii) <span class="math inline">\(3\cdot0.1^2\cdot0.9+0.1^3=0.028\)</span> (comparați cu Exercițiul <a href="#box-exr-s02-fiabilitate" class="curs-ref">8</a>(c)).</p></li>
+<li><p>Folosiți funcția <code>test_egalitate</code> din Exercițiul <a href="#box-exr-s02-polinoame" class="curs-ref">9</a> pentru a verifica identitatea <span class="math inline">\((x-1)(x-2)(x-3)(x-4)=x^4-10x^3+35x^2-50x+24\)</span>, apoi varianta în care coeficientul <span class="math inline">\(35\)</span> este înlocuit, din greșeală, cu <span class="math inline">\(53\)</span>. Ce răspunsuri obțineți în <span class="math inline">\(1000\)</span> de rulări? Câte repetări <span class="math inline">\(k\)</span> garantează o probabilitate de eroare sub <span class="math inline">\(10^{-12}\)</span>? <em>Răspuns:</em> în primul caz, „egale” la fiecare rulare; în al doilea, „diferite” la fiecare rulare, pentru că <span class="math inline">\(F-G=-18x^2\)</span> nu are rădăcini în <span class="math inline">\(\{1,\dots,400\}\)</span>; <span class="math inline">\(k=6\)</span>.</p></li>
+<li><p>La ruleta europeană, un pariu pe „roșu” este câștigat cu probabilitatea <span class="math inline">\(p=18/37\)</span>. Un jucător pornește cu <span class="math inline">\(5\)</span> unități, pariază câte o unitate la fiecare rundă și se oprește la <span class="math inline">\(0\)</span> sau la <span class="math inline">\(10\)</span> unități. Estimați cu funcțiile din Exercițiul <a href="#box-exr-s02-ruina" class="curs-ref">11</a>, din <span class="math inline">\(10^4\)</span> jocuri simulate, probabilitatea de ruină și numărul mediu de runde, și comparați probabilitatea cu Propoziția <a href="..\curs\02-conditionare-independenta.html#box-prop-k02-ruina" class="curs-ref">13 din Cursul 2</a>. Reprezentați grafic trei jocuri simulate. <em>Răspuns:</em> probabilitatea de ruină este <span class="math inline">\(\approx0.567\)</span>; un joc durează în medie aproximativ <span class="math inline">\(25\)</span> de runde.</p></li>
+</ol>
+</section>
+<section id="bibliografie" class="level1 unnumbered">
+<h1 class="unnumbered">Bibliografie</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-bertsekas2008" class="csl-entry" role="listitem">
+Bertsekas, Dimitri P., and John N. Tsitsiklis. 2008. <em>Introduction to Probability</em>. 2nd ed. Athena Scientific.
+</div>
+<div id="ref-blitzstein2019" class="csl-entry" role="listitem">
+Blitzstein, Joseph K., and Jessica Hwang. 2019. <em>Introduction to Probability</em>. 2nd ed. CRC Press.
+</div>
+<div id="ref-mitzenmacher2017" class="csl-entry" role="listitem">
+Mitzenmacher, Michael, and Eli Upfal. 2017. <em>Probability and Computing: Randomization and Probabilistic Techniques in Algorithms and Data Analysis</em>. 2nd ed. Cambridge University Press.
+</div>
+<div id="ref-dobrow2021" class="csl-entry" role="listitem">
+Wagaman, Amy S., and Robert P. Dobrow. 2021. <em>Probability with Applications and <span>R</span></em>. 2nd ed. Wiley.
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<!-- Buton „Înapoi sus”: apare după ce pagina a fost derulată -->
+
+<button id="curs-to-top" type="button" aria-label="Înapoi la începutul paginii" title="Înapoi sus">
+
+  <i class="bi bi-arrow-up"></i>
+
+</button>
+
+<script>
+
+(function () {
+
+  var btn = document.getElementById('curs-to-top');
+
+  if (!btn) return;
+
+  var toggle = function () {
+
+    btn.classList.toggle('visible', window.scrollY > 400);
+
+  };
+
+  window.addEventListener('scroll', toggle, { passive: true });
+
+  toggle();
+
+  btn.addEventListener('click', function () {
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    btn.blur();
+
+  });
+
+})();
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiat!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiat!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/AlexAmarioarei\.github\.io\/curs-ps-fmi\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../laborator_nosols/01-evenimente-numarare-R.html" class="pagination-link" aria-label="1. Evenimente, probabilități și numărare. Primii pași în R">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">1. Evenimente, probabilități și numărare. Primii pași în R</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2026, <a href="https://alexamarioarei.github.io/">Alexandru Amărioarei</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Această pagină a fost creată în <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

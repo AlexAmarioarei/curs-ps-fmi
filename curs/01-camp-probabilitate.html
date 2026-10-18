@@ -89,6 +89,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../curs/02-conditionare-independenta.html" rel="next">
 <link href="../images/ps_sticker.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -274,6 +275,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../curs/01-camp-probabilitate.html">
  <span class="dropdown-text">Cursul 1 — Câmp de probabilitate</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../curs/02-conditionare-independenta.html">
+ <span class="dropdown-text">Cursul 2 — Probabilitate condiționată și independență</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -292,6 +297,10 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../laborator_nosols/01-evenimente-numarare-R.html">
  <span class="dropdown-text">Seminarul 1 — Evenimente, probabilități și numărare. Primii pași în R (fișă de lucru)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../laborator_nosols/02-conditionare-independenta.html">
+ <span class="dropdown-text">Seminarul 2 — Probabilități condiționate, formula lui Bayes și independență (fișă de lucru)</span></a>
   </li>  
     </ul>
   </li>
@@ -365,6 +374,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../curs/01-camp-probabilitate.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">1. Câmp de probabilitate</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../curs/02-conditionare-independenta.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Probabilitate condiționată și independență</span></a>
   </div>
 </li>
       </ul>
@@ -786,7 +801,7 @@ A\cap(B\cup C)=(A\cap B)\cup(A\cap C),\qquad A\cup(B\cap C)=(A\cup B)\cap(A\cup 
 <p>Două evenimente <span class="math inline">\(A,B\)</span> se numesc <strong>incompatibile</strong> (sau <em>disjuncte</em>, <em>mutual exclusive</em>) dacă <span class="math inline">\(A\cap B=\emptyset\)</span>, adică nu se pot realiza simultan. Evenimentele <span class="math inline">\((A_i)_{i\in I}\)</span> se numesc <em>incompatibile două câte două</em> dacă <span class="math inline">\(A_i\cap A_j=\emptyset\)</span> pentru orice <span class="math inline">\(i\neq j\)</span>. O familie de evenimente incompatibile două câte două a căror reuniune este <span class="math inline">\(\Omega\)</span> se numește <strong>sistem complet de evenimente</strong> (sau <strong>partiție</strong> a lui <span class="math inline">\(\Omega\)</span>).</p>
 </div>
 </div>
-<p>De exemplu, <span class="math inline">\(A\)</span> și <span class="math inline">\(A^c\)</span> formează întotdeauna un sistem complet de evenimente, iar evenimentele elementare <span class="math inline">\(\{\omega\}\)</span>, <span class="math inline">\(\omega\in\Omega\)</span>, formează (pentru <span class="math inline">\(\Omega\)</span> discret) un sistem complet de evenimente. Sistemele complete de evenimente vor juca un rol central în formula probabilității totale (Cursul 2).</p>
+<p>De exemplu, <span class="math inline">\(A\)</span> și <span class="math inline">\(A^c\)</span> formează întotdeauna un sistem complet de evenimente, iar evenimentele elementare <span class="math inline">\(\{\omega\}\)</span>, <span class="math inline">\(\omega\in\Omega\)</span>, formează (pentru <span class="math inline">\(\Omega\)</span> discret) un sistem complet de evenimente. Sistemele complete de evenimente vor juca un rol central în formula probabilității totale (<a href="02-conditionare-independenta.html" class="curs-ref">Cursul 2</a>).</p>
 <div id="box-ex-k01-zece-aruncari" class="curs-box exemplu">
 <div class="curs-box-title">
 <span class="curs-box-label">Exemplul 6</span> <span class="curs-box-name">(Aruncarea de 10 ori a unei monede)</span>
@@ -1164,7 +1179,7 @@ p_1+p_2+\dots+p_6=\sum_{i=1}^6\PP(\{i\})=\PP(\Omega)=1 .
 A&amp;=\{\text{capul apare mai devreme sau mai târziu}\},\\
 A_n&amp;=\{(\omega_k)_k\in\Omega\mid\exists\,i\in\{1,\dots,n\}\text{ cu }\omega_i=H\},
 \end{aligned}
-\]</span> adică <span class="math inline">\(A_n\)</span> = „am obținut cap în primele <span class="math inline">\(n\)</span> aruncări”. Avem <span class="math inline">\(A_1\subseteq A_2\subseteq\dots\)</span> și <span class="math inline">\(A=\bigcup_nA_n\)</span>. Evenimentul contrar lui <span class="math inline">\(A_n\)</span> este „primele <span class="math inline">\(n\)</span> aruncări au dat pajură”; vom vedea în Cursul 2 (independența aruncărilor) că <span class="math inline">\(\PP(A_n^c)=(1-p)^n\)</span> (pentru <span class="math inline">\(p=1/2\)</span> acest lucru rezultă și din modelul clasic al secțiunii următoare: un singur rezultat favorabil din <span class="math inline">\(2^n\)</span>). Din Teorema <a href="#box-thm-k01-continuitate" class="curs-ref">18</a>, <span class="math display">\[
+\]</span> adică <span class="math inline">\(A_n\)</span> = „am obținut cap în primele <span class="math inline">\(n\)</span> aruncări”. Avem <span class="math inline">\(A_1\subseteq A_2\subseteq\dots\)</span> și <span class="math inline">\(A=\bigcup_nA_n\)</span>. Evenimentul contrar lui <span class="math inline">\(A_n\)</span> este „primele <span class="math inline">\(n\)</span> aruncări au dat pajură”; vom vedea în <a href="02-conditionare-independenta.html" class="curs-ref">Cursul 2</a> (independența aruncărilor) că <span class="math inline">\(\PP(A_n^c)=(1-p)^n\)</span> (pentru <span class="math inline">\(p=1/2\)</span> acest lucru rezultă și din modelul clasic al secțiunii următoare: un singur rezultat favorabil din <span class="math inline">\(2^n\)</span>). Din Teorema <a href="#box-thm-k01-continuitate" class="curs-ref">18</a>, <span class="math display">\[
 \PP(A)=\lim_{n\to\infty}\PP(A_n)=\lim_{n\to\infty}\big(1-(1-p)^n\big)=1 .
 \]</span> Deci, oricât de mică ar fi <span class="math inline">\(p&gt;0\)</span>, capul apare aproape sigur. Observăm că <span class="math inline">\(A\neq\Omega\)</span> (șirul <span class="math inline">\(TTT\dots\)</span> nu aparține lui <span class="math inline">\(A\)</span>), dar <span class="math inline">\(\PP(A)=1\)</span>: un eveniment de probabilitate <span class="math inline">\(1\)</span> nu este neapărat evenimentul sigur.</p>
 </div>
@@ -1740,7 +1755,7 @@ De reținut
 <p><strong>Rezultate clasice.</strong> Zile de naștere: <span class="math inline">\(1-A_{365}^n/365^n\)</span> (<span class="math inline">\(&gt;1/2\)</span> pentru <span class="math inline">\(n\ge23\)</span>). Potriviri: <span class="math inline">\(p_n=\sum_{k=1}^n\frac{(-1)^{k+1}}{k!}\to1-\frac1e\approx0.632\)</span>.</p>
 </div>
 </div>
-<p><strong>Legătura cu cursurile următoare.</strong> În Cursul 2 vom vedea cum se modifică probabilitatea unui eveniment atunci când primim o informație suplimentară (probabilitatea condiționată) și vom da un sens precis ideii că două evenimente „nu se influențează” (independența). Regulile de numărare și formula lui Poincaré vor reapărea în Cursul 3, la repartițiile binomială și hipergeometrică și la numărul mediu de potriviri.</p>
+<p><strong>Legătura cu cursurile următoare.</strong> În <a href="02-conditionare-independenta.html" class="curs-ref">Cursul 2</a> vom vedea cum se modifică probabilitatea unui eveniment atunci când primim o informație suplimentară (probabilitatea condiționată) și vom da un sens precis ideii că două evenimente „nu se influențează” (independența). Regulile de numărare și formula lui Poincaré vor reapărea în Cursul 3, la repartițiile binomială și hipergeometrică și la numărul mediu de potriviri.</p>
 </section>
 <section id="sec-k01-exercitii" class="level1" data-number="9">
 <h1 data-number="9"><span class="header-section-number">9</span> Exerciții rezolvate</h1>
@@ -2490,6 +2505,15 @@ Blitzstein, Joseph K., and Jessica Hwang. 2019. <em>Introduction to Probability<
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../curs/02-conditionare-independenta.html" class="pagination-link" aria-label="2. Probabilitate condiționată și independență">
+        <span class="nav-page-text">2. Probabilitate condiționată și independență</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
