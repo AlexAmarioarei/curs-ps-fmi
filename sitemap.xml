@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://AlexAmarioarei.github.io/curs-ps-fmi/slides/laborator_nosols/seminar02.html</loc>
-    <lastmod>2026-10-10T18:18:45.598Z</lastmod>
+    <loc>https://AlexAmarioarei.github.io/curs-ps-fmi/slides/laborator_nosols/seminar03.html</loc>
+    <lastmod>2026-10-10T18:18:46.020Z</lastmod>
+  </url>
+  <url>
+    <loc>https://AlexAmarioarei.github.io/curs-ps-fmi/slides/laborator_nosols/seminar01.html</loc>
+    <lastmod>2026-10-10T18:18:45.218Z</lastmod>
   </url>
   <url>
     <loc>https://AlexAmarioarei.github.io/curs-ps-fmi/slides/curs/curs02.html</loc>
@@ -13,12 +17,16 @@
     <lastmod>2026-10-05T04:27:31.311Z</lastmod>
   </url>
   <url>
-    <loc>https://AlexAmarioarei.github.io/curs-ps-fmi/laborator_nosols/01-evenimente-numarare-R.html</loc>
-    <lastmod>2026-10-10T18:39:43.289Z</lastmod>
+    <loc>https://AlexAmarioarei.github.io/curs-ps-fmi/laborator_nosols/02-conditionare-independenta.html</loc>
+    <lastmod>2026-10-10T18:18:39.366Z</lastmod>
   </url>
   <url>
-    <loc>https://AlexAmarioarei.github.io/curs-ps-fmi/index.html</loc>
-    <lastmod>2026-10-05T04:27:31.240Z</lastmod>
+    <loc>https://AlexAmarioarei.github.io/curs-ps-fmi/laborator/index.html</loc>
+    <lastmod>2026-10-23T13:09:11.632Z</lastmod>
+  </url>
+  <url>
+    <loc>https://AlexAmarioarei.github.io/curs-ps-fmi/curs/index.html</loc>
+    <lastmod>2026-10-23T13:08:56.258Z</lastmod>
   </url>
   <url>
     <loc>https://AlexAmarioarei.github.io/curs-ps-fmi/curs/02-conditionare-independenta.html</loc>
@@ -117,23 +125,31 @@
     <lastmod>2026-10-05T04:27:31.084Z</lastmod>
   </url>
   <url>
-    <loc>https://AlexAmarioarei.github.io/curs-ps-fmi/curs/index.html</loc>
-    <lastmod>2026-10-18T15:19:33.040Z</lastmod>
+    <loc>https://AlexAmarioarei.github.io/curs-ps-fmi/curs/03-va-discrete.html</loc>
+    <lastmod>2026-10-05T04:27:31.102Z</lastmod>
   </url>
   <url>
-    <loc>https://AlexAmarioarei.github.io/curs-ps-fmi/laborator/index.html</loc>
-    <lastmod>2026-10-18T15:19:33.044Z</lastmod>
+    <loc>https://AlexAmarioarei.github.io/curs-ps-fmi/index.html</loc>
+    <lastmod>2026-10-05T04:27:31.240Z</lastmod>
   </url>
   <url>
-    <loc>https://AlexAmarioarei.github.io/curs-ps-fmi/laborator_nosols/02-conditionare-independenta.html</loc>
-    <lastmod>2026-10-10T18:18:39.366Z</lastmod>
+    <loc>https://AlexAmarioarei.github.io/curs-ps-fmi/laborator_nosols/01-evenimente-numarare-R.html</loc>
+    <lastmod>2026-10-10T18:39:43.289Z</lastmod>
+  </url>
+  <url>
+    <loc>https://AlexAmarioarei.github.io/curs-ps-fmi/laborator_nosols/03-va-discrete.html</loc>
+    <lastmod>2026-10-10T18:18:39.805Z</lastmod>
   </url>
   <url>
     <loc>https://AlexAmarioarei.github.io/curs-ps-fmi/slides/curs/curs01.html</loc>
     <lastmod>2026-10-05T04:27:32.201Z</lastmod>
   </url>
   <url>
-    <loc>https://AlexAmarioarei.github.io/curs-ps-fmi/slides/laborator_nosols/seminar01.html</loc>
-    <lastmod>2026-10-10T18:18:45.218Z</lastmod>
+    <loc>https://AlexAmarioarei.github.io/curs-ps-fmi/slides/curs/curs03.html</loc>
+    <lastmod>2026-10-05T04:27:32.202Z</lastmod>
+  </url>
+  <url>
+    <loc>https://AlexAmarioarei.github.io/curs-ps-fmi/slides/laborator_nosols/seminar02.html</loc>
+    <lastmod>2026-10-10T18:18:45.598Z</lastmod>
   </url>
 </urlset>

@@ -279,6 +279,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../curs/02-conditionare-independenta.html">
  <span class="dropdown-text">Cursul 2 — Probabilitate condiționată și independență</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../curs/03-va-discrete.html">
+ <span class="dropdown-text">Cursul 3 — Variabile aleatoare discrete</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -301,6 +305,10 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../laborator_nosols/02-conditionare-independenta.html">
  <span class="dropdown-text">Seminarul 2 — Probabilități condiționate, formula lui Bayes și independență (fișă de lucru)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../laborator_nosols/03-va-discrete.html">
+ <span class="dropdown-text">Seminarul 3 — Variabile aleatoare discrete și repartiții uzuale (fișă de lucru)</span></a>
   </li>  
     </ul>
   </li>
@@ -380,6 +388,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../curs/02-conditionare-independenta.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2. Probabilitate condiționată și independență</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../curs/03-va-discrete.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Variabile aleatoare discrete</span></a>
   </div>
 </li>
       </ul>
@@ -1755,7 +1769,7 @@ De reținut
 <p><strong>Rezultate clasice.</strong> Zile de naștere: <span class="math inline">\(1-A_{365}^n/365^n\)</span> (<span class="math inline">\(&gt;1/2\)</span> pentru <span class="math inline">\(n\ge23\)</span>). Potriviri: <span class="math inline">\(p_n=\sum_{k=1}^n\frac{(-1)^{k+1}}{k!}\to1-\frac1e\approx0.632\)</span>.</p>
 </div>
 </div>
-<p><strong>Legătura cu cursurile următoare.</strong> În <a href="02-conditionare-independenta.html" class="curs-ref">Cursul 2</a> vom vedea cum se modifică probabilitatea unui eveniment atunci când primim o informație suplimentară (probabilitatea condiționată) și vom da un sens precis ideii că două evenimente „nu se influențează” (independența). Regulile de numărare și formula lui Poincaré vor reapărea în Cursul 3, la repartițiile binomială și hipergeometrică și la numărul mediu de potriviri.</p>
+<p><strong>Legătura cu cursurile următoare.</strong> În <a href="02-conditionare-independenta.html" class="curs-ref">Cursul 2</a> vom vedea cum se modifică probabilitatea unui eveniment atunci când primim o informație suplimentară (probabilitatea condiționată) și vom da un sens precis ideii că două evenimente „nu se influențează” (independența). Regulile de numărare și formula lui Poincaré vor reapărea în <a href="03-va-discrete.html" class="curs-ref">Cursul 3</a>, la repartițiile binomială și hipergeometrică și la numărul mediu de potriviri.</p>
 </section>
 <section id="sec-k01-exercitii" class="level1" data-number="9">
 <h1 data-number="9"><span class="header-section-number">9</span> Exerciții rezolvate</h1>
@@ -1846,7 +1860,7 @@ De reținut
 <div class="curs-solutie-body">
 <p>Ordinea extragerii nu contează, deci <span class="math inline">\(\Omega\)</span> este mulțimea submulțimilor cu <span class="math inline">\(6\)</span> elemente ale lui <span class="math inline">\(\{1,\dots,49\}\)</span>, <span class="math inline">\(|\Omega|=\binom{49}6=13\,983\,816\)</span>, cu echirepartiția. Pentru a avea exact <span class="math inline">\(k\)</span> numere câștigătoare, extragerea trebuie să conțină <span class="math inline">\(k\)</span> dintre cele <span class="math inline">\(6\)</span> numere ale jucătorului (<span class="math inline">\(\binom6k\)</span> moduri) și <span class="math inline">\(6-k\)</span> dintre cele <span class="math inline">\(43\)</span> de numere necompletate (<span class="math inline">\(\binom{43}{6-k}\)</span> moduri). Deci <span class="math display">\[
 \PP(\text{exact }k\text{ numere})=\frac{\binom6k\binom{43}{6-k}}{\binom{49}6}.
-\]</span> De exemplu, <span class="math inline">\(\PP(\text{exact }3)=\frac{20\cdot12\,341}{13\,983\,816}\approx0.01765\)</span>, iar <span class="math inline">\(\PP(\text{exact }6)=1/13\,983\,816\approx7.15\cdot10^{-8}\)</span>. (Vom regăsi această formulă în Cursul 3, la repartiția hipergeometrică.)</p>
+\]</span> De exemplu, <span class="math inline">\(\PP(\text{exact }3)=\frac{20\cdot12\,341}{13\,983\,816}\approx0.01765\)</span>, iar <span class="math inline">\(\PP(\text{exact }6)=1/13\,983\,816\approx7.15\cdot10^{-8}\)</span>. (Vom regăsi această formulă în <a href="03-va-discrete.html" class="curs-ref">Cursul 3</a>, la repartiția hipergeometrică.)</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">6</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">choose</span>(<span class="dv">6</span>, k) <span class="sc">*</span> <span class="fu">choose</span>(<span class="dv">43</span>, <span class="dv">6</span> <span class="sc">-</span> k) <span class="sc">/</span> <span class="fu">choose</span>(<span class="dv">49</span>, <span class="dv">6</span>), <span class="dv">6</span>)</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1961,7 +1975,7 @@ n(\sqrt2+1)&lt;r&lt;n(\sqrt2+1)+1,\qquad\text{adică } r=\big\lceil n(\sqrt2+1)\
 \end{aligned}
 \]</span> Observăm că <span class="math inline">\(\PP(4)=0\)</span>: dacă patru scrisori sunt în plicurile corecte, și a cincea este. Suma probabilităților este <span class="math inline">\(1\)</span>, cum era de așteptat. Când <span class="math inline">\(n\to\infty\)</span>, suma tinde la <span class="math inline">\(e^{-1}\)</span>, deci <span class="math display">\[
 \PP(\text{exact }k\text{ potriviri})\xrightarrow[n\to\infty]{}\frac{e^{-1}}{k!},
-\]</span> adică repartiția Poisson de parametru <span class="math inline">\(1\)</span> (Cursul 3); vezi panoul din dreapta al <a href="#fig-k01-potriviri" class="quarto-xref">Figura&nbsp;5</a>.</p>
+\]</span> adică repartiția Poisson de parametru <span class="math inline">\(1\)</span> (<a href="03-va-discrete.html" class="curs-ref">Cursul 3</a>); vezi panoul din dreapta al <a href="#fig-k01-potriviri" class="quarto-xref">Figura&nbsp;5</a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>exact_k <span class="ot">&lt;-</span> <span class="cf">function</span>(n, k) {</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  j <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span>(n <span class="sc">-</span> k)</span>
