@@ -89,6 +89,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../laborator_nosols/04-medie-varianta.html" rel="next">
 <link href="../laborator_nosols/02-conditionare-independenta.html" rel="prev">
 <link href="../images/ps_sticker.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -285,6 +286,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../curs/03-va-discrete.html">
  <span class="dropdown-text">Cursul 3 — Variabile aleatoare discrete</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../curs/04-va-continue.html">
+ <span class="dropdown-text">Cursul 4 — Variabile aleatoare continue</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -311,6 +316,10 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../laborator_nosols/03-va-discrete.html">
  <span class="dropdown-text">Seminarul 3 — Variabile aleatoare discrete și repartiții uzuale (fișă de lucru)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../laborator_nosols/04-medie-varianta.html">
+ <span class="dropdown-text">Seminarul 4 — Media și varianța variabilelor aleatoare discrete. Metoda indicatorilor (fișă de lucru)</span></a>
   </li>  
     </ul>
   </li>
@@ -398,6 +407,12 @@ window.Quarto = {
  <span class="menu-text">3. Variabile aleatoare discrete și repartiții uzuale</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../laborator_nosols/04-medie-varianta.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Media și varianța variabilelor aleatoare discrete. Metoda indicatorilor</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -480,7 +495,7 @@ Planul seminarului și laboratorului
 <li>simula o variabilă aleatoare discretă (cu <code>sample(..., prob = p)</code> sau cu funcțiile <code>r...</code>) și compara frecvențele relative cu funcția de masă;</li>
 <li>aplica aproximarea Poisson a repartiției binomiale și evalua numeric cât de bună este.</li>
 </ol>
-<p><strong>Structura.</strong> Breviar; funcția de masă și funcția de repartiție; repartiția binomială și repartiția hipergeometrică; repartiția geometrică și repartiția negativ binomială; repartiția Poisson și aproximarea Poisson a binomialei; exerciții suplimentare; temă. Media și varianța acestor variabile sunt subiectul din Seminarul 4. Pentru aprofundare: <span class="citation" data-cites="blitzstein2019">(<a href="#ref-blitzstein2019" role="doc-biblioref">Blitzstein and Hwang 2019</a>, cap. 3–4)</span>, <span class="citation" data-cites="bertsekas2008">(<a href="#ref-bertsekas2008" role="doc-biblioref">Bertsekas and Tsitsiklis 2008</a>, cap. 2)</span>; pentru simulări în R: <span class="citation" data-cites="dobrow2021">(<a href="#ref-dobrow2021" role="doc-biblioref">Wagaman and Dobrow 2021</a>)</span>.</p>
+<p><strong>Structura.</strong> Breviar; funcția de masă și funcția de repartiție; repartiția binomială și repartiția hipergeometrică; repartiția geometrică și repartiția negativ binomială; repartiția Poisson și aproximarea Poisson a binomialei; exerciții suplimentare; temă. Media și varianța acestor variabile sunt subiectul din <a href="04-medie-varianta.html" class="curs-ref">Seminarul 4</a>. Pentru aprofundare: <span class="citation" data-cites="blitzstein2019">(<a href="#ref-blitzstein2019" role="doc-biblioref">Blitzstein and Hwang 2019</a>, cap. 3–4)</span>, <span class="citation" data-cites="bertsekas2008">(<a href="#ref-bertsekas2008" role="doc-biblioref">Bertsekas and Tsitsiklis 2008</a>, cap. 2)</span>; pentru simulări în R: <span class="citation" data-cites="dobrow2021">(<a href="#ref-dobrow2021" role="doc-biblioref">Wagaman and Dobrow 2021</a>)</span>.</p>
 </div>
 </div>
 <div class="curs-box rezumat">
@@ -548,7 +563,7 @@ Instrumente R folosite azi
 <ul>
 <li><code>d</code> — funcția de masă <span class="math inline">\(\PP(X=k)\)</span>: <code>dbinom(k, n, p)</code>, <code>dhyper</code>, <code>dgeom</code>, <code>dnbinom</code>, <code>dpois(k, lambda)</code>;</li>
 <li><code>p</code> — funcția de repartiție <span class="math inline">\(\PP(X\le k)\)</span>: <code>pbinom(k, n, p)</code>, <code>phyper</code>, <code>pgeom</code>, <code>pnbinom</code>, <code>ppois</code>;</li>
-<li><code>q</code> — cuantila: cel mai mic <span class="math inline">\(k\)</span> pentru care <span class="math inline">\(\PP(X\le k)\ge u\)</span>: <code>qbinom(u, n, p)</code>, <code>qgeom</code>, <code>qnbinom</code>, <code>qpois</code> (noțiunea este definită în Cursul 4);</li>
+<li><code>q</code> — cuantila: cel mai mic <span class="math inline">\(k\)</span> pentru care <span class="math inline">\(\PP(X\le k)\ge u\)</span>: <code>qbinom(u, n, p)</code>, <code>qgeom</code>, <code>qnbinom</code>, <code>qpois</code> (noțiunea este definită în <a href="..\curs\04-va-continue.html" class="curs-ref">Cursul 4</a>);</li>
 <li><code>r</code> — generarea de valori aleatoare: <code>rbinom(B, n, p)</code>, <code>rgeom(B, p)</code>, <code>rpois(B, lambda)</code>.</li>
 </ul></li>
 <li><code>sample(x, B, replace = TRUE, prob = p)</code> — generează <span class="math inline">\(B\)</span> valori independente din repartiția cu valorile <code>x</code> și probabilitățile <code>p</code>.</li>
@@ -1634,6 +1649,9 @@ Wagaman, Amy S., and Robert P. Dobrow. 2021. <em>Probability with Applications a
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../laborator_nosols/04-medie-varianta.html" class="pagination-link" aria-label="4. Media și varianța variabilelor aleatoare discrete. Metoda indicatorilor">
+        <span class="nav-page-text">4. Media și varianța variabilelor aleatoare discrete. Metoda indicatorilor</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
