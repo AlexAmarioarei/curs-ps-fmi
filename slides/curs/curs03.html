@@ -303,6 +303,10 @@ Alexandru Amărioarei
 <section id="planul-cursului" class="slide level2 plan">
 <h2>Planul cursului</h2>
 <table class="caption-top">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 89%">
+</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Partea</th>
@@ -320,17 +324,21 @@ Alexandru Amărioarei
 </tr>
 <tr class="odd">
 <td style="text-align: left;">III</td>
-<td style="text-align: left;">Funcții de v.a., independență, media</td>
+<td style="text-align: left;">Funcții de v.a., independență</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">IV</td>
-<td style="text-align: left;">Varianța; media și varianța repartițiilor uzuale; exerciții</td>
+<td style="text-align: left;">Media, momentele și varianța; media și varianța repartițiilor uzuale</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">V</td>
+<td style="text-align: left;">Exerciții rezolvate</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Obiective:</strong> lucrul cu <span class="math inline">\(F_X\)</span> și <span class="math inline">\(p_X\)</span>; recunoașterea repartițiilor discrete uzuale; calculul lui <span class="math inline">\(\E[X]\)</span> și <span class="math inline">\(\Var(X)\)</span> (liniaritate, metoda indicatorilor).</p>
 <aside class="notes">
-<p>Cursul este lung: exercițiile din Partea IV care nu se termină în curs rămân pentru seminar.</p>
+<p>Cursul este lung: exercițiile din Partea V care nu se termină în curs rămân pentru seminar.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -529,7 +537,7 @@ X^{-1}(A)=\{\omega\in\Omega\mid X(\omega)\in A\}\in\F \quad\text{pentru orice mu
 </div>
 </div>
 <aside class="notes">
-<p>Observație: noțiunea de v.a. continuă va fi precizată în cursul următor (existența unei densități); în literatură există și v.a. de tip mixt.</p>
+<p>Observație: noțiunea de v.a. continuă va fi precizată în Cursul 4 (existența unei densități); în literatură există și v.a. de tip mixt.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -840,7 +848,7 @@ F(x_n)=\PP(A_n)\to\PP(X\le x_0)=F(x_0).
 </div>
 </div>
 <aside class="notes">
-<p>Pentru variabilele continue (cursul următor) toate cele patru probabilități vor coincide.</p>
+<p>Pentru variabilele continue (Cursul 4) toate cele patru probabilități vor coincide.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1152,7 +1160,7 @@ p_X(x)=p^x(1-p)^{1-x},\ x\in\{0,1\},
 </div>
 </div>
 <aside class="notes">
-<p>Realizarea lui <span class="math inline">\(A\)</span> se numește convențional succes, nerealizarea eșec. Repartiția Bernoulli se notează și <span class="math inline">\(\mathcal{B}(p)\)</span>. Indicatorii vor fi instrumentul principal în metoda indicatorilor (Partea III).</p>
+<p>Realizarea lui <span class="math inline">\(A\)</span> se numește convențional succes, nerealizarea eșec. Repartiția Bernoulli se notează și <span class="math inline">\(\mathcal{B}(p)\)</span>. Indicatorii vor fi instrumentul principal în metoda indicatorilor (Partea IV).</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1416,7 +1424,7 @@ p_X(x)=p^x(1-p)^{1-x},\ x\in\{0,1\},
 </div>
 </div>
 <aside class="notes">
-<p>Captură-recaptură este un prim exemplu de estimare statistică (vom reveni în partea a doua a cursului); metoda este folosită în ecologie.</p>
+<p>Captură-recaptură este un prim exemplu de estimare statistică (vom reveni în partea a doua a semestrului, Cursul 10); metoda este folosită în ecologie.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1723,7 +1731,7 @@ G(n+k)=G(n)\,G(k)\qquad\text{pentru orice } n,k\in\N,
 </div>
 </div>
 <aside class="notes">
-<p>Întrebare pentru studenți: la ruletă, după 10 de „roșu” la rând, pariați pe „negru”?</p>
+<p>Întrebare pentru studenți: la ruletă, după 10 „roșu” la rând, pariați pe „negru”?</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1985,8 +1993,8 @@ G(n+k)=G(n)\,G(k)\qquad\text{pentru orice } n,k\in\N,
 <p><span class="math inline">\(\Bin(n,3/n)\)</span> comparată cu <span class="math inline">\(\Pois(3)\)</span>: pentru <span class="math inline">\(n=10\)</span> diferențele sunt vizibile, pentru <span class="math inline">\(n=100\)</span> repartițiile aproape coincid.</p>
 </section></section>
 <section>
-<section id="partea-iii-funcții-de-v.a.-independență-media" class="title-slide slide level1 center">
-<h1>Partea III — Funcții de v.a., independență, media</h1>
+<section id="partea-iii-funcții-de-v.a.-independență" class="title-slide slide level1 center">
+<h1>Partea III — Funcții de v.a., independență</h1>
 
 </section>
 <section id="funcții-de-variabile-aleatoare" class="slide level2">
@@ -2336,6 +2344,11 @@ Y\sim\begin{pmatrix}0&amp;1\\0.3&amp;0.7\end{pmatrix}.
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section></section>
+<section>
+<section id="partea-iv-media-momentele-și-varianța.-repartiții-uzuale" class="title-slide slide level1 center">
+<h1>Partea IV — Media, momentele și varianța. Repartiții uzuale</h1>
+
 </section>
 <section id="media-motivație" class="slide level2">
 <h2>Media: motivație</h2>
@@ -2432,11 +2445,11 @@ m=\frac1N\sum_x x\,N(x)\approx\frac1N\sum_x x\,p_X(x)\,N=\sum_x x\,p_X(x),
           display:block!important;
       }</style></aside>
 </section>
-<section id="formula-de-transfer" class="slide level2">
-<h2>Formula de transfer</h2>
+<section id="formula-de-transport" class="slide level2">
+<h2>Formula de transport</h2>
 <div class="curs-box teorema">
 <div class="curs-box-title">
-<span class="curs-box-label">Teorema 25</span> <span class="curs-box-name">(Formula de transfer)</span>
+<span class="curs-box-label">Teorema 25</span> <span class="curs-box-name">(Formula de transport)</span>
 </div>
 <div class="curs-box-body">
 <p>Dacă <span class="math inline">\(X\)</span> este o v.a. discretă și <span class="math inline">\(g:\R\to\R\)</span>, atunci <span class="math inline">\(Y=g(X)\)</span> este o v.a. discretă de medie <span class="math display">\[
@@ -2461,8 +2474,8 @@ m=\frac1N\sum_x x\,N(x)\approx\frac1N\sum_x x\,p_X(x)\,N=\sum_x x\,p_X(x),
           display:block!important;
       }</style></aside>
 </section>
-<section id="formula-de-transfer-demonstrație" class="slide level2">
-<h2>Formula de transfer — demonstrație</h2>
+<section id="formula-de-transport-demonstrație" class="slide level2">
+<h2>Formula de transport — demonstrație</h2>
 <div class="curs-proof">
 <p><em>Demonstrație.</em> Din Propoziția 18, <span class="math inline">\(\PP(Y=y)=\sum_{x:\,g(x)=y}\PP(X=x)\)</span>. Grupând termenii seriei (absolut convergente) după valorile lui <span class="math inline">\(g\)</span>, <span class="math display">\[
 \begin{aligned}
@@ -2495,7 +2508,7 @@ m=\frac1N\sum_x x\,N(x)\approx\frac1N\sum_x x\,p_X(x)\,N=\sum_x x\,p_X(x),
 <p><span class="math inline">\(X\sim\begin{pmatrix}-2&amp;-1&amp;1&amp;3\\1/4&amp;1/8&amp;1/2&amp;1/8\end{pmatrix}\)</span> și <span class="math inline">\(Y=X^2\)</span>.</p>
 <p><em>Metoda 1 (repartiția lui <span class="math inline">\(Y\)</span>).</em> <span class="math inline">\(\PP(Y=1)=\PP(X=-1)+\PP(X=1)=\frac58\)</span>, <span class="math inline">\(\PP(Y=4)=\frac14\)</span>, <span class="math inline">\(\PP(Y=9)=\frac18\)</span>: <span class="math display">\[
 Y\sim\begin{pmatrix}1&amp;4&amp;9\\5/8&amp;1/4&amp;1/8\end{pmatrix},\qquad \E[Y]=1\cdot\frac58+4\cdot\frac14+9\cdot\frac18=\frac{22}{8}=2.75 .
-\]</span> <em>Metoda 2 (formula de transfer), cu <span class="math inline">\(g(x)=x^2\)</span>:</em> <span class="math display">\[
+\]</span> <em>Metoda 2 (formula de transport), cu <span class="math inline">\(g(x)=x^2\)</span>:</em> <span class="math display">\[
 \E[X^2]=4\cdot\frac14+1\cdot\frac18+1\cdot\frac12+9\cdot\frac18=\frac{22}{8}.
 \]</span></p>
 </div>
@@ -2550,7 +2563,7 @@ Y\sim\begin{pmatrix}1&amp;4&amp;9\\5/8&amp;1/4&amp;1/8\end{pmatrix},\qquad \E[Y]
 <div class="ol-1p">
 <ol type="a">
 <li><p><span class="math inline">\(X\sim\begin{pmatrix}c\\1\end{pmatrix}\)</span>, deci <span class="math inline">\(\E[X]=c\)</span>. b) Toți termenii sumei <span class="math inline">\(\sum_x x\,\PP(X=x)\)</span> sunt <span class="math inline">\(\ge0\)</span>.</p></li>
-<li><p>Presupunem <span class="math inline">\(\Omega\)</span> cel mult numărabil, <span class="math inline">\(\F=\mathcal{P}(\Omega)\)</span> (cazul general: formula de transfer cu <span class="math inline">\(g(x,y)=ax+by\)</span>). Mulțimile <span class="math inline">\(\{X=x\}\)</span> formează o partiție a lui <span class="math inline">\(\Omega\)</span>, deci <span class="math display">\[
+<li><p>Presupunem <span class="math inline">\(\Omega\)</span> cel mult numărabil, <span class="math inline">\(\F=\mathcal{P}(\Omega)\)</span> (cazul general: formula de transport cu <span class="math inline">\(g(x,y)=ax+by\)</span>). Mulțimile <span class="math inline">\(\{X=x\}\)</span> formează o partiție a lui <span class="math inline">\(\Omega\)</span>, deci <span class="math display">\[
 \E[X]=\sum_x x\,\PP(X=x)=\sum_x\sum_{\omega:\,X(\omega)=x}X(\omega)\PP(\{\omega\})=\sum_{\omega\in\Omega}X(\omega)\,\PP(\{\omega\}).
 \]</span> Aplicând formula variabilei <span class="math inline">\(aX+bY\)</span>: <span class="math display">\[
 \E[aX+bY]=\sum_\omega\big(aX(\omega)+bY(\omega)\big)\PP(\{\omega\})=a\E[X]+b\E[Y].
@@ -2568,7 +2581,7 @@ Y\sim\begin{pmatrix}1&amp;4&amp;9\\5/8&amp;1/4&amp;1/8\end{pmatrix},\qquad \E[Y]
 <ol start="3" type="a">
 <li><p>Din <span class="math inline">\(X-Y\ge0\)</span> și b), d): <span class="math inline">\(\E[X]-\E[Y]=\E[X-Y]\ge0\)</span>.</p></li>
 <li><p><span class="math inline">\(\Ind_A\sim\begin{pmatrix}0&amp;1\\1-\PP(A)&amp;\PP(A)\end{pmatrix}\)</span>, deci <span class="math inline">\(\E[\Ind_A]=0\cdot(1-\PP(A))+1\cdot\PP(A)=\PP(A)\)</span>.</p></li>
-<li><p>Din formula de transfer cu <span class="math inline">\(g(x,y)=xy\)</span> și din independență, <span class="math display">\[
+<li><p>Din formula de transport cu <span class="math inline">\(g(x,y)=xy\)</span> și din independență, <span class="math display">\[
 \begin{aligned}
 \E[XY]&amp;=\sum_{x,y}xy\,\PP(X=x,Y=y)=\sum_x\sum_y xy\,\PP(X=x)\PP(Y=y)\\
 &amp;=\Big(\sum_x x\PP(X=x)\Big)\Big(\sum_y y\PP(Y=y)\Big)=\E[X]\E[Y].
@@ -2666,11 +2679,6 @@ Y\sim\begin{pmatrix}1&amp;4&amp;9\\5/8&amp;1/4&amp;1/8\end{pmatrix},\qquad \E[Y]
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-</section></section>
-<section>
-<section id="partea-iv-varianța.-repartiții-uzuale.-exerciții" class="title-slide slide level1 center">
-<h1>Partea IV — Varianța. Repartiții uzuale. Exerciții</h1>
-
 </section>
 <section id="momente" class="slide level2">
 <h2>Momente</h2>
@@ -2691,7 +2699,7 @@ Y\sim\begin{pmatrix}1&amp;4&amp;9\\5/8&amp;1/4&amp;1/8\end{pmatrix},\qquad \E[Y]
 </div>
 <p>Momentul de ordin <span class="math inline">\(1\)</span> este media; momentul centrat de ordin <span class="math inline">\(1\)</span> este nul: <span class="math inline">\(\E[X-\E[X]]=\E[X]-\E[X]=0\)</span>.</p>
 <aside class="notes">
-<p>Momentele se calculează cu formula de transfer.</p>
+<p>Momentele se calculează cu formula de transport.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -2858,7 +2866,7 @@ X_4&amp;\sim\begin{pmatrix}1&amp;2&amp;3&amp;4&amp;5\\ 0&amp;0&amp;1&amp;0&amp;0
 <span class="curs-box-label">Observație</span>
 </div>
 <div class="curs-box-body">
-<p>Cantitatea <span class="math inline">\(\E\big[(X-\E[X])(Y-\E[Y])\big]=\E[XY]-\E[X]\E[Y]\)</span> se numește <strong>covarianța</strong> lui <span class="math inline">\(X\)</span> și <span class="math inline">\(Y\)</span>, <span class="math inline">\(\Cov(X,Y)\)</span> (studiată la vectori aleatori). Prin inducție, <span class="math display">\[
+<p>Cantitatea <span class="math inline">\(\E\big[(X-\E[X])(Y-\E[Y])\big]=\E[XY]-\E[X]\E[Y]\)</span> se numește <strong>covarianța</strong> lui <span class="math inline">\(X\)</span> și <span class="math inline">\(Y\)</span>, <span class="math inline">\(\Cov(X,Y)\)</span> (studiată în Cursul 6). Prin inducție, <span class="math display">\[
 \Var\Big(\sum_{i=1}^n X_i\Big)=\sum_{i=1}^n\Var(X_i)+2\sum_{1\le i&lt;j\le n}\E\big[(X_i-\E[X_i])(X_j-\E[X_j])\big],
 \]</span> iar pentru variabile independente <span class="math inline">\(\Var(X_1+\cdots+X_n)=\Var(X_1)+\cdots+\Var(X_n)\)</span>.</p>
 </div>
@@ -3215,6 +3223,11 @@ X\sim\Bin(n,p)\quad\Longrightarrow\quad\E[X]=np,\qquad \Var(X)=np(1-p).
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section></section>
+<section>
+<section id="partea-v-exerciții-rezolvate" class="title-slide slide level1 center">
+<h1>Partea V — Exerciții rezolvate</h1>
+
 </section>
 <section id="exercițiul-1-enunț" class="slide level2">
 <h2>Exercițiul 1 — enunț</h2>
@@ -3418,7 +3431,7 @@ N_2\sim\begin{pmatrix}0&amp;1&amp;2&amp;3\\ \frac{1}{10}&amp;\frac{4}{10}&amp;\f
 \]</span> deci numărul mediu total de teste este <span class="math inline">\(\E[N_1+N_2]=3.5\)</span>.</p>
 </div>
 </div>
-<p>(Repartiția comună a perechii <span class="math inline">\((N_1,N_2)\)</span> va fi studiată la vectori aleatori.)</p>
+<p>(Repartiția comună a perechii <span class="math inline">\((N_1,N_2)\)</span> va fi studiată în Cursul 6.)</p>
 </section>
 <section id="exercițiul-5-enunț" class="slide level2">
 <h2>Exercițiul 5 — enunț</h2>
@@ -3548,7 +3561,7 @@ N_2\sim\begin{pmatrix}0&amp;1&amp;2&amp;3\\ \frac{1}{10}&amp;\frac{4}{10}&amp;\f
 <h2>Exercițiul 8 — enunț</h2>
 <div class="curs-box exercitiu">
 <div class="curs-box-title">
-<span class="curs-box-label">Exercițiul 8</span> <span class="curs-box-name">(Formula de transfer pentru o variabilă binomială)</span>
+<span class="curs-box-label">Exercițiul 8</span> <span class="curs-box-name">(Formula de transport pentru o variabilă binomială)</span>
 </div>
 <div class="curs-box-body">
 <div class="ol-1p">
@@ -3588,7 +3601,7 @@ Y\sim\begin{pmatrix}0&amp;1&amp;4\\ \frac{6}{16}&amp;\frac{8}{16}&amp;\frac{2}{1
 <div class="curs-box-body">
 <div class="ol-1p">
 <ol start="2" type="a">
-<li>Din formula de transfer și din <span class="math inline">\(\frac{1}{k+1}\binom nk=\frac{1}{n+1}\binom{n+1}{k+1}\)</span>, <span class="math display">\[
+<li>Din formula de transport și din <span class="math inline">\(\frac{1}{k+1}\binom nk=\frac{1}{n+1}\binom{n+1}{k+1}\)</span>, <span class="math display">\[
 \E\left[\frac1{X+1}\right]=\sum_{k=0}^n\frac{1}{k+1}\binom nk p^k(1-p)^{n-k}=\frac{1}{(n+1)p}\sum_{k=0}^n\binom{n+1}{k+1}p^{k+1}(1-p)^{n-k}.
 \]</span> Cu <span class="math inline">\(j=k+1\)</span>, suma este <span class="math inline">\(\sum_{j=1}^{n+1}\binom{n+1}{j}p^j(1-p)^{n+1-j}=1-(1-p)^{n+1}\)</span> (lipsește doar termenul <span class="math inline">\(j=0\)</span> din binomul lui Newton), de unde rezultatul.</li>
 </ol>
@@ -3857,7 +3870,7 @@ Y\sim\begin{pmatrix}0&amp;1&amp;4\\ \frac{6}{16}&amp;\frac{8}{16}&amp;\frac{2}{1
 </div>
 <div class="curs-box-body">
 <ul>
-<li>media: <span class="math inline">\(\E[X]=\sum_x x\,\PP(X=x)\)</span> (dacă <span class="math inline">\(\sum_x|x|\PP(X=x)&lt;\infty\)</span>); formula de transfer <span class="math inline">\(\E[g(X)]=\sum_x g(x)\PP(X=x)\)</span>;</li>
+<li>media: <span class="math inline">\(\E[X]=\sum_x x\,\PP(X=x)\)</span> (dacă <span class="math inline">\(\sum_x|x|\PP(X=x)&lt;\infty\)</span>); formula de transport <span class="math inline">\(\E[g(X)]=\sum_x g(x)\PP(X=x)\)</span>;</li>
 <li>liniaritate: <span class="math inline">\(\E[aX+bY]=a\E[X]+b\E[Y]\)</span> (fără independență); <span class="math inline">\(\E[\Ind_A]=\PP(A)\)</span>; <span class="math inline">\(X\indep Y\Rightarrow\E[XY]=\E[X]\E[Y]\)</span>;</li>
 <li>varianța: <span class="math inline">\(\Var(X)=\E[(X-\E[X])^2]=\E[X^2]-(\E[X])^2\)</span>, <span class="math inline">\(\Var(aX+b)=a^2\Var(X)\)</span>, <span class="math inline">\(\mathrm{SD}(X)=\sqrt{\Var(X)}\)</span>;</li>
 <li><span class="math inline">\(X\indep Y\Rightarrow\Var(X\pm Y)=\Var(X)+\Var(Y)\)</span>;</li>
@@ -3866,7 +3879,7 @@ Y\sim\begin{pmatrix}0&amp;1&amp;4\\ \frac{6}{16}&amp;\frac{8}{16}&amp;\frac{2}{1
 </div>
 </div>
 <aside class="notes">
-<p>Anunțați cursul următor: variabile aleatoare continue (sumele devin integrale).</p>
+<p>Anunțați Cursul 4: variabile aleatoare continue (sumele devin integrale).</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;

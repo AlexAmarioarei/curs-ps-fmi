@@ -239,7 +239,7 @@ Alexandru Amărioarei
 <p>Media și varianța rezumă o repartiție prin două numere: „centrul” ei și împrăștierea valorilor în jurul lui. Astăzi le calculăm în trei feluri — din definiție, cu formulele repartițiilor uzuale și, mai ales, descompunând variabila într-o <strong>sumă de indicatori</strong> — și verificăm fiecare rezultat în R, prin calcul exact și prin simulare.</p>
 <ul>
 <li><strong>Breviar</strong>: rezultatele din Cursul 3 și instrumentele R ale ședinței.</li>
-<li><strong>Media și varianța din definiție. Formula de transfer</strong>: un joc cu trei zaruri, tichete de suport, jocul de la Sankt Petersburg.</li>
+<li><strong>Media și varianța din definiție. Formula de transport</strong>: un joc cu trei zaruri, tichete de suport, jocul de la Sankt Petersburg.</li>
 <li><strong>Media și varianța repartițiilor uzuale</strong>: pachete pierdute, cereri la un server, controlul calității.</li>
 <li><strong>Liniaritatea mediei și metoda indicatorilor</strong>: zile de naștere, puncte fixe, <em>colecționarul de cupoane</em>, <em>Quicksort</em>.</li>
 <li><strong>Varianța sumei de variabile independente</strong>: media a <span class="math inline">\(n\)</span> măsurători.</li>
@@ -263,7 +263,7 @@ Alexandru Amărioarei
 <h2>Obiective</h2>
 <p>La sfârșitul ședinței studentul trebuie să poată:</p>
 <ol type="1">
-<li>calcula media, varianța și abaterea standard ale unei variabile discrete date prin tabel, folosi <strong>formula de transfer</strong> și decide dacă un joc de noroc este <strong>corect</strong>;</li>
+<li>calcula media, varianța și abaterea standard ale unei variabile discrete date prin tabel, folosi <strong>formula de transport</strong> și decide dacă un joc de noroc este <strong>corect</strong>;</li>
 <li>recunoaște o repartiție uzuală (binomială, geometrică, Poisson, hipergeometrică), aplica formulele pentru medie și varianță și interpreta abaterea standard;</li>
 <li>scrie o variabilă care <em>numără</em> ca <strong>sumă de indicatori</strong> și calcula media ei prin liniaritate, chiar când indicatorii nu sunt independenți;</li>
 <li>calcula <strong>varianța unei sume</strong>: de variabile independente (varianțele se adună) și de indicatori dependenți (apar termeni suplimentari);</li>
@@ -280,7 +280,7 @@ Alexandru Amărioarei
 <li>Exercițiul 9 — colecționarul de cupoane; <code>colectioneaza</code> și <code>F_T</code>;</li>
 <li>Exercițiul 10 (a), (b), (d) — comparațiile în Quicksort; funcția recursivă <code>quicksort_comp</code>.</li>
 </ul>
-<p><strong>Dacă timpul permite:</strong> Exercițiul 2 (formula de transfer), Exercițiul 8 (varianța numărului de puncte fixe), Exercițiul 11 (media a <span class="math inline">\(n\)</span> măsurători).</p>
+<p><strong>Dacă timpul permite:</strong> Exercițiul 2 (formula de transport), Exercițiul 8 (varianța numărului de puncte fixe), Exercițiul 11 (media a <span class="math inline">\(n\)</span> măsurători).</p>
 <p><strong>Pentru acasă:</strong> Exercițiile 3, 5 și 6; exercițiile suplimentare 12, 13, 14, 15; tema.</p>
 <p>Rezolvările complete vor fi publicate ulterior. Scheletele de cod R și răspunsurile: în fișa de lucru.</p>
 <aside class="notes">
@@ -307,7 +307,7 @@ Alexandru Amărioarei
 <p>Din partea a doua a Cursul 3:</p>
 <ul>
 <li><strong>Media</strong> (Definiția 24 din Cursul 3): <span class="math inline">\(\E[X]=\sum_x x\,\PP(X=x)\)</span>, dacă <span class="math inline">\(\sum_x|x|\,\PP(X=x)&lt;\infty\)</span>; altfel media nu există (Exemplul 16 din Cursul 3).</li>
-<li><strong>Formula de transfer</strong> (Teorema 25 din Cursul 3): <span class="math inline">\(\E[g(X)]=\sum_x g(x)\,\PP(X=x)\)</span>, fără repartiția lui <span class="math inline">\(g(X)\)</span>. În general <span class="math inline">\(\E[g(X)]\ne g(\E[X])\)</span>.</li>
+<li><strong>Formula de transport</strong> (Teorema 25 din Cursul 3): <span class="math inline">\(\E[g(X)]=\sum_x g(x)\,\PP(X=x)\)</span>, fără repartiția lui <span class="math inline">\(g(X)\)</span>. În general <span class="math inline">\(\E[g(X)]\ne g(\E[X])\)</span>.</li>
 <li><strong>Proprietățile mediei</strong> (Teorema 26 din Cursul 3): <span class="math inline">\(\E[aX+bY]=a\E[X]+b\E[Y]\)</span>, <strong>fără nicio ipoteză de independență</strong>; <span class="math inline">\(\E[\Ind_A]=\PP(A)\)</span>; dacă <span class="math inline">\(X\indep Y\)</span>, atunci <span class="math inline">\(\E[XY]=\E[X]\E[Y]\)</span>.</li>
 <li><strong>Metoda indicatorilor</strong> (Exemplul 18 din Cursul 3): dacă <span class="math inline">\(X\)</span> numără câte dintre evenimentele <span class="math inline">\(A_1,\dots,A_n\)</span> se realizează, atunci <span class="math inline">\(X=\Ind_{A_1}+\dots+\Ind_{A_n}\)</span> și <span class="math inline">\(\E[X]=\PP(A_1)+\dots+\PP(A_n)\)</span>.</li>
 </ul>
@@ -369,8 +369,8 @@ Alexandru Amărioarei
 </div>
 </section>
 <section>
-<section id="media-și-varianța-din-definiție.-formula-de-transfer" class="title-slide slide level1 center">
-<h1>Media și varianța din definiție. Formula de transfer</h1>
+<section id="media-și-varianța-din-definiție.-formula-de-transport" class="title-slide slide level1 center">
+<h1>Media și varianța din definiție. Formula de transport</h1>
 
 </section>
 <section id="un-joc-cu-trei-zaruri-este-corect" class="slide level2 scrollable">
@@ -419,14 +419,14 @@ X\sim\begin{pmatrix}0&amp;1&amp;2&amp;3&amp;4\\0.1&amp;0.3&amp;0.3&amp;0.2&amp;0
 <ol type="a">
 <li><p>Calculați <span class="math inline">\(\E[X]\)</span>, <span class="math inline">\(\Var(X)\)</span> (din definiție și cu formula <span class="math inline">\(\E[X^2]-(\E[X])^2\)</span>) și <span class="math inline">\(\mathrm{SD}(X)\)</span>.</p></li>
 <li><p>Costul zilnic al serviciului este <span class="math inline">\(C=100+40X\)</span> lei (un cost fix plus <span class="math inline">\(40\)</span> de lei pentru fiecare tichet). Calculați <span class="math inline">\(\E[C]\)</span>, <span class="math inline">\(\Var(C)\)</span> și <span class="math inline">\(\mathrm{SD}(C)\)</span>.</p></li>
-<li><p>Echipa poate rezolva cel mult două tichete pe zi; celelalte sunt amânate. Fie <span class="math inline">\(Y=\max(X-2,0)\)</span> numărul de tichete amânate. Calculați <span class="math inline">\(\E[Y]\)</span> în două moduri: determinând repartiția lui <span class="math inline">\(Y\)</span> și cu formula de transfer. Este adevărat că <span class="math inline">\(\E[Y]=\max(\E[X]-2,0)\)</span>?</p></li>
+<li><p>Echipa poate rezolva cel mult două tichete pe zi; celelalte sunt amânate. Fie <span class="math inline">\(Y=\max(X-2,0)\)</span> numărul de tichete amânate. Calculați <span class="math inline">\(\E[Y]\)</span> în două moduri: determinând repartiția lui <span class="math inline">\(Y\)</span> și cu formula de transport. Este adevărat că <span class="math inline">\(\E[Y]=\max(\E[X]-2,0)\)</span>?</p></li>
 <li><p>Verificați rezultatele în R, prin calcul exact și prin simulare.</p></li>
 </ol>
 </div>
 </div>
 </div>
 <aside class="notes">
-<p>Aceleași calcule ca la jocul cu trei zaruri, pe o variabilă dată direct prin tabel. La (c), cereți studenților să ghicească întâi dacă E[Y] este egal cu max(E[X] - 2, 0); capcana frecventă este să aplicăm funcția mediei în loc să aplicăm formula de transfer.</p>
+<p>Aceleași calcule ca la jocul cu trei zaruri, pe o variabilă dată direct prin tabel. La (c), cereți studenților să ghicească întâi dacă E[Y] este egal cu max(E[X] - 2, 0); capcana frecventă este să aplicăm funcția mediei în loc să aplicăm formula de transport.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -457,7 +457,7 @@ X\sim\begin{pmatrix}0&amp;1&amp;2&amp;3&amp;4\\0.1&amp;0.3&amp;0.3&amp;0.2&amp;0
 </div>
 </div>
 <aside class="notes">
-<p>Exercițiu pentru acasă. Întrebarea-cheie: ce aproximează media unui eșantion simulat atunci când media teoretică nu există? Pentru jocul cu buget finit, formula de transfer cu g(k) = 2^min(k, m) și P(K &gt; m) = 2^(-m) duce direct la rezultat.</p>
+<p>Exercițiu pentru acasă. Întrebarea-cheie: ce aproximează media unui eșantion simulat atunci când media teoretică nu există? Pentru jocul cu buget finit, formula de transport cu g(k) = 2^min(k, m) și P(K &gt; m) = 2^(-m) duce direct la rezultat.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -519,7 +519,7 @@ X\sim\begin{pmatrix}0&amp;1&amp;2&amp;3&amp;4\\0.1&amp;0.3&amp;0.3&amp;0.2&amp;0
 <div class="ol-2p">
 <ol type="a">
 <li><p>Calculați <span class="math inline">\(\E[X]\)</span>, <span class="math inline">\(\Var(X)\)</span>, <span class="math inline">\(\mathrm{SD}(X)\)</span> și <span class="math inline">\(\PP\big(|X-\E[X]|\le2\,\mathrm{SD}(X)\big)\)</span>.</p></li>
-<li><p>Serverul poate procesa cel mult <span class="math inline">\(5\)</span> cereri pe secundă; cererile în plus sunt respinse. Fie <span class="math inline">\(R=\max(X-5,0)\)</span> numărul de cereri respinse într-o secundă. Calculați <span class="math inline">\(\E[R]\)</span> cu formula de transfer. Ce proporție din cereri este respinsă pe termen lung?</p></li>
+<li><p>Serverul poate procesa cel mult <span class="math inline">\(5\)</span> cereri pe secundă; cererile în plus sunt respinse. Fie <span class="math inline">\(R=\max(X-5,0)\)</span> numărul de cereri respinse într-o secundă. Calculați <span class="math inline">\(\E[R]\)</span> cu formula de transport. Ce proporție din cereri este respinsă pe termen lung?</p></li>
 <li><p>Fie <span class="math inline">\(Y\)</span> numărul de cereri sosite într-un minut. Calculați <span class="math inline">\(\E[Y]\)</span>, <span class="math inline">\(\Var(Y)\)</span> și <span class="math inline">\(\mathrm{SD}(Y)\)</span> și comparați raportul <span class="math inline">\(\mathrm{SD}/\text{medie}\)</span> pentru o secundă și pentru un minut.</p></li>
 <li><p>Verificați în R și determinați cea mai mică capacitate <span class="math inline">\(c\)</span> pentru care <span class="math inline">\(\PP(X&gt;c)\le0.01\)</span>.</p></li>
 </ol>
@@ -880,12 +880,12 @@ X=\Ind_{A_1}+\dots+\Ind_{A_m}\quad\Longrightarrow\quad \E[X]=\PP(A_1)+\dots+\PP(
 <h2>Temă (răspunsuri: în fișa de lucru)</h2>
 <ol type="1">
 <li><strong>Ruleta europeană</strong> (<span class="math inline">\(37\)</span> de numere: <span class="math inline">\(0,1,\dots,36\)</span>, dintre care <span class="math inline">\(18\)</span> roșii), miză de <span class="math inline">\(1\)</span> leu: pariul pe un număr aduce <span class="math inline">\(35\)</span> de lei, pariul pe „roșu” aduce <span class="math inline">\(1\)</span> leu; altfel se pierde miza. Calculați media și abaterea standard a câștigului net pentru fiecare pariu și simulați câte <span class="math inline">\(10^5\)</span> partide. Ce au în comun și prin ce diferă cele două pariuri?</li>
-<li>Fie <span class="math inline">\(X\sim\Unif(\{-2,-1,0,1,2\})\)</span>. Calculați <span class="math inline">\(\E[X]\)</span> și <span class="math inline">\(\Var(X)\)</span>, determinați repartiția lui <span class="math inline">\(Y=X^2\)</span> și calculați <span class="math inline">\(\E[Y]\)</span> și <span class="math inline">\(\Var(Y)\)</span>. Calculați <span class="math inline">\(\E[2^X]\)</span> cu formula de transfer și comparați cu <span class="math inline">\(2^{\E[X]}\)</span>.</li>
+<li>Fie <span class="math inline">\(X\sim\Unif(\{-2,-1,0,1,2\})\)</span>. Calculați <span class="math inline">\(\E[X]\)</span> și <span class="math inline">\(\Var(X)\)</span>, determinați repartiția lui <span class="math inline">\(Y=X^2\)</span> și calculați <span class="math inline">\(\E[Y]\)</span> și <span class="math inline">\(\Var(Y)\)</span>. Calculați <span class="math inline">\(\E[2^X]\)</span> cu formula de transport și comparați cu <span class="math inline">\(2^{\E[X]}\)</span>.</li>
 <li>Variabila <span class="math inline">\(X\)</span> cu <span class="math inline">\(\PP(X=k)=\frac{1}{k(k+1)}\)</span>, <span class="math inline">\(k\ge1\)</span>, nu are medie finită (Exercițiul 3 din Cursul 3). Simulați <span class="math inline">\(10^5\)</span> valori cu <code>floor(1 / runif(B))</code> și reprezentați grafic mediile curente; repetați de câteva ori și comentați.</li>
 <li>Fie <span class="math inline">\(X\sim\Bin(10,0.3)\)</span> și <span class="math inline">\(Y\sim\Pois(2)\)</span> independente. Calculați <span class="math inline">\(\E[2X-3Y+5]\)</span>, <span class="math inline">\(\Var(2X-3Y+5)\)</span>, <span class="math inline">\(\E[XY]\)</span>, <span class="math inline">\(\E[X^2]\)</span> și <span class="math inline">\(\E[(X-Y)^2]\)</span>.</li>
 </ol>
 <aside class="notes">
-<p>Enunțurile complete și răspunsurile sunt în fișa de lucru. Itemul 1 reia jocul cu trei zaruri (media și abaterea standard ale unui câștig, cu medie_var); itemul 2 formula de transfer; itemul 3 mediile curente ale unei variabile fără medie, ca la Sankt Petersburg; itemul 4 liniaritatea mediei și varianța unei combinații de variabile independente.</p>
+<p>Enunțurile complete și răspunsurile sunt în fișa de lucru. Itemul 1 reia jocul cu trei zaruri (media și abaterea standard ale unui câștig, cu medie_var); itemul 2 formula de transport; itemul 3 mediile curente ale unei variabile fără medie, ca la Sankt Petersburg; itemul 4 liniaritatea mediei și varianța unei combinații de variabile independente.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;

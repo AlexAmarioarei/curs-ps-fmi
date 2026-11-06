@@ -324,7 +324,7 @@ Alexandru Amărioarei
 </tr>
 <tr class="odd">
 <td style="text-align: left;">III</td>
-<td style="text-align: left;">Media, formula de transfer, momente, varianța</td>
+<td style="text-align: left;">Media, formula de transport, momente, varianța</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">IV</td>
@@ -334,7 +334,7 @@ Alexandru Amărioarei
 </table>
 <p><strong>Obiective:</strong> lucrul cu densitatea <span class="math inline">\(f\)</span> și funcția de repartiție <span class="math inline">\(F\)</span> (<span class="math inline">\(F'=f\)</span>); calculul cuantilelor; calculul mediei, momentelor și varianței prin integrale.</p>
 <aside class="notes">
-<p>Regula generală a cursului: trecerea de la discret la continuu se face înlocuind funcția de masă cu densitatea și sumele cu integrale. Repartițiile continue remarcabile (uniformă, exponențială, normală) sunt în cursul următor.</p>
+<p>Regula generală a cursului: trecerea de la discret la continuu se face înlocuind funcția de masă cu densitatea și sumele cu integrale. Repartițiile continue remarcabile (uniformă, exponențială, normală) sunt în Cursul 5.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -358,7 +358,7 @@ Alexandru Amărioarei
 <li>Funcția de repartiție <span class="math inline">\(F(x)=\PP(X\le x)\)</span>: crescătoare, continuă la dreapta, <span class="math inline">\(F(-\infty)=0\)</span>, <span class="math inline">\(F(+\infty)=1\)</span> (Teorema 5 din Cursul 3).</li>
 <li><span class="math inline">\(\PP(x&lt;X\le y)=F(y)-F(x)\)</span>, <span class="math inline">\(\PP(X=x)=F(x)-F(x-)\)</span> (Propoziția 6 din Cursul 3).</li>
 <li>V.a. discretă: <span class="math inline">\(\PP(X\in A)=\sum_{x\in A}p_X(x)\)</span>, <span class="math inline">\(p_X\ge0\)</span>, <span class="math inline">\(\sum_x p_X(x)=1\)</span>.</li>
-<li>Media <span class="math inline">\(\E[X]=\sum_x x\,p_X(x)\)</span> (dacă <span class="math inline">\(\sum_x|x|p_X(x)&lt;\infty\)</span>); formula de transfer <span class="math inline">\(\E[g(X)]=\sum_x g(x)p_X(x)\)</span>.</li>
+<li>Media <span class="math inline">\(\E[X]=\sum_x x\,p_X(x)\)</span> (dacă <span class="math inline">\(\sum_x|x|p_X(x)&lt;\infty\)</span>); formula de transport <span class="math inline">\(\E[g(X)]=\sum_x g(x)p_X(x)\)</span>.</li>
 <li><span class="math inline">\(\Var(X)=\E[(X-\E X)^2]=\E[X^2]-(\E X)^2\)</span>, <span class="math inline">\(\Var(aX+b)=a^2\Var(X)\)</span>; liniaritatea mediei.</li>
 </ul>
 </div>
@@ -517,7 +517,7 @@ Alexandru Amărioarei
 <p>Reciproc, orice funcție integrabilă <span class="math inline">\(f:\R\to\R\)</span> care verifică a) și b) este densitatea unei variabile aleatoare continue.</p>
 </div>
 </div>
-<p>Partea reciprocă (existența unei v.a. cu densitate dată) necesită teoria măsurii și o admitem; ea ne permite să vorbim despre „variabila aleatoare cu densitatea <span class="math inline">\(f\)</span>” de îndată ce am verificat a) și b). În cursul următor vom vedea o metodă <em>constructivă</em>, pornind de la o variabilă uniformă.</p>
+<p>Partea reciprocă (existența unei v.a. cu densitate dată) necesită teoria măsurii și o admitem; ea ne permite să vorbim despre „variabila aleatoare cu densitatea <span class="math inline">\(f\)</span>” de îndată ce am verificat a) și b). În Cursul 5 vom vedea o metodă <em>constructivă</em>, pornind de la o variabilă uniformă.</p>
 </section>
 <section id="suportul-unei-densități" class="slide level2">
 <h2>Suportul unei densități</h2>
@@ -588,7 +588,7 @@ f(x)=2x\,\Ind_{[0,1]}(x),
 </div>
 </div>
 <aside class="notes">
-<p>Exemplu suplimentar: este repartiția uniformă <span class="math inline">\(\Unif(0,1)\)</span>, studiată în cursul următor.</p>
+<p>Exemplu suplimentar: este repartiția uniformă <span class="math inline">\(\Unif(0,1)\)</span>, studiată în Cursul 5.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -701,7 +701,7 @@ f(x)\approx\frac{\PP\big(X\in[x,x+\dd x]\big)}{\dd x}=\frac{\text{probabilitate}
 </div>
 </div>
 <aside class="notes">
-<p>Vom vedea în cursul următor că aceasta este densitatea pătratului unei variabile uniforme pe <span class="math inline">\([0,1]\)</span>.</p>
+<p>Vom vedea în Cursul 5 că aceasta este densitatea pătratului unei variabile uniforme pe <span class="math inline">\([0,1]\)</span>.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -943,7 +943,7 @@ F(x)=\PP(X\le x)=\PP\big(X\in(-\infty,x]\big),\qquad x\in\R,
 <p><em>Demonstrație.</em></p>
 <div class="ol-1p">
 <ol type="a">
-<li>rezultă din definiția densității cu <span class="math inline">\(A=(-\infty,x]\)</span>. b) Din Propoziția 3: <span class="math inline">\(F(x)-F(x^-)=\PP(X=x)=0\)</span>, deci <span class="math inline">\(F\)</span> nu are salturi; fiind continuă la dreapta și fără salturi, <span class="math inline">\(F\)</span> este continuă. c) este teorema fundamentală a analizei pentru <span class="math inline">\(x\mapsto\int_{-\infty}^x f(t)\dd t\)</span>.</li>
+<li>rezultă din definiția densității cu <span class="math inline">\(A=(-\infty,x]\)</span>. b) Din Propoziția 3: <span class="math inline">\(F(x)-F(x-)=\PP(X=x)=0\)</span>, deci <span class="math inline">\(F\)</span> nu are salturi; fiind continuă la dreapta și fără salturi, <span class="math inline">\(F\)</span> este continuă. c) este teorema fundamentală a analizei pentru <span class="math inline">\(x\mapsto\int_{-\infty}^x f(t)\dd t\)</span>.</li>
 </ol>
 </div>
 <p><span class="curs-qed">■</span></p>
@@ -1600,7 +1600,7 @@ F(x)=\int_0^x \frac t2\dd t=\frac{x^2}{4}.
 </section>
 <section id="media-unei-funcții-de-o-variabilă-aleatoare" class="slide level2">
 <h2>Media unei funcții de o variabilă aleatoare</h2>
-<p>Dacă <span class="math inline">\(X\)</span> este continuă și <span class="math inline">\(g:\R\to\R\)</span> (suficient de regulată), <span class="math inline">\(Y=g(X)\)</span> este tot o v.a. Am putea determina întâi repartiția lui <span class="math inline">\(Y\)</span> (cursul următor), dar acest ocol nu este necesar.</p>
+<p>Dacă <span class="math inline">\(X\)</span> este continuă și <span class="math inline">\(g:\R\to\R\)</span> (suficient de regulată), <span class="math inline">\(Y=g(X)\)</span> este tot o v.a. Am putea determina întâi repartiția lui <span class="math inline">\(Y\)</span> (Cursul 5), dar acest ocol nu este necesar.</p>
 <div class="curs-box teorema">
 <div class="curs-box-title">
 <span class="curs-box-label">Teorema 10</span> <span class="curs-box-name">(Media unei funcții de v.a.)</span>
@@ -1665,7 +1665,7 @@ F(x)=\int_0^x \frac t2\dd t=\frac{x^2}{4}.
 </div>
 </div>
 <aside class="notes">
-<p>Toate sunt cazuri particulare ale formulei de transfer, cu <span class="math inline">\(g(x)=x^k\)</span>, <span class="math inline">\(g(x)=(x-a)^k\)</span> etc.</p>
+<p>Toate sunt cazuri particulare ale formulei de transport, cu <span class="math inline">\(g(x)=x^k\)</span>, <span class="math inline">\(g(x)=(x-a)^k\)</span> etc.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1680,7 +1680,7 @@ F(x)=\int_0^x \frac t2\dd t=\frac{x^2}{4}.
 </section>
 <section id="formula-de-calcul-a-varianței" class="slide level2">
 <h2>Formula de calcul a varianței</h2>
-<p>Toate mărimile de mai sus se calculează cu formula de transfer (Teorema 10). Abaterea standard se măsoară în aceeași unitate ca <span class="math inline">\(X\)</span>, deci este mai ușor de interpretat decât varianța.</p>
+<p>Toate mărimile de mai sus se calculează cu formula de transport (Teorema 10). Abaterea standard se măsoară în aceeași unitate ca <span class="math inline">\(X\)</span>, deci este mai ușor de interpretat decât varianța.</p>
 <p>Dezvoltând pătratul și folosind liniaritatea integralei, cu <span class="math inline">\(\mu=\E[X]\)</span>: <span class="math display">\[
 \begin{aligned}
 \Var(X)&amp;=\int(x-\mu)^2f(x)\dd x=\int x^2f(x)\dd x-2\mu\int xf(x)\dd x+\mu^2\int f(x)\dd x\\
@@ -1731,10 +1731,10 @@ F(x)=\int_0^x \frac t2\dd t=\frac{x^2}{4}.
 <ol start="2" type="i">
 <li>Dacă <span class="math inline">\(X\ge0\)</span>, putem lua <span class="math inline">\(f=0\)</span> pe <span class="math inline">\((-\infty,0)\)</span>, deci <span class="math inline">\(\E[X]=\int_0^\infty xf(x)\dd x\ge0\)</span>.</li>
 </ol>
-<p>Cazul particular al lui iv) cu <span class="math inline">\(Y=1\)</span> constantă se obține din formula de transfer: <span class="math display">\[
+<p>Cazul particular al lui iv) cu <span class="math inline">\(Y=1\)</span> constantă se obține din formula de transport: <span class="math display">\[
 \E[aX+b]=\int(ax+b)f(x)\dd x=a\int xf(x)\dd x+b\int f(x)\dd x=a\E[X]+b.
 \]</span> Atunci <span class="math inline">\(\Var(aX+b)=\E\big[(aX+b-a\E[X]-b)^2\big]=a^2\E\big[(X-\E[X])^2\big]=a^2\Var(X)\)</span>, adică vi), iar v) este evidentă, integrandul <span class="math inline">\((x-\E[X])^2f(x)\)</span> fiind nenegativ.</p>
-<p>Proprietățile care implică două variabile (iv în general, vii, viii) necesită repartiția comună a vectorului <span class="math inline">\((X,Y)\)</span> și vor fi demonstrate în cursul despre vectori aleatori.<span class="curs-qed">■</span></p>
+<p>Proprietățile care implică două variabile (iv în general, vii, viii) necesită repartiția comună a vectorului <span class="math inline">\((X,Y)\)</span> și vor fi demonstrate în Cursul 6.<span class="curs-qed">■</span></p>
 </div>
 </section>
 <section id="variabila-standardizată" class="slide level2">
@@ -1781,7 +1781,7 @@ Z=\frac{X-\E[X]}{\sigma_X}
 </div>
 </div>
 <aside class="notes">
-<p>Exemplu suplimentar: repartiția uniformă <span class="math inline">\(\Unif(a,b)\)</span>, detaliată în cursul următor. Comparați cu <span class="math inline">\(\frac{n^2-1}{12}\)</span> pentru uniforma discretă. Verificare prin simulare: <code>x &lt;- runif(1e5, 2, 5); c(mean(x), var(x))</code> dă <span class="math inline">\(\approx3.5\)</span> și <span class="math inline">\(\approx0.75\)</span>.</p>
+<p>Exemplu suplimentar: repartiția uniformă <span class="math inline">\(\Unif(a,b)\)</span>, detaliată în Cursul 5. Comparați cu <span class="math inline">\(\frac{n^2-1}{12}\)</span> pentru uniforma discretă. Verificare prin simulare: <code>x &lt;- runif(1e5, 2, 5); c(mean(x), var(x))</code> dă <span class="math inline">\(\approx3.5\)</span> și <span class="math inline">\(\approx0.75\)</span>.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -2062,7 +2062,7 @@ F(x)=1-e^{-x^2/2}\ \text{ pentru } x\ge0,\qquad F(x)=0\ \text{ pentru } x&lt;0 .
 <ol type="a">
 <li>Determinați densitatea lui <span class="math inline">\(X\)</span>.</li>
 <li>Calculați <span class="math inline">\(\PP(1&lt;X&lt;2)\)</span> și mediana.</li>
-<li>Calculați <span class="math inline">\(\E[X]\)</span>, știind că <span class="math inline">\(\int_0^\infty e^{-x^2/2}\dd x=\sqrt{\pi/2}\)</span> (rezultat demonstrat în cursul următor).</li>
+<li>Calculați <span class="math inline">\(\E[X]\)</span>, știind că <span class="math inline">\(\int_0^\infty e^{-x^2/2}\dd x=\sqrt{\pi/2}\)</span> (rezultat demonstrat în Cursul 5).</li>
 </ol>
 </div>
 </div>
@@ -2187,7 +2187,7 @@ f(x)=\begin{cases}x, &amp; 0\le x\le1,\\ 2-x, &amp; 1&lt;x\le2,\\ 0, &amp; \text
 </div>
 </div>
 <aside class="notes">
-<p>Această densitate este cea a sumei a două variabile uniforme independente pe <span class="math inline">\([0,1]\)</span> (se va vedea la vectori aleatori).</p>
+<p>Această densitate este cea a sumei a două variabile uniforme independente pe <span class="math inline">\([0,1]\)</span> (se va vedea în Cursul 5).</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -2270,7 +2270,7 @@ F(x)=\frac12+\int_1^x(2-t)\dd t=\frac12+\Big(2t-\frac{t^2}{2}\Big)\Big|_1^x=1-\f
 </div>
 </div>
 <aside class="notes">
-<p>Toate se calculează cu formula de transfer, fără a determina repartițiile lui <span class="math inline">\(1/X\)</span>, <span class="math inline">\(\sqrt X\)</span> etc.</p>
+<p>Toate se calculează cu formula de transport, fără a determina repartițiile lui <span class="math inline">\(1/X\)</span>, <span class="math inline">\(\sqrt X\)</span> etc.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -2330,7 +2330,7 @@ F(x)=\frac12+\int_1^x(2-t)\dd t=\frac12+\Big(2t-\frac{t^2}{2}\Big)\Big|_1^x=1-\f
 <li><p>Pentru <span class="math inline">\(0\le x\le10\)</span>, <span class="math inline">\(\PP(X&gt;x)=\int_x^{10}\frac{10-t}{50}\dd t=\frac{(10-x)^2}{100}\)</span>; deci <span class="math inline">\(\PP(X&gt;5)=\frac{25}{100}=\frac14\)</span>.</p></li>
 <li><p>Din definiția probabilității condiționate și din <span class="math inline">\(\{X&gt;7\}\subseteq\{X&gt;5\}\)</span>, <span class="math display">\[
 \PP(X&gt;7\mid X&gt;5)=\frac{\PP(X&gt;7)}{\PP(X&gt;5)}=\frac{9/100}{25/100}=\frac{9}{25}=0.36 .
-\]</span> Probabilitatea este mai mică decât <span class="math inline">\(\PP(X&gt;2)=64/100\)</span>: faptul că am așteptat deja face sosirea iminentă mai probabilă (spre deosebire de repartiția exponențială, din cursul următor).</p></li>
+\]</span> Probabilitatea este mai mică decât <span class="math inline">\(\PP(X&gt;2)=64/100\)</span>: faptul că am așteptat deja face sosirea iminentă mai probabilă (spre deosebire de repartiția exponențială, Cursul 5).</p></li>
 <li><p><span class="math inline">\(\E[X]=\int_0^{10}\PP(X&gt;x)\dd x=\int_0^{10}\frac{(10-x)^2}{100}\dd x=\frac{1000}{300}=\frac{10}{3}\approx3.33\)</span> minute.</p></li>
 </ol>
 </div>
@@ -2383,7 +2383,7 @@ F(x)=\frac12+\int_1^x(2-t)\dd t=\frac12+\Big(2t-\frac{t^2}{2}\Big)\Big|_1^x=1-\f
 <span id="cb32-4"><a aria-label="4"></a><span class="co">#&gt;   0.8663   0.8647</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <aside class="notes">
-<p>Formula de transfer s-a aplicat variabilei continue <span class="math inline">\(X\)</span>, nu lui <span class="math inline">\(Y\)</span>, deci calculul este corect. Legătura cu Exemplul 5: o variabilă de tip mixt.</p>
+<p>Formula de transport s-a aplicat variabilei continue <span class="math inline">\(X\)</span>, nu lui <span class="math inline">\(Y\)</span>, deci calculul este corect. Legătura cu Exemplul 5: o variabilă de tip mixt.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -2559,7 +2559,7 @@ F(x)=\frac12+\int_1^x(2-t)\dd t=\frac12+\Big(2t-\frac{t^2}{2}\Big)\Big|_1^x=1-\f
 </div>
 </div>
 <aside class="notes">
-<p>Anunțați cursul următor: repartiții continue remarcabile (uniformă, exponențială, normală) și transformări de variabile aleatoare.</p>
+<p>Anunțați Cursul 5: repartiții continue remarcabile (uniformă, exponențială, normală) și transformări de variabile aleatoare.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;

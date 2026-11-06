@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Seminarul 5. Variabile aleatoare continue și repartiții uzuale – Probabilități și Statistică 2026-2027</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../laborator_nosols/04-medie-varianta.html" rel="prev">
+<link href="../images/ps_sticker.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-a48f3a5c7f410fc94a8fd1d60fc997bd.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-6a2deaacd7d2f20a9b75dfb62d024a56.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Niciun rezultat",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Trimite",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<!-- Fonturi: Fira Sans (titluri, casete), Fira Mono (cod); textul folosește Palatino / TeX Gyre Pagella -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+
+<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500&amp;family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
+
+<script>
+window.MathJax = { tex: { macros: {
+  PP: "\\mathbb{P}",
+  E: "\\mathbb{E}",
+  Var: "\\operatorname{Var}",
+  Cov: "\\operatorname{Cov}",
+  Corr: "\\operatorname{Corr}",
+  MSE: "\\operatorname{EPM}",
+  Bias: "\\operatorname{Dep}",
+  sgn: "\\operatorname{sgn}",
+  argmax: "\\operatorname*{arg\\,max}",
+  argmin: "\\operatorname*{arg\\,min}",
+  R: "\\mathbb{R}",
+  N: "\\mathbb{N}",
+  Z: "\\mathbb{Z}",
+  Q: "\\mathbb{Q}",
+  F: "\\mathcal{F}",
+  A: "\\mathcal{A}",
+  B: "\\mathcal{B}",
+  Ind: "\\mathbf{1}",
+  dd: "\\,\\mathrm{d}",
+  eqd: "\\overset{d}{=}",
+  iid: "\\text{i.i.d.}",
+  asto: "\\xrightarrow{\\text{a.s.}}",
+  pto: "\\xrightarrow{\\;\\PP\\;}",
+  dto: "\\xrightarrow{\\;d\\;}",
+  Lto: "\\xrightarrow{L^2}",
+  indep: "\\perp\\!\\!\\!\\perp",
+  Bern: "\\mathrm{Bernoulli}",
+  Bin: "\\mathrm{Bin}",
+  HGeom: "\\mathrm{HGeom}",
+  Geom: "\\mathrm{Geom}",
+  NBin: "\\mathrm{NBin}",
+  Pois: "\\mathrm{Pois}",
+  Unif: "\\mathcal{U}",
+  Exp: "\\mathrm{Exp}",
+  Norm: "\\mathcal{N}",
+  GammaD: "\\mathrm{Gamma}",
+  BetaD: "\\mathrm{Beta}",
+  Cauchy: "\\mathrm{Cauchy}",
+  Multin: "\\mathrm{Mult}",
+  chisq: ["\\chi^2_{#1}", 1],
+  Stud: ["t_{#1}", 1],
+  Fish: ["F_{#1,#2}", 2],
+  bx: "\\mathbf{x}",
+  bX: "\\mathbf{X}",
+  bbeta: "\\boldsymbol{\\beta}",
+  hth: "\\hat{\\theta}",
+  Xbar: "\\bar{X}_n",
+  xbar: "\\bar{x}_n"
+},
+  inlineMath: [['$', '$'], ['\\(', '\\)']], processEscapes: true, tags: 'none' },
+  chtml: { scale: 1.0 } };
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../css/site_style.css">
+<meta property="og:title" content="Seminarul 5. Variabile aleatoare continue și repartiții uzuale – Probabilități și Statistică 2026-2027">
+<meta property="og:description" content="Fișă de lucru (fără rezolvări)">
+<meta property="og:image" content="https://AlexAmarioarei.github.io/curs-ps-fmi/laborator_nosols/05-va-continue_files/figure-html/fig-s05-dpq-1.png">
+<meta property="og:site_name" content="Probabilități și Statistică 2026-2027">
+<meta property="og:image:height" content="417">
+<meta property="og:image:width" content="864">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/ps_sticker.png" alt="" class="navbar-logo light-content">
+    <img src="../images/ps_sticker.png" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Probabilități și Statistică 2026-2027</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> <i class="bi bi-info-circle" role="img">
+</i> 
+<span class="menu-text">Informații generale</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-note-de-curs" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-journal-text" role="img">
+</i> 
+ <span class="menu-text">Note de curs</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-note-de-curs">    
+        <li>
+    <a class="dropdown-item" href="../curs/index.html"><i class="bi bi-grid-3x3-gap" role="img">
+</i> 
+ <span class="dropdown-text">Toate cursurile (note și slide-uri)</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../curs/01-camp-probabilitate.html">
+ <span class="dropdown-text">Cursul 1 — Câmp de probabilitate</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../curs/02-conditionare-independenta.html">
+ <span class="dropdown-text">Cursul 2 — Probabilitate condiționată și independență</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../curs/03-va-discrete.html">
+ <span class="dropdown-text">Cursul 3 — Variabile aleatoare discrete</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../curs/04-va-continue.html">
+ <span class="dropdown-text">Cursul 4 — Variabile aleatoare continue</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../curs/05-repartitii-continue.html">
+ <span class="dropdown-text">Cursul 5 — Repartiții continue remarcabile și transformări</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-note-de-laborator" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="bi bi-laptop" role="img">
+</i> 
+ <span class="menu-text">Note de laborator</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-note-de-laborator">    
+        <li>
+    <a class="dropdown-item" href="../laborator/index.html"><i class="bi bi-grid-3x3-gap" role="img">
+</i> 
+ <span class="dropdown-text">Toate seminarele și laboratoarele (fișe de lucru, rezolvări, slide-uri)</span></a>
+  </li>  
+        <li><hr class="dropdown-divider"></li>
+        <li>
+    <a class="dropdown-item" href="../laborator_nosols/01-evenimente-numarare-R.html">
+ <span class="dropdown-text">Seminarul 1 — Evenimente, probabilități și numărare. Primii pași în R (fișă de lucru)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../laborator_nosols/02-conditionare-independenta.html">
+ <span class="dropdown-text">Seminarul 2 — Probabilități condiționate, formula lui Bayes și independență (fișă de lucru)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../laborator_nosols/03-va-discrete.html">
+ <span class="dropdown-text">Seminarul 3 — Variabile aleatoare discrete și repartiții uzuale (fișă de lucru)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../laborator_nosols/04-medie-varianta.html">
+ <span class="dropdown-text">Seminarul 4 — Media și varianța variabilelor aleatoare discrete. Metoda indicatorilor (fișă de lucru)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../laborator_nosols/05-va-continue.html">
+ <span class="dropdown-text">Seminarul 5 — Variabile aleatoare continue și repartiții uzuale (fișă de lucru)</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../proiect/proiect.html"> <i class="bi bi-gear" role="img">
+</i> 
+<span class="menu-text">Proiect de laborator</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../Introducere_R/index.html"> <i class="bi bi-book" role="img">
+</i> 
+<span class="menu-text">Introducere în R</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Introducere_Tidyverse/index.html"> <i class="bi bi-book" role="img">
+</i> 
+<span class="menu-text">Introducere în Tidyverse</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../contact/contact.html"> <i class="bi bi-pin-map" role="img">
+</i> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../laborator_nosols/01-evenimente-numarare-R.html">Fișe de lucru</a></li><li class="breadcrumb-item"><a href="../laborator_nosols/05-va-continue.html">5. Variabile aleatoare continue și repartiții uzuale</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../laborator/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Note de seminar și laborator</strong></span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Fișe de lucru</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../laborator_nosols/01-evenimente-numarare-R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Evenimente, probabilități și numărare. Primii pași în R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../laborator_nosols/02-conditionare-independenta.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Probabilități condiționate, formula lui Bayes și independență</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../laborator_nosols/03-va-discrete.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Variabile aleatoare discrete și repartiții uzuale</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../laborator_nosols/04-medie-varianta.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Media și varianța variabilelor aleatoare discrete. Metoda indicatorilor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../laborator_nosols/05-va-continue.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">5. Variabile aleatoare continue și repartiții uzuale</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Pe această pagină</h2>
+   
+  <ul>
+  <li><a href="#sec-s05-breviar" id="toc-sec-s05-breviar" class="nav-link active" data-scroll-target="#sec-s05-breviar"><span class="header-section-number">1</span> Breviar</a></li>
+  <li><a href="#sec-s05-densitate" id="toc-sec-s05-densitate" class="nav-link" data-scroll-target="#sec-s05-densitate"><span class="header-section-number">2</span> Densitate, funcție de repartiție, cuantile</a></li>
+  <li><a href="#sec-s05-medie" id="toc-sec-s05-medie" class="nav-link" data-scroll-target="#sec-s05-medie"><span class="header-section-number">3</span> Media, varianța și formula de transport</a></li>
+  <li><a href="#sec-s05-unif-exp" id="toc-sec-s05-unif-exp" class="nav-link" data-scroll-target="#sec-s05-unif-exp"><span class="header-section-number">4</span> Repartițiile uniformă și exponențială</a></li>
+  <li><a href="#sec-s05-normala-gamma" id="toc-sec-s05-normala-gamma" class="nav-link" data-scroll-target="#sec-s05-normala-gamma"><span class="header-section-number">5</span> Repartiția normală și repartiția Gamma</a></li>
+  <li><a href="#sec-s05-suplimentare" id="toc-sec-s05-suplimentare" class="nav-link" data-scroll-target="#sec-s05-suplimentare"><span class="header-section-number">6</span> Exerciții suplimentare</a></li>
+  <li><a href="#sec-s05-tema" id="toc-sec-s05-tema" class="nav-link" data-scroll-target="#sec-s05-tema"><span class="header-section-number">7</span> Temă</a></li>
+  <li><a href="#bibliografie" id="toc-bibliografie" class="nav-link" data-scroll-target="#bibliografie">Bibliografie</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../laborator_nosols/01-evenimente-numarare-R.html">Fișe de lucru</a></li><li class="breadcrumb-item"><a href="../laborator_nosols/05-va-continue.html">5. Variabile aleatoare continue și repartiții uzuale</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Seminarul 5. Variabile aleatoare continue și repartiții uzuale</h1>
+<p class="subtitle lead">Fișă de lucru (fără rezolvări)</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<details class="slides-embed" open="">
+<summary><i class="bi bi-easel2"></i> Slide-urile seminarului și laboratorului 5</summary>
+<div class="slides-embed-bar">
+  <a class="btn btn-sm btn-primary" href="../slides/laborator_nosols/seminar05.html" target="_blank" rel="noopener"><i class="bi bi-arrows-fullscreen"></i> Deschide slide-urile pe tot ecranul</a>
+  <span class="slides-embed-hint">În prezentare: <kbd>←</kbd> <kbd>→</kbd> navigare, <kbd>F</kbd> ecran complet, <kbd>M</kbd> meniu, <kbd>O</kbd> privire de ansamblu.</span>
+</div>
+<div class="slides-embed-frame">
+  <iframe src="../slides/laborator_nosols/seminar05.html" loading="lazy" allowfullscreen="" title="Slide-urile seminarului și laboratorului 5"></iframe>
+</div>
+</details>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Aceasta este <strong>fișa de lucru</strong>: enunțurile, scheletele de cod R și răspunsurile finale pentru exercițiile marcate „Dacă timpul permite” și „Pentru acasă”. Rezolvările complete vor fi publicate ulterior.</p>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Planul seminarului și laboratorului
+</div>
+<div class="curs-box-body">
+<p>Gradul de încărcare al unui server, durata de viață a unui disc, timpul de răspuns al unui serviciu sau eroarea de rotunjire a unui marcaj de timp pot lua orice valoare dintr-un interval: sunt variabile aleatoare <strong>continue</strong>, descrise printr-o densitate, iar probabilitățile sunt <strong>arii</strong>. Ședința de astăzi — prima dedicată variabilelor continue — urmărește un singur fir: un centru de date. Pornim de la o densitate dată printr-o formulă (încărcarea unui server), învățăm să simulăm valori din ea prin metoda inversei, apoi trecem la repartițiile uzuale: uniformă (erori de rotunjire), exponențială (durate de viață), normală (timpi de răspuns) și Gamma (stocul de discuri de rezervă). Fiecare exercițiu are o parte matematică (<em>Seminar</em>) și una în R (<em>Laborator</em>), iar funcțiile R scrise la început sunt refolosite pe parcurs.</p>
+<p><strong>Obiective.</strong> La sfârșitul ședinței studentul trebuie să poată:</p>
+<ol type="1">
+<li>determina constanta de normare a unei densități, calcula probabilități prin integrare, trece de la densitate la funcția de repartiție și invers și determina cuantile (mediana, cuartilele);</li>
+<li>calcula media, varianța și abaterea standard ale unei variabile continue și media unei funcții <span class="math inline">\(g(X)\)</span> cu formula de transport;</li>
+<li>simula o variabilă cu densitate dată prin metoda inversei și compara histograma valorilor simulate cu densitatea;</li>
+<li>recunoaște și folosi repartițiile uniformă, exponențială, normală și Gamma: probabilități, cuantile, standardizare, lipsa de memorie, minimul și suma unor durate exponențiale independente;</li>
+<li>folosi în R familiile de funcții <code>d/p/q/r</code> ale repartițiilor continue, integrarea numerică (<code>integrate</code>) și rezolvarea numerică a ecuațiilor (<code>uniroot</code>).</li>
+</ol>
+<p><strong>Structura.</strong> Breviar; densitate, funcție de repartiție, cuantile; media, varianța și formula de transport; repartițiile uniformă și exponențială; repartiția normală și repartiția Gamma; exerciții suplimentare; temă. Pentru aprofundare: <span class="citation" data-cites="blitzstein2019">(<a href="#ref-blitzstein2019" role="doc-biblioref">Blitzstein and Hwang 2019</a>, cap. 5)</span>, <span class="citation" data-cites="bertsekas2008">(<a href="#ref-bertsekas2008" role="doc-biblioref">Bertsekas and Tsitsiklis 2008</a>, cap. 3)</span>, <span class="citation" data-cites="chan2021">(<a href="#ref-chan2021" role="doc-biblioref">Chan 2021</a>, cap. 4)</span>, <span class="citation" data-cites="ross2014">(<a href="#ref-ross2014" role="doc-biblioref">Ross 2014</a>, cap. 5)</span>, iar pentru simulări în R <span class="citation" data-cites="dobrow2021">(<a href="#ref-dobrow2021" role="doc-biblioref">Wagaman and Dobrow 2021</a>)</span>.</p>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Planul ședinței
+</div>
+<div class="curs-box-body">
+<p><strong>De rezolvat la seminar</strong> (în această ordine):</p>
+<ul>
+<li>Exercițiul <a href="#box-exr-s05-densitate" class="curs-ref">1</a> — constanta de normare, probabilități ca arii, funcția de repartiție și cuantile; funcțiile <code>f_inc</code>, <code>F_inc</code>, cu <code>integrate</code> și <code>uniroot</code>;</li>
+<li>Exercițiul <a href="#box-exr-s05-inversa" class="curs-ref">2</a> — metoda inversei; generatorul <code>r_inc</code>, histograma și densitatea;</li>
+<li>Exercițiul <a href="#box-exr-s05-medie" class="curs-ref">4</a> (a), (b), (d) — media, varianța și abaterea standard ale unei variabile continue; funcția <code>medie_var_cont</code>;</li>
+<li>Exercițiul <a href="#box-exr-s05-exponentiala" class="curs-ref">7</a> — repartiția exponențială: probabilități, cuantile, minimul și maximul unor durate independente;</li>
+<li>Exercițiul <a href="#box-exr-s05-normala" class="curs-ref">9</a> — repartiția normală: standardizare, regula 68–95–99.7, <code>pnorm</code>.</li>
+</ul>
+<p><strong>Dacă timpul permite:</strong></p>
+<ul>
+<li>Exercițiul <a href="#box-exr-s05-memorie" class="curs-ref">8</a> — lipsa de memorie și legătura cu repartiția geometrică;</li>
+<li>Exercițiul <a href="#box-exr-s05-sla" class="curs-ref">10</a> — problema inversă pentru repartiția normală: cuantile, <code>qnorm</code>, compararea a două servere;</li>
+<li>Exercițiul <a href="#box-exr-s05-gamma" class="curs-ref">11</a> — suma unor durate exponențiale: repartiția Gamma, legătura cu repartiția Poisson și aproximarea normală.</li>
+</ul>
+<p><strong>Pentru acasă:</strong></p>
+<ul>
+<li>Exercițiile <a href="#box-exr-s05-ramuri" class="curs-ref">3</a> (o funcție de repartiție pe ramuri), <a href="#box-exr-s05-cost" class="curs-ref">5</a> (formula de transport pentru un cost cu prag) și <a href="#box-exr-s05-rotunjire" class="curs-ref">6</a> (eroarea de rotunjire, repartiția uniformă), apoi punctul (c) al Exercițiului <a href="#box-exr-s05-medie" class="curs-ref">4</a>;</li>
+<li>exercițiile suplimentare <a href="#box-exr-s05-transfer" class="curs-ref">12</a>, <a href="#box-exr-s05-weibull" class="curs-ref">13</a>, <a href="#box-exr-s05-standby" class="curs-ref">14</a> și <a href="#box-exr-s05-beta" class="curs-ref">15</a> (Secțiunea <a href="#sec-s05-suplimentare" class="curs-ref">6</a>);</li>
+<li>enunțurile din Secțiunea <a href="#sec-s05-tema" class="curs-ref">7</a>.</li>
+</ul>
+<p>Rezolvările complete vor fi publicate ulterior; scheletele de cod R se completează în locurile marcate cu <code>___</code>. Exercițiile marcate „Dacă timpul permite” și „Pentru acasă” au, după enunț, răspunsurile finale, pentru verificare.</p>
+</div>
+</div>
+<section id="sec-s05-breviar" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Breviar</h1>
+<p>Folosim noțiunile generale din <a href="..\curs\04-va-continue.html" class="curs-ref">Cursul 4</a> (densitate, funcție de repartiție, cuantile, medie, varianță) și repartițiile continue uzuale din <a href="..\curs\05-repartitii-continue.html" class="curs-ref">Cursul 5</a>. Regula de trecere de la variabilele discrete din <a href="03-va-discrete.html" class="curs-ref">Seminarul 3</a> și <a href="04-medie-varianta.html" class="curs-ref">Seminarul 4</a> este simplă: <strong>funcția de masă devine densitate, iar sumele devin integrale</strong>.</p>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Rezultate din Cursul 4 folosite azi
+</div>
+<div class="curs-box-body">
+<ul>
+<li><strong>Densitatea</strong> (Definiția <a href="..\curs\04-va-continue.html#box-def-k04-vac" class="curs-ref">1 din Cursul 4</a>, Propoziția <a href="..\curs\04-va-continue.html#box-prop-k04-prop-dens" class="curs-ref">2 din Cursul 4</a>): <span class="math inline">\(f\ge0\)</span>, <span class="math inline">\(\int_{-\infty}^{\infty}f(x)\dd x=1\)</span> și <span class="math inline">\(\PP(a\le X\le b)=\int_a^bf(x)\dd x\)</span> — probabilitatea este <strong>aria</strong> de sub graficul densității.</li>
+<li><strong>Punctele au probabilitate zero</strong> (Propoziția <a href="..\curs\04-va-continue.html#box-prop-k04-punct" class="curs-ref">3 din Cursul 4</a>): <span class="math inline">\(\PP(X=a)=0\)</span>, deci <span class="math inline">\(\PP(a\le X\le b)=\PP(a&lt;X&lt;b)\)</span>: nu contează dacă inegalitățile sunt stricte.</li>
+<li><strong>Funcția de repartiție</strong> (Definiția <a href="..\curs\04-va-continue.html#box-def-k04-fdr" class="curs-ref">4 din Cursul 4</a>, Teorema <a href="..\curs\04-va-continue.html#box-thm-k04-F-f" class="curs-ref">6 din Cursul 4</a>): <span class="math inline">\(F(x)=\PP(X\le x)=\int_{-\infty}^xf(t)\dd t\)</span> este continuă și <span class="math inline">\(F'=f\)</span> acolo unde <span class="math inline">\(f\)</span> este continuă. Calcul: <span class="math inline">\(\PP(a&lt;X\le b)=F(b)-F(a)\)</span> și <span class="math inline">\(\PP(X&gt;x)=1-F(x)\)</span>.</li>
+<li><strong>Cuantila</strong> de ordin <span class="math inline">\(\alpha\)</span> (Definiția <a href="..\curs\04-va-continue.html#box-def-k04-cuantila" class="curs-ref">7 din Cursul 4</a>): soluția <span class="math inline">\(x_\alpha\)</span> a ecuației <span class="math inline">\(F(x)=\alpha\)</span>; mediana este <span class="math inline">\(x_{1/2}\)</span>, cuartilele sunt <span class="math inline">\(x_{1/4}\)</span> și <span class="math inline">\(x_{3/4}\)</span>.</li>
+<li><strong>Media</strong> (Definiția <a href="..\curs\04-va-continue.html#box-def-k04-medie" class="curs-ref">8 din Cursul 4</a>) și <strong>formula de transport</strong> (Teorema <a href="..\curs\04-va-continue.html#box-thm-k04-lotus" class="curs-ref">10 din Cursul 4</a>): <span class="math display">\[\E[X]=\int_{-\infty}^{\infty}x\,f(x)\dd x,\qquad \E[g(X)]=\int_{-\infty}^{\infty}g(x)\,f(x)\dd x .\]</span> Pentru <span class="math inline">\(X\ge0\)</span>: <span class="math inline">\(\E[X]=\int_0^\infty\PP(X&gt;x)\dd x\)</span> (Propoziția <a href="..\curs\04-va-continue.html#box-prop-k04-coada" class="curs-ref">9 din Cursul 4</a>).</li>
+<li><strong>Varianța și abaterea standard</strong> (Definiția <a href="..\curs\04-va-continue.html#box-def-k04-momente" class="curs-ref">11 din Cursul 4</a>): <span class="math inline">\(\Var(X)=\E[X^2]-(\E[X])^2\)</span>, <span class="math inline">\(\mathrm{SD}(X)=\sqrt{\Var(X)}\)</span>. Proprietăți (Propoziția <a href="..\curs\04-va-continue.html#box-prop-k04-prop-medie" class="curs-ref">12 din Cursul 4</a>): <span class="math inline">\(\E[aX+b]=a\E[X]+b\)</span>, <span class="math inline">\(\Var(aX+b)=a^2\Var(X)\)</span>, iar pentru variabile <strong>independente</strong> <span class="math inline">\(\Var(X+Y)=\Var(X)+\Var(Y)\)</span>.</li>
+</ul>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Rezultate din Cursul 5 folosite azi
+</div>
+<div class="curs-box-body">
+<ul>
+<li><p><strong>Repartițiile uzuale</strong> (Definițiile <a href="..\curs\05-repartitii-continue.html#box-def-k05-unif" class="curs-ref">1 din Cursul 5</a>, <a href="..\curs\05-repartitii-continue.html#box-def-k05-exp" class="curs-ref">6 din Cursul 5</a>, <a href="..\curs\05-repartitii-continue.html#box-def-k05-normala" class="curs-ref">12 din Cursul 5</a>, <a href="..\curs\05-repartitii-continue.html#box-def-k05-gamma" class="curs-ref">22 din Cursul 5</a>; Propozițiile <a href="..\curs\05-repartitii-continue.html#box-prop-k05-unif-F" class="curs-ref">2 din Cursul 5</a>, <a href="..\curs\05-repartitii-continue.html#box-prop-k05-unif-medie" class="curs-ref">4 din Cursul 5</a>, <a href="..\curs\05-repartitii-continue.html#box-prop-k05-exp-F" class="curs-ref">7 din Cursul 5</a>, <a href="..\curs\05-repartitii-continue.html#box-prop-k05-exp-medie" class="curs-ref">8 din Cursul 5</a>, <a href="..\curs\05-repartitii-continue.html#box-prop-k05-gamma-medie" class="curs-ref">23 din Cursul 5</a>):</p>
+<p><span class="math display">\[
+\begin{array}{l|llcc}
+&amp;\text{densitatea }f(x)&amp;F(x)=\PP(X\le x)&amp;\text{media}&amp;\text{varianța}\\[1mm] \hline
+\rule{0pt}{7mm}\Unif(a,b)&amp;\dfrac{1}{b-a},\ \ a\le x\le b&amp;\dfrac{x-a}{b-a},\ \ a\le x\le b&amp;\dfrac{a+b}{2}&amp;\dfrac{(b-a)^2}{12}\\[5mm]
+\Exp(\lambda)&amp;\lambda e^{-\lambda x},\ \ x&gt;0&amp;1-e^{-\lambda x},\ \ x&gt;0&amp;\dfrac1\lambda&amp;\dfrac1{\lambda^2}\\[5mm]
+\Norm(\mu,\sigma^2)&amp;\dfrac{1}{\sigma\sqrt{2\pi}}\,e^{-(x-\mu)^2/(2\sigma^2)},\ \ x\in\R&amp;\Phi\Big(\dfrac{x-\mu}{\sigma}\Big)&amp;\mu&amp;\sigma^2\\[5mm]
+\GammaD(\alpha,\lambda)&amp;\dfrac{\lambda^\alpha}{\Gamma(\alpha)}\,x^{\alpha-1}e^{-\lambda x},\ \ x&gt;0&amp;\text{(numeric)}&amp;\dfrac\alpha\lambda&amp;\dfrac{\alpha}{\lambda^2}
+\end{array}
+\]</span></p></li>
+<li><p><strong>Universalitatea repartiției uniforme și metoda inversei</strong> (Teorema <a href="..\curs\05-repartitii-continue.html#box-thm-k05-univ" class="curs-ref">5 din Cursul 5</a>): dacă <span class="math inline">\(U\sim\Unif(0,1)\)</span> și <span class="math inline">\(F\)</span> este continuă și strict crescătoare, atunci <span class="math inline">\(F^{-1}(U)\)</span> are funcția de repartiție <span class="math inline">\(F\)</span>; reciproc, <span class="math inline">\(F(X)\sim\Unif(0,1)\)</span>.</p></li>
+<li><p><strong>Lipsa de memorie</strong> (Definiția <a href="..\curs\05-repartitii-continue.html#box-def-k05-lipsa-memorie" class="curs-ref">9 din Cursul 5</a>, Teorema <a href="..\curs\05-repartitii-continue.html#box-thm-k05-exp-memorie" class="curs-ref">10 din Cursul 5</a>): dacă <span class="math inline">\(X\sim\Exp(\lambda)\)</span>, atunci <span class="math inline">\(\PP(X&gt;s+t\mid X&gt;s)=\PP(X&gt;t)\)</span> pentru orice <span class="math inline">\(s,t\ge0\)</span>; dintre repartițiile continue, numai cea exponențială are această proprietate.</p></li>
+<li><p><strong>Standardizarea</strong> (Propoziția <a href="..\curs\05-repartitii-continue.html#box-prop-k05-standardizare" class="curs-ref">17 din Cursul 5</a>): dacă <span class="math inline">\(X\sim\Norm(\mu,\sigma^2)\)</span>, atunci <span class="math inline">\(Z=\frac{X-\mu}{\sigma}\sim\Norm(0,1)\)</span> și <span class="math display">\[\PP(a\le X\le b)=\Phi\Big(\frac{b-\mu}{\sigma}\Big)-\Phi\Big(\frac{a-\mu}{\sigma}\Big),\qquad \Phi(-z)=1-\Phi(z)\]</span> (Propoziția <a href="..\curs\05-repartitii-continue.html#box-prop-k05-simetrie" class="curs-ref">15 din Cursul 5</a>). Cuantila de ordin <span class="math inline">\(\alpha\)</span> este <span class="math inline">\(x_\alpha=\mu+\sigma z_\alpha\)</span>, cu <span class="math inline">\(z_\alpha=\Phi^{-1}(\alpha)\)</span>; de reținut <span class="math inline">\(z_{0.95}\approx1.645\)</span>, <span class="math inline">\(z_{0.975}\approx1.96\)</span>, <span class="math inline">\(z_{0.99}\approx2.326\)</span>.</p></li>
+<li><p><strong>Regula 68–95–99.7</strong> (Teorema <a href="..\curs\05-repartitii-continue.html#box-thm-k05-regula" class="curs-ref">19 din Cursul 5</a>): <span class="math inline">\(\PP(|X-\mu|\le k\sigma)\approx0.6827,\ 0.9545,\ 0.9973\)</span> pentru <span class="math inline">\(k=1,2,3\)</span>.</p></li>
+<li><p><strong>Suma de exponențiale</strong> (Secțiunea <a href="..\curs\05-repartitii-continue.html#sec-k05-gamma-beta" class="curs-ref">6 din Cursul 5</a>): dacă <span class="math inline">\(T_1,\dots,T_n\)</span> sunt independente, cu repartiția <span class="math inline">\(\Exp(\lambda)\)</span>, atunci <span class="math inline">\(T_1+\dots+T_n\sim\GammaD(n,\lambda)\)</span>; în particular <span class="math inline">\(\GammaD(1,\lambda)=\Exp(\lambda)\)</span>. Dacă evenimentele se produc cu rata <span class="math inline">\(\lambda\)</span> pe unitatea de timp și duratele dintre ele sunt independente și <span class="math inline">\(\Exp(\lambda)\)</span>, atunci numărul de evenimente dintr-un interval de lungime <span class="math inline">\(t\)</span> are repartiția <span class="math inline">\(\Pois(\lambda t)\)</span> (Secțiunea <a href="..\curs\05-repartitii-continue.html#sec-k05-exponentiala" class="curs-ref">4 din Cursul 5</a>).</p></li>
+<li><p><strong>Densitatea unei funcții <span class="math inline">\(Y=g(X)\)</span></strong> (Secțiunea <a href="..\curs\05-repartitii-continue.html#sec-k05-transformari" class="curs-ref">7 din Cursul 5</a>): calculăm <span class="math inline">\(F_Y(y)=\PP(g(X)\le y)\)</span> cu ajutorul lui <span class="math inline">\(F_X\)</span>, apoi derivăm.</p></li>
+</ul>
+</div>
+</div>
+<p>În R, pe lângă instrumentele din seminarele anterioare (vectori, <code>sapply</code>, <code>mean(conditie)</code>, funcții proprii, <code>hist</code>, funcțiile <code>d/p/q/r</code> ale repartițiilor discrete), apar astăzi două instrumente numerice — integrarea și rezolvarea ecuațiilor — și familiile de funcții ale repartițiilor continue.</p>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Instrumente R folosite azi
+</div>
+<div class="curs-box-body">
+<ul>
+<li><strong>Familiile <code>d/p/q/r</code></strong> urmează convenția din <a href="03-va-discrete.html" class="curs-ref">Seminarul 3</a>: <code>dunif(x, a, b)</code>, <code>dexp(x, rate)</code>, <code>dnorm(x, mean, sd)</code>, <code>dgamma(x, shape, rate)</code> — <strong>densitatea</strong> <span class="math inline">\(f(x)\)</span>; <code>punif</code>, <code>pexp</code>, <code>pnorm</code>, <code>pgamma</code> — funcția de repartiție <span class="math inline">\(F(x)=\PP(X\le x)\)</span>; <code>qunif</code>, <code>qexp</code>, <code>qnorm</code>, <code>qgamma</code> — cuantila <span class="math inline">\(F^{-1}(u)\)</span>; <code>runif</code>, <code>rexp</code>, <code>rnorm</code>, <code>rgamma</code> — generarea de valori aleatoare. <code>runif(n)</code> generează <span class="math inline">\(n\)</span> valori din <span class="math inline">\(\Unif(0,1)\)</span>.</li>
+<li><code>integrate(f, a, b)$value</code> — valoarea numerică a integralei <span class="math inline">\(\int_a^bf(x)\dd x\)</span> (limitele pot fi și <code>-Inf</code>, <code>Inf</code>). Funcția <code>f</code> trebuie să primească un vector și să întoarcă un vector de aceeași lungime.</li>
+<li><code>uniroot(h, c(a, b))$root</code> — o soluție a ecuației <span class="math inline">\(h(x)=0\)</span> în intervalul <span class="math inline">\([a,b]\)</span>; valorile <span class="math inline">\(h(a)\)</span> și <span class="math inline">\(h(b)\)</span> trebuie să aibă semne contrare. Cuantila de ordin <span class="math inline">\(\alpha\)</span> este soluția ecuației <span class="math inline">\(F(x)-\alpha=0\)</span>.</li>
+<li><code>curve(expr, from, to)</code> — graficul unei expresii care depinde de <code>x</code>; cu <code>add = TRUE</code> graficul se suprapune peste cel existent.</li>
+<li><code>hist(x, freq = FALSE)</code> — histograma <strong>normalizată</strong> (aria totală egală cu <span class="math inline">\(1\)</span>), care se compară direct cu densitatea: <code>hist(x, freq = FALSE)</code>, apoi <code>curve(f(x), add = TRUE)</code>.</li>
+<li><code>quantile(x, p)</code> — cuantilele empirice ale unui eșantion; <code>ecdf(x)</code> — funcția de repartiție empirică (proporția valorilor mai mici sau egale cu un prag).</li>
+<li><code>ifelse(cond, a, b)</code> — pentru funcții definite pe ramuri; <code>matrix(v, ncol = k)</code> — așază vectorul <code>v</code> într-un tabel cu <code>k</code> coloane, pe ale cărui linii lucrează <code>rowSums</code>, <code>pmin</code> și <code>pmax</code>.</li>
+</ul>
+</div>
+</div>
+<div class="curs-box atentie">
+<div class="curs-box-title">
+Atenție! (Trei capcane)
+</div>
+<div class="curs-box-body">
+<ul>
+<li><strong><code>d</code> nu mai este o probabilitate.</strong> Pentru o variabilă continuă, <code>dnorm</code>, <code>dexp</code> etc. întorc valoarea densității, care poate fi mai mare decât <span class="math inline">\(1\)</span>; probabilitățile se obțin numai cu funcțiile <code>p</code>: <span class="math inline">\(\PP(a&lt;X\le b)\)</span> este <code>pnorm(b, ...) - pnorm(a, ...)</code>.</li>
+<li><strong>Normala se parametrizează prin abaterea standard</strong>, nu prin varianță: pentru <span class="math inline">\(X\sim\Norm(250,40^2)\)</span> scriem <code>pnorm(x, mean = 250, sd = 40)</code>.</li>
+<li><strong>Exponențiala și Gamma se parametrizează prin rată</strong>: <code>pexp(x, rate = lambda)</code>, <code>pgamma(x, shape = alpha, rate = lambda)</code>. Dacă se cunoaște durata medie <span class="math inline">\(m\)</span> a unei variabile exponențiale, rata este <span class="math inline">\(\lambda=1/m\)</span>.</li>
+</ul>
+</div>
+</div>
+<p><a href="#fig-s05-dpq" class="quarto-xref">Figura&nbsp;1</a> arată, pentru repartiția <span class="math inline">\(\Exp(0.25)\)</span>, ce calculează primele trei funcții: <code>dexp</code> dă înălțimea densității, <code>pexp(5, 0.25)</code> dă aria de sub densitate la stânga lui <span class="math inline">\(5\)</span>, iar <code>qexp(0.9, 0.25)</code> citește graficul funcției de repartiție „invers”: pragul sub care se află <span class="math inline">\(90\%\)</span> din probabilitate.</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Arată codul <code>R</code></summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>lam0 <span class="ot">&lt;-</span> <span class="fl">0.25</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>g1 <span class="ot">&lt;-</span> <span class="fu">plot_densitate_arie</span>(<span class="cf">function</span>(x) <span class="fu">dexp</span>(x, lam0), <span class="dv">0</span>, <span class="dv">5</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">16</span>),</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">titlu =</span> <span class="st">"dexp(x, 0.25)"</span>) <span class="sc">+</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fl">2.4</span>, <span class="at">y =</span> <span class="fl">0.035</span>, <span class="at">label =</span> <span class="st">"pexp(5, 0.25)"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> culori[[<span class="st">"bleumarin"</span>]], <span class="at">size =</span> <span class="fl">3.1</span>) <span class="sc">+</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">16</span>, <span class="at">length.out =</span> <span class="dv">400</span>)),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(x, <span class="fu">pexp</span>(x, lam0))) <span class="sc">+</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">0.9</span>, <span class="at">linetype =</span> <span class="dv">2</span>, <span class="at">colour =</span> culori[[<span class="st">"rosu"</span>]]) <span class="sc">+</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> <span class="fu">qexp</span>(<span class="fl">0.9</span>, lam0), <span class="at">xend =</span> <span class="fu">qexp</span>(<span class="fl">0.9</span>, lam0), <span class="at">y =</span> <span class="fl">0.9</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>           <span class="at">yend =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="dv">3</span>, <span class="at">colour =</span> culori[[<span class="st">"rosu"</span>]],</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>           <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.12</span>, <span class="st">"cm"</span>))) <span class="sc">+</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fl">9.6</span>, <span class="at">y =</span> <span class="fl">0.12</span>, <span class="at">label =</span> <span class="st">"qexp(0.9, 0.25)"</span>,</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">colour =</span> culori[[<span class="st">"rosu"</span>]], <span class="at">size =</span> <span class="fl">3.1</span>, <span class="at">hjust =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="fl">0.9</span>, <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"pexp(x, 0.25)"</span>, <span class="at">x =</span> <span class="st">"x"</span>, <span class="at">y =</span> <span class="st">"P(X &lt;= x)"</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>g1 <span class="sc">+</span> g2</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-s05-dpq" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-s05-dpq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="05-va-continue_files/figure-html/fig-s05-dpq-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figura&nbsp;1: Funcțiile dexp, pexp și qexp pentru repartiția \mathrm{Exp}(0.25). Stânga: densitatea; aria hașurată este pexp(5, 0.25). Dreapta: funcția de repartiție; nivelul u=0.9 (linia întreruptă) este atins în qexp(0.9, 0.25)."><img src="05-va-continue_files/figure-html/fig-s05-dpq-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:88.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-s05-dpq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Funcțiile <code>dexp</code>, <code>pexp</code> și <code>qexp</code> pentru repartiția <span class="math inline">\(\mathrm{Exp}(0.25)\)</span>. Stânga: densitatea; aria hașurată este <code>pexp(5, 0.25)</code>. Dreapta: funcția de repartiție; nivelul <span class="math inline">\(u=0.9\)</span> (linia întreruptă) este atins în <code>qexp(0.9, 0.25)</code>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-s05-densitate" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Densitate, funcție de repartiție, cuantile</h1>
+<p>Începem cu o densitate dată printr-o formulă și parcurgem, pe același exemplu, tot drumul din <a href="..\curs\04-va-continue.html" class="curs-ref">Cursul 4</a>: constanta de normare, probabilități ca arii, funcția de repartiție, cuantile. Funcțiile R scrise aici (<code>f_inc</code>, <code>F_inc</code>, apoi generatorul <code>r_inc</code>) sunt refolosite în toată ședința.</p>
+<div id="box-exr-s05-densitate" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 1</span> <span class="curs-box-name">(Încărcarea unui server: o densitate cu o constantă necunoscută)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-nivs">La seminar</span> Gradul de încărcare al unui server (fracțiunea din capacitatea de calcul folosită într-un moment ales la întâmplare) este o variabilă aleatoare continuă <span class="math inline">\(X\)</span> cu densitatea <span class="math display">\[
+f(x)=\begin{cases}c\,x\,(1-x^2), &amp; 0\le x\le 1,\\ 0, &amp; \text{altfel.}\end{cases}
+\]</span></p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Determinați constanta <span class="math inline">\(c\)</span>. Pentru ce încărcare este densitatea maximă?</p></li>
+<li><p>Calculați, prin integrarea densității, probabilitatea ca serverul să fie încărcat peste <span class="math inline">\(80\%\)</span>, apoi <span class="math inline">\(\PP(0.25&lt;X&lt;0.75)\)</span>.</p></li>
+<li><p>Determinați funcția de repartiție <span class="math inline">\(F\)</span> și recalculați cu ajutorul ei probabilitățile de la (b).</p></li>
+<li><p>Determinați cuantila de ordin <span class="math inline">\(\alpha\)</span>, apoi mediana și cuartilele lui <span class="math inline">\(X\)</span>.</p></li>
+<li><p>În R: verificați (a)–(c) cu <code>integrate</code>, reprezentați grafic <span class="math inline">\(f\)</span> și <span class="math inline">\(F\)</span> și calculați cuantilele numeric, cu <code>uniroot</code>.</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (e) — completați locurile marcate cu <code>___</code> (funcțiile <code>f_inc</code> și <code>F_inc</code> vor fi folosite în toată ședința):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>f_inc <span class="ot">&lt;-</span> <span class="cf">function</span>(x) ___                    <span class="co"># densitatea, pe [0, 1], cu c de la (a)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(<span class="cf">function</span>(x) x <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> x<span class="sc">^</span><span class="dv">2</span>), <span class="dv">0</span>, <span class="dv">1</span>)<span class="sc">$</span>value    <span class="co"># 1/c</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">integrate</span>(f_inc, <span class="dv">0</span>, <span class="dv">1</span>)<span class="sc">$</span>value                <span class="co"># aria totală</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">P_peste_0.8 =</span> ___,                        <span class="co"># P(X &gt; 0.8), cu integrate</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">P_0.25_0.75 =</span> <span class="fu">integrate</span>(f_inc, <span class="fl">0.25</span>, <span class="fl">0.75</span>)<span class="sc">$</span>value)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>F_inc <span class="ot">&lt;-</span> <span class="cf">function</span>(x) ___                    <span class="co"># formula de la (c)</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>F_num <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">integrate</span>(f_inc, <span class="dv">0</span>, x)<span class="sc">$</span>value   <span class="co"># aria de la 0 la x</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>x0 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.8</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(<span class="at">formula =</span> <span class="fu">F_inc</span>(x0), <span class="at">numeric =</span> <span class="fu">sapply</span>(x0, F_num))</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>cuantila <span class="ot">&lt;-</span> <span class="cf">function</span>(a)                     <span class="co"># rezolvă numeric F(x) = a</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">uniroot</span>(<span class="cf">function</span>(x) ___, <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">tol =</span> <span class="fl">1e-8</span>)<span class="sc">$</span>root</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>alfa <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.95</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(<span class="at">uniroot =</span> <span class="fu">sapply</span>(alfa, cuantila),</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">formula =</span> ___)                        <span class="co"># formula cuantilei de la (d)</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">1.5</span>, <span class="dv">1</span>))</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">f_inc</span>(x), <span class="dv">0</span>, <span class="dv">1</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"f(x)"</span>, <span class="at">main =</span> <span class="st">"densitatea"</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(___, <span class="dv">0</span>, <span class="dv">1</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"F(x)"</span>,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">main =</span> <span class="st">"funcția de repartiție"</span>)</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p>Cum obținem <em>valori</em> ale încărcării, pentru a simula funcționarea serverului? R are generatoare pentru repartițiile uzuale (<code>rexp</code>, <code>rnorm</code>, …), dar nu și pentru densitatea noastră. Teorema <a href="..\curs\05-repartitii-continue.html#box-thm-k05-univ" class="curs-ref">5 din Cursul 5</a> spune că este suficient un generator de numere uniforme și inversa funcției de repartiție.</p>
+<div id="box-exr-s05-inversa" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 2</span> <span class="curs-box-name">(Simularea încărcării prin metoda inversei)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-nivs">La seminar</span> Fie <span class="math inline">\(X\)</span> încărcarea serverului din Exercițiul <a href="#box-exr-s05-densitate" class="curs-ref">1</a>, cu densitatea <span class="math inline">\(f(x)=4x(1-x^2)\)</span> pe <span class="math inline">\([0,1]\)</span>. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Scrieți funcția de repartiție <span class="math inline">\(F\)</span> și determinați inversa ei, <span class="math inline">\(F^{-1}(u)\)</span>, pentru <span class="math inline">\(u\in(0,1)\)</span>. Ce valori ale lui <span class="math inline">\(X\)</span> corespund numerelor uniforme <span class="math inline">\(u=0.19\)</span> și <span class="math inline">\(u=0.75\)</span>?</p></li>
+<li><p>Fie <span class="math inline">\(U\sim\Unif(0,1)\)</span>. Arătați direct, fără a invoca teorema, că variabila <span class="math inline">\(Y=F^{-1}(U)\)</span> are funcția de repartiție <span class="math inline">\(F\)</span>.</p></li>
+<li><p>În R: scrieți o funcție <code>r_inc(n)</code> care generează <span class="math inline">\(n\)</span> valori ale lui <span class="math inline">\(X\)</span> pornind de la <code>runif</code>; generați <span class="math inline">\(10^5\)</span> valori și comparați histograma lor cu densitatea <span class="math inline">\(f\)</span>, cuantilele empirice cu cele teoretice și frecvențele evenimentelor din Exercițiul <a href="#box-exr-s05-densitate" class="curs-ref">1</a> (b) cu probabilitățile calculate acolo.</p></li>
+<li><p>Verificați prin simulare și a doua parte a Teoremei <a href="..\curs\05-repartitii-continue.html#box-thm-k05-univ" class="curs-ref">5 din Cursul 5</a>: <span class="math inline">\(F(X)\sim\Unif(0,1)\)</span>.</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (c), (d) — completați locurile marcate cu <code>___</code> (<code>f_inc</code> și <code>F_inc</code> sunt cele din Exercițiul <a href="#box-exr-s05-densitate" class="curs-ref">1</a>; generatorul <code>r_inc</code> va fi folosit și în exercițiile următoare):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Finv_inc <span class="ot">&lt;-</span> <span class="cf">function</span>(u) ___                 <span class="co"># inversa lui F, de la (a)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>r_inc <span class="ot">&lt;-</span> <span class="cf">function</span>(n) ___                    <span class="co"># n valori ale încărcării, pornind de la runif</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">Finv_inc</span>(<span class="fu">c</span>(<span class="fl">0.19</span>, <span class="fl">0.75</span>))                     <span class="co"># valorile de la (a)</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">502</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">r_inc</span>(<span class="fl">1e5</span>)                             <span class="co"># 100 000 de valori simulate</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">breaks =</span> <span class="dv">40</span>, <span class="at">main =</span> <span class="st">""</span>, <span class="at">xlab =</span> <span class="st">"x"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"densitate"</span>, <span class="at">col =</span> <span class="st">"grey90"</span>, <span class="at">border =</span> <span class="st">"white"</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(___, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)    <span class="co"># densitatea f, peste histogramă</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>alfa <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(<span class="at">empiric =</span> ___, <span class="at">teoretic =</span> <span class="fu">Finv_inc</span>(alfa)) <span class="co"># cuantilele empirice</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">mean</span>(x <span class="sc">&gt;</span> <span class="fl">0.8</span>), ___)                       <span class="co"># evenimentele de la s05-densitate (b)</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(___, <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>)) <span class="co"># (d): F(X) ~ Unif(0, 1)?</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p>Uneori o variabilă continuă este dată direct prin funcția de repartiție, eventual cu formule diferite pe intervale diferite. Drumul este atunci invers — densitatea se obține prin derivare —, iar calculele se fac „pe ramuri”.</p>
+<div id="box-exr-s05-ramuri" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 3</span> <span class="curs-box-name">(Timpul de așteptare al unui job: o funcție de repartiție pe ramuri)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-niva">Pentru acasă</span> Timpul de așteptare <span class="math inline">\(X\)</span> (în minute) al unui job în coada unui cluster de calcul are funcția de repartiție <span class="math display">\[
+F(x)=\begin{cases}0, &amp; x&lt;0,\\[1mm] \dfrac{x^2}{5}, &amp; 0\le x&lt;1,\\[2mm] \dfrac{2x-1}{5}, &amp; 1\le x&lt;3,\\[2mm] 1, &amp; x\ge3.\end{cases}
+\]</span></p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Verificați că <span class="math inline">\(F\)</span> este funcția de repartiție a unei variabile continue și determinați densitatea <span class="math inline">\(f\)</span>.</p></li>
+<li><p>Calculați <span class="math inline">\(\PP(X\le0.5)\)</span>, <span class="math inline">\(\PP(0.5&lt;X\le2)\)</span> și <span class="math inline">\(\PP(X&gt;2)\)</span>.</p></li>
+<li><p>Un job așteaptă deja de un minut. Care este probabilitatea să mai aștepte cel puțin încă un minut? Comparați cu <span class="math inline">\(\PP(X&gt;1)\)</span>. Ce repartiție are <span class="math inline">\(X\)</span>, știind că <span class="math inline">\(X&gt;1\)</span>?</p></li>
+<li><p>Determinați cuantila de ordin <span class="math inline">\(0.1\)</span> și mediana; scrieți inversa <span class="math inline">\(F^{-1}\)</span>.</p></li>
+<li><p>În R: definiți <span class="math inline">\(F\)</span>, <span class="math inline">\(f\)</span> și <span class="math inline">\(F^{-1}\)</span> cu <code>ifelse</code>, verificați (a)–(d) și simulați <span class="math inline">\(10^5\)</span> timpi de așteptare prin metoda inversei.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(F\)</span> este continuă (inclusiv în <span class="math inline">\(0\)</span>, <span class="math inline">\(1\)</span>, <span class="math inline">\(3\)</span>) și crescătoare, cu limitele <span class="math inline">\(0\)</span> și <span class="math inline">\(1\)</span>; <span class="math inline">\(f(x)=\frac{2x}{5}\)</span> pentru <span class="math inline">\(0&lt;x&lt;1\)</span>, <span class="math inline">\(f(x)=\frac25\)</span> pentru <span class="math inline">\(1&lt;x&lt;3\)</span> și <span class="math inline">\(f(x)=0\)</span> altfel.</p></li>
+<li><p><span class="math inline">\(\PP(X\le0.5)=0.05\)</span>, <span class="math inline">\(\PP(0.5&lt;X\le2)=0.55\)</span>, <span class="math inline">\(\PP(X&gt;2)=0.4\)</span>.</p></li>
+<li><p><span class="math inline">\(\PP(X&gt;2\mid X&gt;1)=0.5&lt;0.8=\PP(X&gt;1)\)</span>; știind că <span class="math inline">\(X&gt;1\)</span>, <span class="math inline">\(X\)</span> are repartiția <span class="math inline">\(\Unif(1,3)\)</span>.</p></li>
+<li><p><span class="math inline">\(x_{0.1}=\sqrt{0.5}\approx0.707\)</span> minute, mediana <span class="math inline">\(1.75\)</span> minute; <span class="math inline">\(F^{-1}(u)=\sqrt{5u}\)</span> pentru <span class="math inline">\(0&lt;u\le\frac15\)</span> și <span class="math inline">\(F^{-1}(u)=\frac{5u+1}{2}\)</span> pentru <span class="math inline">\(\frac15&lt;u&lt;1\)</span>.</p></li>
+<li><p>Integrala densității este <span class="math inline">\(1\)</span> pe <span class="math inline">\([0,3]\)</span> și <span class="math inline">\(0.55\)</span> pe <span class="math inline">\([0.5,2]\)</span>; frecvențele simulate sunt apropiate de <span class="math inline">\(0.05\)</span>, <span class="math inline">\(0.55\)</span>, <span class="math inline">\(0.4\)</span> și de <span class="math inline">\(0.5\)</span> (față de <span class="math inline">\(\approx0.8\)</span> pentru <span class="math inline">\(\PP(X&gt;1)\)</span>), iar cuantilele empirice de <span class="math inline">\(0.707\)</span> și <span class="math inline">\(1.75\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-s05-medie" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Media, varianța și formula de transport</h1>
+<p>Media și varianța se calculează ca în <a href="04-medie-varianta.html" class="curs-ref">Seminarul 4</a>, cu integrale în locul sumelor. În R avem acum două căi de verificare: integrarea numerică (<code>integrate</code>) și simularea, cu generatorul <code>r_inc</code> construit în Exercițiul <a href="#box-exr-s05-inversa" class="curs-ref">2</a>.</p>
+<div id="box-exr-s05-medie" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 4</span> <span class="curs-box-name">(Încărcarea medie și abaterea standard)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-nivs">La seminar</span> Fie <span class="math inline">\(X\)</span> încărcarea serverului din Exercițiul <a href="#box-exr-s05-densitate" class="curs-ref">1</a>, cu densitatea <span class="math inline">\(f(x)=4x(1-x^2)\)</span> pe <span class="math inline">\([0,1]\)</span>. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Calculați <span class="math inline">\(\E[X]\)</span>, <span class="math inline">\(\Var(X)\)</span> și <span class="math inline">\(\mathrm{SD}(X)\)</span>. Comparați media cu mediana.</p></li>
+<li><p>Notăm <span class="math inline">\(\mu=\E[X]\)</span> și <span class="math inline">\(\sigma=\mathrm{SD}(X)\)</span>. Calculați <span class="math inline">\(\PP(|X-\mu|\le\sigma)\)</span> și <span class="math inline">\(\PP(|X-\mu|\le2\sigma)\)</span>.</p></li>
+<li><p>Calculați media și varianța timpului de așteptare din Exercițiul <a href="#box-exr-s05-ramuri" class="curs-ref">3</a>. Regăsiți media cu formula <span class="math inline">\(\E[X]=\int_0^\infty\PP(X&gt;x)\dd x\)</span>.</p></li>
+<li><p>În R: scrieți o funcție care calculează media, varianța și abaterea standard ale unei densități prin integrare numerică și comparați cu rezultatele simulării.</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (d), pentru încărcarea serverului — completați locurile marcate cu <code>___</code> (<code>f_inc</code>, <code>F_inc</code> și <code>r_inc</code> sunt cele din Exercițiile <a href="#box-exr-s05-densitate" class="curs-ref">1</a> și <a href="#box-exr-s05-inversa" class="curs-ref">2</a>; funcția <code>medie_var_cont</code> va fi folosită și în Exercițiul <a href="#box-exr-s05-beta" class="curs-ref">15</a>, iar pentru punctul (c) se aplică densității din Exercițiul <a href="#box-exr-s05-ramuri" class="curs-ref">3</a>):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>medie_var_cont <span class="ot">&lt;-</span> <span class="cf">function</span>(f, a, b) {       <span class="co"># f = densitatea, pe [a, b]</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  m  <span class="ot">&lt;-</span> ___                                 <span class="co"># E[X], prin integrare numerică</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  m2 <span class="ot">&lt;-</span> ___                                 <span class="co"># E[X^2], cu formula de transport</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="at">medie =</span> m, <span class="at">varianta =</span> m2 <span class="sc">-</span> m<span class="sc">^</span><span class="dv">2</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(m2 <span class="sc">-</span> m<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>mv <span class="ot">&lt;-</span> <span class="fu">medie_var_cont</span>(f_inc, <span class="dv">0</span>, <span class="dv">1</span>)           <span class="co"># încărcarea serverului</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>mv</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> mv[[<span class="st">"medie"</span>]]; s <span class="ot">&lt;-</span> mv[[<span class="st">"sd"</span>]]</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(___, <span class="fu">F_inc</span>(m <span class="sc">+</span> <span class="dv">2</span> <span class="sc">*</span> s) <span class="sc">-</span> <span class="fu">F_inc</span>(m <span class="sc">-</span> <span class="dv">2</span> <span class="sc">*</span> s)) <span class="co"># (b): cu funcția de repartiție</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">504</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">r_inc</span>(<span class="fl">1e5</span>)                             <span class="co"># generatorul din s05-inversa</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">medie =</span> <span class="fu">mean</span>(x), <span class="at">varianta =</span> <span class="fu">var</span>(x), <span class="at">sd =</span> <span class="fu">sd</span>(x))</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">mean</span>(___), <span class="fu">mean</span>(<span class="fu">abs</span>(x <span class="sc">-</span> m) <span class="sc">&lt;=</span> <span class="dv">2</span> <span class="sc">*</span> s))     <span class="co"># (b), prin simulare</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p>Următorul exercițiu folosește formula de transport pentru o funcție <span class="math inline">\(g\)</span> definită pe ramuri: un cost care depinde de încărcare. Ca în Exercițiul <a href="04-medie-varianta.html#box-exr-s04-tabel" class="curs-ref">2 din Seminarul 4</a>, media costului <strong>nu</strong> este costul încărcării medii.</p>
+<div id="box-exr-s05-cost" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 5</span> <span class="curs-box-name">(Costul încărcării: formula de transport)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-niva">Pentru acasă</span> Furnizorul de servicii cloud facturează serverul din Exercițiul <a href="#box-exr-s05-densitate" class="curs-ref">1</a> pentru fiecare oră, în funcție de încărcarea <span class="math inline">\(X\)</span> din ora respectivă: <span class="math inline">\(2\)</span> lei dacă <span class="math inline">\(X\le0.5\)</span>, iar dacă <span class="math inline">\(X&gt;0.5\)</span> se adaugă câte <span class="math inline">\(8\)</span> lei pentru fiecare unitate de încărcare peste prag. Costul orar este deci <span class="math inline">\(C=g(X)\)</span>, cu <span class="math display">\[
+g(x)=\begin{cases}2, &amp; x\le0.5,\\ 2+8\,(x-0.5), &amp; x&gt;0.5,\end{cases}\qquad\text{adică}\qquad g(x)=2+8\max(x-0.5,\,0).
+\]</span></p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Calculați costul mediu <span class="math inline">\(\E[C]\)</span> cu formula de transport și comparați-l cu <span class="math inline">\(g(\E[X])\)</span>.</p></li>
+<li><p>Calculați <span class="math inline">\(\PP(C=2)\)</span> și <span class="math inline">\(\PP(C&gt;3)\)</span>. Este <span class="math inline">\(C\)</span> o variabilă aleatoare continuă?</p></li>
+<li><p>Un abonament alternativ costă <span class="math inline">\(3\)</span> lei pe oră, indiferent de încărcare. Care variantă este mai ieftină în medie? În ce proporție din ore tariful variabil este mai scump decât abonamentul?</p></li>
+<li><p>În R: calculați <span class="math inline">\(\E[C]\)</span> și <span class="math inline">\(\mathrm{SD}(C)\)</span> prin integrare numerică și verificați (a)–(c) prin simulare.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(\E[C]=2+\frac{53}{60}\approx2.883\)</span> lei, față de <span class="math inline">\(g(\E[X])=g\big(\frac{8}{15}\big)=2+\frac{8}{30}\approx2.267\)</span> lei: <span class="math inline">\(\E[g(X)]\ne g(\E[X])\)</span>.</p></li>
+<li><p><span class="math inline">\(\PP(C=2)=\PP(X\le0.5)=0.4375\)</span> și <span class="math inline">\(\PP(C&gt;3)=\PP(X&gt;0.625)\approx0.3713\)</span>; <span class="math inline">\(C\)</span> nu este continuă (și nici discretă): este o variabilă mixtă.</p></li>
+<li><p>În medie, tariful variabil este mai ieftin (cu aproximativ <span class="math inline">\(0.117\)</span> lei pe oră), dar este mai scump decât abonamentul în aproximativ <span class="math inline">\(37\%\)</span> din ore.</p></li>
+<li><p><span class="math inline">\(\E[C]\approx2.883\)</span> și <span class="math inline">\(\mathrm{SD}(C)\approx1.07\)</span> lei; simularea dă o medie și o abatere standard apropiate de acestea și frecvențe apropiate de <span class="math inline">\(0.4375\)</span> și <span class="math inline">\(0.3713\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-s05-unif-exp" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Repartițiile uniformă și exponențială</h1>
+<p>Trecem la repartițiile cu nume din <a href="..\curs\05-repartitii-continue.html" class="curs-ref">Cursul 5</a>. Pentru ele nu mai integrăm de fiecare dată: folosim formulele din breviar și funcțiile <code>punif</code>, <code>pexp</code>, <code>qexp</code>, <code>rexp</code>. Repartiția uniformă descrie o valoare „la întâmplare” dintr-un interval; repartiția exponențială descrie o durată de viață sau un timp de așteptare.</p>
+<div id="box-exr-s05-rotunjire" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 6</span> <span class="curs-box-name">(Eroarea de rotunjire a marcajelor de timp)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-niva">Pentru acasă</span> Un sistem de jurnalizare înregistrează momentul fiecărui eveniment rotunjit la cea mai apropiată secundă. Eroarea de rotunjire <span class="math inline">\(E\)</span> (momentul înregistrat minus momentul real, în secunde) este repartizată uniform pe intervalul <span class="math inline">\((-0.5,\,0.5)\)</span>. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Scrieți densitatea și funcția de repartiție ale lui <span class="math inline">\(E\)</span>. Calculați <span class="math inline">\(\PP(|E|\le0.1)\)</span> și <span class="math inline">\(\PP(E&gt;0.3)\)</span>.</p></li>
+<li><p>Calculați <span class="math inline">\(\E[E]\)</span>, <span class="math inline">\(\mathrm{SD}(E)\)</span> și eroarea absolută medie <span class="math inline">\(\E[|E|]\)</span>.</p></li>
+<li><p>Știind că un moment a fost rotunjit în sus (<span class="math inline">\(E&gt;0\)</span>), care este probabilitatea ca eroarea să depășească <span class="math inline">\(0.3\)</span> secunde? Ce repartiție are <span class="math inline">\(E\)</span>, știind că <span class="math inline">\(E&gt;0\)</span>?</p></li>
+<li><p>Durata dintre două evenimente se calculează ca diferența momentelor înregistrate, deci are eroarea <span class="math inline">\(D=E_2-E_1\)</span>, unde <span class="math inline">\(E_1\)</span> și <span class="math inline">\(E_2\)</span> sunt erorile celor două marcaje, presupuse independente. Calculați <span class="math inline">\(\E[D]\)</span> și <span class="math inline">\(\mathrm{SD}(D)\)</span>.</p></li>
+<li><p>În R: verificați (a)–(d) prin simulare, rotunjind cu <code>round</code> momente generate la întâmplare; estimați <span class="math inline">\(\PP(|D|&gt;0.5)\)</span> și reprezentați histograma lui <span class="math inline">\(D\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(f(x)=1\)</span> și <span class="math inline">\(F(x)=x+0.5\)</span> pentru <span class="math inline">\(x\in[-0.5,\,0.5]\)</span> (<span class="math inline">\(f=0\)</span> în rest; <span class="math inline">\(F=0\)</span> la stânga și <span class="math inline">\(F=1\)</span> la dreapta intervalului); <span class="math inline">\(\PP(|E|\le0.1)=0.2\)</span>, <span class="math inline">\(\PP(E&gt;0.3)=0.2\)</span>.</p></li>
+<li><p><span class="math inline">\(\E[E]=0\)</span>, <span class="math inline">\(\mathrm{SD}(E)=\frac{1}{\sqrt{12}}\approx0.2887\)</span> s, <span class="math inline">\(\E[|E|]=0.25\)</span> s.</p></li>
+<li><p><span class="math inline">\(\PP(E&gt;0.3\mid E&gt;0)=0.4\)</span>; știind că <span class="math inline">\(E&gt;0\)</span>, <span class="math inline">\(E\)</span> are repartiția <span class="math inline">\(\Unif(0,\,0.5)\)</span>.</p></li>
+<li><p><span class="math inline">\(\E[D]=0\)</span>, <span class="math inline">\(\Var(D)=\frac16\)</span>, <span class="math inline">\(\mathrm{SD}(D)=\frac{1}{\sqrt6}\approx0.408\)</span> s.</p></li>
+<li><p>Frecvențele simulate sunt apropiate de <span class="math inline">\(0.2\)</span>, <span class="math inline">\(0.2\)</span> și <span class="math inline">\(0.4\)</span>, iar media, abaterea standard și eroarea absolută medie de <span class="math inline">\(0\)</span>, <span class="math inline">\(0.2887\)</span> și <span class="math inline">\(0.25\)</span>; pentru <span class="math inline">\(D\)</span>: media <span class="math inline">\(\approx0\)</span>, abaterea standard <span class="math inline">\(\approx0.408\)</span> și <span class="math inline">\(\PP(|D|&gt;0.5)\approx0.25\)</span>. Histograma lui <span class="math inline">\(D\)</span> nu este plată, ci are formă de triunghi (densitatea <span class="math inline">\(1-|d|\)</span> pe <span class="math inline">\((-1,1)\)</span>, obținută în Seminarul 6).</p></li>
+</ol>
+</div>
+</div>
+</div>
+<p>Repartiția exponențială este modelul de bază pentru durate. Exercițiul următor o folosește pentru durata de viață a unui disc și arată cum se combină mai multe discuri; el continuă calculele de fiabilitate din Exercițiul <a href="02-conditionare-independenta.html#box-exr-s02-fiabilitate" class="curs-ref">8 din Seminarul 2</a>, în care componentele doar „funcționau” sau „nu funcționau”, cu durate de viață aleatoare.</p>
+<div id="box-exr-s05-exponentiala" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 7</span> <span class="curs-box-name">(Durata de viață a unui disc și sisteme de discuri)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-nivs">La seminar</span> Durata de viață <span class="math inline">\(T\)</span> (în ani) a unui disc dintr-un centru de date este repartizată exponențial, cu media de <span class="math inline">\(4\)</span> ani; discurile se defectează independent unele de altele. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Determinați rata <span class="math inline">\(\lambda\)</span> și calculați <span class="math inline">\(\PP(T\le1)\)</span>, <span class="math inline">\(\PP(T&gt;5)\)</span> și <span class="math inline">\(\PP(2&lt;T\le6)\)</span>.</p></li>
+<li><p>Determinați mediana lui <span class="math inline">\(T\)</span>. Producătorul vrea să acorde o garanție de <span class="math inline">\(g\)</span> ani astfel încât cel mult <span class="math inline">\(10\%\)</span> dintre discuri să se defecteze în garanție. Cât este <span class="math inline">\(g\)</span>?</p></li>
+<li><p>Un volum de stocare <em>fără redundanță</em> folosește <span class="math inline">\(4\)</span> discuri și este pierdut la prima defectare a unui disc (sistem în serie). Fie <span class="math inline">\(M=\min(T_1,T_2,T_3,T_4)\)</span> durata lui de viață. Determinați repartiția lui <span class="math inline">\(M\)</span>, media și <span class="math inline">\(\PP(M&gt;1)\)</span>.</p></li>
+<li><p>Un volum <em>în oglindă</em> folosește <span class="math inline">\(2\)</span> discuri cu același conținut și este pierdut numai când ambele s-au defectat (sistem în paralel). Fie <span class="math inline">\(W=\max(T_1,T_2)\)</span>. Determinați funcția de repartiție a lui <span class="math inline">\(W\)</span>, <span class="math inline">\(\PP(W&gt;5)\)</span> și <span class="math inline">\(\E[W]\)</span>.</p></li>
+<li><p>În R: verificați (a)–(b) cu <code>pexp</code> și <code>qexp</code>, iar (c)–(d) prin simulare cu <code>rexp</code>.</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (e) — completați locurile marcate cu <code>___</code> (<code>matrix(..., ncol = 4)</code> așază duratele într-un tabel cu o linie pentru fiecare volum și o coloană pentru fiecare disc; <code>pmin</code> și <code>pmax</code> lucrează pe linii):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>lam <span class="ot">&lt;-</span> ___                                  <span class="co"># rata: defectări pe an</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">pexp</span>(<span class="dv">1</span>, lam), ___, <span class="fu">pexp</span>(<span class="dv">6</span>, lam) <span class="sc">-</span> <span class="fu">pexp</span>(<span class="dv">2</span>, lam))    <span class="co"># (a)</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qexp</span>(___, lam)                              <span class="co"># (b): mediana și garanția</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">507</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fl">1e5</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>D <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rexp</span>(<span class="dv">4</span> <span class="sc">*</span> B, lam), <span class="at">ncol =</span> <span class="dv">4</span>)     <span class="co"># B volume a câte 4 discuri</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> ___                                    <span class="co"># prima defectare (serie)</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>W <span class="ot">&lt;-</span> ___                                    <span class="co"># ultima din două (oglindă)</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(<span class="at">simulare =</span> <span class="fu">c</span>(<span class="fu">mean</span>(M), <span class="fu">mean</span>(M <span class="sc">&gt;</span> <span class="dv">1</span>), <span class="fu">mean</span>(W <span class="sc">&gt;</span> <span class="dv">5</span>), <span class="fu">mean</span>(W)),</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">teoretic =</span> <span class="fu">c</span>(___, ___, ___, ___))     <span class="co"># valorile de la (c) și (d)</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(M, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">breaks =</span> <span class="dv">100</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">5</span>), <span class="at">main =</span> <span class="st">""</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"m (ani)"</span>, <span class="at">ylab =</span> <span class="st">"densitate"</span>, <span class="at">col =</span> <span class="st">"grey90"</span>, <span class="at">border =</span> <span class="st">"white"</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dexp</span>(x, ___), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)   <span class="co"># densitatea lui M</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p>Proprietatea care deosebește repartiția exponențială de toate celelalte repartiții continue este lipsa de memorie. În Exercițiul <a href="03-va-discrete.html#box-exr-s03-geometrica" class="curs-ref">7 din Seminarul 3</a> am întâlnit-o la repartiția geometrică; exercițiul următor caută legătura dintre cele două repartiții.</p>
+<div id="box-exr-s05-memorie" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 8</span> <span class="curs-box-name">(Lipsa de memorie: discul care nu îmbătrânește)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-nivo">Dacă timpul permite</span> Continuăm cu discul din Exercițiul <a href="#box-exr-s05-exponentiala" class="curs-ref">7</a>: <span class="math inline">\(T\sim\Exp(\lambda)\)</span>, cu <span class="math inline">\(\lambda=0.25\)</span> pe an. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Un disc funcționează deja de <span class="math inline">\(3\)</span> ani. Care este probabilitatea să mai funcționeze cel puțin încă <span class="math inline">\(2\)</span> ani? Comparați cu probabilitatea ca un disc nou să funcționeze cel puțin <span class="math inline">\(2\)</span> ani.</p></li>
+<li><p>Ce repartiție are durata de viață rămasă, <span class="math inline">\(T-s\)</span>, a unui disc care a funcționat deja <span class="math inline">\(s\)</span> ani? Cât este durata medie rămasă?</p></li>
+<li><p>Pentru comparație, fie <span class="math inline">\(V\sim\Unif(0,8)\)</span> o durată de viață cu aceeași medie, de <span class="math inline">\(4\)</span> ani. Calculați <span class="math inline">\(\PP(V&gt;5\mid V&gt;3)\)</span> și <span class="math inline">\(\PP(V&gt;2)\)</span>.</p></li>
+<li><p>Discurile sunt verificate o dată pe an, la sfârșitul fiecărui an de funcționare. Fie <span class="math inline">\(N\)</span> numărul verificării la care discul este găsit defect (<span class="math inline">\(N=k\)</span> dacă <span class="math inline">\(k-1&lt;T\le k\)</span>). Determinați repartiția lui <span class="math inline">\(N\)</span>, <span class="math inline">\(\PP(N=3)\)</span> și <span class="math inline">\(\E[N]\)</span>; comparați <span class="math inline">\(\E[N]\)</span> cu <span class="math inline">\(\E[T]\)</span>.</p></li>
+<li><p>În R: verificați (a)–(d) prin simulare.</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (e) — completați locurile marcate cu <code>___</code> (pentru o probabilitate condiționată de <span class="math inline">\(\{T&gt;s\}\)</span> păstrăm numai discurile care au depășit vârsta <span class="math inline">\(s\)</span>, ca în Exercițiul <a href="03-va-discrete.html#box-exr-s03-geometrica" class="curs-ref">7 din Seminarul 3</a>; <code>dgeom</code> numără eșecurile):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lam <span class="ot">&lt;-</span> <span class="fl">0.25</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">508</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>viata <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="fl">1e6</span>, lam)                     <span class="co"># duratele a 10^6 discuri</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">mean</span>(___), <span class="fu">mean</span>(viata <span class="sc">&gt;</span> <span class="dv">2</span>))               <span class="co"># (a): P(T &gt; 5 | T &gt; 3) și P(T &gt; 2)</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">6</span>)                          <span class="co"># vârsta discului, în ani</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>V <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="fl">1e6</span>, <span class="dv">0</span>, <span class="dv">8</span>)                       <span class="co"># durate uniforme pe (0, 8)</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(<span class="at">exponentiala =</span> <span class="fu">sapply</span>(s, <span class="cf">function</span>(a) ___),  <span class="co"># durata medie rămasă la vârsta a</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">uniforma     =</span> <span class="fu">sapply</span>(s, <span class="cf">function</span>(a) <span class="fu">mean</span>(V[V <span class="sc">&gt;</span> a] <span class="sc">-</span> a)))</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(___, <span class="fu">mean</span>(V <span class="sc">&gt;</span> <span class="dv">2</span>))                         <span class="co"># (c)</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">exp</span>(<span class="sc">-</span>lam)                          <span class="co"># P(defectare într-un an)</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> ___                                    <span class="co"># verificarea la care discul e găsit defect</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(<span class="at">simulare =</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="cf">function</span>(k) <span class="fu">mean</span>(N <span class="sc">==</span> k)),</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">teoretic =</span> ___)                       <span class="co"># P(N = k), k = 1, ..., 6, de la (d)</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">mean</span>(N), <span class="dv">1</span> <span class="sc">/</span> p, <span class="fu">mean</span>(N[N <span class="sc">&gt;</span> <span class="dv">3</span>] <span class="sc">&gt;</span> <span class="dv">5</span>), <span class="fu">mean</span>(N <span class="sc">&gt;</span> <span class="dv">2</span>))</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(\PP(T&gt;5\mid T&gt;3)=e^{-0.5}\approx0.6065=\PP(T&gt;2)\)</span>: un disc vechi de <span class="math inline">\(3\)</span> ani are aceleași șanse ca unul nou.</p></li>
+<li><p>Știind că <span class="math inline">\(T&gt;s\)</span>, durata rămasă <span class="math inline">\(T-s\)</span> are repartiția <span class="math inline">\(\Exp(\lambda)\)</span>, oricare ar fi <span class="math inline">\(s\)</span>; durata medie rămasă este <span class="math inline">\(\frac1\lambda=4\)</span> ani.</p></li>
+<li><p><span class="math inline">\(\PP(V&gt;5\mid V&gt;3)=0.6&lt;0.75=\PP(V&gt;2)\)</span>: durata uniformă „îmbătrânește”.</p></li>
+<li><p><span class="math inline">\(N\sim\Geom(p)\)</span>, cu <span class="math inline">\(p=1-e^{-0.25}\approx0.2212\)</span>; <span class="math inline">\(\PP(N=3)=e^{-0.5}\big(1-e^{-0.25}\big)\approx0.1342\)</span>; <span class="math inline">\(\E[N]=\frac1p\approx4.521&gt;4=\E[T]\)</span> (deoarece <span class="math inline">\(T\le N&lt;T+1\)</span>).</p></li>
+<li><p>Frecvența condiționată este apropiată de <span class="math inline">\(0.6065\)</span>; durata medie rămasă este <span class="math inline">\(\approx4\)</span> ani la orice vârstă pentru repartiția exponențială și <span class="math inline">\(\approx4\)</span>, <span class="math inline">\(3.5\)</span>, <span class="math inline">\(2.5\)</span>, <span class="math inline">\(1\)</span> ani (adică <span class="math inline">\(\frac{8-s}{2}\)</span>) pentru cea uniformă; frecvențele de la (c) sunt apropiate de <span class="math inline">\(0.6\)</span> și <span class="math inline">\(0.75\)</span>; frecvențele lui <span class="math inline">\(N\)</span> urmează funcția de masă a repartiției <span class="math inline">\(\Geom(0.2212)\)</span>, cu media <span class="math inline">\(\approx4.52\)</span>, iar <span class="math inline">\(\PP(N&gt;5\mid N&gt;3)\approx\PP(N&gt;2)\approx0.607\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-s05-normala-gamma" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Repartiția normală și repartiția Gamma</h1>
+<p>Repartiția normală este modelul obișnuit pentru mărimi care rezultă din multe influențe mici: erori de măsurare, scoruri, timpi de execuție. Toate calculele se reduc, prin standardizare, la funcția <span class="math inline">\(\Phi\)</span> a normalei standard, calculată în R cu <code>pnorm</code>. Încheiem cu repartiția Gamma, care apare ca sumă de durate exponențiale și face legătura cu modelul discurilor din secțiunea precedentă.</p>
+<div id="box-exr-s05-normala" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 9</span> <span class="curs-box-name">(Timpul de răspuns al unui serviciu web)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-nivs">La seminar</span> Timpul de răspuns <span class="math inline">\(X\)</span> (în milisecunde) al unui serviciu web, măsurat în orele de vârf, este aproximativ normal, cu media <span class="math inline">\(\mu=250\)</span> ms și abaterea standard <span class="math inline">\(\sigma=40\)</span> ms. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Calculați, standardizând, <span class="math inline">\(\PP(X\le300)\)</span>, <span class="math inline">\(\PP(X&gt;350)\)</span> și <span class="math inline">\(\PP(200&lt;X&lt;320)\)</span>. (Valorile lui <span class="math inline">\(\Phi\)</span> se citesc din tabel sau se calculează cu <code>pnorm</code>.)</p></li>
+<li><p>Între ce limite se află aproximativ <span class="math inline">\(68\%\)</span>, <span class="math inline">\(95\%\)</span>, respectiv <span class="math inline">\(99.7\%\)</span> dintre timpii de răspuns?</p></li>
+<li><p>O cerere este <em>lentă</em> dacă primește răspunsul în mai mult de <span class="math inline">\(330\)</span> ms. Ce proporție dintre cereri sunt lente? Dintre <span class="math inline">\(1000\)</span> de cereri independente, câte sunt lente în medie și care este probabilitatea să fie cel puțin <span class="math inline">\(30\)</span>?</p></li>
+<li><p>Modelul normal permite și valori negative, imposibile pentru un timp. Este aceasta o problemă?</p></li>
+<li><p>În R: verificați (a)–(d) cu <code>pnorm</code>, simulați <span class="math inline">\(10^5\)</span> timpi de răspuns și verificați regula 68–95–99.7.</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (e) — completați locurile marcate cu <code>___</code> (<code>pnorm(z)</code> este <span class="math inline">\(\Phi(z)\)</span>; argumentul <code>sd</code> este abaterea standard, nu varianța):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">250</span>; sigma <span class="ot">&lt;-</span> <span class="dv">40</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> ___                                    <span class="co"># pragurile 300, 350, 200, 320, standardizate</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">pnorm</span>(z[<span class="dv">1</span>]), <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(z[<span class="dv">2</span>]), ___)        <span class="co"># (a), „ca la seminar”</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">pnorm</span>(<span class="dv">300</span>, mu, sigma), ___,               <span class="co"># (a), direct</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pnorm</span>(<span class="dv">320</span>, mu, sigma) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">200</span>, mu, sigma))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>p_lent <span class="ot">&lt;-</span> ___                               <span class="co"># (c): P(X &gt; 330)</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">p_lent =</span> p_lent, <span class="at">medie =</span> <span class="dv">1000</span> <span class="sc">*</span> p_lent,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">binomiala =</span> ___,                          <span class="co"># P(N &gt;= 30), N ~ Bin(1000, p_lent)</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">Poisson =</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">ppois</span>(<span class="dv">29</span>, <span class="dv">1000</span> <span class="sc">*</span> p_lent))</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">0</span>, mu, sigma)                         <span class="co"># (d): P(X &lt; 0)</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">509</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="fl">1e5</span>, mu, sigma)                  <span class="co"># 100 000 de timpi de răspuns</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(<span class="at">simulare =</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="cf">function</span>(k) <span class="fu">mean</span>(___)),   <span class="co"># cel mult k abateri standard</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">teoretic =</span> <span class="dv">2</span> <span class="sc">*</span> <span class="fu">pnorm</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">breaks =</span> <span class="dv">50</span>, <span class="at">main =</span> <span class="st">""</span>, <span class="at">xlab =</span> <span class="st">"x (ms)"</span>,</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"densitate"</span>, <span class="at">col =</span> <span class="st">"grey90"</span>, <span class="at">border =</span> <span class="st">"white"</span>)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, mu, sigma), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<p>În practică întrebarea se pune adesea invers: nu „care este probabilitatea de a depăși un prag dat?”, ci „care este pragul depășit cu o probabilitate dată?” sau „ce parametri trebuie să aibă serviciul pentru a respecta o cerință?”. Instrumentul este cuantila, <code>qnorm</code>.</p>
+<div id="box-exr-s05-sla" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 10</span> <span class="curs-box-name">(Praguri și garanții de serviciu: problema inversă)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-nivo">Dacă timpul permite</span> Considerăm serviciul din Exercițiul <a href="#box-exr-s05-normala" class="curs-ref">9</a>, cu timpul de răspuns <span class="math inline">\(X\sim\Norm(250,40^2)\)</span> (în ms); îl numim serverul A. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Determinați pragul pe care îl depășesc doar <span class="math inline">\(5\%\)</span> dintre cereri (percentila <span class="math inline">\(95\)</span>) și percentila <span class="math inline">\(99\)</span>.</p></li>
+<li><p>Contractul cere ca cel puțin <span class="math inline">\(99\%\)</span> dintre cereri să primească răspunsul în cel mult <span class="math inline">\(300\)</span> ms. Este cerința îndeplinită? Dacă abaterea standard rămâne <span class="math inline">\(40\)</span> ms, cât de mică trebuie să fie media? Dacă media rămâne <span class="math inline">\(250\)</span> ms, cât de mică trebuie să fie abaterea standard?</p></li>
+<li><p>Un al doilea server, B, are timpul de răspuns <span class="math inline">\(X_B\sim\Norm(270,15^2)\)</span>: mai lent în medie, dar mai stabil. Care server are șanse mai mari să răspundă în cel mult <span class="math inline">\(300\)</span> ms? Dar în cel mult <span class="math inline">\(260\)</span> ms? Pentru ce termen <span class="math inline">\(d\)</span> cele două servere au aceeași probabilitate de a răspunde la timp?</p></li>
+<li><p>În R: verificați cu <code>qnorm</code>, <code>pnorm</code> și <code>uniroot</code>; reprezentați grafic funcțiile de repartiție ale celor două servere.</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (d) — completați locurile marcate cu <code>___</code> (<code>qnorm(alfa)</code> este <span class="math inline">\(z_\alpha\)</span>, iar <code>qnorm(alfa, mu, sigma)</code> este <span class="math inline">\(\mu+\sigma z_\alpha\)</span>):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">250</span>; sigma <span class="ot">&lt;-</span> <span class="dv">40</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fu">c</span>(<span class="fl">0.95</span>, <span class="fl">0.99</span>))                        <span class="co"># z_0.95 și z_0.99</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>___                                         <span class="co"># (a): percentilele 95 și 99</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">mu_max =</span> ___,                             <span class="co"># (b): media necesară</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sigma_max =</span> ___)                          <span class="co">#      abaterea standard necesară</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">510</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(<span class="fu">rnorm</span>(<span class="fl">1e5</span>, mu, sigma), <span class="fu">c</span>(<span class="fl">0.95</span>, <span class="fl">0.99</span>))      <span class="co"># prin simulare</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(<span class="at">A =</span> <span class="fu">pnorm</span>(<span class="fu">c</span>(<span class="dv">300</span>, <span class="dv">260</span>), <span class="dv">250</span>, <span class="dv">40</span>), <span class="at">B =</span> ___)     <span class="co"># (c)</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>dif <span class="ot">&lt;-</span> <span class="cf">function</span>(d) ___                      <span class="co"># P(X_A &lt;= d) - P(X_B &lt;= d)</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">uniroot</span>(dif, <span class="fu">c</span>(<span class="dv">260</span>, <span class="dv">300</span>), <span class="at">tol =</span> <span class="fl">1e-8</span>)<span class="sc">$</span>root  <span class="co"># termenul de echilibru</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">pnorm</span>(x, <span class="dv">250</span>, <span class="dv">40</span>), <span class="dv">150</span>, <span class="dv">380</span>, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">xlab =</span> <span class="st">"termenul d (ms)"</span>, <span class="at">ylab =</span> <span class="st">"P(X &lt;= d)"</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(___, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)    <span class="co"># serverul B</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(x_{0.95}=\mu+\sigma z_{0.95}\approx315.8\)</span> ms și <span class="math inline">\(x_{0.99}\approx343.1\)</span> ms.</p></li>
+<li><p>Nu: <span class="math inline">\(\PP(X\le300)=\Phi(1.25)\approx0.894&lt;0.99\)</span>. Cu <span class="math inline">\(\sigma=40\)</span> trebuie <span class="math inline">\(\mu\le206.9\)</span> ms; cu <span class="math inline">\(\mu=250\)</span> trebuie <span class="math inline">\(\sigma\le21.5\)</span> ms.</p></li>
+<li><p>Pentru <span class="math inline">\(300\)</span> ms: A <span class="math inline">\(\approx0.894\)</span>, B <span class="math inline">\(\approx0.977\)</span> (este preferabil B); pentru <span class="math inline">\(260\)</span> ms: A <span class="math inline">\(\approx0.599\)</span>, B <span class="math inline">\(\approx0.252\)</span> (este preferabil A). Probabilitățile sunt egale pentru <span class="math inline">\(d=282\)</span> ms, cu valoarea comună <span class="math inline">\(\Phi(0.8)\approx0.788\)</span>.</p></li>
+<li><p>Valorile de la (a)–(c); cuantilele empirice simulate sunt apropiate de <span class="math inline">\(315.8\)</span> și <span class="math inline">\(343.1\)</span>. Curba serverului B este mai abruptă: se află sub cea a lui A la stânga lui <span class="math inline">\(282\)</span> ms și deasupra ei la dreapta.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<p>Ne întoarcem la discurile din <a href="#sec-s05-unif-exp" class="quarto-xref">Secțiunea&nbsp;4</a>. Dacă duratele dintre defectări sunt exponențiale, momentul celei de-a <span class="math inline">\(k\)</span>-a defectări este o <strong>sumă</strong> de <span class="math inline">\(k\)</span> durate exponențiale independente, deci are repartiția Gamma. Exercițiul leagă între ele repartițiile exponențială, Gamma, Poisson și normală.</p>
+<div id="box-exr-s05-gamma" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 11</span> <span class="curs-box-name">(Stocul de discuri de rezervă: repartiția Gamma)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-nivo">Dacă timpul permite</span> Centrul de date din Exercițiul <a href="#box-exr-s05-exponentiala" class="curs-ref">7</a> are în funcțiune <span class="math inline">\(20\)</span> de discuri, cu durate de viață independente, <span class="math inline">\(\Exp(0.25)\)</span> (în ani). Fiecare disc defect este înlocuit imediat cu unul nou, din stoc. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Arătați că timpul până la prima defectare din centru are repartiția <span class="math inline">\(\Exp(5)\)</span> și explicați de ce duratele <span class="math inline">\(D_1,D_2,\dots\)</span> dintre defectări consecutive au toate această repartiție.</p></li>
+<li><p>Stocul conține <span class="math inline">\(3\)</span> discuri de rezervă, deci se epuizează la momentul <span class="math inline">\(S_3=D_1+D_2+D_3\)</span> al celei de-a treia defectări. Ce repartiție are <span class="math inline">\(S_3\)</span>? Scrieți densitatea și calculați <span class="math inline">\(\E[S_3]\)</span> și <span class="math inline">\(\mathrm{SD}(S_3)\)</span>.</p></li>
+<li><p>Calculați probabilitatea ca stocul de <span class="math inline">\(3\)</span> discuri să ajungă mai mult de un an, <span class="math inline">\(\PP(S_3&gt;1)\)</span>, folosind numărul de defectări dintr-un an.</p></li>
+<li><p>Câte discuri de rezervă sunt necesare pentru ca stocul să ajungă un an cu probabilitate de cel puțin <span class="math inline">\(0.95\)</span>?</p></li>
+<li><p>În R: simulați <span class="math inline">\(S_3\)</span> ca sumă de trei durate exponențiale, comparați cu <code>dgamma</code> și <code>pgamma</code> și verificați (c)–(d).</p></li>
+<li><p>Cu un stoc de <span class="math inline">\(30\)</span> de discuri, care este probabilitatea ca acesta să ajungă mai mult de <span class="math inline">\(5\)</span> ani? Comparați valoarea exactă cu cea obținută aproximând repartiția lui <span class="math inline">\(S_{30}\)</span> cu o repartiție normală cu aceeași medie și aceeași abatere standard.</p></li>
+</ol>
+</div>
+<p><span class="curs-tag curs-tag-lab">Laborator</span> Schelet de cod pentru (e) și pentru partea în R de la (f) — completați locurile marcate cu <code>___</code> (fiecare linie a matricei <code>D</code> este un „an simulat” al centrului de date):</p>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">511</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="fl">1e5</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>D <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rexp</span>(<span class="dv">3</span> <span class="sc">*</span> B, <span class="at">rate =</span> <span class="dv">5</span>), <span class="at">ncol =</span> <span class="dv">3</span>)    <span class="co"># duratele dintre defectări</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>S3 <span class="ot">&lt;-</span> ___                                   <span class="co"># momentul defectării a treia</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">medie =</span> <span class="fu">mean</span>(S3), <span class="at">sd =</span> <span class="fu">sd</span>(S3), <span class="at">P =</span> <span class="fu">mean</span>(S3 <span class="sc">&gt;</span> <span class="dv">1</span>))</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pgamma</span>(<span class="dv">1</span>, <span class="at">shape =</span> <span class="dv">3</span>, <span class="at">rate =</span> <span class="dv">5</span>), ___)  <span class="co"># (c): aceeași probabilitate, cu ppois</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">ppois</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">5</span>), <span class="dv">4</span>)                    <span class="co"># (d): P(N &lt;= 7), ..., P(N &lt;= 10)</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>___                                         <span class="co"># (d): numărul necesar de discuri, cu qpois</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(S3, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">breaks =</span> <span class="dv">50</span>, <span class="at">main =</span> <span class="st">""</span>, <span class="at">xlab =</span> <span class="st">"s (ani)"</span>,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"densitate"</span>, <span class="at">col =</span> <span class="st">"grey90"</span>, <span class="at">border =</span> <span class="st">"white"</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(___, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)    <span class="co"># densitatea Gamma(3, 5)</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>S30 <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(<span class="fu">matrix</span>(<span class="fu">rexp</span>(<span class="dv">30</span> <span class="sc">*</span> B, <span class="at">rate =</span> <span class="dv">5</span>), <span class="at">ncol =</span> <span class="dv">30</span>))   <span class="co"># (f)</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">simulare =</span> <span class="fu">mean</span>(S30 <span class="sc">&gt;</span> <span class="dv">5</span>), <span class="at">exact =</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pgamma</span>(<span class="dv">5</span>, <span class="dv">30</span>, <span class="dv">5</span>),</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">Poisson =</span> ___, <span class="at">normala =</span> ___)             <span class="co"># (f): prin ppois și aproximarea normală</span></span></code></pre></div><button title="Copiază codul" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(\PP(\min(T_1,\dots,T_{20})&gt;t)=e^{-5t}\)</span>, deci <span class="math inline">\(D_1\sim\Exp(5)\)</span>; după fiecare înlocuire, din lipsa de memorie, situația este aceeași ca la început, deci <span class="math inline">\(D_2,D_3,\dots\sim\Exp(5)\)</span>, independente (demonstrație).</p></li>
+<li><p><span class="math inline">\(S_3\sim\GammaD(3,5)\)</span>, cu densitatea <span class="math inline">\(f(s)=62.5\,s^2e^{-5s}\)</span>, <span class="math inline">\(s&gt;0\)</span>; <span class="math inline">\(\E[S_3]=0.6\)</span> ani, <span class="math inline">\(\mathrm{SD}(S_3)=\frac{\sqrt3}{5}\approx0.346\)</span> ani.</p></li>
+<li><p><span class="math inline">\(\PP(S_3&gt;1)=\PP(N\le2)\)</span>, cu <span class="math inline">\(N\sim\Pois(5)\)</span>: <span class="math inline">\(18.5\,e^{-5}\approx0.1247\)</span>.</p></li>
+<li><p><span class="math inline">\(k=10\)</span> discuri (<span class="math inline">\(\PP(N\le8)\approx0.932&lt;0.95\le\PP(N\le9)\approx0.968\)</span>).</p></li>
+<li><p>Media, abaterea standard și frecvența simulate sunt apropiate de <span class="math inline">\(0.6\)</span>, <span class="math inline">\(0.346\)</span> și <span class="math inline">\(0.1247\)</span>; <code>pgamma</code> și <code>ppois</code> dau aceeași valoare, <span class="math inline">\(0.1247\)</span>; <code>qpois(0.95, 5) + 1</code> este <span class="math inline">\(10\)</span>; histograma urmează densitatea <span class="math inline">\(\GammaD(3,5)\)</span>.</p></li>
+<li><p>Exact: <span class="math inline">\(\PP(S_{30}&gt;5)=\PP(\Pois(25)\le29)\approx0.8179\)</span>; aproximarea normală (<span class="math inline">\(\E[S_{30}]=6\)</span>, <span class="math inline">\(\mathrm{SD}(S_{30})\approx1.095\)</span>) dă <span class="math inline">\(\Phi(0.913)\approx0.819\)</span>; simularea dă o frecvență apropiată de <span class="math inline">\(0.818\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-s05-suplimentare" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Exerciții suplimentare</h1>
+<p>Exercițiile următoare, cu răspunsuri finale, sunt destinate studiului individual. Ele folosesc aceleași tehnici — funcția de repartiție, metoda inversei, formula de transport, lipsa de memorie — pe situații noi: o transformare a unei variabile uniforme, o durată de viață cu uzură, o variabilă care nu este nici discretă, nici continuă și repartiția Beta.</p>
+<div id="box-exr-s05-transfer" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 12</span> <span class="curs-box-name">(Timpul de transfer al unui fișier: o transformare)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-niva">Pentru acasă</span> Un fișier de <span class="math inline">\(100\)</span> MB este descărcat printr-o conexiune a cărei viteză <span class="math inline">\(V\)</span> (în MB/s), constantă pe durata descărcării, este repartizată uniform pe intervalul <span class="math inline">\((5,20)\)</span>. Timpul de transfer (în secunde) este <span class="math inline">\(Y=\frac{100}{V}\)</span>. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Determinați funcția de repartiție și densitatea lui <span class="math inline">\(Y\)</span>.</p></li>
+<li><p>Calculați <span class="math inline">\(\PP(Y&gt;10)\)</span> și mediana lui <span class="math inline">\(Y\)</span>.</p></li>
+<li><p>Calculați timpul mediu de transfer <span class="math inline">\(\E[Y]\)</span> în două moduri și comparați-l cu <span class="math inline">\(\frac{100}{\E[V]}\)</span>.</p></li>
+<li><p>Verificați în R, prin simulare.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(F_Y(y)=\dfrac{20-100/y}{15}\)</span> pentru <span class="math inline">\(y\in[5,20]\)</span> și <span class="math inline">\(f_Y(y)=\dfrac{20}{3y^2}\)</span> pentru <span class="math inline">\(5&lt;y&lt;20\)</span> (timpul de transfer nu este uniform).</p></li>
+<li><p><span class="math inline">\(\PP(Y&gt;10)=\PP(V&lt;10)=\frac13\)</span>; mediana este <span class="math inline">\(8\)</span> secunde.</p></li>
+<li><p><span class="math inline">\(\E[Y]=\frac{20}{3}\ln4\approx9.24\)</span> s, pe când <span class="math inline">\(\frac{100}{\E[V]}=8\)</span> s: <span class="math inline">\(\E\big[\frac{100}{V}\big]\ne\frac{100}{\E[V]}\)</span>.</p></li>
+<li><p>Frecvența, mediana și media simulate sunt apropiate de <span class="math inline">\(\frac13\)</span>, <span class="math inline">\(8\)</span> și <span class="math inline">\(9.24\)</span>, iar histograma urmează densitatea <span class="math inline">\(\frac{20}{3y^2}\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="box-exr-s05-weibull" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 13</span> <span class="curs-box-name">(Un disc care se uzează: repartiția Weibull prin metoda inversei)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-niva">Pentru acasă</span> Un model mai realist decât cel din Exercițiul <a href="#box-exr-s05-memorie" class="curs-ref">8</a> pentru un disc care se uzează: durata de viață <span class="math inline">\(T\)</span> (în ani) are funcția de repartiție <span class="math inline">\(F(t)=1-e^{-(t/5)^2}\)</span> pentru <span class="math inline">\(t\ge0\)</span> și <span class="math inline">\(F(t)=0\)</span> pentru <span class="math inline">\(t&lt;0\)</span> (o repartiție <em>Weibull</em>). </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Determinați densitatea lui <span class="math inline">\(T\)</span> și mediana.</p></li>
+<li><p>Un disc funcționează de <span class="math inline">\(3\)</span> ani. Calculați probabilitatea să mai funcționeze cel puțin <span class="math inline">\(2\)</span> ani și comparați cu <span class="math inline">\(\PP(T&gt;2)\)</span>. Are <span class="math inline">\(T\)</span> proprietatea lipsei de memorie?</p></li>
+<li><p>Calculați <span class="math inline">\(\E[T]\)</span>, știind că <span class="math inline">\(\int_0^\infty e^{-x^2/2}\dd x=\sqrt{\pi/2}\)</span>.</p></li>
+<li><p>Determinați <span class="math inline">\(F^{-1}\)</span> și simulați în R <span class="math inline">\(10^5\)</span> durate de viață prin metoda inversei; verificați (a)–(c) și comparați cu funcțiile <code>dweibull</code> și <code>rweibull</code>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(f(t)=\frac{2t}{25}\,e^{-t^2/25}\)</span> pentru <span class="math inline">\(t&gt;0\)</span>; mediana <span class="math inline">\(5\sqrt{\ln2}\approx4.163\)</span> ani.</p></li>
+<li><p><span class="math inline">\(\PP(T&gt;5\mid T&gt;3)=e^{-16/25}\approx0.527\)</span>, pe când <span class="math inline">\(\PP(T&gt;2)=e^{-4/25}\approx0.852\)</span>: <span class="math inline">\(T\)</span> nu are proprietatea lipsei de memorie.</p></li>
+<li><p><span class="math inline">\(\E[T]=\frac{5\sqrt\pi}{2}\approx4.431\)</span> ani.</p></li>
+<li><p><span class="math inline">\(F^{-1}(u)=5\sqrt{-\ln(1-u)}\)</span>; valorile simulate dau mediana, media și probabilitățile apropiate de <span class="math inline">\(4.163\)</span>, <span class="math inline">\(4.431\)</span>, <span class="math inline">\(0.527\)</span> și <span class="math inline">\(0.852\)</span>; durata medie rămasă scade cu vârsta (de la <span class="math inline">\(\approx4.4\)</span> ani pentru un disc nou la <span class="math inline">\(\approx1.7\)</span> ani pentru unul vechi de <span class="math inline">\(6\)</span> ani); cuantilele coincid, până la fluctuațiile simulării, cu cele date de <code>rweibull</code> și <code>qweibull</code> (<code>shape = 2</code>, <code>scale = 5</code>).</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="box-exr-s05-standby" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 14</span> <span class="curs-box-name">(Modul de așteptare al unui server: o variabilă mixtă)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-niva">Pentru acasă</span> Durata <span class="math inline">\(T\)</span> (în secunde) dintre două cereri consecutive primite de un server are repartiția exponențială, cu media de <span class="math inline">\(30\)</span> de secunde. Pentru a economisi energie, serverul trece în <em>modul de așteptare</em> dacă nu primește nicio cerere timp de <span class="math inline">\(60\)</span> de secunde și revine la sosirea următoarei cereri. Timpul petrecut în modul de așteptare între două cereri este deci <span class="math inline">\(Y=\max(T-60,\,0)\)</span>. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Calculați <span class="math inline">\(\PP(Y=0)\)</span> și <span class="math inline">\(\PP(Y&gt;30)\)</span>. Determinați funcția de repartiție a lui <span class="math inline">\(Y\)</span>. Este <span class="math inline">\(Y\)</span> discretă? Este continuă?</p></li>
+<li><p>Calculați <span class="math inline">\(\E[Y]\)</span>.</p></li>
+<li><p>Ce fracțiune din timp petrece serverul, pe termen lung, în modul de așteptare?</p></li>
+<li><p>Verificați în R, prin simulare; reprezentați funcția de repartiție empirică a lui <span class="math inline">\(Y\)</span> cu <code>ecdf</code>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(\PP(Y=0)=1-e^{-2}\approx0.8647\)</span>, <span class="math inline">\(\PP(Y&gt;30)=e^{-3}\approx0.0498\)</span>; <span class="math inline">\(F_Y(y)=0\)</span> pentru <span class="math inline">\(y&lt;0\)</span> și <span class="math inline">\(F_Y(y)=1-e^{-2-y/30}\)</span> pentru <span class="math inline">\(y\ge0\)</span>. <span class="math inline">\(F_Y\)</span> are un salt în <span class="math inline">\(0\)</span>, apoi crește continuu: <span class="math inline">\(Y\)</span> nu este nici discretă, nici continuă (este o variabilă mixtă).</p></li>
+<li><p><span class="math inline">\(\E[Y]=30\,e^{-2}\approx4.06\)</span> s.</p></li>
+<li><p><span class="math inline">\(\frac{\E[Y]}{\E[T]}=e^{-2}\approx0.135\)</span>, adică aproximativ <span class="math inline">\(13.5\%\)</span> din timp.</p></li>
+<li><p>Frecvențele și media simulate sunt apropiate de <span class="math inline">\(0.8647\)</span>, <span class="math inline">\(0.0498\)</span>, <span class="math inline">\(4.06\)</span> și <span class="math inline">\(0.135\)</span>; funcția de repartiție empirică se suprapune peste cea teoretică și are în <span class="math inline">\(0\)</span> un salt la <span class="math inline">\(\approx0.865\)</span>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="box-exr-s05-beta" class="curs-box exercitiu">
+<div class="curs-box-title">
+<span class="curs-box-label">Exercițiul 15</span> <span class="curs-box-name">(Rata de succes a memoriei cache: repartiția Beta)</span>
+</div>
+<div class="curs-box-body">
+<p><span class="curs-tag curs-tag-niva">Pentru acasă</span> Proporția <span class="math inline">\(Y\)</span> a cererilor servite direct din memoria cache într-o zi este o variabilă aleatoare cu repartiția <span class="math inline">\(\BetaD(8,2)\)</span>. </p>
+<div class="ol-2p">
+<ol type="a">
+<li><p>Scrieți densitatea lui <span class="math inline">\(Y\)</span> (cu constanta calculată) și calculați <span class="math inline">\(\E[Y]\)</span> și <span class="math inline">\(\mathrm{SD}(Y)\)</span>.</p></li>
+<li><p>Determinați funcția de repartiție și calculați <span class="math inline">\(\PP(Y&gt;0.9)\)</span> și <span class="math inline">\(\PP(Y&lt;0.6)\)</span>.</p></li>
+<li><p>Fie <span class="math inline">\(X\)</span> încărcarea serverului din Exercițiul <a href="#box-exr-s05-densitate" class="curs-ref">1</a>. Arătați că <span class="math inline">\(X^2\sim\BetaD(1,2)\)</span>.</p></li>
+<li><p>În R: verificați (a)–(b) cu <code>pbeta</code>, <code>qbeta</code> și <code>integrate</code>; folosiți (c) pentru a construi un al doilea generator pentru <span class="math inline">\(X\)</span> și comparați-l cu <code>r_inc</code>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="curs-box rezumat">
+<div class="curs-box-title">
+Răspunsuri
+</div>
+<div class="curs-box-body">
+<div class="ol-2p">
+<ol type="a">
+<li><p><span class="math inline">\(f(y)=72\,y^7(1-y)\)</span> pentru <span class="math inline">\(0&lt;y&lt;1\)</span>; <span class="math inline">\(\E[Y]=0.8\)</span>, <span class="math inline">\(\Var(Y)=\frac{16}{1100}\approx0.0145\)</span>, <span class="math inline">\(\mathrm{SD}(Y)\approx0.1206\)</span>.</p></li>
+<li><p><span class="math inline">\(F(y)=9y^8-8y^9\)</span> pentru <span class="math inline">\(y\in[0,1]\)</span>; <span class="math inline">\(\PP(Y&gt;0.9)\approx0.2252\)</span>, <span class="math inline">\(\PP(Y&lt;0.6)\approx0.0705\)</span>.</p></li>
+<li><p>(demonstrație) <span class="math inline">\(\PP(X^2\le y)=F_X(\sqrt y)=1-(1-y)^2\)</span> pentru <span class="math inline">\(y\in[0,1]\)</span>, cu densitatea <span class="math inline">\(2(1-y)\)</span>, adică densitatea <span class="math inline">\(\BetaD(1,2)\)</span>.</p></li>
+<li><p><code>pbeta</code> și <code>integrate</code> dau <span class="math inline">\(0.2252\)</span> și <span class="math inline">\(0.0705\)</span>; mediana (<code>qbeta</code>) este <span class="math inline">\(\approx0.820\)</span>; <code>medie_var_cont</code> dă <span class="math inline">\(0.8\)</span> și <span class="math inline">\(0.1206\)</span>; cele două generatoare, <code>r_inc</code> și <code>sqrt(rbeta(n, 1, 2))</code>, dau cuantile apropiate între ele și de cele exacte.</p></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-s05-tema" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Temă</h1>
+<ol type="1">
+<li><p>Fie <span class="math inline">\(X\)</span> o variabilă aleatoare cu densitatea <span class="math inline">\(f(x)=c\,(4-x^2)\)</span> pentru <span class="math inline">\(0\le x\le2\)</span> și <span class="math inline">\(f(x)=0\)</span> altfel. Determinați <span class="math inline">\(c\)</span>, funcția de repartiție, <span class="math inline">\(\PP(X&gt;1)\)</span>, <span class="math inline">\(\E[X]\)</span> și <span class="math inline">\(\Var(X)\)</span>. Calculați mediana în R, cu <code>uniroot</code>.</p>
+<p><em>Răspuns:</em> <span class="math inline">\(c=\frac{3}{16}\)</span>; <span class="math inline">\(F(x)=\frac{12x-x^3}{16}\)</span> pe <span class="math inline">\([0,2]\)</span>; <span class="math inline">\(\PP(X&gt;1)=\frac{5}{16}\)</span>; <span class="math inline">\(\E[X]=\frac34\)</span>; <span class="math inline">\(\Var(X)=\frac45-\frac{9}{16}=\frac{19}{80}\)</span>; mediana <span class="math inline">\(\approx0.6946\)</span>: <code>uniroot(function(x) (12 * x - x^3) / 16 - 0.5, c(0, 2))$root</code>.</p></li>
+<li><p>Fie <span class="math inline">\(X\)</span> cu densitatea <span class="math inline">\(f(x)=\frac12\cos x\)</span> pe <span class="math inline">\(\big[-\frac\pi2,\frac\pi2\big]\)</span>. Determinați <span class="math inline">\(F\)</span> și <span class="math inline">\(F^{-1}\)</span>, scrieți în R un generator bazat pe metoda inversei (ca în Exercițiul <a href="#box-exr-s05-inversa" class="curs-ref">2</a>) și comparați histograma a <span class="math inline">\(10^5\)</span> valori cu densitatea. Estimați <span class="math inline">\(\Var(X)\)</span> prin simulare și prin integrare numerică.</p>
+<p><em>Răspuns:</em> <span class="math inline">\(F(x)=\frac{1+\sin x}{2}\)</span>, <span class="math inline">\(F^{-1}(u)=\arcsin(2u-1)\)</span>; în R: <code>x &lt;- asin(2 * runif(1e5) - 1)</code>; <span class="math inline">\(\E[X]=0\)</span> și <span class="math inline">\(\Var(X)=\frac{\pi^2}{4}-2\approx0.467\)</span>.</p></li>
+<li><p>Durata <span class="math inline">\(X\)</span> (în ore) a rezolvării unui incident are funcția de repartiție <span class="math inline">\(F(x)=\frac{x}{1+x}\)</span> pentru <span class="math inline">\(x\ge0\)</span> și <span class="math inline">\(F(x)=0\)</span> pentru <span class="math inline">\(x&lt;0\)</span>. Determinați densitatea, mediana și cuartilele; calculați <span class="math inline">\(\PP(X&gt;3\mid X&gt;1)\)</span> și comparați cu <span class="math inline">\(\PP(X&gt;2)\)</span>. Există <span class="math inline">\(\E[X]\)</span>?</p>
+<p><em>Răspuns:</em> <span class="math inline">\(f(x)=\frac{1}{(1+x)^2}\)</span>, <span class="math inline">\(x&gt;0\)</span>; mediana <span class="math inline">\(1\)</span>, cuartilele <span class="math inline">\(\frac13\)</span> și <span class="math inline">\(3\)</span>; <span class="math inline">\(\PP(X&gt;3\mid X&gt;1)=\frac{1/4}{1/2}=\frac12&gt;\frac13=\PP(X&gt;2)\)</span> (cu cât incidentul durează mai mult, cu atât este de așteptat să mai dureze); <span class="math inline">\(\E[X]=\int_0^\infty\frac{\dd x}{1+x}=\infty\)</span>, media nu există.</p></li>
+<li><p>Un pachet de date sosește cu o întârziere <span class="math inline">\(X\)</span> (în ms) repartizată uniform pe <span class="math inline">\((0,10)\)</span>. Penalizarea este <span class="math inline">\(g(X)\)</span>, cu <span class="math inline">\(g(x)=0\)</span> dacă <span class="math inline">\(x\le4\)</span> și <span class="math inline">\(g(x)=(x-4)^2\)</span> dacă <span class="math inline">\(x&gt;4\)</span>. Calculați penalizarea medie și probabilitatea ca penalizarea să fie nulă.</p>
+<p><em>Răspuns:</em> <span class="math inline">\(\E[g(X)]=\int_4^{10}\frac{(x-4)^2}{10}\dd x=\frac{216}{30}=7.2\)</span>; <span class="math inline">\(\PP(g(X)=0)=0.4\)</span>.</p></li>
+<li><p>Un job programat pornește la un moment <span class="math inline">\(U\)</span> (în minute după ora fixă) repartizat uniform pe <span class="math inline">\((0,60)\)</span>. Calculați media și abaterea standard ale lui <span class="math inline">\(U\)</span> și probabilitatea ca jobul să pornească în ultimele <span class="math inline">\(10\)</span> minute ale orei, știind că nu a pornit în prima jumătate de oră.</p>
+<p><em>Răspuns:</em> <span class="math inline">\(\E[U]=30\)</span>, <span class="math inline">\(\mathrm{SD}(U)=\frac{60}{\sqrt{12}}\approx17.32\)</span> minute; <span class="math inline">\(\PP(U&gt;50\mid U&gt;30)=\frac{10}{30}=\frac13\)</span> (condiționat de <span class="math inline">\(\{U&gt;30\}\)</span>, <span class="math inline">\(U\)</span> este uniformă pe <span class="math inline">\((30,60)\)</span>).</p></li>
+<li><p>Timpul dintre două erori consecutive scrise într-un jurnal este exponențial, cu media de <span class="math inline">\(20\)</span> de minute. Calculați probabilitatea să nu apară nicio eroare timp de o oră, mediana, <span class="math inline">\(\PP(T&gt;50\mid T&gt;30)\)</span> și probabilitatea ca a treia eroare să apară după mai mult de o oră. Verificați în R cu <code>pexp</code>, <code>qexp</code> și <code>pgamma</code>.</p>
+<p><em>Răspuns:</em> <span class="math inline">\(e^{-3}\approx0.0498\)</span>; <span class="math inline">\(20\ln2\approx13.86\)</span> minute; <span class="math inline">\(\PP(T&gt;20)=e^{-1}\approx0.368\)</span>; momentul celei de-a treia erori este <span class="math inline">\(\GammaD\big(3,\frac1{20}\big)\)</span>, iar probabilitatea cerută este <span class="math inline">\(\PP(\Pois(3)\le2)=8.5\,e^{-3}\approx0.423\)</span>: <code>1 - pgamma(60, 3, 1/20)</code> sau <code>ppois(2, 3)</code>.</p></li>
+<li><p>Durata de execuție (în secunde) a unui test automat este <span class="math inline">\(X\sim\Norm(12,2^2)\)</span>. Calculați <span class="math inline">\(\PP(X&gt;15)\)</span>, <span class="math inline">\(\PP(10&lt;X&lt;13)\)</span>, cuantila de ordin <span class="math inline">\(0.9\)</span> și limita de timp care este depășită de numai <span class="math inline">\(0.1\%\)</span> dintre execuții.</p>
+<p><em>Răspuns:</em> <span class="math inline">\(1-\Phi(1.5)\approx0.0668\)</span>; <span class="math inline">\(\Phi(0.5)-\Phi(-1)\approx0.5328\)</span>; <span class="math inline">\(12+2\cdot1.2816\approx14.56\)</span> s; <span class="math inline">\(12+2\cdot3.090\approx18.18\)</span> s (<code>qnorm(0.999, 12, 2)</code>).</p></li>
+<li><p>Simulați în R câte <span class="math inline">\(10^5\)</span> durate de viață din repartițiile <span class="math inline">\(\Exp\big(\frac14\big)\)</span> și <span class="math inline">\(\GammaD\big(2,\frac12\big)\)</span> (ambele cu media <span class="math inline">\(4\)</span>) și estimați, pentru fiecare, <span class="math inline">\(\PP(T&gt;5\mid T&gt;3)\)</span> și <span class="math inline">\(\PP(T&gt;2)\)</span>. Care dintre ele are proprietatea lipsei de memorie? Comparați cu valorile exacte, calculate cu <code>pexp</code> și <code>pgamma</code>.</p>
+<p><em>Indicație:</em> <code>x &lt;- rgamma(1e5, shape = 2, rate = 1/2)</code>, apoi <code>mean(x[x &gt; 3] &gt; 5)</code> și <code>mean(x &gt; 2)</code>, ca în Exercițiul <a href="#box-exr-s05-memorie" class="curs-ref">8</a>. <em>Răspuns:</em> pentru exponențială ambele valori sunt <span class="math inline">\(e^{-0.5}\approx0.607\)</span>; pentru Gamma, <span class="math inline">\(\PP(T&gt;5\mid T&gt;3)\approx0.515&lt;0.736\approx\PP(T&gt;2)\)</span>: suma a două durate exponențiale „îmbătrânește”.</p></li>
+</ol>
+</section>
+<section id="bibliografie" class="level1 unnumbered">
+<h1 class="unnumbered">Bibliografie</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-bertsekas2008" class="csl-entry" role="listitem">
+Bertsekas, Dimitri P., and John N. Tsitsiklis. 2008. <em>Introduction to Probability</em>. 2nd ed. Athena Scientific.
+</div>
+<div id="ref-blitzstein2019" class="csl-entry" role="listitem">
+Blitzstein, Joseph K., and Jessica Hwang. 2019. <em>Introduction to Probability</em>. 2nd ed. CRC Press.
+</div>
+<div id="ref-chan2021" class="csl-entry" role="listitem">
+Chan, Stanley H. 2021. <em>Introduction to Probability for Data Science</em>. Michigan Publishing.
+</div>
+<div id="ref-ross2014" class="csl-entry" role="listitem">
+Ross, Sheldon M. 2014. <em>Introduction to Probability and Statistics for Engineers and Scientists</em>. 5th ed. Elsevier Academic Press.
+</div>
+<div id="ref-dobrow2021" class="csl-entry" role="listitem">
+Wagaman, Amy S., and Robert P. Dobrow. 2021. <em>Probability with Applications and <span>R</span></em>. 2nd ed. Wiley.
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<!-- Buton „Înapoi sus”: apare după ce pagina a fost derulată -->
+
+<button id="curs-to-top" type="button" aria-label="Înapoi la începutul paginii" title="Înapoi sus">
+
+  <i class="bi bi-arrow-up"></i>
+
+</button>
+
+<script>
+
+(function () {
+
+  var btn = document.getElementById('curs-to-top');
+
+  if (!btn) return;
+
+  var toggle = function () {
+
+    btn.classList.toggle('visible', window.scrollY > 400);
+
+  };
+
+  window.addEventListener('scroll', toggle, { passive: true });
+
+  toggle();
+
+  btn.addEventListener('click', function () {
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    btn.blur();
+
+  });
+
+})();
+
+</script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiat!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiat!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/AlexAmarioarei\.github\.io\/curs-ps-fmi\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../laborator_nosols/04-medie-varianta.html" class="pagination-link" aria-label="4. Media și varianța variabilelor aleatoare discrete. Metoda indicatorilor">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">4. Media și varianța variabilelor aleatoare discrete. Metoda indicatorilor</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2026, <a href="https://alexamarioarei.github.io/">Alexandru Amărioarei</a></p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Această pagină a fost creată în <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

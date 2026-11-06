@@ -89,6 +89,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../laborator_nosols/05-va-continue.html" rel="next">
 <link href="../laborator_nosols/03-va-discrete.html" rel="prev">
 <link href="../images/ps_sticker.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -283,6 +284,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../curs/04-va-continue.html">
  <span class="dropdown-text">Cursul 4 — Variabile aleatoare continue</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../curs/05-repartitii-continue.html">
+ <span class="dropdown-text">Cursul 5 — Repartiții continue remarcabile și transformări</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -313,6 +318,10 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../laborator_nosols/04-medie-varianta.html">
  <span class="dropdown-text">Seminarul 4 — Media și varianța variabilelor aleatoare discrete. Metoda indicatorilor (fișă de lucru)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../laborator_nosols/05-va-continue.html">
+ <span class="dropdown-text">Seminarul 5 — Variabile aleatoare continue și repartiții uzuale (fișă de lucru)</span></a>
   </li>  
     </ul>
   </li>
@@ -406,6 +415,12 @@ window.Quarto = {
  <span class="menu-text">4. Media și varianța variabilelor aleatoare discrete. Metoda indicatorilor</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../laborator_nosols/05-va-continue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Variabile aleatoare continue și repartiții uzuale</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -419,7 +434,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#sec-s04-breviar" id="toc-sec-s04-breviar" class="nav-link active" data-scroll-target="#sec-s04-breviar"><span class="header-section-number">1</span> Breviar</a></li>
-  <li><a href="#sec-s04-definitie" id="toc-sec-s04-definitie" class="nav-link" data-scroll-target="#sec-s04-definitie"><span class="header-section-number">2</span> Media și varianța din definiție. Formula de transfer</a></li>
+  <li><a href="#sec-s04-definitie" id="toc-sec-s04-definitie" class="nav-link" data-scroll-target="#sec-s04-definitie"><span class="header-section-number">2</span> Media și varianța din definiție. Formula de transport</a></li>
   <li><a href="#sec-s04-uzuale" id="toc-sec-s04-uzuale" class="nav-link" data-scroll-target="#sec-s04-uzuale"><span class="header-section-number">3</span> Media și varianța repartițiilor uzuale</a></li>
   <li><a href="#sec-s04-indicatori" id="toc-sec-s04-indicatori" class="nav-link" data-scroll-target="#sec-s04-indicatori"><span class="header-section-number">4</span> Liniaritatea mediei și metoda indicatorilor</a></li>
   <li><a href="#sec-s04-var-suma" id="toc-sec-s04-var-suma" class="nav-link" data-scroll-target="#sec-s04-var-suma"><span class="header-section-number">5</span> Varianța sumei de variabile independente</a></li>
@@ -480,13 +495,13 @@ Planul seminarului și laboratorului
 <p>Media și varianța rezumă o repartiție prin două numere: unde se află „centrul” ei și cât de împrăștiate sunt valorile în jurul acestuia. În ședința de astăzi le calculăm în trei feluri — din definiție, cu formulele repartițiilor uzuale și, mai ales, descompunând variabila într-o <strong>sumă de indicatori</strong> — și verificăm fiecare rezultat în R, prin calcul exact și prin simulare. Ședința se încheie cu două aplicații clasice din informatică: problema colecționarului de cupoane și numărul mediu de comparații efectuate de algoritmul Quicksort. Fiecare exercițiu are o parte matematică și una în R (<em>Laborator</em>; în fișă, cu un schelet de cod de completat), iar funcțiile R scrise la început sunt refolosite pe parcurs.</p>
 <p><strong>Obiective.</strong> La sfârșitul ședinței studentul trebuie să poată:</p>
 <ol type="1">
-<li>calcula media, varianța și abaterea standard ale unei variabile discrete date prin tabelul de repartiție, folosi formula de transfer și decide dacă un joc de noroc este corect;</li>
+<li>calcula media, varianța și abaterea standard ale unei variabile discrete date prin tabelul de repartiție, folosi formula de transport și decide dacă un joc de noroc este corect;</li>
 <li>recunoaște o repartiție uzuală (binomială, geometrică, Poisson, hipergeometrică) într-o problemă concretă, aplica formulele pentru medie și varianță și interpreta abaterea standard;</li>
 <li>scrie o variabilă care <em>numără</em> ca sumă de indicatori și calcula media ei prin liniaritate, chiar când indicatorii nu sunt independenți (perechi cu aceeași zi de naștere, puncte fixe, cupoane, Quicksort);</li>
 <li>calcula varianța unei sume: de variabile independente (varianțele se adună) și de indicatori dependenți (apar termeni suplimentari);</li>
 <li>calcula în R media și varianța unei repartiții tabelate, aproxima <span class="math inline">\(\E[X]\)</span> și <span class="math inline">\(\Var(X)\)</span> prin <code>mean</code> și <code>var</code> pe un eșantion simulat, urmări mediile curente și scrie funcții recursive simple.</li>
 </ol>
-<p><strong>Structura.</strong> Breviar; media și varianța din definiție și formula de transfer; media și varianța repartițiilor uzuale; liniaritatea mediei și metoda indicatorilor; varianța sumei de variabile independente; exerciții suplimentare; temă. Pentru aprofundare: <span class="citation" data-cites="blitzstein2019">(<a href="#ref-blitzstein2019" role="doc-biblioref">Blitzstein and Hwang 2019</a>, cap. 4)</span>, <span class="citation" data-cites="bertsekas2008">(<a href="#ref-bertsekas2008" role="doc-biblioref">Bertsekas and Tsitsiklis 2008</a>, cap. 2)</span>, <span class="citation" data-cites="ross2014">(<a href="#ref-ross2014" role="doc-biblioref">Ross 2014</a>, cap. 4)</span>, pentru simulări în R <span class="citation" data-cites="dobrow2021">(<a href="#ref-dobrow2021" role="doc-biblioref">Wagaman and Dobrow 2021</a>)</span>, iar pentru analiza algoritmilor probabiliști (colecționarul de cupoane, Quicksort) <span class="citation" data-cites="mitzenmacher2017">(<a href="#ref-mitzenmacher2017" role="doc-biblioref">Mitzenmacher and Upfal 2017</a>, cap. 2)</span>.</p>
+<p><strong>Structura.</strong> Breviar; media și varianța din definiție și formula de transport; media și varianța repartițiilor uzuale; liniaritatea mediei și metoda indicatorilor; varianța sumei de variabile independente; exerciții suplimentare; temă. Pentru aprofundare: <span class="citation" data-cites="blitzstein2019">(<a href="#ref-blitzstein2019" role="doc-biblioref">Blitzstein and Hwang 2019</a>, cap. 4)</span>, <span class="citation" data-cites="bertsekas2008">(<a href="#ref-bertsekas2008" role="doc-biblioref">Bertsekas and Tsitsiklis 2008</a>, cap. 2)</span>, <span class="citation" data-cites="ross2014">(<a href="#ref-ross2014" role="doc-biblioref">Ross 2014</a>, cap. 4)</span>, pentru simulări în R <span class="citation" data-cites="dobrow2021">(<a href="#ref-dobrow2021" role="doc-biblioref">Wagaman and Dobrow 2021</a>)</span>, iar pentru analiza algoritmilor probabiliști (colecționarul de cupoane, Quicksort) <span class="citation" data-cites="mitzenmacher2017">(<a href="#ref-mitzenmacher2017" role="doc-biblioref">Mitzenmacher and Upfal 2017</a>, cap. 2)</span>.</p>
 </div>
 </div>
 <div class="curs-box rezumat">
@@ -504,7 +519,7 @@ Planul ședinței
 </ul>
 <p><strong>Dacă timpul permite:</strong></p>
 <ul>
-<li>Exercițiul <a href="#box-exr-s04-tabel" class="curs-ref">2</a> — formula de transfer și <span class="math inline">\(\E[g(X)]\ne g(\E[X])\)</span>;</li>
+<li>Exercițiul <a href="#box-exr-s04-tabel" class="curs-ref">2</a> — formula de transport și <span class="math inline">\(\E[g(X)]\ne g(\E[X])\)</span>;</li>
 <li>Exercițiul <a href="#box-exr-s04-puncte-fixe" class="curs-ref">8</a> — varianța numărului de puncte fixe: indicatori dependenți;</li>
 <li>Exercițiul <a href="#box-exr-s04-masuratori" class="curs-ref">11</a> — media a <span class="math inline">\(n\)</span> măsurători independente.</li>
 </ul>
@@ -519,7 +534,7 @@ Planul ședinței
 </div>
 <section id="sec-s04-breviar" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Breviar</h1>
-<p>Folosim noțiunile și rezultatele din partea a doua a <a href="..\curs\03-va-discrete.html" class="curs-ref">Cursul 3</a>: media, formula de transfer, varianța și tabelul mediilor și varianțelor repartițiilor uzuale. Le reamintim pe scurt, cu trimiterile corespunzătoare; în rezolvări (publicate ulterior) indicăm la fiecare pas rezultatul aplicat.</p>
+<p>Folosim noțiunile și rezultatele din partea a doua a <a href="..\curs\03-va-discrete.html" class="curs-ref">Cursul 3</a>: media, formula de transport, varianța și tabelul mediilor și varianțelor repartițiilor uzuale. Le reamintim pe scurt, cu trimiterile corespunzătoare; în rezolvări (publicate ulterior) indicăm la fiecare pas rezultatul aplicat.</p>
 <div class="curs-box rezumat">
 <div class="curs-box-title">
 Rezultate din Cursul 3 folosite azi
@@ -527,7 +542,7 @@ Rezultate din Cursul 3 folosite azi
 <div class="curs-box-body">
 <ul>
 <li><p><strong>Media</strong> (Definiția <a href="..\curs\03-va-discrete.html#box-def-k03-media" class="curs-ref">24 din Cursul 3</a>): <span class="math inline">\(\E[X]=\sum_x x\,\PP(X=x)\)</span>, dacă <span class="math inline">\(\sum_x|x|\,\PP(X=x)&lt;\infty\)</span>; altfel media nu există (Exemplul <a href="..\curs\03-va-discrete.html#box-ex-k03-st-petersburg" class="curs-ref">16 din Cursul 3</a>). Interpretare: media aritmetică a valorilor lui <span class="math inline">\(X\)</span> într-un număr mare de repetări ale experimentului.</p></li>
-<li><p><strong>Formula de transfer</strong> (Teorema <a href="..\curs\03-va-discrete.html#box-thm-k03-lotus" class="curs-ref">25 din Cursul 3</a>): <span class="math inline">\(\E[g(X)]=\sum_x g(x)\,\PP(X=x)\)</span>, fără a determina repartiția lui <span class="math inline">\(g(X)\)</span>. În general <span class="math inline">\(\E[g(X)]\ne g(\E[X])\)</span>.</p></li>
+<li><p><strong>Formula de transport</strong> (Teorema <a href="..\curs\03-va-discrete.html#box-thm-k03-lotus" class="curs-ref">25 din Cursul 3</a>): <span class="math inline">\(\E[g(X)]=\sum_x g(x)\,\PP(X=x)\)</span>, fără a determina repartiția lui <span class="math inline">\(g(X)\)</span>. În general <span class="math inline">\(\E[g(X)]\ne g(\E[X])\)</span>.</p></li>
 <li><p><strong>Proprietățile mediei</strong> (Teorema <a href="..\curs\03-va-discrete.html#box-thm-k03-prop-medie" class="curs-ref">26 din Cursul 3</a>): liniaritatea <span class="math inline">\(\E[aX+bY]=a\E[X]+b\E[Y]\)</span>, <strong>fără nicio ipoteză de independență</strong>; <span class="math inline">\(\E[\Ind_A]=\PP(A)\)</span>; dacă <span class="math inline">\(X\indep Y\)</span>, atunci <span class="math inline">\(\E[XY]=\E[X]\E[Y]\)</span>.</p></li>
 <li><p><strong>Metoda indicatorilor</strong>: dacă <span class="math inline">\(X\)</span> numără câte dintre evenimentele <span class="math inline">\(A_1,\dots,A_n\)</span> se realizează, atunci <span class="math inline">\(X=\Ind_{A_1}+\dots+\Ind_{A_n}\)</span> și <span class="math inline">\(\E[X]=\PP(A_1)+\dots+\PP(A_n)\)</span> (Exemplul <a href="..\curs\03-va-discrete.html#box-ex-k03-potriviri" class="curs-ref">18 din Cursul 3</a>).</p></li>
 <li><p><strong>Varianța și abaterea standard</strong> (Definiția <a href="..\curs\03-va-discrete.html#box-def-k03-varianta" class="curs-ref">28 din Cursul 3</a>, Teorema <a href="..\curs\03-va-discrete.html#box-thm-k03-prop-var" class="curs-ref">29 din Cursul 3</a>): <span class="math inline">\(\Var(X)=\E\big[(X-\E[X])^2\big]=\E[X^2]-(\E[X])^2\)</span>, <span class="math inline">\(\mathrm{SD}(X)=\sqrt{\Var(X)}\)</span>, <span class="math inline">\(\Var(aX+b)=a^2\Var(X)\)</span>.</p></li>
@@ -562,7 +577,7 @@ Instrumente R folosite azi
 </div>
 </section>
 <section id="sec-s04-definitie" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Media și varianța din definiție. Formula de transfer</h1>
+<h1 data-number="2"><span class="header-section-number">2</span> Media și varianța din definiție. Formula de transport</h1>
 <p>Începem cu variabile care iau puține valori, pentru care media și varianța se calculează direct din tabelul de repartiție. Primul exercițiu introduce și funcția R <code>medie_var</code>, pe care o refolosim în toată ședința, iar al treilea arată ce se întâmplă cu simulările atunci când media nu există.</p>
 <div id="box-exr-s04-joc" class="curs-box exercitiu">
 <div class="curs-box-title">
@@ -603,7 +618,7 @@ Instrumente R folosite azi
 </div>
 </div>
 </div>
-<p>Al doilea exercițiu exersează aceleași calcule pe o variabilă dată direct prin tabel și pune față în față cele două moduri de a calcula <span class="math inline">\(\E[g(X)]\)</span>: prin repartiția lui <span class="math inline">\(g(X)\)</span> și prin formula de transfer.</p>
+<p>Al doilea exercițiu exersează aceleași calcule pe o variabilă dată direct prin tabel și pune față în față cele două moduri de a calcula <span class="math inline">\(\E[g(X)]\)</span>: prin repartiția lui <span class="math inline">\(g(X)\)</span> și prin formula de transport.</p>
 <div id="box-exr-s04-tabel" class="curs-box exercitiu">
 <div class="curs-box-title">
 <span class="curs-box-label">Exercițiul 2</span> <span class="curs-box-name">(O variabilă dată prin tabel: tichete de suport)</span>
@@ -616,7 +631,7 @@ X\sim\begin{pmatrix}0&amp;1&amp;2&amp;3&amp;4\\0.1&amp;0.3&amp;0.3&amp;0.2&amp;0
 <ol type="a">
 <li><p>Calculați <span class="math inline">\(\E[X]\)</span>, <span class="math inline">\(\Var(X)\)</span> (din definiție și cu formula <span class="math inline">\(\E[X^2]-(\E[X])^2\)</span>) și <span class="math inline">\(\mathrm{SD}(X)\)</span>.</p></li>
 <li><p>Costul zilnic al serviciului este <span class="math inline">\(C=100+40X\)</span> lei (un cost fix plus <span class="math inline">\(40\)</span> de lei pentru fiecare tichet). Calculați <span class="math inline">\(\E[C]\)</span>, <span class="math inline">\(\Var(C)\)</span> și <span class="math inline">\(\mathrm{SD}(C)\)</span>.</p></li>
-<li><p>Echipa poate rezolva cel mult două tichete pe zi; celelalte sunt amânate. Fie <span class="math inline">\(Y=\max(X-2,0)\)</span> numărul de tichete amânate. Calculați <span class="math inline">\(\E[Y]\)</span> în două moduri: determinând repartiția lui <span class="math inline">\(Y\)</span> și cu formula de transfer. Este adevărat că <span class="math inline">\(\E[Y]=\max(\E[X]-2,0)\)</span>?</p></li>
+<li><p>Echipa poate rezolva cel mult două tichete pe zi; celelalte sunt amânate. Fie <span class="math inline">\(Y=\max(X-2,0)\)</span> numărul de tichete amânate. Calculați <span class="math inline">\(\E[Y]\)</span> în două moduri: determinând repartiția lui <span class="math inline">\(Y\)</span> și cu formula de transport. Este adevărat că <span class="math inline">\(\E[Y]=\max(\E[X]-2,0)\)</span>?</p></li>
 <li><p>Verificați rezultatele în R, prin calcul exact și prin simulare.</p></li>
 </ol>
 </div>
@@ -628,7 +643,7 @@ X\sim\begin{pmatrix}0&amp;1&amp;2&amp;3&amp;4\\0.1&amp;0.3&amp;0.3&amp;0.2&amp;0
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">medie_var</span>(___, p)                   <span class="co"># (b): valorile lui C, aceleași probabilități</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> ___                            <span class="co"># (c): valorile lui Y = g(X)</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(p, g, sum)                   <span class="co"># repartiția lui Y</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>___                                 <span class="co"># E[Y] cu formula de transfer</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>___                                 <span class="co"># E[Y] cu formula de transport</span></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">402</span>)</span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">sample</span>(x, <span class="fl">1e5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> p)   <span class="co"># 100 000 de zile</span></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">medie =</span> <span class="fu">mean</span>(X), <span class="at">varianta =</span> <span class="fu">var</span>(X), <span class="at">amanate =</span> ___,</span>
@@ -729,7 +744,7 @@ Răspunsuri
 <div class="ol-2p">
 <ol type="a">
 <li><p>Calculați <span class="math inline">\(\E[X]\)</span>, <span class="math inline">\(\Var(X)\)</span>, <span class="math inline">\(\mathrm{SD}(X)\)</span> și <span class="math inline">\(\PP\big(|X-\E[X]|\le2\,\mathrm{SD}(X)\big)\)</span>.</p></li>
-<li><p>Serverul poate procesa cel mult <span class="math inline">\(5\)</span> cereri pe secundă; cererile în plus sunt respinse. Fie <span class="math inline">\(R=\max(X-5,0)\)</span> numărul de cereri respinse într-o secundă. Calculați <span class="math inline">\(\E[R]\)</span> cu formula de transfer. Ce proporție din cereri este respinsă pe termen lung?</p></li>
+<li><p>Serverul poate procesa cel mult <span class="math inline">\(5\)</span> cereri pe secundă; cererile în plus sunt respinse. Fie <span class="math inline">\(R=\max(X-5,0)\)</span> numărul de cereri respinse într-o secundă. Calculați <span class="math inline">\(\E[R]\)</span> cu formula de transport. Ce proporție din cereri este respinsă pe termen lung?</p></li>
 <li><p>Fie <span class="math inline">\(Y\)</span> numărul de cereri sosite într-un minut. Calculați <span class="math inline">\(\E[Y]\)</span>, <span class="math inline">\(\Var(Y)\)</span> și <span class="math inline">\(\mathrm{SD}(Y)\)</span> și comparați raportul <span class="math inline">\(\mathrm{SD}/\text{medie}\)</span> pentru o secundă și pentru un minut.</p></li>
 <li><p>Verificați în R și determinați cea mai mică capacitate <span class="math inline">\(c\)</span> pentru care <span class="math inline">\(\PP(X&gt;c)\le0.01\)</span>.</p></li>
 </ol>
@@ -1146,7 +1161,7 @@ Răspunsuri
 <ol type="1">
 <li><p>La ruleta europeană (<span class="math inline">\(37\)</span> de numere: <span class="math inline">\(0,1,\dots,36\)</span>, dintre care <span class="math inline">\(18\)</span> roșii) un jucător mizează <span class="math inline">\(1\)</span> leu. Dacă mizează pe un număr și acesta iese, câștigă <span class="math inline">\(35\)</span> de lei; dacă mizează pe „roșu” și iese un număr roșu, câștigă <span class="math inline">\(1\)</span> leu; altfel pierde miza. Calculați media și abaterea standard a câștigului net pentru fiecare dintre cele două pariuri și simulați în R câte <span class="math inline">\(10^5\)</span> partide. Ce au în comun și prin ce diferă cele două pariuri?</p>
 <p><em>Răspuns:</em> media este <span class="math inline">\(-\frac1{37}\approx-0.027\)</span> în ambele cazuri; abaterea standard este <span class="math inline">\(\approx5.84\)</span> pentru pariul pe un număr și <span class="math inline">\(\approx1.00\)</span> pentru pariul pe roșu.</p></li>
-<li><p>Fie <span class="math inline">\(X\sim\Unif(\{-2,-1,0,1,2\})\)</span>. Calculați <span class="math inline">\(\E[X]\)</span> și <span class="math inline">\(\Var(X)\)</span>, determinați repartiția lui <span class="math inline">\(Y=X^2\)</span> și calculați <span class="math inline">\(\E[Y]\)</span> și <span class="math inline">\(\Var(Y)\)</span>. Calculați <span class="math inline">\(\E[2^X]\)</span> cu formula de transfer și comparați cu <span class="math inline">\(2^{\E[X]}\)</span>.</p>
+<li><p>Fie <span class="math inline">\(X\sim\Unif(\{-2,-1,0,1,2\})\)</span>. Calculați <span class="math inline">\(\E[X]\)</span> și <span class="math inline">\(\Var(X)\)</span>, determinați repartiția lui <span class="math inline">\(Y=X^2\)</span> și calculați <span class="math inline">\(\E[Y]\)</span> și <span class="math inline">\(\Var(Y)\)</span>. Calculați <span class="math inline">\(\E[2^X]\)</span> cu formula de transport și comparați cu <span class="math inline">\(2^{\E[X]}\)</span>.</p>
 <p><em>Răspuns:</em> <span class="math inline">\(\E[X]=0\)</span>, <span class="math inline">\(\Var(X)=2\)</span>; <span class="math inline">\(Y\sim\begin{pmatrix}0&amp;1&amp;4\\ \frac15&amp;\frac25&amp;\frac25\end{pmatrix}\)</span>, <span class="math inline">\(\E[Y]=2\)</span>, <span class="math inline">\(\Var(Y)=2.8\)</span>; <span class="math inline">\(\E[2^X]=1.55\ne1=2^{\E[X]}\)</span>.</p></li>
 <li><p>Variabila <span class="math inline">\(X\)</span> cu <span class="math inline">\(\PP(X=k)=\frac{1}{k(k+1)}\)</span>, <span class="math inline">\(k\ge1\)</span>, nu are medie finită (Exercițiul <a href="..\curs\03-va-discrete.html#box-exr-k03-ex-fara-medie" class="curs-ref">3 din Cursul 3</a>). Simulați în R <span class="math inline">\(10^5\)</span> valori ale lui <span class="math inline">\(X\)</span> și reprezentați grafic mediile curente; repetați de câteva ori și comentați.</p>
 <p><em>Indicație:</em> <span class="math inline">\(\PP(X&gt;n)=\frac{1}{n+1}\)</span>, deci <span class="math inline">\(X\)</span> se poate simula prin <code>floor(1 / runif(B))</code>, unde <code>runif(B)</code> generează <span class="math inline">\(B\)</span> numere aleatoare uniforme în <span class="math inline">\((0,1)\)</span>. Mediile curente se calculează cu <code>cumsum(x) / seq_along(x)</code>; ele nu se stabilizează, ca în Exercițiul <a href="#box-exr-s04-petersburg" class="curs-ref">3</a>.</p></li>
@@ -1631,6 +1646,9 @@ Wagaman, Amy S., and Robert P. Dobrow. 2021. <em>Probability with Applications a
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../laborator_nosols/05-va-continue.html" class="pagination-link" aria-label="5. Variabile aleatoare continue și repartiții uzuale">
+        <span class="nav-page-text">5. Variabile aleatoare continue și repartiții uzuale</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

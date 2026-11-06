@@ -292,6 +292,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../curs/04-va-continue.html">
  <span class="dropdown-text">Cursul 4 — Variabile aleatoare continue</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../curs/05-repartitii-continue.html">
+ <span class="dropdown-text">Cursul 5 — Repartiții continue remarcabile și transformări</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -322,6 +326,10 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../laborator_nosols/04-medie-varianta.html">
  <span class="dropdown-text">Seminarul 4 — Media și varianța variabilelor aleatoare discrete. Metoda indicatorilor (fișă de lucru)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../laborator_nosols/05-va-continue.html">
+ <span class="dropdown-text">Seminarul 5 — Variabile aleatoare continue și repartiții uzuale (fișă de lucru)</span></a>
   </li>  
     </ul>
   </li>
@@ -413,6 +421,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../curs/04-va-continue.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">4. Variabile aleatoare continue</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../curs/05-repartitii-continue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Repartiții continue remarcabile și transformări</span></a>
   </div>
 </li>
       </ul>
@@ -523,7 +537,7 @@ Planul cursului
 <li>determina funcția de masă a unei variabile discrete și a unei funcții de o variabilă discretă;</li>
 <li>recunoaște și folosi repartițiile discrete uzuale: Bernoulli, binomială, hipergeometrică, uniformă, geometrică, negativ binomială, Poisson (inclusiv aproximarea Poisson a binomialei);</li>
 <li>verifica independența a două sau a mai multor variabile aleatoare discrete;</li>
-<li>calcula media și varianța, folosind formula de transfer, liniaritatea mediei și metoda indicatorilor;</li>
+<li>calcula media și varianța, folosind formula de transport, liniaritatea mediei și metoda indicatorilor;</li>
 <li>lucra în R cu funcțiile <code>d</code>, <code>p</code>, <code>q</code> și <code>r</code> ale repartițiilor uzuale.</li>
 </ol>
 <p><strong>Structura.</strong> Recapitulare; variabile aleatoare; variabile aleatoare discrete și funcția de masă; repartiții discrete uzuale; funcții de variabile aleatoare; independența variabilelor aleatoare discrete; media; momente și varianța; media și varianța repartițiilor uzuale; exerciții rezolvate și exerciții propuse. Pentru aprofundare: <span class="citation" data-cites="blitzstein2019">(<a href="#ref-blitzstein2019" role="doc-biblioref">Blitzstein and Hwang 2019</a>, cap. 3–4)</span>, <span class="citation" data-cites="bertsekas2008">(<a href="#ref-bertsekas2008" role="doc-biblioref">Bertsekas and Tsitsiklis 2008</a>, cap. 2)</span>.</p>
@@ -1107,7 +1121,7 @@ Atenție!
 <p><em>Controlul calității.</em> Un lot conține <span class="math inline">\(N=100\)</span> de piese, dintre care <span class="math inline">\(M=5\)</span> sunt defecte. Un inspector extrage la întâmplare, fără întoarcere, <span class="math inline">\(n=10\)</span> piese și acceptă lotul dacă nu găsește nicio piesă defectă. Numărul de piese defecte din eșantion este <span class="math inline">\(X\sim\HGeom(100,5,10)\)</span>, deci <span class="math display">\[
 \PP(\text{lot acceptat})=\PP(X=0)=\frac{\binom50\binom{95}{10}}{\binom{100}{10}}\approx 0.5838 .
 \]</span> Dacă extragerile ar fi fost cu întoarcere, am fi avut <span class="math inline">\(X\sim\Bin(10,0.05)\)</span> și <span class="math inline">\(\PP(X=0)=0.95^{10}\approx0.5987\)</span>, valoare apropiată.</p>
-<p><em>Captură-recaptură.</em> Pentru a estima numărul necunoscut <span class="math inline">\(N\)</span> de pești dintr-un lac, se capturează <span class="math inline">\(M\)</span> pești, se marchează și se eliberează. După amestecare se capturează <span class="math inline">\(n\)</span> pești; numărul <span class="math inline">\(X\)</span> de pești marcați dintre aceștia este <span class="math inline">\(X\sim\HGeom(N,M,n)\)</span>. Proporția de pești marcați din a doua captură, <span class="math inline">\(X/n\)</span>, ar trebui să fie apropiată de <span class="math inline">\(M/N\)</span>, ceea ce sugerează estimarea <span class="math inline">\(\hat N=Mn/X\)</span>. De exemplu, cu <span class="math inline">\(M=100\)</span>, <span class="math inline">\(n=80\)</span> și <span class="math inline">\(X=16\)</span> pești marcați recapturați, obținem <span class="math inline">\(\hat N=500\)</span>. (Vom reveni asupra estimării parametrilor în partea a doua a cursului.)</p>
+<p><em>Captură-recaptură.</em> Pentru a estima numărul necunoscut <span class="math inline">\(N\)</span> de pești dintr-un lac, se capturează <span class="math inline">\(M\)</span> pești, se marchează și se eliberează. După amestecare se capturează <span class="math inline">\(n\)</span> pești; numărul <span class="math inline">\(X\)</span> de pești marcați dintre aceștia este <span class="math inline">\(X\sim\HGeom(N,M,n)\)</span>. Proporția de pești marcați din a doua captură, <span class="math inline">\(X/n\)</span>, ar trebui să fie apropiată de <span class="math inline">\(M/N\)</span>, ceea ce sugerează estimarea <span class="math inline">\(\hat N=Mn/X\)</span>. De exemplu, cu <span class="math inline">\(M=100\)</span>, <span class="math inline">\(n=80\)</span> și <span class="math inline">\(X=16\)</span> pești marcați recapturați, obținem <span class="math inline">\(\hat N=500\)</span>. (Vom reveni asupra estimării parametrilor în partea a doua a semestrului, Cursul 10.)</p>
 </div>
 </div>
 <p>Atunci când numărul total de bile <span class="math inline">\(N\)</span> este mare în comparație cu numărul de extrageri <span class="math inline">\(n\)</span>, extragerea unei bile modifică foarte puțin compoziția urnei, iar extragerile fără întoarcere se comportă aproape ca extragerile cu întoarcere. Se poate arăta că, dacă <span class="math inline">\(N\to\infty\)</span> și <span class="math inline">\(M/N\to p\)</span>, atunci <span class="math inline">\(\HGeom(N,M,n)\)</span> se apropie de <span class="math inline">\(\Bin(n,p)\)</span> (vezi <a href="#fig-k03-hiper-bin" class="quarto-xref">Figura&nbsp;4</a>).</p>
@@ -1723,7 +1737,7 @@ Observație
 <h2 data-number="7.3" class="anchored" data-anchor-id="proprietățile-mediei"><span class="header-section-number">7.3</span> Proprietățile mediei</h2>
 <div id="box-thm-k03-lotus" class="curs-box teorema">
 <div class="curs-box-title">
-<span class="curs-box-label">Teorema 25</span> <span class="curs-box-name">(Formula de transfer)</span>
+<span class="curs-box-label">Teorema 25</span> <span class="curs-box-name">(Formula de transport)</span>
 </div>
 <div class="curs-box-body">
 <p>Dacă <span class="math inline">\(X\)</span> este o variabilă aleatoare discretă și <span class="math inline">\(g:\R\to\R\)</span> este o funcție reală, atunci <span class="math inline">\(Y=g(X)\)</span> este o variabilă aleatoare discretă de medie <span id="eq-k03-lotus"><span class="math display">\[
@@ -1748,7 +1762,7 @@ Observație
 <p>Fie <span class="math inline">\(X\sim\begin{pmatrix}-2&amp;-1&amp;1&amp;3\\1/4&amp;1/8&amp;1/2&amp;1/8\end{pmatrix}\)</span> și <span class="math inline">\(Y=X^2\)</span>.</p>
 <p><em>Metoda 1 (repartiția lui <span class="math inline">\(Y\)</span>).</em> <span class="math inline">\(Y\in\{1,4,9\}\)</span>, cu <span class="math inline">\(\PP(Y=1)=\PP(X=-1)+\PP(X=1)=\frac18+\frac12=\frac58\)</span>, <span class="math inline">\(\PP(Y=4)=\frac14\)</span>, <span class="math inline">\(\PP(Y=9)=\frac18\)</span>. Deci <span class="math display">\[
 Y\sim\begin{pmatrix}1&amp;4&amp;9\\5/8&amp;1/4&amp;1/8\end{pmatrix},\qquad \E[Y]=1\cdot\frac58+4\cdot\frac14+9\cdot\frac18=\frac{22}{8}=2.75 .
-\]</span> <em>Metoda 2 (formula de transfer), cu <span class="math inline">\(g(x)=x^2\)</span>:</em> <span class="math display">\[
+\]</span> <em>Metoda 2 (formula de transport), cu <span class="math inline">\(g(x)=x^2\)</span>:</em> <span class="math display">\[
 \E[X^2]=\sum_{x\in\{-2,-1,1,3\}}x^2\,\PP(X=x)=4\cdot\frac14+1\cdot\frac18+1\cdot\frac12+9\cdot\frac18=\frac{22}{8}.
 \]</span></p>
 </div>
@@ -1784,7 +1798,7 @@ Atenție!
 <div class="ol-1p">
 <ol type="a">
 <li><p><span class="math inline">\(X\sim\begin{pmatrix}c\\1\end{pmatrix}\)</span>, deci <span class="math inline">\(\E[X]=c\cdot1=c\)</span>. b) Toți termenii sumei <span class="math inline">\(\sum_x x\,\PP(X=x)\)</span> sunt nenegativi.</p></li>
-<li><p>Pentru simplitate presupunem <span class="math inline">\(\Omega\)</span> cel mult numărabil, cu <span class="math inline">\(\F=\mathcal{P}(\Omega)\)</span> (cazul general se tratează cu formula de transfer pentru <span class="math inline">\(g(x,y)=ax+by\)</span>). Deoarece <span class="math inline">\(\{X=x\}=\{\omega\mid X(\omega)=x\}\)</span> și aceste mulțimi formează o partiție a lui <span class="math inline">\(\Omega\)</span>, <span class="math display">\[
+<li><p>Pentru simplitate presupunem <span class="math inline">\(\Omega\)</span> cel mult numărabil, cu <span class="math inline">\(\F=\mathcal{P}(\Omega)\)</span> (cazul general se tratează cu formula de transport pentru <span class="math inline">\(g(x,y)=ax+by\)</span>). Deoarece <span class="math inline">\(\{X=x\}=\{\omega\mid X(\omega)=x\}\)</span> și aceste mulțimi formează o partiție a lui <span class="math inline">\(\Omega\)</span>, <span class="math display">\[
 \E[X]=\sum_x x\,\PP(X=x)=\sum_x\sum_{\omega:\,X(\omega)=x}X(\omega)\PP(\{\omega\})=\sum_{\omega\in\Omega}X(\omega)\,\PP(\{\omega\}).
 \]</span> Aplicând această formulă variabilei <span class="math inline">\(aX+bY\)</span>, <span class="math display">\[
 \begin{aligned}
@@ -1794,7 +1808,7 @@ Atenție!
 \]</span></p></li>
 <li><p>Din <span class="math inline">\(X-Y\ge0\)</span> și b), d): <span class="math inline">\(\E[X]-\E[Y]=\E[X-Y]\ge0\)</span>.</p></li>
 <li><p><span class="math inline">\(\PP(\Ind_A=1)=\PP(A)\)</span>, deci <span class="math inline">\(\Ind_A\sim\begin{pmatrix}0&amp;1\\1-\PP(A)&amp;\PP(A)\end{pmatrix}\)</span> și <span class="math inline">\(\E[\Ind_A]=0\cdot(1-\PP(A))+1\cdot\PP(A)=\PP(A)\)</span>.</p></li>
-<li><p>Din formula de transfer cu <span class="math inline">\(g(x,y)=xy\)</span> și din independență, <span class="math display">\[
+<li><p>Din formula de transport cu <span class="math inline">\(g(x,y)=xy\)</span> și din independență, <span class="math display">\[
 \begin{aligned}
 \E[XY]&amp;=\sum_{x,y}xy\,\PP(X=x,Y=y)=\sum_x\sum_y xy\,\PP(X=x)\PP(Y=y)\\
 &amp;=\Big(\sum_x x\PP(X=x)\Big)\Big(\sum_y y\PP(Y=y)\Big)=\E[X]\E[Y].
@@ -1864,7 +1878,7 @@ Observație
 <div class="curs-box-body">
 <p>Momentul centrat de ordin doi al v.a. <span class="math inline">\(X\)</span> se numește <strong>varianța</strong> (sau dispersia) lui <span class="math inline">\(X\)</span> și se notează <span class="math display">\[
 \Var(X)=\E\big[(X-\E[X])^2\big].
-\]</span> Pentru o variabilă discretă, din formula de transfer, <span class="math inline">\(\Var(X)=\sum_x(x-\E[X])^2\,\PP(X=x)\)</span>. Se notează adesea <span class="math inline">\(\sigma^2=\Var(X)\)</span>. Numărul <span class="math display">\[
+\]</span> Pentru o variabilă discretă, din formula de transport, <span class="math inline">\(\Var(X)=\sum_x(x-\E[X])^2\,\PP(X=x)\)</span>. Se notează adesea <span class="math inline">\(\sigma^2=\Var(X)\)</span>. Numărul <span class="math display">\[
 \sigma=\mathrm{SD}(X)=\sqrt{\Var(X)}
 \]</span> se numește <strong>abaterea standard</strong> (în engleză <em>standard deviation</em>) a lui <span class="math inline">\(X\)</span>.</p>
 </div>
@@ -2238,7 +2252,7 @@ De reținut
 <li>v.a. discretă: <span class="math inline">\(\PP(X\in A)=\sum_{x\in A\cap X(\Omega)}p_X(x)\)</span>, <span class="math inline">\(p_X\ge0\)</span>, <span class="math inline">\(\sum_x p_X(x)=1\)</span>;</li>
 <li><span class="math inline">\(Y=g(X)\)</span>: <span class="math inline">\(\PP(Y=y)=\sum_{x:\,g(x)=y}\PP(X=x)\)</span>;</li>
 <li><span class="math inline">\(X\indep Y\)</span>: <span class="math inline">\(\PP(X=x,Y=y)=\PP(X=x)\PP(Y=y)\)</span> pentru orice <span class="math inline">\(x,y\)</span>;</li>
-<li>media: <span class="math inline">\(\E[X]=\sum_x x\,\PP(X=x)\)</span> (dacă <span class="math inline">\(\sum_x|x|\PP(X=x)&lt;\infty\)</span>); formula de transfer <span class="math inline">\(\E[g(X)]=\sum_x g(x)\PP(X=x)\)</span>;</li>
+<li>media: <span class="math inline">\(\E[X]=\sum_x x\,\PP(X=x)\)</span> (dacă <span class="math inline">\(\sum_x|x|\PP(X=x)&lt;\infty\)</span>); formula de transport <span class="math inline">\(\E[g(X)]=\sum_x g(x)\PP(X=x)\)</span>;</li>
 <li>liniaritate: <span class="math inline">\(\E[aX+bY]=a\E[X]+b\E[Y]\)</span> (fără ipoteză de independență); <span class="math inline">\(\E[\Ind_A]=\PP(A)\)</span>; <span class="math inline">\(X\indep Y\Rightarrow\E[XY]=\E[X]\E[Y]\)</span>;</li>
 <li>varianța: <span class="math inline">\(\Var(X)=\E[(X-\E[X])^2]=\E[X^2]-(\E[X])^2\)</span>, <span class="math inline">\(\Var(aX+b)=a^2\Var(X)\)</span>, <span class="math inline">\(\mathrm{SD}(X)=\sqrt{\Var(X)}\)</span>;</li>
 <li><span class="math inline">\(X\indep Y\Rightarrow\Var(X\pm Y)=\Var(X)+\Var(Y)\)</span>;</li>
@@ -2247,7 +2261,7 @@ De reținut
 </ul>
 </div>
 </div>
-<p><strong>Legătura cu cursurile următoare.</strong> În <a href="04-va-continue.html" class="curs-ref">Cursul 4</a> înlocuim funcția de masă cu <strong>densitatea de repartiție</strong> și sumele cu integrale: definițiile mediei și varianței și proprietățile lor se păstrează. Repartițiile continue uzuale (uniformă, exponențială, normală) sunt studiate în Cursul 5, repartiția comună a mai multor variabile și covarianța în Cursul 6, iar comportarea sumelor de variabile independente (Legea Numerelor Mari, Teorema Limită Centrală) în Cursul 7.</p>
+<p><strong>Legătura cu cursurile următoare.</strong> În <a href="04-va-continue.html" class="curs-ref">Cursul 4</a> înlocuim funcția de masă cu <strong>densitatea de repartiție</strong> și sumele cu integrale: definițiile mediei și varianței și proprietățile lor se păstrează. Repartițiile continue uzuale (uniformă, exponențială, normală) sunt studiate în <a href="05-repartitii-continue.html" class="curs-ref">Cursul 5</a>, repartiția comună a mai multor variabile și covarianța în Cursul 6, iar comportarea sumelor de variabile independente (Legea Numerelor Mari, Teorema Limită Centrală) în Cursul 7.</p>
 </section>
 </section>
 <section id="sec-k03-exercitii" class="level1" data-number="10">
@@ -2261,7 +2275,7 @@ De reținut
 <details class="curs-solutie" open="">
 <summary>Soluție</summary>
 <div class="curs-solutie-body">
-<p><em>Media și varianța lui <span class="math inline">\(X\)</span>.</em> <span class="math inline">\(\E[X]=-0.3+0+0.5=0.2\)</span>. Din formula de transfer, <span class="math inline">\(\E[X^2]=(-1)^2\cdot0.3+0^2\cdot0.2+1^2\cdot0.5=0.8\)</span> (de altfel <span class="math inline">\(X^2\sim\begin{pmatrix}0&amp;1\\0.2&amp;0.8\end{pmatrix}\)</span>), deci <span class="math inline">\(\Var(X)=0.8-0.2^2=0.76\)</span>.</p>
+<p><em>Media și varianța lui <span class="math inline">\(X\)</span>.</em> <span class="math inline">\(\E[X]=-0.3+0+0.5=0.2\)</span>. Din formula de transport, <span class="math inline">\(\E[X^2]=(-1)^2\cdot0.3+0^2\cdot0.2+1^2\cdot0.5=0.8\)</span> (de altfel <span class="math inline">\(X^2\sim\begin{pmatrix}0&amp;1\\0.2&amp;0.8\end{pmatrix}\)</span>), deci <span class="math inline">\(\Var(X)=0.8-0.2^2=0.76\)</span>.</p>
 <p><em>Variabila <span class="math inline">\(5X-2\)</span>.</em> Funcția <span class="math inline">\(x\mapsto5x-2\)</span> este injectivă, deci <span class="math inline">\(5X-2\in\{-7,-2,3\}\)</span> și <span class="math display">\[
 5X-2\sim\begin{pmatrix}-7&amp;-2&amp;3\\0.3&amp;0.2&amp;0.5\end{pmatrix},\qquad
 \begin{aligned}\E[5X-2]&amp;=5\E[X]-2=-1,\\ \Var(5X-2)&amp;=25\Var(X)=19 .\end{aligned}
@@ -2411,7 +2425,7 @@ N_2\sim\begin{pmatrix}0&amp;1&amp;2&amp;3\\ \frac{1}{10}&amp;\frac{4}{10}&amp;\f
 </div>
 <div id="box-exr-k03-ex-transfer-bin" class="curs-box exercitiu">
 <div class="curs-box-title">
-<span class="curs-box-label">Exercițiul 8</span> <span class="curs-box-name">(Formula de transfer pentru o variabilă binomială)</span>
+<span class="curs-box-label">Exercițiul 8</span> <span class="curs-box-name">(Formula de transport pentru o variabilă binomială)</span>
 </div>
 <div class="curs-box-body">
 <div class="ol-1p">
@@ -2427,7 +2441,7 @@ N_2\sim\begin{pmatrix}0&amp;1&amp;2&amp;3\\ \frac{1}{10}&amp;\frac{4}{10}&amp;\f
 <li><p><span class="math inline">\(X\sim\begin{pmatrix}0&amp;1&amp;2&amp;3&amp;4\\ \frac1{16}&amp;\frac4{16}&amp;\frac6{16}&amp;\frac4{16}&amp;\frac1{16}\end{pmatrix}\)</span>, iar <span class="math inline">\(g(x)=(x-2)^2\)</span> duce <span class="math inline">\(0,4\mapsto4\)</span>, <span class="math inline">\(1,3\mapsto1\)</span>, <span class="math inline">\(2\mapsto0\)</span>. Deci <span class="math display">\[
 Y\sim\begin{pmatrix}0&amp;1&amp;4\\ \frac{6}{16}&amp;\frac{8}{16}&amp;\frac{2}{16}\end{pmatrix},\qquad \E[Y]=\frac{8}{16}+\frac{8}{16}=1 .
 \]</span> Altfel: <span class="math inline">\(\E[(X-2)^2]=\E[(X-\E[X])^2]=\Var(X)=4\cdot\frac12\cdot\frac12=1\)</span>.</p></li>
-<li><p>Din formula de transfer și din <span class="math inline">\(\frac{1}{k+1}\binom nk=\frac{1}{n+1}\binom{n+1}{k+1}\)</span>, <span class="math display">\[
+<li><p>Din formula de transport și din <span class="math inline">\(\frac{1}{k+1}\binom nk=\frac{1}{n+1}\binom{n+1}{k+1}\)</span>, <span class="math display">\[
 \E\left[\frac1{X+1}\right]=\sum_{k=0}^n\frac{1}{k+1}\binom nk p^k(1-p)^{n-k}=\frac{1}{(n+1)p}\sum_{k=0}^n\binom{n+1}{k+1}p^{k+1}(1-p)^{n-k}.
 \]</span> Cu <span class="math inline">\(j=k+1\)</span>, suma este <span class="math inline">\(\sum_{j=1}^{n+1}\binom{n+1}{j}p^j(1-p)^{n+1-j}=1-(1-p)^{n+1}\)</span> (lipsește doar termenul <span class="math inline">\(j=0\)</span> din binomul lui Newton), de unde rezultatul. Pentru <span class="math inline">\(n=4\)</span>, <span class="math inline">\(p=\frac12\)</span> obținem <span class="math inline">\(\frac{1-1/32}{5/2}=\frac{31}{80}=0.3875\)</span>. Observăm că <span class="math inline">\(\E\left[\frac1{X+1}\right]\ne\frac{1}{\E[X]+1}=\frac13\)</span>.</p></li>
 </ol>

@@ -89,6 +89,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../curs/05-repartitii-continue.html" rel="next">
 <link href="../curs/03-va-discrete.html" rel="prev">
 <link href="../images/ps_sticker.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -289,6 +290,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../curs/04-va-continue.html">
  <span class="dropdown-text">Cursul 4 — Variabile aleatoare continue</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../curs/05-repartitii-continue.html">
+ <span class="dropdown-text">Cursul 5 — Repartiții continue remarcabile și transformări</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -319,6 +324,10 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../laborator_nosols/04-medie-varianta.html">
  <span class="dropdown-text">Seminarul 4 — Media și varianța variabilelor aleatoare discrete. Metoda indicatorilor (fișă de lucru)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../laborator_nosols/05-va-continue.html">
+ <span class="dropdown-text">Seminarul 5 — Variabile aleatoare continue și repartiții uzuale (fișă de lucru)</span></a>
   </li>  
     </ul>
   </li>
@@ -410,6 +419,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../curs/04-va-continue.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">4. Variabile aleatoare continue</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../curs/05-repartitii-continue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Repartiții continue remarcabile și transformări</span></a>
   </div>
 </li>
       </ul>
@@ -504,7 +519,7 @@ Planul cursului
 </div>
 </div>
 <p>În <a href="03-va-discrete.html" class="curs-ref">Cursul 3</a> am studiat variabilele aleatoare discrete, adică acele variabile care iau un număr finit sau cel mult numărabil de valori. Multe mărimi de interes practic nu sunt însă de acest tip: durata unei convorbiri telefonice, timpul de funcționare al unui server până la prima defecțiune, înălțimea unei persoane alese la întâmplare, eroarea de măsurare a unui instrument sau poziția unui punct ales la întâmplare pe un segment pot lua, cel puțin în principiu, <em>orice</em> valoare dintr-un interval. Pentru astfel de variabile, probabilitatea de a lua o valoare fixată este nulă, iar descrierea prin funcția de masă nu mai are sens.</p>
-<p>În acest curs construim cadrul care înlocuiește funcția de masă: <strong>densitatea de repartiție</strong>. Vom vedea că, grosso modo, trecerea de la discret la continuu se face înlocuind sumele cu integrale și funcția de masă cu densitatea. Vom studia legătura dintre densitate și funcția de repartiție, cuantilele (în particular mediana), apoi media, varianța și momentele unei variabile aleatoare continue, împreună cu proprietățile lor. Repartițiile continue remarcabile (uniformă, exponențială, normală) și transformările de variabile aleatoare fac obiectul cursului următor (Cursul 5).</p>
+<p>În acest curs construim cadrul care înlocuiește funcția de masă: <strong>densitatea de repartiție</strong>. Vom vedea că, grosso modo, trecerea de la discret la continuu se face înlocuind sumele cu integrale și funcția de masă cu densitatea. Vom studia legătura dintre densitate și funcția de repartiție, cuantilele (în particular mediana), apoi media, varianța și momentele unei variabile aleatoare continue, împreună cu proprietățile lor. Repartițiile continue remarcabile (uniformă, exponențială, normală) și transformările de variabile aleatoare fac obiectul cursului următor (<a href="05-repartitii-continue.html" class="curs-ref">Cursul 5</a>).</p>
 <section id="sec-k04-recap" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Recapitulare</h1>
 <p>Aproape toate noțiunile de astăzi au un corespondent discret în <a href="03-va-discrete.html" class="curs-ref">Cursul 3</a>; le reamintim pentru a putea urmări analogia.</p>
@@ -517,7 +532,7 @@ Rezultate din Cursul 3 folosite azi
 <li><strong>Variabilă aleatoare</strong> <span class="math inline">\(X:\Omega\to\R\)</span> cu <span class="math inline">\(\{X\le x\}\in\F\)</span> (Definiția <a href="03-va-discrete.html#box-def-k03-va" class="curs-ref">1 din Cursul 3</a>); <strong>repartiția</strong> ei (Definiția <a href="03-va-discrete.html#box-def-k03-repartitie" class="curs-ref">3 din Cursul 3</a>) și <strong>funcția de repartiție</strong> <span class="math inline">\(F(x)=\PP(X\le x)\)</span> (Definiția <a href="03-va-discrete.html#box-def-k03-fdr" class="curs-ref">4 din Cursul 3</a>), valabile pentru orice variabilă aleatoare, nu doar pentru cele discrete.</li>
 <li><strong>Proprietățile funcției de repartiție</strong> (Teorema <a href="03-va-discrete.html#box-thm-k03-prop-fdr" class="curs-ref">5 din Cursul 3</a>): <span class="math inline">\(F\)</span> este crescătoare, continuă la dreapta, <span class="math inline">\(F(-\infty)=0\)</span>, <span class="math inline">\(F(+\infty)=1\)</span>; <span class="math inline">\(\PP(x&lt;X\le y)=F(y)-F(x)\)</span> și <span class="math inline">\(\PP(X=x)=F(x)-F(x-)\)</span> (Propoziția <a href="03-va-discrete.html#box-prop-k03-fdr-calcul" class="curs-ref">6 din Cursul 3</a>).</li>
 <li><strong>Funcția de masă</strong> <span class="math inline">\(p_X(x)=\PP(X=x)\)</span> (Definiția <a href="03-va-discrete.html#box-def-k03-fmasa" class="curs-ref">7 din Cursul 3</a>): <span class="math inline">\(p_X\ge0\)</span>, <span class="math inline">\(\sum_xp_X(x)=1\)</span>, <span class="math inline">\(\PP(X\in A)=\sum_{x\in A}p_X(x)\)</span>.</li>
-<li><strong>Media</strong> <span class="math inline">\(\E[X]=\sum_xx\,p_X(x)\)</span> (Definiția <a href="03-va-discrete.html#box-def-k03-media" class="curs-ref">24 din Cursul 3</a>), <strong>formula de transfer</strong> <span class="math inline">\(\E[g(X)]=\sum_xg(x)p_X(x)\)</span> (Teorema <a href="03-va-discrete.html#box-thm-k03-lotus" class="curs-ref">25 din Cursul 3</a>) și liniaritatea mediei (Teorema <a href="03-va-discrete.html#box-thm-k03-prop-medie" class="curs-ref">26 din Cursul 3</a>).</li>
+<li><strong>Media</strong> <span class="math inline">\(\E[X]=\sum_xx\,p_X(x)\)</span> (Definiția <a href="03-va-discrete.html#box-def-k03-media" class="curs-ref">24 din Cursul 3</a>), <strong>formula de transport</strong> <span class="math inline">\(\E[g(X)]=\sum_xg(x)p_X(x)\)</span> (Teorema <a href="03-va-discrete.html#box-thm-k03-lotus" class="curs-ref">25 din Cursul 3</a>) și liniaritatea mediei (Teorema <a href="03-va-discrete.html#box-thm-k03-prop-medie" class="curs-ref">26 din Cursul 3</a>).</li>
 <li><strong>Varianța</strong> <span class="math inline">\(\Var(X)=\E[(X-\E[X])^2]=\E[X^2]-(\E[X])^2\)</span> (Definiția <a href="03-va-discrete.html#box-def-k03-varianta" class="curs-ref">28 din Cursul 3</a>), cu <span class="math inline">\(\Var(aX+b)=a^2\Var(X)\)</span> (Teorema <a href="03-va-discrete.html#box-thm-k03-prop-var" class="curs-ref">29 din Cursul 3</a>).</li>
 <li><strong>Continuitatea probabilității</strong> (Teorema <a href="01-camp-probabilitate.html#box-thm-k01-continuitate" class="curs-ref">18 din Cursul 1</a>): o folosim pentru a arăta că punctele au probabilitate zero.</li>
 </ul>
@@ -616,7 +631,7 @@ Figura&nbsp;2: Probabilitatea <span class="math inline">\(\PP(a\le X\le b)\)</sp
 <p>Reciproc, orice funcție integrabilă <span class="math inline">\(f:\R\to\R\)</span> care verifică a) și b) este densitatea unei variabile aleatoare continue.</p>
 </div>
 </div>
-<p>A doua parte a propoziției (existența unei variabile aleatoare cu densitate dată) necesită elemente de teoria măsurii și o admitem fără demonstrație; ea ne permite să vorbim despre „variabila aleatoare cu densitatea <span class="math inline">\(f\)</span>” de îndată ce am verificat a) și b). În cursul următor vom vedea chiar o metodă <em>constructivă</em> de a obține o astfel de variabilă pornind de la o variabilă uniformă (Cursul 5).</p>
+<p>A doua parte a propoziției (existența unei variabile aleatoare cu densitate dată) necesită elemente de teoria măsurii și o admitem fără demonstrație; ea ne permite să vorbim despre „variabila aleatoare cu densitatea <span class="math inline">\(f\)</span>” de îndată ce am verificat a) și b). În cursul următor vom vedea chiar o metodă <em>constructivă</em> de a obține o astfel de variabilă pornind de la o variabilă uniformă (<a href="05-repartitii-continue.html" class="curs-ref">Cursul 5</a>).</p>
 <div class="curs-box observatie">
 <div class="curs-box-title">
 Observație
@@ -680,7 +695,7 @@ Atenție!
 f(x)=\begin{cases}\dfrac{1}{2\sqrt{x}}, &amp; 0&lt;x\le 1,\\[2mm] 0, &amp; \text{altfel.}\end{cases}
 \]</span> Verificăm că <span class="math inline">\(f\)</span> este densitate: evident <span class="math inline">\(f(x)\ge0\)</span> și <span class="math display">\[
 \int_{-\infty}^{+\infty} f(x)\dd x=\int_0^1\frac{1}{2\sqrt{x}}\dd x=\sqrt{x}\,\Big|_0^1=1 .
-\]</span> Totuși, <span class="math inline">\(f(x)\to+\infty\)</span> când <span class="math inline">\(x\to0^+\)</span> (<a href="#fig-k04-nemarginita" class="quarto-xref">Figura&nbsp;3</a>). Faptul că <span class="math inline">\(f\)</span> ia valori oricât de mari nu contrazice nimic: de exemplu, <span class="math inline">\(\PP(X\le 0.01)=\sqrt{0.01}=0.1\)</span>, o probabilitate perfect rezonabilă. Vom vedea în Cursul 5 că această densitate este exact densitatea pătratului unei variabile uniforme pe <span class="math inline">\([0,1]\)</span>.</p>
+\]</span> Totuși, <span class="math inline">\(f(x)\to+\infty\)</span> când <span class="math inline">\(x\to0^+\)</span> (<a href="#fig-k04-nemarginita" class="quarto-xref">Figura&nbsp;3</a>). Faptul că <span class="math inline">\(f\)</span> ia valori oricât de mari nu contrazice nimic: de exemplu, <span class="math inline">\(\PP(X\le 0.01)=\sqrt{0.01}=0.1\)</span>, o probabilitate perfect rezonabilă. Vom vedea în <a href="05-repartitii-continue.html" class="curs-ref">Cursul 5</a> că această densitate este exact densitatea pătratului unei variabile uniforme pe <span class="math inline">\([0,1]\)</span>.</p>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
@@ -806,7 +821,7 @@ F(x)=\PP(X\le x)=\PP\big(X\in(-\infty,x]\big),\qquad x\in\R,
 <p><em>Demonstrație.</em></p>
 <div class="ol-1p">
 <ol type="a">
-<li>rezultă din (<a href="#eq-k04-def" class="quarto-xref">1</a>) cu <span class="math inline">\(A=(-\infty,x]\)</span>. b) rezultă din Propoziția <a href="#box-prop-k04-punct" class="curs-ref">3</a>: <span class="math inline">\(F(x)-F(x^-)=\PP(X=x)=0\)</span>, deci <span class="math inline">\(F\)</span> nu are salturi; fiind continuă la dreapta și fără salturi, <span class="math inline">\(F\)</span> este continuă. c) este teorema fundamentală a analizei aplicată funcției <span class="math inline">\(x\mapsto\int_{-\infty}^x f(t)\dd t\)</span>.</li>
+<li>rezultă din (<a href="#eq-k04-def" class="quarto-xref">1</a>) cu <span class="math inline">\(A=(-\infty,x]\)</span>. b) rezultă din Propoziția <a href="#box-prop-k04-punct" class="curs-ref">3</a>: <span class="math inline">\(F(x)-F(x-)=\PP(X=x)=0\)</span>, deci <span class="math inline">\(F\)</span> nu are salturi; fiind continuă la dreapta și fără salturi, <span class="math inline">\(F\)</span> este continuă. c) este teorema fundamentală a analizei aplicată funcției <span class="math inline">\(x\mapsto\int_{-\infty}^x f(t)\dd t\)</span>.</li>
 </ol>
 </div>
 <p><span class="curs-qed">■</span></p>
@@ -1120,7 +1135,7 @@ Atenție!
 </section>
 <section id="media-unei-funcții-de-o-variabilă-aleatoare" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="media-unei-funcții-de-o-variabilă-aleatoare"><span class="header-section-number">7.2</span> Media unei funcții de o variabilă aleatoare</h2>
-<p>Dacă <span class="math inline">\(X\)</span> este o variabilă continuă și <span class="math inline">\(g:\R\to\R\)</span> o funcție (suficient de regulată), atunci <span class="math inline">\(Y=g(X)\)</span> este tot o variabilă aleatoare. Pentru a calcula <span class="math inline">\(\E[Y]\)</span> am putea determina mai întâi repartiția lui <span class="math inline">\(Y\)</span> (vom învăța cum, în Cursul 5), apoi aplica definiția. Teorema următoare arată că acest ocol nu este necesar.</p>
+<p>Dacă <span class="math inline">\(X\)</span> este o variabilă continuă și <span class="math inline">\(g:\R\to\R\)</span> o funcție (suficient de regulată), atunci <span class="math inline">\(Y=g(X)\)</span> este tot o variabilă aleatoare. Pentru a calcula <span class="math inline">\(\E[Y]\)</span> am putea determina mai întâi repartiția lui <span class="math inline">\(Y\)</span> (vom învăța cum, în <a href="05-repartitii-continue.html" class="curs-ref">Cursul 5</a>), apoi aplica definiția. Teorema următoare arată că acest ocol nu este necesar.</p>
 <div id="box-thm-k04-lotus" class="curs-box teorema">
 <div class="curs-box-title">
 <span class="curs-box-label">Teorema 10</span> <span class="curs-box-name">(Media unei funcții de v.a.)</span>
@@ -1197,7 +1212,7 @@ Atenție!
 </div>
 <p>Din vi) rezultă că, dacă <span class="math inline">\(\sigma_X&gt;0\)</span>, variabila <strong>standardizată</strong> <span class="math display">\[
 Z=\frac{X-\E[X]}{\sigma_X}
-\]</span> are media <span class="math inline">\(0\)</span> și varianța <span class="math inline">\(1\)</span>. Standardizarea va juca un rol central în studiul repartiției normale (Cursul 5) și al teoremei limită centrală.</p>
+\]</span> are media <span class="math inline">\(0\)</span> și varianța <span class="math inline">\(1\)</span>. Standardizarea va juca un rol central în studiul repartiției normale (<a href="05-repartitii-continue.html" class="curs-ref">Cursul 5</a>) și al teoremei limită centrală.</p>
 <div id="box-ex-k04-variante" class="curs-box exemplu">
 <div class="curs-box-title">
 <span class="curs-box-label">Exemplul 9</span> <span class="curs-box-name">(Varianța unor repartiții continue)</span>
@@ -1252,7 +1267,7 @@ De reținut
 </ul>
 </div>
 </div>
-<p><strong>Legătura cu cursurile următoare.</strong> În Cursul 5 aplicăm cadrul de astăzi repartițiilor continue uzuale (uniformă, exponențială, normală, Gamma) și învățăm să determinăm repartiția unei funcții <span class="math inline">\(g(X)\)</span> de o variabilă continuă. Repartiția comună a două variabile continue, independența și media condiționată sunt subiectul Cursul 6.</p>
+<p><strong>Legătura cu cursurile următoare.</strong> În <a href="05-repartitii-continue.html" class="curs-ref">Cursul 5</a> aplicăm cadrul de astăzi repartițiilor continue uzuale (uniformă, exponențială, normală, Gamma) și învățăm să determinăm repartiția unei funcții <span class="math inline">\(g(X)\)</span> de o variabilă continuă. Repartiția comună a două variabile continue, independența și media condiționată sunt subiectul Cursul 6.</p>
 </section>
 </section>
 <section id="sec-k04-exercitii" class="level1" data-number="8">
@@ -1329,7 +1344,7 @@ F(x)=\int_{1-c}^x\frac1t\dd t=\ln\frac{x}{1-c}.
 <span class="curs-box-label">Exercițiul 3</span> <span class="curs-box-name">(Repartiția Rayleigh)</span>
 </div>
 <div class="curs-box-body">
-<p>Fie <span class="math inline">\(X\)</span> o variabilă aleatoare cu funcția de repartiție <span class="math inline">\(F(x)=1-e^{-x^2/2}\)</span> pentru <span class="math inline">\(x\ge0\)</span> și <span class="math inline">\(F(x)=0\)</span> pentru <span class="math inline">\(x&lt;0\)</span>. a) Determinați densitatea lui <span class="math inline">\(X\)</span>. b) Calculați <span class="math inline">\(\PP(1&lt;X&lt;2)\)</span> și mediana. c) Calculați <span class="math inline">\(\E[X]\)</span>, știind că <span class="math inline">\(\int_0^\infty e^{-x^2/2}\dd x=\sqrt{\pi/2}\)</span> (rezultat demonstrat în Cursul 5).</p>
+<p>Fie <span class="math inline">\(X\)</span> o variabilă aleatoare cu funcția de repartiție <span class="math inline">\(F(x)=1-e^{-x^2/2}\)</span> pentru <span class="math inline">\(x\ge0\)</span> și <span class="math inline">\(F(x)=0\)</span> pentru <span class="math inline">\(x&lt;0\)</span>. a) Determinați densitatea lui <span class="math inline">\(X\)</span>. b) Calculați <span class="math inline">\(\PP(1&lt;X&lt;2)\)</span> și mediana. c) Calculați <span class="math inline">\(\E[X]\)</span>, știind că <span class="math inline">\(\int_0^\infty e^{-x^2/2}\dd x=\sqrt{\pi/2}\)</span> (rezultat demonstrat în <a href="05-repartitii-continue.html" class="curs-ref">Cursul 5</a>).</p>
 <details class="curs-solutie" open="">
 <summary>Soluție</summary>
 <div class="curs-solutie-body">
@@ -1430,7 +1445,7 @@ F(x)=\int_{1-c}^x\frac1t\dd t=\ln\frac{x}{1-c}.
 <li><p>Pentru <span class="math inline">\(0\le x\le10\)</span>, <span class="math inline">\(\PP(X&gt;x)=\int_x^{10}\frac{10-t}{50}\dd t=\frac{(10-x)^2}{100}\)</span>; deci <span class="math inline">\(\PP(X&gt;5)=\frac{25}{100}=\frac14\)</span>.</p></li>
 <li><p>Din definiția probabilității condiționate și din faptul că <span class="math inline">\(\{X&gt;7\}\subseteq\{X&gt;5\}\)</span>, <span class="math display">\[
 \PP(X&gt;7\mid X&gt;5)=\frac{\PP(X&gt;7)}{\PP(X&gt;5)}=\frac{9/100}{25/100}=\frac{9}{25}=0.36 .
-\]</span> Probabilitatea este mai mică decât <span class="math inline">\(\PP(X&gt;2)=64/100\)</span>: faptul că am așteptat deja face sosirea iminentă mai probabilă (spre deosebire de repartiția exponențială, Cursul 5).</p></li>
+\]</span> Probabilitatea este mai mică decât <span class="math inline">\(\PP(X&gt;2)=64/100\)</span>: faptul că am așteptat deja face sosirea iminentă mai probabilă (spre deosebire de repartiția exponențială, <a href="05-repartitii-continue.html" class="curs-ref">Cursul 5</a>).</p></li>
 <li><p><span class="math inline">\(\E[X]=\int_0^{10}\PP(X&gt;x)\dd x=\int_0^{10}\frac{(10-x)^2}{100}\dd x=\frac{1000}{300}=\frac{10}{3}\approx3.33\)</span> minute.</p></li>
 </ol>
 </div>
@@ -2000,6 +2015,9 @@ Blitzstein, Joseph K., and Jessica Hwang. 2019. <em>Introduction to Probability<
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../curs/05-repartitii-continue.html" class="pagination-link" aria-label="5. Repartiții continue remarcabile și transformări">
+        <span class="nav-page-text">5. Repartiții continue remarcabile și transformări</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

@@ -287,6 +287,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../curs/04-va-continue.html">
  <span class="dropdown-text">Cursul 4 — Variabile aleatoare continue</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../curs/05-repartitii-continue.html">
+ <span class="dropdown-text">Cursul 5 — Repartiții continue remarcabile și transformări</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -317,6 +321,10 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../laborator_nosols/04-medie-varianta.html">
  <span class="dropdown-text">Seminarul 4 — Media și varianța variabilelor aleatoare discrete. Metoda indicatorilor (fișă de lucru)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../laborator_nosols/05-va-continue.html">
+ <span class="dropdown-text">Seminarul 5 — Variabile aleatoare continue și repartiții uzuale (fișă de lucru)</span></a>
   </li>  
     </ul>
   </li>
@@ -408,6 +416,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../curs/04-va-continue.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">4. Variabile aleatoare continue</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../curs/05-repartitii-continue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Repartiții continue remarcabile și transformări</span></a>
   </div>
 </li>
       </ul>
@@ -523,7 +537,7 @@ Notă istorică
 </div>
 <div class="curs-box-body">
 <p>Avem o urnă cu bile roșii și verzi, în care proporția bilelor roșii este <span class="math inline">\(p\)</span>. Efectuăm <span class="math inline">\(n\)</span> extrageri <em>cu revenire</em> (bila extrasă este pusă înapoi înainte de extragerea următoare) și notăm culorile bilelor obținute.</p>
-<p><strong>Problemă de probabilități.</strong> Știm că <span class="math inline">\(p=0.23\)</span> (adică <span class="math inline">\(23\%\)</span> dintre bile sunt roșii). Extragem cu revenire <span class="math inline">\(n=20\)</span> de bile. Care este probabilitatea să obținem exact <span class="math inline">\(5\)</span> bile roșii? Vom vedea în secțiunile următoare (și, sistematic, în cursul dedicat repartiției binomiale) că răspunsul este <span class="math display">\[
+<p><strong>Problemă de probabilități.</strong> Știm că <span class="math inline">\(p=0.23\)</span> (adică <span class="math inline">\(23\%\)</span> dintre bile sunt roșii). Extragem cu revenire <span class="math inline">\(n=20\)</span> de bile. Care este probabilitatea să obținem exact <span class="math inline">\(5\)</span> bile roșii? Vom vedea în secțiunile următoare (și, sistematic, în <a href="03-va-discrete.html" class="curs-ref">Cursul 3</a>, la repartiția binomială) că răspunsul este <span class="math display">\[
 \PP(\text{exact 5 bile roșii din 20}) = \binom{20}{5}\,(0.23)^5\,(0.77)^{15}\approx 0.1979 ,
 \]</span> unde <span class="math inline">\(\binom{20}{5}\)</span> numără pozițiile (dintre cele <span class="math inline">\(20\)</span>) pe care apar bilele roșii, <span class="math inline">\((0.23)^5\)</span> este probabilitatea ca acele <span class="math inline">\(5\)</span> extrageri să dea bile roșii, iar <span class="math inline">\((0.77)^{15}\)</span> probabilitatea ca celelalte <span class="math inline">\(15\)</span> să dea bile verzi.</p>
 <p><strong>Problemă de statistică.</strong> Nu cunoaștem <span class="math inline">\(p\)</span>. Am efectuat <span class="math inline">\(20\)</span> de extrageri cu revenire și am observat <span class="math inline">\(5\)</span> bile roșii. Ce putem spune despre <span class="math inline">\(p\)</span>? Un răspuns natural este să <em>estimăm</em> proporția necunoscută prin proporția observată, <span class="math display">\[
@@ -642,7 +656,7 @@ Observație
 <li><em>Durata de viață a unui calculator</em>: <span class="math inline">\(\Omega=[0,T]\)</span>, cu <span class="math inline">\(T&gt;0\)</span> o durată maximă (sau, mai simplu, <span class="math inline">\(\Omega=\R_+\)</span>).</li>
 <li><em>Tragerea la țintă</em>: dacă ținta este un disc de rază <span class="math inline">\(R\)</span>, rezultatul este punctul de impact, <span class="math inline">\(\Omega=\{(x,y)\mid x^2+y^2\le R^2\}\)</span>; pentru o țintă pătrată, <span class="math inline">\(\Omega=\{(x,y)\mid 0\le x,y\le R\}\)</span>.</li>
 </ol>
-<p>În ultimele două cazuri <span class="math inline">\(\Omega\)</span> este nenumărabil; astfel de spații vor fi tratate în cursurile despre variabile aleatoare continue (<a href="04-va-continue.html" class="curs-ref">Cursul 4</a> și Cursul 5).</p>
+<p>În ultimele două cazuri <span class="math inline">\(\Omega\)</span> este nenumărabil; astfel de spații vor fi tratate în cursurile despre variabile aleatoare continue (<a href="04-va-continue.html" class="curs-ref">Cursul 4</a> și <a href="05-repartitii-continue.html" class="curs-ref">Cursul 5</a>).</p>
 </div>
 </div>
 </section>
@@ -946,13 +960,13 @@ A&amp;=\{\text{am obținut pentru prima dată cap după un număr par de aruncă
 <p>Fie <span class="math inline">\(\mathcal C\subseteq\mathcal P(\Omega)\)</span> o colecție de submulțimi ale lui <span class="math inline">\(\Omega\)</span>. Intersecția tuturor <span class="math inline">\(\sigma\)</span>-algebrelor peste <span class="math inline">\(\Omega\)</span> care conțin <span class="math inline">\(\mathcal C\)</span> este o <span class="math inline">\(\sigma\)</span>-algebră, notată <span class="math inline">\(\sigma(\mathcal C)\)</span> și numită <strong><span class="math inline">\(\sigma\)</span>-algebra generată</strong> de <span class="math inline">\(\mathcal C\)</span>. Ea este cea mai mică <span class="math inline">\(\sigma\)</span>-algebră care conține toate mulțimile din <span class="math inline">\(\mathcal C\)</span>.</p>
 </div>
 </div>
-<p>Faptul că <span class="math inline">\(\sigma(\mathcal C)\)</span> este o <span class="math inline">\(\sigma\)</span>-algebră se verifică direct: fiecare axiomă, fiind adevărată pentru toate <span class="math inline">\(\sigma\)</span>-algebrele din intersecție, rămâne adevărată și pentru intersecția lor (familia intersectată este nevidă, deoarece conține <span class="math inline">\(\mathcal P(\Omega)\)</span>). De exemplu, <span class="math inline">\(\sigma(\{A\})=\{\emptyset,A,A^c,\Omega\}\)</span>. Mai general, dacă <span class="math inline">\(\{B_1,\dots,B_k\}\)</span> este o partiție a lui <span class="math inline">\(\Omega\)</span>, atunci <span class="math inline">\(\sigma(\{B_1,\dots,B_k\})\)</span> este formată din toate reuniunile de blocuri <span class="math inline">\(B_i\)</span> și are <span class="math inline">\(2^k\)</span> elemente (vezi Exercițiul <a href="#box-exr-k01-sigma-generata" class="curs-ref">2</a>). Cel mai important exemplu de <span class="math inline">\(\sigma\)</span>-algebră generată este <strong><span class="math inline">\(\sigma\)</span>-algebra boreliană</strong> pe <span class="math inline">\(\R\)</span>, <span class="math inline">\(\B(\R)=\sigma(\{(a,b]\mid a&lt;b\})\)</span>, generată de intervale; ea va fi folosită în cursurile despre variabile aleatoare continue.</p>
+<p>Faptul că <span class="math inline">\(\sigma(\mathcal C)\)</span> este o <span class="math inline">\(\sigma\)</span>-algebră se verifică direct: fiecare axiomă, fiind adevărată pentru toate <span class="math inline">\(\sigma\)</span>-algebrele din intersecție, rămâne adevărată și pentru intersecția lor (familia intersectată este nevidă, deoarece conține <span class="math inline">\(\mathcal P(\Omega)\)</span>). De exemplu, <span class="math inline">\(\sigma(\{A\})=\{\emptyset,A,A^c,\Omega\}\)</span>. Mai general, dacă <span class="math inline">\(\{B_1,\dots,B_k\}\)</span> este o partiție a lui <span class="math inline">\(\Omega\)</span>, atunci <span class="math inline">\(\sigma(\{B_1,\dots,B_k\})\)</span> este formată din toate reuniunile de blocuri <span class="math inline">\(B_i\)</span> și are <span class="math inline">\(2^k\)</span> elemente (vezi Exercițiul <a href="#box-exr-k01-sigma-generata" class="curs-ref">2</a>). Cel mai important exemplu de <span class="math inline">\(\sigma\)</span>-algebră generată este <strong><span class="math inline">\(\sigma\)</span>-algebra boreliană</strong> pe <span class="math inline">\(\R\)</span>, <span class="math inline">\(\B(\R)=\sigma(\{(a,b]\mid a&lt;b\})\)</span>, generată de intervale; ea va fi folosită în cursurile despre variabile aleatoare continue (<a href="04-va-continue.html" class="curs-ref">Cursul 4</a> și <a href="05-repartitii-continue.html" class="curs-ref">Cursul 5</a>).</p>
 <div class="curs-box observatie">
 <div class="curs-box-title">
 Observație
 </div>
 <div class="curs-box-body">
-<p>De ce nu lucrăm întotdeauna cu <span class="math inline">\(\F=\mathcal P(\Omega)\)</span>? Pentru <span class="math inline">\(\Omega\)</span> cel mult numărabil acest lucru este posibil și natural. Pentru <span class="math inline">\(\Omega=[0,1]\)</span> se poate arăta însă că nu există nicio funcție definită pe <em>toate</em> submulțimile lui <span class="math inline">\([0,1]\)</span> care să extindă noțiunea de lungime și să verifice axiomele din secțiunea următoare; de aceea ne restrângem la <span class="math inline">\(\sigma\)</span>-algebra boreliană, suficient de bogată pentru aplicații.</p>
+<p>De ce nu lucrăm întotdeauna cu <span class="math inline">\(\F=\mathcal P(\Omega)\)</span>? Pentru <span class="math inline">\(\Omega\)</span> cel mult numărabil acest lucru este posibil și natural. Pentru <span class="math inline">\(\Omega=[0,1]\)</span> se poate arăta însă că nu există nicio funcție definită pe <em>toate</em> submulțimile lui <span class="math inline">\([0,1]\)</span> care să extindă noțiunea de lungime, să nu se modifice prin translații și să verifice axiomele din secțiunea următoare; de aceea ne restrângem la <span class="math inline">\(\sigma\)</span>-algebra boreliană, suficient de bogată pentru aplicații.</p>
 </div>
 </div>
 <div id="box-def-k01-masurabil" class="curs-box definitie">
@@ -1768,7 +1782,7 @@ Figura&nbsp;5: Problema potrivirilor. Stânga: probabilitatea exactă <span clas
 Notă istorică
 </div>
 <div class="curs-box-body">
-<p>Problema a fost formulată și rezolvată de Pierre Rémond de Montmort în 1708, sub forma unui joc de cărți numit <em>treize</em> („treisprezece”): se întorc una câte una cele <span class="math inline">\(13\)</span> cărți ale unei culori, numărând „unu, doi, …, treisprezece”, iar jucătorul câștigă dacă măcar o dată numărul rostit coincide cu valoarea cursului întoarse.</p>
+<p>Problema a fost formulată și rezolvată de Pierre Rémond de Montmort în 1708, sub forma unui joc de cărți numit <em>treize</em> („treisprezece”): se întorc una câte una cele <span class="math inline">\(13\)</span> cărți ale unei culori, numărând „unu, doi, …, treisprezece”, iar jucătorul câștigă dacă măcar o dată numărul rostit coincide cu valoarea cărții întoarse.</p>
 </div>
 </div>
 <div class="curs-box rezumat">

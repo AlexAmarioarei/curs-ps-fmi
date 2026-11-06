@@ -324,11 +324,15 @@ Alexandru Amărioarei
 </tr>
 <tr class="odd">
 <td style="text-align: left;">III</td>
-<td style="text-align: left;">Independența evenimentelor; fiabilitatea sistemelor; independență condiționată; problema lui Monty Hall</td>
+<td style="text-align: left;">Independența evenimentelor; fiabilitatea sistemelor; independență condiționată</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">IV</td>
-<td style="text-align: left;">Urna lui Pólya, ruina jucătorului; exerciții rezolvate; recapitulare</td>
+<td style="text-align: left;">Probleme clasice: problema lui Monty Hall, urna lui Pólya, ruina jucătorului</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">V</td>
+<td style="text-align: left;">Exerciții rezolvate; recapitulare</td>
 </tr>
 </tbody>
 </table>
@@ -739,7 +743,7 @@ A=\{FF\},\qquad E=\text{„cel mai mare este fată”}=\{FB,FF\},\qquad G=\text{
 </div>
 </div>
 <div class="curs-proof">
-<p><em>Demonstrație.</em> Cum <span class="math inline">\(A_1\supseteq A_1\cap A_2\supseteq\dots\supseteq A_1\cap\dots\cap A_{n-1}\)</span>, toate numitorii sunt pozitivi. Produsul este telescopic: <span class="math display">\[
+<p><em>Demonstrație.</em> Cum <span class="math inline">\(A_1\supseteq A_1\cap A_2\supseteq\dots\supseteq A_1\cap\dots\cap A_{n-1}\)</span>, toți numitorii sunt pozitivi. Produsul este telescopic: <span class="math display">\[
 \PP(A_1)\cdot\frac{\PP(A_1\cap A_2)}{\PP(A_1)}\cdot\frac{\PP(A_1\cap A_2\cap A_3)}{\PP(A_1\cap A_2)}\cdots\frac{\PP(A_1\cap\dots\cap A_n)}{\PP(A_1\cap\dots\cap A_{n-1})}=\PP(A_1\cap\dots\cap A_n).
 \]</span> Pentru <span class="math inline">\(n=3\)</span>, cu <span class="math inline">\(B=A_1\cap A_2\)</span>: <span class="math inline">\(\PP(A_1\cap A_2\cap A_3)=\PP(A_3\mid B)\PP(B)=\PP(A_3\mid A_1\cap A_2)\PP(A_2\mid A_1)\PP(A_1)\)</span>.<span class="curs-qed">■</span></p>
 </div>
@@ -793,7 +797,7 @@ A=\{FF\},\qquad E=\text{„cel mai mare este fată”}=\{FB,FF\},\qquad G=\text{
 \]</span></p>
 </div>
 </div>
-<p>Problema inversă — câte șosete de fiecare culoare trebuie să fie în sertar pentru ca probabilitatea să fie exact <span class="math inline">\(1/2\)</span> — este Exercițiul 2 (Partea IV).</p>
+<p>Problema inversă — câte șosete de fiecare culoare trebuie să fie în sertar pentru ca probabilitatea să fie exact <span class="math inline">\(1/2\)</span> — este Exercițiul 2 (Partea V).</p>
 <p><strong>Verificare prin numărare</strong> (Cursul 1): <span class="math inline">\(\binom52/\binom72=10/21\)</span>.</p>
 </section></section>
 <section>
@@ -913,7 +917,7 @@ A=A\cap\Omega=A\cap\Big(\bigcup_{i=1}^n B_i\Big)=\bigcup_{i=1}^n(A\cap B_i),
 <div class="curs-box-body">
 <p>Formula lui Bayes descrie modul în care <strong>actualizăm</strong> încrederea într-o ipoteză <span class="math inline">\(B_i\)</span> după observarea datelor <span class="math inline">\(A\)</span>: <span class="math display">\[
 \underset{\text{a posteriori}}{\PP(B_i\mid A)}\;\propto\;\underset{\text{verosimilitate}}{\PP(A\mid B_i)}\times\underset{\text{a priori}}{\PP(B_i)},
-\]</span> unde constanta de normalizare <span class="math inline">\(\PP(A)\)</span> nu depinde de <span class="math inline">\(i\)</span>. Această idee stă la baza <strong>statisticii bayesiene</strong> (partea a doua a cursului).</p>
+\]</span> unde constanta de normalizare <span class="math inline">\(\PP(A)\)</span> nu depinde de <span class="math inline">\(i\)</span>. Această idee stă la baza <strong>statisticii bayesiene</strong> (Cursul 11).</p>
 </div>
 </div>
 <div class="curs-box istoric">
@@ -1187,8 +1191,8 @@ A=A\cap\Omega=A\cap\Big(\bigcup_{i=1}^n B_i\Big)=\bigcup_{i=1}^n(A\cap B_i),
 <p>Două greșeli: (1) independență presupusă fără justificare — următoarea parte a cursului; (2) confuzia <span class="math inline">\(\PP(\text{date}\mid\text{nevinovăție})\)</span> vs.&nbsp;<span class="math inline">\(\PP(\text{nevinovăție}\mid\text{date})\)</span>.</p>
 </section></section>
 <section>
-<section id="partea-iii-independență.-monty-hall" class="title-slide slide level1 center">
-<h1>Partea III — Independență. Monty Hall</h1>
+<section id="partea-iii-independență" class="title-slide slide level1 center">
+<h1>Partea III — Independență</h1>
 
 </section>
 <section id="independența-a-două-evenimente" class="slide level2">
@@ -1475,6 +1479,11 @@ A=A\cap\Omega=A\cap\Big(\bigcup_{i=1}^n B_i\Big)=\bigcup_{i=1}^n(A\cap B_i),
 <pre><code>#&gt; [1] 0.0100 0.1610 0.7848 0.9858 0.9992</code></pre>
 </div>
 </div>
+</section></section>
+<section>
+<section id="partea-iv-probleme-clasice-monty-hall-urna-lui-pólya-ruina-jucătorului" class="title-slide slide level1 center">
+<h1>Partea IV — Probleme clasice: Monty Hall, urna lui Pólya, ruina jucătorului</h1>
+
 </section>
 <section id="problema-lui-monty-hall" class="slide level2">
 <h2>Problema lui Monty Hall</h2>
@@ -1567,11 +1576,6 @@ A=A\cap\Omega=A\cap\Big(\bigcup_{i=1}^n B_i\Big)=\bigcup_{i=1}^n(A\cap B_i),
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-</section></section>
-<section>
-<section id="partea-iv-pólya-ruina-jucătorului.-exerciții-rezolvate" class="title-slide slide level1 center">
-<h1>Partea IV — Pólya, ruina jucătorului. Exerciții rezolvate</h1>
-
 </section>
 <section id="urna-lui-pólya" class="slide level2">
 <h2>Urna lui Pólya</h2>
@@ -1652,7 +1656,7 @@ p_k=1-\frac{1-r^k}{1-r^N}=\frac{r^k-r^N}{1-r^N}.
 <span class="curs-box-label">Observație</span>
 </div>
 <div class="curs-box-body">
-<p>Într-un joc echitabil, <span class="math inline">\(p_k=1-k/N\)</span> scade <strong>liniar</strong> cu capitalul. Într-un joc ușor defavorabil (<span class="math inline">\(p&lt;1/2\)</span>) situația se schimbă dramatic: la ruleta europeană, pariind câte <span class="math inline">\(1\)</span> leu pe „roșu” (<span class="math inline">\(p=18/37\)</span>), cu <span class="math inline">\(50\)</span> lei și ținta <span class="math inline">\(100\)</span> lei, ruina are probabilitatea <span class="math inline">\(\approx0.937\)</span>. Dacă <span class="math inline">\(N\to\infty\)</span>, <span class="math inline">\(p_k\to1\)</span> pentru <span class="math inline">\(p\le 1/2\)</span> și <span class="math inline">\(p_k\to r^k\)</span> pentru <span class="math inline">\(p&gt;1/2\)</span>.</p>
+<p>Într-un joc echitabil, <span class="math inline">\(p_k=1-k/N\)</span> scade <strong>liniar</strong> cu capitalul. Într-un joc ușor defavorabil (<span class="math inline">\(p&lt;1/2\)</span>) situația se schimbă dramatic: la ruleta europeană, pariind câte <span class="math inline">\(1\)</span> leu pe „roșu” (<span class="math inline">\(p=18/37\)</span>), cu <span class="math inline">\(50\)</span> de lei și ținta <span class="math inline">\(100\)</span> de lei, ruina are probabilitatea <span class="math inline">\(\approx0.937\)</span>. Dacă <span class="math inline">\(N\to\infty\)</span>, <span class="math inline">\(p_k\to1\)</span> pentru <span class="math inline">\(p\le 1/2\)</span> și <span class="math inline">\(p_k\to r^k\)</span> pentru <span class="math inline">\(p&gt;1/2\)</span>.</p>
 </div>
 </div>
 </div><div class="column" style="width:55%;">
@@ -1698,6 +1702,11 @@ p_k=1-\frac{1-r^k}{1-r^N}=\frac{r^k-r^N}{1-r^N}.
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section></section>
+<section>
+<section id="partea-v-exerciții-rezolvate" class="title-slide slide level1 center">
+<h1>Partea V — Exerciții rezolvate</h1>
+
 </section>
 <section id="exercițiul-problema-cavalerului-de-méré" class="slide level2">
 <h2>Exercițiul: problema cavalerului de Méré</h2>

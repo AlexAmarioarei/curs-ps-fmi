@@ -289,6 +289,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../curs/04-va-continue.html">
  <span class="dropdown-text">Cursul 4 — Variabile aleatoare continue</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../curs/05-repartitii-continue.html">
+ <span class="dropdown-text">Cursul 5 — Repartiții continue remarcabile și transformări</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -319,6 +323,10 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../laborator_nosols/04-medie-varianta.html">
  <span class="dropdown-text">Seminarul 4 — Media și varianța variabilelor aleatoare discrete. Metoda indicatorilor (fișă de lucru)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../laborator_nosols/05-va-continue.html">
+ <span class="dropdown-text">Seminarul 5 — Variabile aleatoare continue și repartiții uzuale (fișă de lucru)</span></a>
   </li>  
     </ul>
   </li>
@@ -410,6 +418,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../laborator_nosols/04-medie-varianta.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">4. Media și varianța variabilelor aleatoare discrete. Metoda indicatorilor</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../laborator_nosols/05-va-continue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Variabile aleatoare continue și repartiții uzuale</span></a>
   </div>
 </li>
       </ul>
@@ -850,7 +864,7 @@ Tabelul&nbsp;1: Operațiile cu evenimente și operatorii logici din R (<code>A</
 <span class="curs-box-label">Exemplul 2</span> <span class="curs-box-name">(Un zar aruncat de zece mii de ori)</span>
 </div>
 <div class="curs-box-body">
-<p>Simulăm <span class="math inline">\(10^4\)</span> aruncări ale unui zar echilibrat și calculăm frecvențele relative ale celor șase fețe și a evenimentului „număr par”.</p>
+<p>Simulăm <span class="math inline">\(10^4\)</span> aruncări ale unui zar echilibrat și calculăm frecvențele relative ale celor șase fețe și ale evenimentului „număr par”.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">6</span>)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>aruncari <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="fl">1e4</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)   <span class="co"># 1e4 înseamnă 10^4</span></span>
